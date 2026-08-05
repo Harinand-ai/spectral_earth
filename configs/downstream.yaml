@@ -7,7 +7,7 @@ defaults:
   - data: null
   - model: null
   - callbacks: default.yaml
-  - logger: default.yaml # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
+  - logger: csv.yaml # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
   - trainer: ddp.yaml
   - paths: default.yaml
   - extras: default.yaml

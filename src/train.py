@@ -69,10 +69,18 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
 
     if cfg.get("test"):
         log.info("Starting testing!")
-        ckpt_path = trainer.checkpoint_callback.best_model_path
-        if ckpt_path == "":
+
+    # Use checkpoint passed through Hydra if available
+        ckpt_path = cfg.get("ckpt_path")
+
+    # Otherwise use the best checkpoint from training
+        if not ckpt_path:
+            ckpt_path = trainer.checkpoint_callback.best_model_path
+
+        if not ckpt_path:
             log.warning("Best ckpt not found! Using current weights for testing...")
             ckpt_path = None
+
         trainer.test(model=model, datamodule=datamodule, ckpt_path=ckpt_path)
         log.info(f"Best ckpt path: {ckpt_path}")
 
@@ -84,7 +92,7 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
     return metric_dict, object_dict
 
 
-@hydra.main(version_base="1.3", config_path="../configs", config_name="train.yaml")
+@hydra.main(version_base="1.3", config_path="../configs", config_name="pretrain.yaml")
 def main(cfg: DictConfig) -> Optional[float]:
     utils.extras(cfg)
         

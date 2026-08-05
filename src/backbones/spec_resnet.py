@@ -192,7 +192,11 @@ class SpecResNet50(nn.Module):
             nn.Module: The final fully connected layer used for classification.
         """
         return self.resnet.fc
-
+    def get_backbone(self):
+         """
+        Returns the backbone without the classifier.
+        """
+         return self.resnet
 
 
 class ModifiedResNet50(nn.Module):
@@ -284,3 +288,8 @@ class ModifiedResNet50(nn.Module):
             nn.Module: The final fully connected layer used for classification.
         """
         return self.fc
+    def get_backbone(self):
+        """
+        Returns the backbone.
+        """
+        return self

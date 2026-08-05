@@ -1,0 +1,11 @@
+_target_: src.datamodules.pavia_university.PaviaUniversityDataModule
+
+root: datasets/PaviaUniversity
+
+num_bands: 103
+
+patch_size: 15
+
+batch_size: 64
+
+num_workers: 4

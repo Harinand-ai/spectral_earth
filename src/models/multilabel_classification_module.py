@@ -3,14 +3,18 @@ from typing import Any, Dict, Optional
 
 import torch
 import torch.nn as nn
+from torch.nn.modules import loss
 import timm
 from torch import Tensor
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from torchmetrics import MetricCollection
 from torchmetrics.classification import (
-    MultilabelAccuracy,
-    MultilabelAveragePrecision,
-    MultilabelFBetaScore,
+    MulticlassAccuracy,
+    MulticlassF1Score,
+    MulticlassPrecision,
+    MulticlassRecall,
+    MulticlassCohenKappa,
+    MulticlassConfusionMatrix,
 )
 from lightning.pytorch import LightningModule
 
@@ -90,7 +94,11 @@ class MultiLabelClassificationModule(LightningModule):
 
         # Set the loss function
         if self.loss_name == "bce":
-            self.loss = nn.BCEWithLogitsLoss()
+          self.loss = nn.BCEWithLogitsLoss()
+
+        elif self.loss_name == "ce":
+            self.loss = nn.CrossEntropyLoss()
+
         else:
             raise ValueError(f"Loss type '{self.loss_name}' is not valid.")
 
@@ -203,45 +211,50 @@ class MultiLabelClassificationModule(LightningModule):
                         param.requires_grad = True
                         
     def _configure_metrics(self) -> None:
-        """Configure metrics for training, validation, and testing."""
+    
+
         self.train_metrics = MetricCollection(
             {
-                "OverallAccuracy": MultilabelAccuracy(
-                    num_labels=self.num_classes, average="micro"
-                ),
-                "AverageAccuracy": MultilabelAccuracy(
-                    num_labels=self.num_classes, average="macro"
-                ),
-                "F1Score": MultilabelFBetaScore(
-                    num_labels=self.num_classes,
-                    beta=1.0,
+                "OverallAccuracy": MulticlassAccuracy(
+                    num_classes=self.num_classes,
                     average="micro",
                 ),
-                "AverageF1Score": MultilabelFBetaScore(
-                    num_labels=self.num_classes,
-                    beta=1.0,
+                "AverageAccuracy": MulticlassAccuracy(
+                    num_classes=self.num_classes,
                     average="macro",
                 ),
-                "Precision": MultilabelAveragePrecision(
-                    num_labels=self.num_classes,
-                    average="micro",
-                ),
-                "AveragePrecision": MultilabelAveragePrecision(
-                    num_labels=self.num_classes,
+                "Precision": MulticlassPrecision(
+                    num_classes=self.num_classes,
                     average="macro",
+                ),
+                "Recall": MulticlassRecall(
+                    num_classes=self.num_classes,
+                    average="macro",
+                ),
+                "F1Score": MulticlassF1Score(
+                    num_classes=self.num_classes,
+                    average="macro",
+                ),
+                "Kappa": MulticlassCohenKappa(
+                    num_classes=self.num_classes,
                 ),
             },
             prefix="train_",
         )
+
         self.val_metrics = self.train_metrics.clone(prefix="val_")
         self.test_metrics = self.train_metrics.clone(prefix="test_")
 
-        self.best_val_loss = float('inf')
+        self.confusion_matrix = MulticlassConfusionMatrix(
+            num_classes=self.num_classes
+        )
+
+        self.best_val_loss = float("inf")
         self.best_epoch = None
 
         self.max_val_metrics = {}
         for key in self.val_metrics.keys():
-            self.max_val_metrics['max_' + key] = 0.0
+         self.max_val_metrics["max_" + key] = 0.0
 
     def forward(self, x: Tensor) -> Tensor:
         """Forward pass of the model."""
@@ -260,12 +273,18 @@ class MultiLabelClassificationModule(LightningModule):
         x = batch["image"]
         y = batch["label"]
         y_hat = self(x)
-        y_hat_sigmoid = torch.sigmoid(y_hat)
+        if self.loss_name == "ce":
+            loss = self.loss(y_hat, y)
 
-        loss = self.loss(y_hat, y.float())
+            preds = torch.argmax(y_hat, dim=1)
+            self.train_metrics(preds, y)
+
+        else:
+            y_hat = torch.sigmoid(y_hat)
+            loss = self.loss(y_hat, y.float())
+            self.train_metrics(y_hat, y)
 
         self.log("train_loss", loss, on_step=True, on_epoch=False, sync_dist=True)
-        self.train_metrics(y_hat_sigmoid, y)
 
         return loss
 
@@ -279,30 +298,50 @@ class MultiLabelClassificationModule(LightningModule):
         x = batch["image"]
         y = batch["label"]
         y_hat = self(x)
-        y_hat_sigmoid = torch.sigmoid(y_hat)
+        if self.loss_name == "ce":
+            loss = self.loss(y_hat, y)
 
-        loss = self.loss(y_hat, y.float())
+            preds = torch.argmax(y_hat, dim=1)
+            self.val_metrics(preds, y)
+
+        else:
+            y_hat = torch.sigmoid(y_hat)
+            loss = self.loss(y_hat, y.float())
+            self.val_metrics(y_hat, y)
 
         self.log("val_loss", loss, on_step=False, on_epoch=True, sync_dist=True)
-        self.val_metrics(y_hat_sigmoid, y)
+    def test_step(self, batch: Dict[str, Tensor], batch_idx: int):
 
-    def test_step(self, batch: Dict[str, Tensor], batch_idx: int) -> None:
-        """Compute test loss and metrics.
-
-        Args:
-            batch: Batch of data.
-            batch_idx: Index of the batch.
-        """
         x = batch["image"]
         y = batch["label"]
+
         y_hat = self(x)
-        y_hat_sigmoid = torch.sigmoid(y_hat)
 
-        loss = self.loss(y_hat, y.float())
+        if self.loss_name == "ce":
 
-        self.log("test_loss", loss, on_step=False, on_epoch=True, sync_dist=True)
-        self.test_metrics(y_hat_sigmoid, y)
+            loss = self.loss(y_hat, y)
 
+            preds = torch.argmax(y_hat, dim=1)
+
+            self.test_metrics(preds, y)
+
+            self.confusion_matrix(preds, y)
+
+        else:
+
+            y_hat = torch.sigmoid(y_hat)
+
+            loss = self.loss(y_hat, y.float())
+
+            self.test_metrics(y_hat, y)
+
+        self.log(
+            "test_loss",
+            loss,
+            on_step=False,
+            on_epoch=True,
+            sync_dist=True,
+        )
     def predict_step(self, batch: Dict[str, Tensor], batch_idx: int) -> Tensor:
         """Compute and return the predictions.
 
@@ -317,27 +356,34 @@ class MultiLabelClassificationModule(LightningModule):
         y_hat = torch.sigmoid(self(x))
         return y_hat
 
-    def on_validation_epoch_end(self) -> None:
-        """Logs epoch-level validation metrics."""
-        val_metrics = self.val_metrics.compute()
+    def on_validation_epoch_end(self):
+        metrics = self.val_metrics.compute()
 
-        # Update and log the best validation metrics
-        for key, value in val_metrics.items():
-            if value > self.max_val_metrics['max_' + key]:
-                self.max_val_metrics['max_' + key] = value
+        for name, value in metrics.items():
+            self.log(name, value, prog_bar=True, sync_dist=True)
 
-        self.log_dict(val_metrics)
         self.val_metrics.reset()
 
-    def on_test_epoch_end(self) -> None:
-        """Logs epoch-level test metrics."""
-        test_metrics = self.test_metrics.compute()
-        self.log_dict(test_metrics)
-        self.test_metrics.reset()
+    def on_test_epoch_end(self):
+        metrics = self.test_metrics.compute()
 
-        # Log the best validation metrics
-        for key, value in self.max_val_metrics.items():
-            self.log(key, value)
+        for name, value in metrics.items():
+            self.log(name, value, prog_bar=True, sync_dist=True)
+
+        cm = self.confusion_matrix.compute()
+
+        print("\n==============================")
+        print("SpectralEarth Evaluation")
+        print("==============================")
+
+        for name, value in metrics.items():
+            print(f"{name}: {value:.4f}")
+
+        print("\nConfusion Matrix:")
+        print(cm)
+
+        self.test_metrics.reset()
+        self.confusion_matrix.reset()
 
     def configure_optimizers(self) -> Dict[str, Any]:
         """Initialize the optimizer and learning rate scheduler.

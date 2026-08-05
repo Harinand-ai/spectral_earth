@@ -1,0 +1,11 @@
+_target_: src.datamodules.salinas.SalinasDataModule
+
+root: datasets/Salinas
+
+num_bands: 204
+
+patch_size: 15
+
+batch_size: 64
+
+num_workers: 4

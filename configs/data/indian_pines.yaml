@@ -1,0 +1,11 @@
+_target_: src.datamodules.indian_pines.IndianPinesDataModule
+
+root: datasets/IndianPines
+
+num_bands: 200
+
+patch_size: 15
+
+batch_size: 64
+
+num_workers: 4
