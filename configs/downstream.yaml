@@ -35,4 +35,21 @@ compile: False
 ckpt_path: null
 
 # seed for random number generators in pytorch, numpy and python.random
-seed: null
+seed: 42
+
+backbone: spec_resnet50
+num_classes: 16
+in_channels: 200
+
+al:
+  num_rounds: 5
+  k_samples_per_round: 20
+  initial_labeled_ratio: 0.05
+  initial_samples_per_class: null
+  uncertainty_method: entropy
+  start_uncertainty: 0.30
+  end_uncertainty: 0.80
+  epochs_per_round: 15
+  batch_size: 64
+  learning_rate: 0.001
+  seed: 42

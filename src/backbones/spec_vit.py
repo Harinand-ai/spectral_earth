@@ -18,7 +18,7 @@ class SpecVisionTransformer(nn.Module):
     
     """
     def __init__(self, token_patch_size=4, patch_size=128, embed_dim=768, reduced_channels=128, 
-                 dynamic_img_size=False, depth=12, num_heads=6, mlp_ratio=4, **kwargs):
+                 dynamic_img_size=True, depth=12, num_heads=6, mlp_ratio=4, **kwargs):
         """Initialize the Spectral Vision Transformer model.
         
         Args:

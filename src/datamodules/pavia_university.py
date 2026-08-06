@@ -22,6 +22,8 @@ class PaviaUniversityDataModule(NonGeoDataModule):
 
         self.root = root
         self.patch_size = patch_size
+        self.num_bands = 103
+        self.num_classes = 9
 
     def setup(self, stage=None):
 

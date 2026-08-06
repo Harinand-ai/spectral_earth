@@ -22,6 +22,8 @@ class IndianPinesDataModule(NonGeoDataModule):
 
         self.root = root
         self.patch_size = patch_size
+        self.num_bands = 200
+        self.num_classes = 16
 
     def setup(self, stage=None):
 

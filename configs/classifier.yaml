@@ -1,0 +1,23 @@
+# Active Learning Classifier Config
+_target_: src.models.classifier_module.ClassifierModule
+
+backbone: spec_resnet50
+num_classes: 16
+in_channels: 200
+freeze_backbone: true
+learning_rate: 0.001
+weight_decay: 0.0001
+hidden_dim: 0
+
+# Active Learning Hyperparameters
+al:
+  num_rounds: 5
+  k_samples_per_round: 20
+  initial_labeled_ratio: 0.05
+  initial_samples_per_class: null
+  uncertainty_method: entropy
+  start_uncertainty: 0.30
+  end_uncertainty: 0.80
+  epochs_per_round: 15
+  batch_size: 64
+  seed: 42
