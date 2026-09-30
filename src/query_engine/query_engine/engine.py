@@ -1,3 +1,4 @@
+from typing import Optional
 import numpy as np
 
 from .uncertainty import compute_uncertainty
@@ -24,6 +25,14 @@ class QueryEngine:
         "diversity",
         "random",
         "adaptive",
+        "hybrid",
+        "lc_adaptive",
+        "lc_hybrid",
+        "filter_diversity",
+        "filter_diversity_labeled",
+        "adaptive_controller",
+        "expected_learning_value",
+        "value_of_information",
     )
 
     def __init__(
@@ -224,7 +233,26 @@ class QueryEngine:
                 "diversity_weight": 1.0,
             }
 
-        unc_method = "entropy" if self.uncertainty_method == "adaptive" else self.uncertainty_method
+        if self.uncertainty_method in {"hybrid", "lc_hybrid"}:
+            unc_scores = compute_uncertainty(probabilities, method="least_confidence")
+            from .adaptive import normalize_scores
+            norm_unc = normalize_scores(unc_scores)
+            norm_div = normalize_scores(diversity_scores)
+            final_scores = 0.5 * norm_unc + 0.5 * norm_div
+            return {
+                "uncertainty": unc_scores,
+                "diversity": diversity_scores,
+                "final": final_scores,
+                "uncertainty_weight": 0.5,
+                "diversity_weight": 0.5,
+            }
+
+        # For adaptive, lc_adaptive, and default: use least_confidence unless explicitly requested otherwise
+        if self.uncertainty_method in {"adaptive", "lc_adaptive"}:
+            unc_method = "least_confidence"
+        else:
+            unc_method = self.uncertainty_method
+
         uncertainty_scores = compute_uncertainty(
             probabilities,
             method=unc_method,
@@ -263,9 +291,10 @@ class QueryEngine:
         k: int,
         current_round: int = 0,
         total_rounds: int = 10,
+        labeled_embeddings: Optional[np.ndarray] = None,
     ) -> np.ndarray:
         """
-        Main integration interface.
+        Main integration interface with tie handling stability.
 
         Returns
         -------
@@ -281,6 +310,52 @@ class QueryEngine:
             )
         )
 
+        if self.uncertainty_method in {"expected_learning_value", "value_of_information"}:
+            from .expected_learning_value import ExpectedLearningValueController
+            if self.uncertainty_method == "value_of_information":
+                controller = ExpectedLearningValueController(w_uncertainty=0.5, w_novelty=0.5, w_gradient=0.0)
+            else:
+                controller = ExpectedLearningValueController(w_uncertainty=0.4, w_novelty=0.4, w_gradient=0.2)
+            
+            selected_indices, _ = controller.select_samples(
+                embeddings=embeddings,
+                probabilities=probabilities,
+                k=k,
+                labeled_embeddings=labeled_embeddings,
+            )
+            return selected_indices.astype(np.int64)
+
+        if self.uncertainty_method == "adaptive_controller":
+            from .adaptive_controller import AdaptiveQueryController
+            controller = AdaptiveQueryController()
+            return controller.select(
+                embeddings=embeddings,
+                probabilities=probabilities,
+                k=k,
+                current_round=current_round,
+                total_rounds=total_rounds,
+                labeled_embeddings=labeled_embeddings,
+            )
+
+        if self.uncertainty_method in {"filter_diversity", "filter_diversity_labeled"}:
+            from .uncertainty import least_confidence
+            from .diversity import select_diverse_samples
+
+            unc_scores = least_confidence(probabilities)
+            cand_pool_size = min(len(embeddings), max(4 * k, 50))
+            top_cand_rel_indices = np.argsort(-unc_scores, kind="stable")[:cand_pool_size]
+            cand_embeddings = embeddings[top_cand_rel_indices]
+
+            if self.uncertainty_method == "filter_diversity_labeled":
+                selected_in_cand = select_diverse_samples(
+                    cand_embeddings, k, labeled_embeddings=labeled_embeddings
+                )
+            else:
+                selected_in_cand = select_diverse_samples(cand_embeddings, k)
+
+            selected_indices = top_cand_rel_indices[selected_in_cand]
+            return selected_indices.astype(np.int64)
+
         results = self.score(
             embeddings=embeddings,
             probabilities=probabilities,
@@ -290,11 +365,12 @@ class QueryEngine:
 
         final_scores = results["final"]
 
-        # Stable sorting makes equal-score behaviour reproducible.
-        selected_indices = np.argsort(
-            -final_scores,
-            kind="stable",
-        )[:k]
+        # Deterministic tie-breaking noise for stable ranking reproducibility
+        rng = np.random.RandomState(current_round + 1000)
+        tie_breaker = rng.uniform(0, 1e-9, size=len(final_scores))
+        stable_scores = final_scores + tie_breaker
+
+        selected_indices = np.argsort(-stable_scores, kind="stable")[:k]
 
         return selected_indices.astype(
             np.int64

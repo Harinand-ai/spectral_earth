@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpectralEarth — Hyperspectral Active Learning Research Workstation</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/styles.css?v=3">
+</head>
+<body>
+
+    <!-- RESEARCH WORKSTATION HEADER -->
+    <header class="app-header">
+        <div class="brand-group">
+            <div class="brand-logo">SE</div>
+            <div>
+                <h1 class="brand-title">Hyperspectral Adaptation Assistant</h1>
+                <p class="brand-tag">SpectralEarth Foundation Model + Uncertainty Active Learning</p>
+            </div>
+        </div>
+
+        <div class="header-controls" style="display:flex; gap:8px; align-items:center;">
+            <button id="btnToggleGuided" class="btn btn-primary btn-sm">Guided Tutorial</button>
+            <button id="btnExplainThis" class="btn btn-secondary btn-sm" title="Explain currently visible screen state">💡 Explain This</button>
+        </div>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="nav-bar">
+        <button class="nav-tab active" id="tabActiveLearning" data-tab="al-pipeline-tab">Active Learning</button>
+        <button class="nav-tab" id="tabCrossSensor" data-tab="cross-sensor-tab">Cross-Sensor Adaptation</button>
+        <button class="nav-tab" id="tabExperiments" data-tab="experiments-tab">Experimental Evidence</button>
+        <button class="nav-tab" id="tabReport" data-tab="report-tab">Research Report</button>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <main class="main-container">
+
+        <!-- =========================================================================
+             SECTION 1: ACTIVE LEARNING WORKFLOW
+             ========================================================================= -->
+        <section id="al-pipeline-tab" class="tab-content active">
+
+            <!-- CONTROL BAR & WORKFLOW CONTROLS -->
+            <div class="control-bar" id="expControlBar">
+                <div class="control-group-left">
+                    <div class="control-field">
+                        <label for="datasetSelect" class="control-label">Dataset:</label>
+                        <select id="datasetSelect" class="select-input">
+                            <option value="Indian Pines" selected>Indian Pines (145&times;145, 200 Bands, 16 Classes)</option>
+                            <option value="Salinas">Salinas (512&times;217, 204 Bands, 16 Classes)</option>
+                            <option value="Pavia University">Pavia University (610&times;340, 103 Bands, 9 Classes)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-field">
+                        <label for="strategySelect" class="control-label">Query Strategy:</label>
+                        <select id="strategySelect" class="select-input">
+                            <option value="filter_diversity" selected>LC + Farthest Diversity (Recommended)</option>
+                            <option value="least_confidence">Least Confidence</option>
+                            <option value="random">Random Sampling</option>
+                        </select>
+                    </div>
+
+                    <div class="control-field">
+                        <label for="modeToggleSelect" class="control-label">Annotation Mode:</label>
+                        <select id="modeToggleSelect" class="select-input" style="font-weight:600; color:var(--primary);">
+                            <option value="oracle" selected>Simulated Oracle (Ground Truth)</option>
+                            <option value="human">Human Annotation (Manual Labeling)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-field" id="querySizeContainer">
+                        <label for="queryBatchSelect" class="control-label">Query Size:</label>
+                        <select id="queryBatchSelect" class="select-input" style="width:70px;">
+                            <option value="10">10</option>
+                            <option value="20" selected>20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+
+                    <div class="control-field" id="targetOaContainer" style="max-width:130px;">
+                        <label for="targetOaInput" class="control-label">Target OA (%):</label>
+                        <div style="display:flex; gap:4px;">
+                            <input type="number" id="targetOaInput" class="select-input" value="70" min="1" max="100" style="width:55px; text-align:center;">
+                            <button class="btn btn-secondary" id="btnSetTarget" style="padding:4px 8px; font-size:11px;">Set</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group-status">
+                    <div class="status-summary-box">
+                        <span class="status-label">Round: <strong id="metricRound">0 / 5</strong></span>
+                        <span class="status-dot">&bull;</span>
+                        <span class="status-label">Labeled: <strong id="metricLabeled">160</strong></span>
+                    </div>
+                    <span class="badge badge-warning" id="targetStatusBadge">TARGET NOT REACHED</span>
+                </div>
+
+                <div class="control-actions" id="workflowActionGroup">
+                    <button class="btn btn-primary" id="btnInitialPredict" style="font-size:12px;">⚡ Initial Prediction</button>
+                    <button class="btn btn-secondary disabled-stage" id="btnRunQuery" disabled style="font-size:12px;">1. Query Samples (k=20)</button>
+                    <button class="btn btn-secondary disabled-stage" id="btnSubmitAnnotate" disabled style="font-size:12px;">2. Retrain Classifier</button>
+                    <button class="btn btn-outline" id="btnExportSession" style="font-size:12px;">Export</button>
+                </div>
+            </div>
+
+            <!-- MAIN WORKSPACE: HSI CANVAS (LEFT) & METRICS/PROGRESSION (RIGHT) -->
+            <div class="grid-2-equal margin-top">
+
+                <!-- LEFT: MAIN HSI VISUALIZATION -->
+                <div class="card" id="cardHsiScene">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Hyperspectral Scene View</h3>
+                        </div>
+                        <div class="segmented-control" id="sceneMapControls" style="display:none;">
+                            <button class="segmented-btn active" id="btnMapRGB">RGB Image</button>
+                            <button class="segmented-btn" id="btnMapPool">Label Pool</button>
+                            <button class="segmented-btn" id="btnMapPred">Prediction</button>
+                            <button class="segmented-btn" id="btnMapUnc">Uncertainty</button>
+                        </div>
+                    </div>
+
+                    <!-- EMPTY STATE PLACEHOLDER -->
+                    <div class="empty-state-box" id="sceneEmptyState">
+                        <div class="empty-state-icon">🗺️</div>
+                        <h4 class="empty-state-title">No Scene Prediction Generated Yet</h4>
+                        <p class="empty-state-desc">Click <span class="empty-state-cta">Initial Prediction</span> above to compute frozen SpectralEarth foundation embeddings and project the baseline classification map.</p>
+                    </div>
+
+                    <!-- ACTIVE VISUALIZATION CONTENT -->
+                    <div id="sceneActiveContent" style="display:none;">
+                        <div class="canvas-wrapper">
+                            <canvas id="spatialCanvas" width="380" height="380"></canvas>
+                        </div>
+
+                        <div class="hover-bar" id="hoverInfo">
+                            Hover over pixel to inspect class details
+                        </div>
+
+                        <div class="legend-grid" id="classLegendGrid"></div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: METRICS & PROGRESSION CHART -->
+                <div class="card" id="cardProgression">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Accuracy Progression &amp; Target Tracking</h3>
+                            <p class="card-subtitle">Test set performance against target threshold</p>
+                        </div>
+                        <div style="text-align:right;" id="metricSummaryBox">
+                            <span style="font-size:18px; font-weight:700; color:var(--primary);" id="metricOA">52.40%</span>
+                            <div style="font-size:11px; color:var(--text-muted);">Macro F1: <span id="metricF1">0.4520</span></div>
+                        </div>
+                    </div>
+
+                    <!-- EMPTY STATE PLACEHOLDER -->
+                    <div class="empty-state-box" id="progressionEmptyState">
+                        <div class="empty-state-icon">📈</div>
+                        <h4 class="empty-state-title">Progression Tracking Inactive</h4>
+                        <p class="empty-state-desc">Baseline accuracy curve and target evaluation tracking will activate immediately after initial prediction is generated.</p>
+                    </div>
+
+                    <!-- ACTIVE PROGRESSION CONTENT -->
+                    <div id="progressionActiveContent" style="display:none;">
+                        <div class="chart-container">
+                            <canvas id="progressionChart"></canvas>
+                        </div>
+
+                        <!-- COMPACT BEFORE / AFTER RETRAINING COMPARISON -->
+                        <div id="beforeAfterPanel" style="background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:6px; padding:10px; margin-top:12px; display:none;">
+                            <div style="font-size:12px; font-weight:700; color:var(--text-primary); margin-bottom:4px;">Round Retraining Impact</div>
+                            <div style="display:flex; justify-content:space-around; font-size:12px; color:var(--text-secondary);">
+                                <div>Labels: <strong id="baLabels">160 &rarr; 180</strong></div>
+                                <div>OA: <strong id="baOA" style="color:var(--success);">52.40% &rarr; 58.10%</strong></div>
+                                <div>F1: <strong id="baF1">0.4520 &rarr; 0.5210</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SELECTED PIXELS TABLE -->
+            <div class="card margin-top" id="cardQuerySelection">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Selected Informative Samples (Query Batch k=20)</h3>
+                        <p class="card-subtitle" id="tableSubtitle">Inspect feature context or assign user annotations</p>
+                    </div>
+                </div>
+
+                <!-- EMPTY STATE PLACEHOLDER -->
+                <div class="empty-state-box" id="tableEmptyState">
+                    <div class="empty-state-icon">🎯</div>
+                    <h4 class="empty-state-title">No Candidate Samples Queried Yet</h4>
+                    <p class="empty-state-desc">After initial prediction, click <span class="empty-state-cta">1. Query Samples</span> to run Least Confidence uncertainty and diversity sampling.</p>
+                </div>
+
+                <div class="table-wrapper" id="queryTableWrapper" style="max-height: 280px; overflow-y: auto; display:none;">
+                    <table class="data-table" id="querySelectionTable">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Sample ID (Coord)</th>
+                                <th>Predicted Class</th>
+                                <th>Uncertainty (LC)</th>
+                                <th>Selection Rationale</th>
+                                <th>Inspect</th>
+                                <th id="thAnnotationCol">User Annotation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="7" style="text-align:center; color:var(--text-muted); padding:16px;">Click "1. Query Samples" to sample informative candidate pixels.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =========================================================================
+             SECTION 2: CROSS-SENSOR
+             ========================================================================= -->
+        <section id="cross-sensor-tab" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Cross-Sensor Adaptation</h3>
+                        <p class="card-subtitle">Transferring SpectralEarth foundation representations across satellite configurations</p>
+                    </div>
+                </div>
+
+                <!-- SINGLE PAIR SELECTOR -->
+                <div class="control-field margin-top">
+                    <label for="transferPairSelect" class="control-label">Select Transfer Pair:</label>
+                    <select id="transferPairSelect" class="select-input">
+                        <option value="Indian Pines -> Pavia University" selected>Indian Pines (AVIRIS, 200 Bands) &rarr; Pavia University (ROSIS, 103 Bands)</option>
+                        <option value="Salinas -> Pavia University">Salinas (AVIRIS, 204 Bands) &rarr; Pavia University (ROSIS, 103 Bands)</option>
+                        <option value="Indian Pines -> Salinas">Indian Pines (AVIRIS, 200 Bands) &rarr; Salinas (AVIRIS, 204 Bands)</option>
+                        <option value="Salinas -> Indian Pines">Salinas (AVIRIS, 204 Bands) &rarr; Indian Pines (AVIRIS, 200 Bands)</option>
+                    </select>
+                </div>
+
+                <!-- VISUAL WORKFLOW -->
+                <div style="background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:6px; padding:8px 12px; margin-top:10px; font-size:12px; color:var(--text-secondary); display:flex; align-items:center; justify-content:space-between;">
+                    <span><strong>Source Sensor</strong></span> &rarr;
+                    <span style="color:var(--primary); font-weight:700;"><strong>Spectral Alignment (1D Interpolation)</strong></span> &rarr;
+                    <span><strong>Frozen Backbone</strong></span> &rarr;
+                    <span style="color:var(--success); font-weight:700;"><strong>Target Adaptation</strong></span>
+                </div>
+
+                <!-- CURRENT SELECTED PAIR RESULTS SUMMARY -->
+                <div class="grid-4 margin-top">
+                    <div class="metric-card">
+                        <span class="metric-title">Source Sensor</span>
+                        <div class="metric-value" id="csSource">AVIRIS</div>
+                        <div class="metric-sub">Source dataset sensor</div>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Target Sensor</span>
+                        <div class="metric-value" id="csTarget">ROSIS</div>
+                        <div class="metric-sub">Target dataset sensor</div>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Zero-Shot Baseline</span>
+                        <div class="metric-value" id="csZeroShot">N/A</div>
+                        <div class="metric-sub">Direct inference accuracy</div>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Few-Shot Adaptation OA</span>
+                        <div class="metric-value highlight" id="csFewShot">49.84%</div>
+                        <div class="metric-sub">Target domain active learning</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESAMPLER CHART & PROGRESSION TABLE FOR SELECTED PAIR -->
+            <div class="grid-2-equal margin-top">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">1D Spectral Resampler</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="resamplerChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Target Adaptation Progression</h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table" id="csRoundTable">
+                            <thead>
+                                <tr>
+                                    <th>Round</th>
+                                    <th>Labeled Count</th>
+                                    <th>OA (%)</th>
+                                    <th>Macro F1</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================================
+             SECTION 3: EXPERIMENTS
+             ========================================================================= -->
+        <section id="experiments-tab" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">EXPERIMENTAL EVIDENCE</h3>
+                        <p class="card-subtitle">Verified results from controlled experiments</p>
+                    </div>
+                </div>
+
+                <!-- CONTROL BAR -->
+                <div class="control-bar margin-top" style="background:var(--bg-subtle);">
+                    <div class="control-field">
+                        <label for="expDatasetSelect" class="control-label">Dataset:</label>
+                        <select id="expDatasetSelect" class="select-input">
+                            <option value="Indian Pines" selected>Indian Pines</option>
+                            <option value="Salinas">Salinas</option>
+                            <option value="Pavia University">Pavia University</option>
+                        </select>
+                    </div>
+
+                    <div class="control-field">
+                        <label for="expTypeSelect" class="control-label">Experiment:</label>
+                        <select id="expTypeSelect" class="select-input">
+                            <option value="benchmark" selected>Benchmark</option>
+                            <option value="efficiency">Label Efficiency</option>
+                            <option value="ablation">Ablation</option>
+                            <option value="calibration">Calibration</option>
+                            <option value="cost">Computational Cost</option>
+                        </select>
+                    </div>
+
+                    <div class="control-field" id="metricControlField">
+                        <label for="expMetricSelect" class="control-label">Metric:</label>
+                        <select id="expMetricSelect" class="select-input">
+                            <option value="all" selected>All Metrics</option>
+                            <option value="oa">Overall Accuracy (OA)</option>
+                            <option value="aa">Average Accuracy (AA)</option>
+                            <option value="f1">Macro F1</option>
+                            <option value="kappa">Kappa (k)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- EXPERIMENT VIEW 1: BENCHMARK -->
+                <div id="view-exp-benchmark" class="exp-view active margin-top">
+                    <div class="table-wrapper">
+                        <table class="data-table evidence-table" id="benchmarkTable">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Overall Accuracy (OA %)</th>
+                                    <th>Average Accuracy (AA %)</th>
+                                    <th>Macro F1</th>
+                                    <th>Kappa (&kappa;)</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <div class="chart-container margin-top" style="height:240px;">
+                        <canvas id="benchmarkChart"></canvas>
+                    </div>
+
+                    <div class="alert-box alert-warning margin-top" id="paviaInterpretationBox" style="display:none;">
+                        <strong>INTERPRETATION:</strong> Random achieves higher Overall Accuracy, while LC+FD achieves higher Average Accuracy and Macro F1. This illustrates the difference between overall pixel accuracy and class-balanced metrics.
+                    </div>
+                </div>
+
+                <!-- EXPERIMENT VIEW 2: LABEL EFFICIENCY -->
+                <div id="view-exp-efficiency" class="exp-view margin-top" style="display:none;">
+                    <div class="chart-container-lg">
+                        <canvas id="labelEfficiencyChart"></canvas>
+                    </div>
+
+                    <div class="table-wrapper margin-top">
+                        <table class="data-table" id="thresholdsTable">
+                            <thead>
+                                <tr>
+                                    <th>Dataset</th>
+                                    <th>Target OA</th>
+                                    <th>Random Labels</th>
+                                    <th>LC Labels</th>
+                                    <th>LC + FD Labels</th>
+                                    <th>Label Savings</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <div style="background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:8px; padding:16px; margin-top:16px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <div>
+                                <h4 style="font-weight:700; color:var(--text-primary); font-size:14px; margin:0;">Labeling Cost & Workload Reduction Estimator</h4>
+                                <span style="font-size:11px; color:var(--text-muted);">Calculate financial & human effort savings based on target accuracy budget</span>
+                            </div>
+                            <div style="display:flex; gap:8px; align-items:center;">
+                                <label for="costPerLabelInput" style="font-size:12px; font-weight:600; color:var(--text-secondary);">Cost per label (₹/$):</label>
+                                <input type="number" id="costPerLabelInput" value="5.0" step="0.5" min="0" style="width:70px; padding:4px 8px; border:1px solid var(--border-color); border-radius:4px; font-weight:600; text-align:center;">
+                                <button class="btn btn-primary" id="btnCalculateCost" style="padding:4px 12px; font-size:12px;">Calculate</button>
+                            </div>
+                        </div>
+
+                        <div class="grid-4" style="gap:10px;" id="costResultsGrid">
+                            <div class="metric-card">
+                                <span class="metric-title">Random Strategy Cost</span>
+                                <div class="metric-value" id="costRandom">₹1,550</div>
+                                <div class="metric-sub" id="labelsRandom">310 labels required</div>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-title">LC Strategy Cost</span>
+                                <div class="metric-value" id="costLC">₹1,050</div>
+                                <div class="metric-sub" id="labelsLC">210 labels required</div>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-title">LC + FD Strategy Cost</span>
+                                <div class="metric-value highlight" id="costLCFD">₹975</div>
+                                <div class="metric-sub" id="labelsLCFD">195 labels required</div>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-title">Estimated Cost Savings</span>
+                                <div class="metric-value" style="color:var(--success);" id="costSaved">₹575 (37.1%)</div>
+                                <div class="metric-sub" id="labelsSaved">Saved 115 label annotations</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:11px; color:var(--text-muted); font-style:italic; margin-top:8px; text-align:right;" id="costDisclaimer">
+                            Based on user-defined annotation cost (User-defined estimate).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXPERIMENT VIEW 3: ABLATIONS -->
+                <div id="view-exp-ablation" class="exp-view margin-top" style="display:none;">
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Modification</th>
+                                    <th>Decision</th>
+                                    <th>Observation & Conclusion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Classifier Dropout 0.1</strong></td>
+                                    <td><span class="badge badge-optional">OPTIONAL (0.1)</span></td>
+                                    <td>Dropout p=0.1 improved stability on Indian Pines (+0.4% F1); p=0.2 degraded performance.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Temperature Scaling</strong></td>
+                                    <td><span class="badge badge-optional">OPTIONAL</span></td>
+                                    <td>Useful for probability calibration (reduced ECE from 0.082 to 0.045).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Labeled-Pool Diversity</strong></td>
+                                    <td><span class="badge badge-optional">OPTIONAL</span></td>
+                                    <td>Helped reduce F1 variance on Pavia University.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Adaptive Query Controller</strong></td>
+                                    <td><span class="badge badge-rejected">REJECTED</span></td>
+                                    <td>Inconsistent performance across datasets. Static LC + FD filter proved more robust.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Expected Learning Value</strong></td>
+                                    <td><span class="badge badge-optional">ALTERNATIVE</span></td>
+                                    <td>Dataset-dependent specialized query metric; increased selection latency without consistent gains.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Class-Balanced Loss</strong></td>
+                                    <td><span class="badge badge-rejected">REJECTED</span></td>
+                                    <td>Improved Average Accuracy (AA) on imbalanced classes but reduced Overall Accuracy (OA).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Combined Modifications</strong></td>
+                                    <td><span class="badge badge-rejected">REJECTED</span></td>
+                                    <td>Stacking all modifications simultaneously degraded overall accuracy by 3.8%.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- EXPERIMENT VIEW 4: CALIBRATION -->
+                <div id="view-exp-calibration" class="exp-view margin-top" style="display:none;">
+                    <div class="grid-2-equal">
+                        <div class="metric-card">
+                            <span class="metric-title">Expected Calibration Error (ECE)</span>
+                            <div class="metric-value highlight">0.0520</div>
+                            <div class="metric-sub">Validation-set temperature scaling active</div>
+                        </div>
+                        <div style="font-size:12.5px; color:var(--text-secondary); line-height:1.6;">
+                            <p><strong>Calibration Profile:</strong> Uncalibrated neural networks tend to yield overconfident predictions. Temperature scaling optimizes a single scalar parameter <em>T</em> on validation logits, bringing predicted confidence scores into alignment with true empirical accuracy.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXPERIMENT VIEW 5: COMPUTATIONAL COST -->
+                <div id="view-exp-cost" class="exp-view margin-top" style="display:none;">
+                    <div class="grid-3" style="gap:12px;">
+                        <div class="metric-card">
+                            <span class="metric-title">Backbone Parameters</span>
+                            <div class="metric-value">24.76M</div>
+                            <div class="metric-sub">100% Frozen (SpecResNet50)</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">Classifier Parameters</span>
+                            <div class="metric-value">524,560</div>
+                            <div class="metric-sub">Trainable 2-Layer MLP Head</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">Feature Dimension</span>
+                            <div class="metric-value">2048</div>
+                            <div class="metric-sub">Pre-extracted embedding space</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">Feature Extraction Time</span>
+                            <div class="metric-value">&lt; 0.1s</div>
+                            <div class="metric-sub">Cached on session init</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">Query Selection Time</span>
+                            <div class="metric-value">~0.08s</div>
+                            <div class="metric-sub">LC + Farthest Diversity filtering</div>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-title">Retraining Latency</span>
+                            <div class="metric-value highlight">&lt; 0.5s</div>
+                            <div class="metric-sub">25 epochs on pre-extracted features</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =========================================================================
+             SECTION 4: RESEARCH REPORT
+             ========================================================================= -->
+        <section id="report-tab" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Scientific Audit Report</h3>
+                        <p class="card-subtitle">Document-formatted scientific report dynamically generated from experimental session metrics</p>
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <button class="btn btn-primary" id="btnRefreshReport">Refresh Report</button>
+                        <button class="btn btn-secondary" id="btnDownloadReport">Open Full Report in New Tab</button>
+                    </div>
+                </div>
+                <iframe id="reportIframe" class="report-frame" src="/api/generate_report"></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SAMPLE INSPECTION MODAL -->
+    <div class="modal-overlay" id="sampleModal">
+        <div class="modal-box" style="max-width: 860px; width: 90%;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalSampleTitle">Pixel Sample Details</h3>
+                <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+            </div>
+            <div class="modal-body grid-2-equal">
+                <div>
+                    <h4 style="font-size:13px; font-weight:600; margin-bottom:8px; color:var(--text-secondary);">15&times;15 Spatial Patch Context</h4>
+                    <div style="background:#0f172a; padding:12px; border-radius:6px; display:inline-block;">
+                        <canvas id="patchCanvas" width="180" height="180" style="image-rendering: pixelated; width: 180px; height: 180px;"></canvas>
+                    </div>
+                    <div id="modalSampleMeta" style="margin-top:12px; font-size:12px; color:var(--text-secondary); line-height:1.6;"></div>
+                    
+                    <!-- IN-MODAL ANNOTATION ACTIONS -->
+                    <div id="modalAnnotationSection" style="margin-top:12px; padding:10px 12px; background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:6px;">
+                        <label for="modalAnnotationSelect" style="font-size:12px; font-weight:600; color:var(--text-primary); display:block; margin-bottom:6px;">Assign Ground Truth Label:</label>
+                        <div style="display:flex; gap:6px;">
+                            <select id="modalAnnotationSelect" class="select-input" style="font-size:11.5px; flex:1;"></select>
+                            <button id="modalApplyAnnotationBtn" class="btn btn-primary btn-sm" style="font-size:11.5px;">Save Label</button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-size:13px; font-weight:600; margin-bottom:8px; color:var(--text-secondary);">Spectral Reflectance Signature &amp; Class Probabilities</h4>
+                    <div class="chart-container" style="height:140px;">
+                        <canvas id="sampleSpectrumChart"></canvas>
+                    </div>
+                    <div class="chart-container" style="height:110px; margin-top:8px;">
+                        <canvas id="sampleProbChart"></canvas>
+                    </div>
+                    <div style="margin-top:8px; padding:8px 10px; background:var(--bg-subtle); border-radius:6px; font-size:11.5px; color:var(--text-secondary);" id="modalReasonBox"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTEXTUAL EXPLANATION MODAL -->
+    <div class="modal-overlay" id="explainModal">
+        <div class="modal-box" style="max-width: 580px; width: 90%;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="explainModalTitle">💡 System Explanation</h3>
+                <button class="modal-close-btn" id="explainModalCloseBtn">&times;</button>
+            </div>
+            <div class="modal-body" id="explainModalBody" style="font-size:13px; line-height:1.6; color:var(--text-secondary);">
+                <!-- Dynamically populated -->
+            </div>
+            <div style="padding:12px 16px; border-top:1px solid var(--border-color); display:flex; justify-content:flex-end;">
+                <button class="btn btn-secondary btn-sm" id="explainModalOkBtn">Got it</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- JS SCRIPTS -->
+    <script src="/static/tutorial_engine.js?v=3"></script>
+    <script src="/static/app.js?v=3"></script>
+</body>
+</html>

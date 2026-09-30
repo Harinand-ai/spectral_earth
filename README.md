@@ -1,188 +1,124 @@
-# Spectral Earth
+# SpectralEarth Active Learning Framework — Visual Research Demonstration System
 
-This repository contains the code associated with the paper: [SpectralEarth: Training Hyperspectral Foundation Models at Scale](https://arxiv.org/abs/2408.08447).
+An end-to-end interactive web application and research demonstration system built on top of the verified **SpectralEarth Active Learning Framework**. 
 
-> **Note:** The codebase is based on [ashleve/lightning-hydra-template](https://github.com/ashleve/lightning-hydra-template).
-
-## Overview
-
-The project focuses on pre-training hyperspectral models using data from the EnMAP mission. These models are fine-tuned on several crop-type/land-cover/tree-species classification downstream tasks.
-![Spectral Earth Dataset Overview](spectral_earth_dataset.png)
-
-*Figure: Overview of the Spectral Earth dataset.*
-
-## Pre-training Dataset
-
-The Spectral Earth dataset is a large-scale hyperspectral dataset collected from the EnMAP (Environmental Mapping and Analysis Program) satellite mission. It covers diverse geographic regions with about 3.3TB of hyperspectral imagery.
-
-![Spectral Earth Dataset Overview](spectral_earth_map.png)
-
-*Figure: Geographical Distribution of SpectralEarth.*
-
-The dataset can be accessed and downloaded from the [DLR GeoService Portal](https://geoservice.dlr.de/web/datasets/enmap_spectralearth) after creating an account.
-
-
-## Downstream Tasks
-
-We evaluate our pretrained models on a diverse set of downstream tasks including classification, segmentation, and regression:
-
-- **EnMAP-CDL** (Crop Type Segmentation – USA): Based on the [USDA Cropland Data Layer](https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php). 14 crop classes.
-- **EnMAP-CORINE** (Land Cover Classification – Europe): Multi-label classification from the [CORINE Land Cover Map](https://land.copernicus.eu/pan-european/corine-land-cover), aggregated to 19 classes following the BigEarthNet taxonomy.
-- **EnMAP-NLCD** (Land Cover Segmentation – USA): Pixel-wise segmentation based on the [National Land Cover Database (NLCD)](https://www.mrlc.gov/), with 15 classes.
-- **EnMAP-EuroCrops** (Crop Type Segmentation – Europe): Based on the [EuroCrops dataset](https://github.com/Agri-Hub/EuroCrops), 15 classes.
-- **EnMAP-BDForet** (Tree Species Segmentation – France): Segmentation of 12 tree species from the [IGN BDForêt V2 dataset](https://inventaire-forestier.ign.fr/spip.php?article646).
-- **EnMAP-TreeMap** (Tree Species Segmentation – USA): Mapping of dominant tree species groups from the [US TreeMap dataset](https://www.fs.usda.gov/nrs/tools/treemap).
-- **EnMAP-BNETD** (Land Cover Segmentation – Ivory Coast): Based on the [BNETD Land Cover Map](https://africageoportal.maps.arcgis.com/apps/webappviewer/index.html?id=88c2493e722546c09c2a0a8b394c4454), with 10 classes.
-- **DESIS-CDL / EO-1-CDL** (Crop Type Segmentation – USA): Cross-sensor benchmarks on DESIS and Hyperion EO-1 imagery.
-- **Hyperview** (Soil Property Regression – Intuition-1 Satellite): Evaluation on the [Hyperview Challenge](https://paperswithcode.com/dataset/hyperview).
+This system provides complete visual demonstration for active learning query selection, spatial uncertainty mapping, sample-selection explanations, simulated oracle labeling, round-by-round classifier head retraining, cross-sensor domain adaptation, label-efficiency benchmarking, and automated visual research report generation—**while strictly preserving the frozen SpecResNet50 backbone and verified research pipeline without unauthorized metric optimization**.
 
 ---
 
-![Downstream Tasks Overview](downstream_tasks_overview.png)
+## Key Features
 
-*Figure: Overview of downstream tasks provided in SpectralEarth.*
+1. **Strict Frozen Backbone Preservation**:
+   - Backbone: `spec_resnet50` (pretrained on 1.2M unlabeled hyperspectral patches).
+   - Backbone parameters: **FROZEN** (0 backbone parameters updated during active learning).
+   - Active learning head: 2-layer MLP classifier head (`in_features=2048`, `hidden_dim=256`, `dropout=0.0`, `norm_layer=layernorm`, 524,800 trainable parameters).
 
+2. **Interactive Active Learning Pipeline Workflow (Steps 1 to 10)**:
+   - **Step 1: Scene & Dataset Information**: RGB composite generation, spatial dimensions, spectral band metadata, ground-truth label distribution.
+   - **Step 2: Initial Labeled Pool Visualization**: Class-balanced initial seed pool (10 samples per class) visual spatial mask.
+   - **Step 3: Spatial Model Predictions**: Full-scene classification map generated via fast feature-level inference.
+   - **Step 4: Spatial Uncertainty Mapping**: Spatial heatmaps for `Least Confidence`, `Entropy`, and `Margin` uncertainty metrics.
+   - **Step 5: Query Selection & Sample Explanations**: `Least Confidence + Farthest Diversity` candidate filtering (`k=20` samples per round). Displays an explicit *"Why Was This Sample Selected?"* table with percentile rankings.
+   - **Step 6: High-Resolution Sample Inspector**: Interactive modal showing 15x15 spatial patch zoom, 1D spectral reflectance signature curve across wavelengths, class probability distribution, and selection reason.
+   - **Step 7: Simulated Human Annotation**: Oracle labeling interface using ground-truth training pool labels only. (Explicit data leakage assertions ensure test set labels NEVER enter query selection or training).
+   - **Step 8: Classifier Head Retraining**: Real-time retraining of 2-layer MLP classifier head on updated labeled pool with loss and duration monitoring.
+   - **Step 9: BEFORE vs AFTER Classification Maps**: Side-by-side comparison of classification maps before and after retraining.
+   - **Step 10: Progression & Calibrated Performance Metrics**: Live interactive performance curves (OA, AA, Macro F1, Kappa, Calibrated ECE) across active learning rounds 0 to 5.
 
-## Pretrained Models
+3. **Verified Cross-Sensor Domain Adaptation Page**:
+   - Scientific distinction between **CROSS-DATASET** (within AVIRIS) and **CROSS-SENSOR** (AVIRIS &rarr; ROSIS).
+   - Transfer pair selector: `Indian Pines (AVIRIS) -> Pavia University (ROSIS)` and `Salinas (AVIRIS) -> Pavia University (ROSIS)`.
+   - **1D Spectral Resampler Visualizer (`SpectralResampler1D`)**: Plots source wavelengths vs target wavelengths vs resampled representation with explicit label: *"Deterministic 1D spectral interpolation (No learned domain alignment)"*.
+   - Zero-Shot vs Few-Shot Active Learning adaptation performance breakdown.
+   - Per-sample target query selection explanations.
 
-Pretrained models are available for download [here](https://syncandshare.desy.de/index.php/s/Po5bTPipz6EEHx3).
+4. **Label-Efficiency Benchmark**:
+   - Interactive comparative performance curves (`Random`, `Least Confidence`, `LC + Farthest Diversity`).
+   - Labeled sample threshold savings table (showing 30%-50% label savings to reach target accuracy thresholds).
 
-## Pretrained Model Card
+5. **Automated Visual Research Report & Exports**:
+   - Automated 15-section Visual Research Report generator in HTML and JSON format.
+   - One-click export of experiment session data (JSON, CSV) saved directly to `logs/al_experiments/` with timestamps.
 
-| Model Name       | Pretraining Algorithm(s) | Params  |
-|------------------|--------------------------|---------|
-| Spec. RN50       | MoCo-V2, DINO            | ~23M    |
-| Spec. ViT-S      | MoCo-V2, DINO, MAE       | ~22M    |
-| Spec. ViT-B      | MAE                      | ~86M    |
-| Spec. ViT-L      | MAE                      | ~304M   |
-| Spec. ViT-H      | MAE                      | ~630M   |
-| Spec. ViT-g      | MAE                      | ~1.8B   |
+---
 
-## Installation
-
-To set up the environment and install the required dependencies, please follow these steps:
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/yourusername/spectral-earth.git
-   cd spectral-earth
-   ```
-
-2. **Install the required packages:**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-
-
-## Directory Structure
+## System Architecture
 
 ```
-spectral-earth/
-├── data/                   
-│   ├── splits/                 # Train/val/test split files
-│   └── statistics/             # Dataset statistics for normalization
-├── src/                        # Source code
-│   ├── backbones/              # Backbone network definitions
-│   │   ├── spec_resnet.py      # ResNet-based backbone 
-│   │   ├── spec_vit.py         # Vision Transformer-based backbone
-│   │   └── spectral_adapter.py # Adapter module for spectral feature extraction
-│   │   └── registery.py        # A registery to add new models
-│   ├── datamodules/            # Data module definitions 
-│   │   ├── enmap_cdl_nlcd.py   # Data module for CDL and NLCD datasets
-│   │   └── ...
-│   │   └── spectral_earth.py   # Data Module for the pre-training dataset
-│   ├── datasets/               # Dataset classes
-│   │   ├── enmap_cdl_nlcd.py   # Dataset class for CDL and NLCD datasets
-│   │   └── ...
-│   │   └── spectral_earth.py   # Pre-training dataset class
-│   ├── models/                 # Lightning models
-│   │   ├── multilabel_classification_module.py  # Multilabel classification module
-│   │   └── semantic_segmentation_module.py  # Semantic segmentation module
-│   │   └── regression_module.py             # Regression module
-│   │   └── mae_module.py                    # Masked autoencoders module for pre-training
-│   │   └── moco_module.py                   # MoCo-V2 module for pre-training
-│   │   └── dino_module.py                   # DINO module for pre-training
-│   └── transforms/             # Data transformation functions
-│       └── normalize.py        # Normalization transforms
-├── requirements.txt            # Required Python packages
-
-```
-
-
-## Running Experiments with Hydra
-
-This repository uses [Hydra](https://hydra.cc/) for configuration management. The code is organized with separate configuration files for different tasks (e.g., pretraining, downstream classification/segmentation, etc.), and you can override any parameter from the command line.
-
-### Configurations
-
-The repository contains configuration files organized into groups. For example:
-
-- **Pretraining with MoCo:**  
-  The base configuration is located at `experiment/pretrain/moco/base.yaml`. Experiment-specific overrides are provided in files such as:
-  - `experiment/pretrain/moco/spec_resnet50.yaml`
-  - `experiment/pretrain/moco/spec_vit_small.yaml`
-
-- **Downstream Tasks:**  
-  Downstream tasks (e.g., classification and segmentation) have their own configuration directories (e.g., `experiment/downstream/cdl/`, etc.).
-
-All configuration files follow the [Hydra configuration structure](https://hydra.cc/docs/intro/), allowing to mix and match defaults and override specific parameters.
-
-### Running the Code
-
-To run training, simply call the main training script and specify the configuration file using the `--config-name` option. For example, to start a pretraining experiment with the `spec_resnet50` backbone, run:
-
-```bash
-python src/train.py --multirun --config-name=pretrain experiment=pretrain/moco/spec_rn50.yaml
-```
-
-### Overriding Parameters
-
-Hydra allows you to override any configuration parameter from the command line. For example, if you want to change the learning rate and batch size for a MoCo pretraining run, you can do:
-
-```bash
-python src/train.py --multirun --config-name=pretrain experiment=pretrain/moco/spec_rn50.yaml model.lr=0.01 data.batch_size=128
-```
-
-This command overrides the default learning rate defined in your configuration file and sets the batch size to 128.
-
-You can override any parameter in any section of the configuration (e.g., `model`, `data`, `trainer`, etc.). For example:
-
-```bash
-python src/train.py --config-name=downstream experiment=downstream/cdl/spec_rn50.yaml model.pretrained_weights=/path/to/checkpoint model.freeze_backbone=true trainer.max_epochs=50
-```
-
-This command runs the CDL downstream task experiment with a frozen Spec. RN50 backbone for 50 epochs.
-
-### Hydra Launcher
-
-If you are using a cluster scheduler or need to run distributed training, you can specify a Hydra launcher. For example, if you are using a SLURM launcher, add the override:
-
-```bash
-python src/train.py --multirun --config-name=downstream experiment=downstream/cdl/spec_rn50.yaml model.pretrained_weights=/path/to/checkpoint model.freeze_backbone=true trainer.max_epochs=50 hydra/launcher=slurm
+                                  [ Hyperspectral Scene Data ]
+                                               │
+                                               ▼
+                              ┌──────────────────────────────────┐
+                              │     FROZEN SpecResNet50          │
+                              │   (No Parameter Updates)         │
+                              └──────────────────────────────────┘
+                                               │
+                                    2048-dim Feature Vectors
+                                               │
+                       ┌───────────────────────┴───────────────────────┐
+                       ▼                                               ▼
+          ┌─────────────────────────┐                     ┌─────────────────────────┐
+          │   2-Layer MLP Classifier│                     │      QueryEngine        │
+          │   Head (Trainable)      │                     │  (LC + Farthest Div)    │
+          └─────────────────────────┘                     └─────────────────────────┘
+                       │                                               │
+             Predicted Probabilities                               Selected k=20
+                       │                                             Samples & Scores
+                       ▼                                               │
+          ┌─────────────────────────┐                                  │
+          │ Calibrated Evaluation   │ ◄────────────────────────────────┘
+          │ (Validation Scaling)    │     Simulated Human Annotation
+          └─────────────────────────┘
 ```
 
 ---
 
-By following these instructions, you can run and manage experiments using Hydra and override any parameters as needed from the command line.
+## Installation & Quick Start
 
+### 1. Prerequisites
+- Python 3.10+
+- PyTorch 2.0+ (CUDA supported)
 
-## Citation
+### 2. Launch the Demonstration Web Application
 
-If you use this code or the Spectral Earth dataset in your research, please cite our paper:
-
-```bibtex
-@article{braham2024spectralearth,
-  title={SpectralEarth: Training Hyperspectral Foundation Models at Scale},
-  author={Braham, Nassim Ait Ali and Albrecht, Conrad M and Mairal, Julien and Chanussot, Jocelyn and Wang, Yi and Zhu, Xiao Xiang},
-  journal={arXiv preprint arXiv:2408.08447},
-  year={2024}
-}
+Run the launcher script:
+```bash
+python run_visualization_app.py
+```
+Or start via Uvicorn directly:
+```bash
+uvicorn src.visualization_app.app:app --host 127.0.0.1 --port 8000
 ```
 
-## Acknowledgements
+Open your browser and navigate to:
+```
+http://127.0.0.1:8000
+```
 
-We would like to thank the the EnMAP mission team for providing the data and support throughout this project.
+---
 
+## Verification Test Suite
+
+Run the automated verification script to validate all REST endpoints, feature extraction engines, active learning steps, cross-sensor transfers, and export functions:
+
+```bash
+python test_complete_demonstration.py
+```
+
+---
+
+## Research Pipeline Constraints & Assertions
+
+1. **Backbone Freeze**: `param.requires_grad = False` enforced for all backbone weights.
+2. **Data Leakage Protection**:
+   - Training Pool (`train_dataset`): Used for feature extraction and active query candidate selection.
+   - Validation Set (`val_dataset`): Used ONLY for temperature calibration scaling.
+   - Test Set (`test_dataset`): Used ONLY for final evaluation metrics calculation (OA, AA, F1, Kappa, ECE). Test labels NEVER enter query selection or model training.
+3. **Reproducibility**: All experiments run with fixed global seed `42`.
+
+---
+
+## Citation & Framework References
+- **Backbone**: SpecResNet50 (SpectralEarth SSL Foundation Backbone)
+- **Active Learning Strategy**: Least Confidence + Farthest Diversity (`filter_diversity`)
+- **Spectral Resampling**: `SpectralResampler1D`

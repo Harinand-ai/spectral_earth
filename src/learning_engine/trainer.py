@@ -47,6 +47,7 @@ class ActiveLearningTrainer:
         lr: float = 1e-3,
         weight_decay: float = 1e-4,
         reset_head: bool = False,
+        class_weights: Optional[torch.Tensor] = None,
     ) -> float:
         """
         Train/retrain the classifier head while keeping feature_extractor strictly frozen.
@@ -79,7 +80,12 @@ class ActiveLearningTrainer:
             optimizer, T_max=max(1, epochs), eta_min=1e-5
         )
 
-        criterion = nn.BCEWithLogitsLoss() if self.multi_label else nn.CrossEntropyLoss()
+        if self.multi_label:
+            criterion = nn.BCEWithLogitsLoss()
+        else:
+            if class_weights is not None:
+                class_weights = class_weights.to(self.device)
+            criterion = nn.CrossEntropyLoss(weight=class_weights)
 
         last_epoch_loss = 0.0
 
@@ -108,6 +114,10 @@ class ActiveLearningTrainer:
 
                 optimizer.zero_grad()
                 loss.backward()
+                
+                # Gradient clipping for stable optimization
+                torch.nn.utils.clip_grad_norm_(classifier_head.parameters(), max_norm=1.0)
+                
                 optimizer.step()
 
                 total_loss += loss.item() * batch_size
@@ -189,6 +199,7 @@ class ActiveLearningTrainer:
         cm_metric = MulticlassConfusionMatrix(num_classes=num_classes).to(self.device)
 
         all_preds = []
+        all_probs = []
         all_targets = []
 
         for batch in dataloader:
@@ -199,17 +210,25 @@ class ActiveLearningTrainer:
                 x, y = batch[0].to(self.device), batch[1].to(self.device)
 
             embeddings = feature_extractor(x)
-            logits = classifier_head(embeddings)
-            preds = torch.argmax(logits, dim=1)
+            probs = classifier_head.predict_probabilities(embeddings, multi_label=self.multi_label)
+            preds = torch.argmax(probs, dim=1)
 
             all_preds.append(preds)
+            all_probs.append(probs)
             all_targets.append(y.long())
 
         if len(all_preds) == 0:
             return {}
 
         preds_cat = torch.cat(all_preds, dim=0)
+        probs_cat = torch.cat(all_probs, dim=0).cpu().numpy()
         targets_cat = torch.cat(all_targets, dim=0)
+        targets_np = targets_cat.cpu().numpy()
+
+        from src.query_engine.query_engine.uncertainty import expected_calibration_error, get_confidence_statistics
+
+        ece_val = expected_calibration_error(probs_cat, targets_np)
+        conf_stats = get_confidence_statistics(probs_cat)
 
         metrics = {
             "OverallAccuracy": acc_micro(preds_cat, targets_cat).item(),
@@ -218,6 +237,8 @@ class ActiveLearningTrainer:
             "Recall": recall(preds_cat, targets_cat).item(),
             "F1Score": f1_score(preds_cat, targets_cat).item(),
             "Kappa": kappa(preds_cat, targets_cat).item(),
+            "ECE": float(ece_val),
+            "MeanConfidence": conf_stats["mean_confidence"],
             "ConfusionMatrix": cm_metric(preds_cat, targets_cat).cpu().numpy(),
         }
 

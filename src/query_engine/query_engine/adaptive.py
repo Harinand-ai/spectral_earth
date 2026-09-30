@@ -25,13 +25,7 @@ def get_adaptive_weights(
     if total_rounds <= 0:
         raise ValueError("total_rounds must be greater than 0")
 
-    if current_round < 0:
-        raise ValueError("current_round cannot be negative")
-
-    if current_round >= total_rounds:
-        raise ValueError(
-            "current_round must be smaller than total_rounds"
-        )
+    current_round = max(0, min(current_round, total_rounds - 1))
 
     if not 0.0 <= start_uncertainty <= 1.0:
         raise ValueError(

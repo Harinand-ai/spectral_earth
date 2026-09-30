@@ -1,48 +1,82 @@
-# Byte-compiled / optimized / DLL files
+# ================================
+# Python
+# ================================
 __pycache__/
 *.py[cod]
-*$py.class
-
-# C extensions
 *.so
-
-# Bash scripts
-*.sh
-
-# Distribution / packaging
-.Python
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
 *.egg-info/
 *.egg
 *.whl
-dist/
-build/
-pip-wheel-metadata/
 
-# Lightning logs
-lightning_logs/
-*.log
-
-*.ipynb
-*.sh
-experiments/
-srun_outputs/
-tmp/
-figures/
-
-# Pre-trained models
-pretrained_models/
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
-
-# pyenv
+# ================================
+# Virtual environments
+# ================================
+env/
+venv/
+ENV/
+.env
 .python-version
 
-# VS Code files
-.vscode/
+# ================================
+# Build / distribution
+# ================================
+.Python
+build/
+dist/
+pip-wheel-metadata/
 
+# ================================
+# IDE / notebooks
+# ================================
+.vscode/
+.idea/
+*.ipynb
+.ipynb_checkpoints/
+
+# ================================
+# Experiment outputs / logs
+# ================================
+logs/
+lightning_logs/
+*.log
+srun_outputs/
+tmp/
+
+# ================================
+# Caches / generated features
+# ================================
+cache/
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.pickle
+
+# ================================
+# Large datasets
+# ================================
+datasets/
+
+# ================================
+# Pretrained / downloaded models
+# ================================
+pretrained_models/
+weights/
+checkpoints/
+
+# ================================
+# Generated scratch files
+# ================================
+scratch/
+wsl
+
+# ================================
+# Generated figures
+# ================================
+figures/
+
+# ================================
+# OS files
+# ================================
+Thumbs.db
+.DS_Store
