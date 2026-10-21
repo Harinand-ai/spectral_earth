@@ -8,7 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Chart.js -->
+    <!-- Chart.js & Plotly for High-Performance 3D Graphs -->
+    <script src="/static/plotly.min.js"></script>
+    <script>
+        if (typeof Plotly === 'undefined') {
+            document.write('<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"><\/script>');
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/static/styles.css?v=3">
 </head>
@@ -116,15 +122,22 @@
 
                 <!-- LEFT: MAIN HSI VISUALIZATION -->
                 <div class="card" id="cardHsiScene">
-                    <div class="card-header">
+                    <div class="card-header" style="flex-wrap: wrap; gap: 8px;">
                         <div>
                             <h3 class="card-title">Hyperspectral Scene View</h3>
+                            <p class="card-subtitle" id="hsiSceneSubtitle" style="font-size:11.5px; color:var(--text-muted); margin:2px 0 0 0;">Interactive 3D Spatial View — Z axis is visualization depth, not terrain elevation.</p>
                         </div>
-                        <div class="segmented-control" id="sceneMapControls" style="display:none;">
-                            <button class="segmented-btn active" id="btnMapRGB">RGB Image</button>
-                            <button class="segmented-btn" id="btnMapPool">Label Pool</button>
-                            <button class="segmented-btn" id="btnMapPred">Prediction</button>
-                            <button class="segmented-btn" id="btnMapUnc">Uncertainty</button>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <div class="chart-3d-controls" style="margin-right:4px;">
+                                <button class="btn-chart-toggle active" id="btnSceneMode3D" onclick="setSceneViewMode('3d')" title="View real HSI scene & queried samples in interactive 3D">🧊 3D Scene</button>
+                                <button class="btn-chart-toggle" id="btnSceneMode2D" onclick="setSceneViewMode('2d')" title="View 2D pixel map">🗺️ 2D Map</button>
+                            </div>
+                            <div class="segmented-control" id="sceneMapControls" style="display:none;">
+                                <button class="segmented-btn active" id="btnMapRGB">RGB Image</button>
+                                <button class="segmented-btn" id="btnMapPool">Label Pool</button>
+                                <button class="segmented-btn" id="btnMapPred">Prediction</button>
+                                <button class="segmented-btn" id="btnMapUnc">Uncertainty</button>
+                            </div>
                         </div>
                     </div>
 
@@ -137,15 +150,40 @@
 
                     <!-- ACTIVE VISUALIZATION CONTENT -->
                     <div id="sceneActiveContent" style="display:none;">
-                        <div class="canvas-wrapper">
-                            <canvas id="spatialCanvas" width="380" height="380"></canvas>
+                        <!-- 3D SCENE VIEW CONTAINER -->
+                        <div id="scene3DContainer" style="display:block;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+                                <div style="display:flex; gap:6px; align-items:center;">
+                                    <span class="hsi-badge" id="scene3dSamplesBadge">20 Queried Samples: <strong>#1–#20</strong> (Active Learning Rank)</span>
+                                    <button class="btn btn-secondary btn-sm" id="btnToggle3DSamples" onclick="toggleScene3DSamples()" style="font-size:11px; padding:2px 8px;" title="Toggle visibility of queried sample markers">👁 Toggle Markers</button>
+                                </div>
+                                <div style="display:flex; gap:6px;">
+                                    <button class="btn btn-secondary btn-sm" id="btnScene3DReset" onclick="resetScene3DCamera()" style="font-size:11px; padding:2px 8px;" title="Reset 3D camera to default isometric view">↺ Reset View</button>
+                                    <button class="btn btn-secondary btn-sm" id="btnScene3DAutoRotate" onclick="toggleScene3DAutoRotate()" style="font-size:11px; padding:2px 8px;" title="Toggle smooth rotation"><span id="scene3dRotateIcon">⟳</span> Auto-Rotate</button>
+                                </div>
+                            </div>
+
+                            <!-- 3D Plotly WebGL Viewport -->
+                            <div id="hsiSpatialScene3D" style="width:100%; height:390px; border-radius:6px; background:#0b1120; border:1px solid var(--border-color); overflow:hidden;"></div>
+
+                            <!-- Selected Sample Information Card -->
+                            <div id="scene3dSelectedInfo" class="hsi-readout-card" style="margin-top:8px;">
+                                <span style="color:var(--primary); font-weight:600; margin-right:6px;">✦</span> Click or hover any of the 20 queried sample markers (<strong>#1–#20</strong>) in 3D space to inspect rationale and open full sample diagnostics.
+                            </div>
                         </div>
 
-                        <div class="hover-bar" id="hoverInfo">
-                            Hover over pixel to inspect class details
-                        </div>
+                        <!-- 2D SCENE VIEW CONTAINER -->
+                        <div id="scene2DContainer" style="display:none;">
+                            <div class="canvas-wrapper">
+                                <canvas id="spatialCanvas" width="380" height="380"></canvas>
+                            </div>
 
-                        <div class="legend-grid" id="classLegendGrid"></div>
+                            <div class="hover-bar" id="hoverInfo">
+                                Hover over pixel to inspect class details
+                            </div>
+
+                            <div class="legend-grid" id="classLegendGrid"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -156,23 +194,30 @@
                             <h3 class="card-title">Accuracy Progression &amp; Target Tracking</h3>
                             <p class="card-subtitle">Test set performance against target threshold</p>
                         </div>
-                        <div style="text-align:right;" id="metricSummaryBox">
-                            <span style="font-size:18px; font-weight:700; color:var(--primary);" id="metricOA">52.40%</span>
-                            <div style="font-size:11px; color:var(--text-muted);">Macro F1: <span id="metricF1">0.4520</span></div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <div class="chart-3d-controls">
+                                <button class="btn-chart-toggle" id="btnProgression3D" onclick="setChartMode('progression', '3d')" title="View in 3D WebGL space">🧊 3D</button>
+                                <button class="btn-chart-toggle active" id="btnProgression2D" onclick="setChartMode('progression', '2d')" title="View in 2D space">📊 2D</button>
+                                <button class="btn-chart-action" onclick="resetChartCamera('progressionChart')" title="Reset 3D camera">🔄</button>
+                            </div>
+                            <div style="text-align:right;" id="metricSummaryBox">
+                                <span style="font-size:18px; font-weight:700; color:var(--primary);" id="metricOA">52.40%</span>
+                                <div style="font-size:11px; color:var(--text-muted);">Macro F1: <span id="metricF1">0.4520</span></div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- EMPTY STATE PLACEHOLDER -->
-                    <div class="empty-state-box" id="progressionEmptyState">
+                    <div class="empty-state-box" id="progressionEmptyState" style="display:none;">
                         <div class="empty-state-icon">📈</div>
                         <h4 class="empty-state-title">Progression Tracking Inactive</h4>
                         <p class="empty-state-desc">Baseline accuracy curve and target evaluation tracking will activate immediately after initial prediction is generated.</p>
                     </div>
 
                     <!-- ACTIVE PROGRESSION CONTENT -->
-                    <div id="progressionActiveContent" style="display:none;">
-                        <div class="chart-container">
-                            <canvas id="progressionChart"></canvas>
+                    <div id="progressionActiveContent" style="display:block;">
+                        <div class="chart-container" style="position: relative; height: 320px;">
+                            <div id="progressionChart" class="graph-3d-viewport"></div>
                         </div>
 
                         <!-- COMPACT BEFORE / AFTER RETRAINING COMPARISON -->
@@ -287,10 +332,18 @@
             <div class="grid-2-equal margin-top">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">1D Spectral Resampler</h3>
+                        <div>
+                            <h3 class="card-title">1D Spectral Resampler</h3>
+                            <p class="card-subtitle">Cross-sensor spectral alignment manifold</p>
+                        </div>
+                        <div class="chart-3d-controls">
+                            <button class="btn-chart-toggle" id="btnResampler3D" onclick="setChartMode('resampler', '3d')" title="View in 3D WebGL space">🧊 3D</button>
+                            <button class="btn-chart-toggle active" id="btnResampler2D" onclick="setChartMode('resampler', '2d')" title="View in 2D space">📊 2D</button>
+                            <button class="btn-chart-action" onclick="resetChartCamera('resamplerChart')" title="Reset 3D camera">🔄</button>
+                        </div>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="resamplerChart"></canvas>
+                    <div class="chart-container" style="position: relative; height: 320px;">
+                        <div id="resamplerChart" class="graph-3d-viewport"></div>
                     </div>
                 </div>
 
@@ -378,8 +431,16 @@
                         </table>
                     </div>
 
-                    <div class="chart-container margin-top" style="height:240px;">
-                        <canvas id="benchmarkChart"></canvas>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px; margin-bottom:8px;">
+                        <span style="font-size:13px; font-weight:600; color:var(--text-secondary);">Visual Benchmark Comparison</span>
+                        <div class="chart-3d-controls">
+                            <button class="btn-chart-toggle" id="btnBenchmark3D" onclick="setChartMode('benchmark', '3d')" title="View in 3D WebGL space">🧊 3D Landscape</button>
+                            <button class="btn-chart-toggle active" id="btnBenchmark2D" onclick="setChartMode('benchmark', '2d')" title="View in 2D space">📊 2D</button>
+                            <button class="btn-chart-action" onclick="resetChartCamera('benchmarkChart')" title="Reset 3D camera">🔄</button>
+                        </div>
+                    </div>
+                    <div class="chart-container" style="height:320px;">
+                        <div id="benchmarkChart" class="graph-3d-viewport"></div>
                     </div>
 
                     <div class="alert-box alert-warning margin-top" id="paviaInterpretationBox" style="display:none;">
@@ -389,8 +450,16 @@
 
                 <!-- EXPERIMENT VIEW 2: LABEL EFFICIENCY -->
                 <div id="view-exp-efficiency" class="exp-view margin-top" style="display:none;">
-                    <div class="chart-container-lg">
-                        <canvas id="labelEfficiencyChart"></canvas>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <span style="font-size:13px; font-weight:600; color:var(--text-secondary);">Efficiency Trajectory &amp; Label Savings</span>
+                        <div class="chart-3d-controls">
+                            <button class="btn-chart-toggle" id="btnLabelEff3D" onclick="setChartMode('labelEff', '3d')" title="View in 3D WebGL space">🧊 3D</button>
+                            <button class="btn-chart-toggle active" id="btnLabelEff2D" onclick="setChartMode('labelEff', '2d')" title="View in 2D space">📊 2D</button>
+                            <button class="btn-chart-action" onclick="resetChartCamera('labelEfficiencyChart')" title="Reset 3D camera">🔄</button>
+                        </div>
+                    </div>
+                    <div class="chart-container-lg" style="height:360px;">
+                        <div id="labelEfficiencyChart" class="graph-3d-viewport"></div>
                     </div>
 
                     <div class="table-wrapper margin-top">
@@ -560,15 +629,15 @@
              SECTION 4: RESEARCH REPORT
              ========================================================================= -->
         <section id="report-tab" class="tab-content">
-            <div class="card">
-                <div class="card-header">
+            <div class="card report-container-card">
+                <div class="card-header" style="background:#f8fafc; border-bottom:1px solid var(--border-color); padding:12px 18px;">
                     <div>
-                        <h3 class="card-title">Scientific Audit Report</h3>
-                        <p class="card-subtitle">Document-formatted scientific report dynamically generated from experimental session metrics</p>
+                        <h3 class="card-title" style="font-size:15px; font-weight:700; color:#0f172a;">Research Project Report</h3>
+                        <p class="card-subtitle" style="font-size:11.5px; color:#64748b; margin-top:2px;">From Initial Problem &rarr; Experiments &rarr; Failures &rarr; Improvements &rarr; Final Framework &bull; Peer-Review Monograph</p>
                     </div>
-                    <div style="display:flex; gap:8px;">
-                        <button class="btn btn-primary" id="btnRefreshReport">Refresh Report</button>
-                        <button class="btn btn-secondary" id="btnDownloadReport">Open Full Report in New Tab</button>
+                    <div style="display:flex; gap:8px; align-items:center;">
+                        <button class="btn btn-primary" id="btnRefreshReport" style="font-size:12px; padding:6px 14px;">↺ Refresh Live Report</button>
+                        <button class="btn btn-secondary" id="btnDownloadReport" style="font-size:12px; padding:6px 14px;">↗ Open Full Report in New Tab / Print PDF</button>
                     </div>
                 </div>
                 <iframe id="reportIframe" class="report-frame" src="/api/generate_report"></iframe>
@@ -579,38 +648,57 @@
 
     <!-- SAMPLE INSPECTION MODAL -->
     <div class="modal-overlay" id="sampleModal">
-        <div class="modal-box" style="max-width: 860px; width: 90%;">
+        <div class="modal-box" style="max-width: 600px; width: 92%;">
             <div class="modal-header">
-                <h3 class="modal-title" id="modalSampleTitle">Pixel Sample Details</h3>
+                <div>
+                    <h3 class="modal-title" id="modalSampleTitle">Pixel Sample Details</h3>
+                    <p style="font-size:11.5px; color:var(--text-muted); margin:2px 0 0 0;">Inspect candidate spatial patch, metadata, classification probabilities, and spectral reflectance signature.</p>
+                </div>
                 <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
             </div>
-            <div class="modal-body grid-2-equal">
-                <div>
-                    <h4 style="font-size:13px; font-weight:600; margin-bottom:8px; color:var(--text-secondary);">15&times;15 Spatial Patch Context</h4>
-                    <div style="background:#0f172a; padding:12px; border-radius:6px; display:inline-block;">
-                        <canvas id="patchCanvas" width="180" height="180" style="image-rendering: pixelated; width: 180px; height: 180px;"></canvas>
-                    </div>
-                    <div id="modalSampleMeta" style="margin-top:12px; font-size:12px; color:var(--text-secondary); line-height:1.6;"></div>
-                    
-                    <!-- IN-MODAL ANNOTATION ACTIONS -->
-                    <div id="modalAnnotationSection" style="margin-top:12px; padding:10px 12px; background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:6px;">
-                        <label for="modalAnnotationSelect" style="font-size:12px; font-weight:600; color:var(--text-primary); display:block; margin-bottom:6px;">Assign Ground Truth Label:</label>
-                        <div style="display:flex; gap:6px;">
-                            <select id="modalAnnotationSelect" class="select-input" style="font-size:11.5px; flex:1;"></select>
-                            <button id="modalApplyAnnotationBtn" class="btn btn-primary btn-sm" style="font-size:11.5px;">Save Label</button>
+            <div class="modal-body modal-body-scrollable" style="max-height: 82vh; overflow-y: auto;">
+                <div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:12px;">
+                    <div>
+                        <h4 style="font-size:12px; font-weight:600; margin-bottom:6px; color:var(--text-secondary);">15&times;15 Spatial Patch Context</h4>
+                        <div style="background:#0f172a; padding:8px; border-radius:6px; display:inline-block;">
+                            <canvas id="patchCanvas" width="120" height="120" style="image-rendering: pixelated; width: 120px; height: 120px;"></canvas>
                         </div>
                     </div>
+                    <div id="modalSampleMeta" style="flex:1; font-size:12px; color:var(--text-secondary); line-height:1.6;"></div>
                 </div>
-                <div>
-                    <h4 style="font-size:13px; font-weight:600; margin-bottom:8px; color:var(--text-secondary);">Spectral Reflectance Signature &amp; Class Probabilities</h4>
-                    <div class="chart-container" style="height:140px;">
-                        <canvas id="sampleSpectrumChart"></canvas>
+
+                <!-- IN-MODAL ANNOTATION ACTIONS -->
+                <div id="modalAnnotationSection" style="margin-top:10px; padding:10px 12px; background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:6px;">
+                    <label for="modalAnnotationSelect" style="font-size:12px; font-weight:600; color:var(--text-primary); display:block; margin-bottom:6px;">Assign Ground Truth Label:</label>
+                    <div style="display:flex; gap:6px;">
+                        <select id="modalAnnotationSelect" class="select-input" style="font-size:11.5px; flex:1;"></select>
+                        <button id="modalApplyAnnotationBtn" class="btn btn-primary btn-sm" style="font-size:11.5px;">Save Label</button>
                     </div>
-                    <div class="chart-container" style="height:110px; margin-top:8px;">
+                </div>
+
+                <div style="margin-top:10px; padding:8px 10px; background:var(--bg-subtle); border-radius:6px; font-size:11.5px; color:var(--text-secondary);" id="modalReasonBox"></div>
+
+                <!-- 2D Spectral Signature -->
+                <div style="margin-top:12px;">
+                    <h4 style="font-size:12.5px; font-weight:600; margin-bottom:6px; color:var(--text-secondary);">Center Pixel Spectral Reflectance Signature</h4>
+                    <div class="chart-container" style="height:140px;">
+                        <div id="sampleSpectrumChart" style="width:100%; height:140px;"></div>
+                    </div>
+                </div>
+
+                <!-- Top Predicted Class Probabilities -->
+                <div style="margin-top:12px;">
+                    <h4 style="font-size:12.5px; font-weight:600; margin-bottom:6px; color:var(--text-secondary);">Top Predicted Class Probabilities</h4>
+                    <div class="chart-container" style="height:120px;">
                         <canvas id="sampleProbChart"></canvas>
                     </div>
-                    <div style="margin-top:8px; padding:8px 10px; background:var(--bg-subtle); border-radius:6px; font-size:11.5px; color:var(--text-secondary);" id="modalReasonBox"></div>
                 </div>
+
+                <!-- Developer / Audit Verification Panel -->
+                <details id="hsiDebugDetails" style="margin-top:12px; background:#0f172a; border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:6px 10px;">
+                    <summary style="font-size:11px; font-weight:600; color:#94a3b8; cursor:pointer;">🔬 Developer Data Verification &amp; Trace Audit</summary>
+                    <div id="hsiDebugCard" style="margin-top:6px;"></div>
+                </details>
             </div>
         </div>
     </div>

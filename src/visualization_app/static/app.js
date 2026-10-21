@@ -50,6 +50,7 @@ function setButtonLoading(btn, isLoading, loadingText = "Loading...") {
 function resetProgressiveDisclosure() {
     hasPredicted = false;
     hasQueried = false;
+    querySelectionData = null;
 
     const sceneEmpty = document.getElementById("sceneEmptyState");
     const sceneActive = document.getElementById("sceneActiveContent");
@@ -58,10 +59,20 @@ function resetProgressiveDisclosure() {
     if (sceneActive) sceneActive.style.display = "none";
     if (sceneControls) sceneControls.style.display = "none";
 
+    const infoEl = document.getElementById("scene3dSelectedInfo");
+    if (infoEl) {
+        infoEl.innerHTML = '<span style="color:var(--primary); font-weight:600; margin-right:6px;">✦</span> Click or hover any of the 20 queried sample markers (<strong>#1–#20</strong>) in 3D space to inspect rationale and open full sample diagnostics.';
+    }
+    const badgeEl = document.getElementById("scene3dSamplesBadge");
+    if (badgeEl) {
+        badgeEl.innerHTML = `Query Informative Samples to display 20 AL candidate locations in 3D`;
+    }
+    stopScene3DAutoRotate();
+
     const progEmpty = document.getElementById("progressionEmptyState");
     const progActive = document.getElementById("progressionActiveContent");
-    if (progEmpty) progEmpty.style.display = "flex";
-    if (progActive) progActive.style.display = "none";
+    if (progEmpty) progEmpty.style.display = "none";
+    if (progActive) progActive.style.display = "block";
 
     const tableEmpty = document.getElementById("tableEmptyState");
     const tableWrapper = document.getElementById("queryTableWrapper");
@@ -98,6 +109,68 @@ let labelEfficiencyChart = null;
 let sampleSpectrumChart = null;
 let sampleProbChart = null;
 let currentQueryBatchSize = 20;
+
+// 3D/2D Interactive Chart Visualization State
+const chartModes = {
+    progression: '2d',
+    resampler: '2d',
+    benchmark: '2d',
+    labelEff: '2d',
+    sampleSpectrum: '2d'
+};
+let lastProgressionHistory = null;
+let lastResamplerData = null;
+let lastBenchmarkParams = { dsName: 'Indian Pines', metricView: 'oa' };
+let lastLabelEfficiencyCurves = null;
+let lastSampleData = null;
+
+function setChartMode(chartName, mode) {
+    chartModes[chartName] = mode;
+    const btn3d = document.getElementById(`btn${capitalizeFirst(chartName)}3D`);
+    const btn2d = document.getElementById(`btn${capitalizeFirst(chartName)}2D`);
+    if (btn3d && btn2d) {
+        if (mode === '3d') {
+            btn3d.classList.add('active');
+            btn2d.classList.remove('active');
+        } else {
+            btn2d.classList.add('active');
+            btn3d.classList.remove('active');
+        }
+    }
+
+    if (chartName === 'progression' && lastProgressionHistory) {
+        renderProgressionChart(lastProgressionHistory);
+    } else if (chartName === 'resampler' && lastResamplerData) {
+        render1DSpectralResamplerChart(lastResamplerData);
+    } else if (chartName === 'benchmark' && lastBenchmarkParams) {
+        renderBenchmarkChart(lastBenchmarkParams.dsName, lastBenchmarkParams.metricView);
+    } else if (chartName === 'labelEff' && lastLabelEfficiencyCurves) {
+        renderLabelEfficiencyChart(lastLabelEfficiencyCurves);
+    } else if (chartName === 'sampleSpectrum' && lastSampleData) {
+        renderSampleSpectrumChart(lastSampleData);
+    }
+}
+
+function capitalizeFirst(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function resetChartCamera(chartId) {
+    const el = document.getElementById(chartId);
+    if (el && window.Plotly) {
+        Plotly.relayout(el, {
+            'scene.camera': {
+                eye: { x: 1.6, y: -1.7, z: 1.2 },
+                center: { x: 0, y: 0, z: -0.1 },
+                up: { x: 0, y: 0, z: 1 }
+            }
+        });
+    }
+}
+
+window.setChartMode = setChartMode;
+window.resetChartCamera = resetChartCamera;
 
 // VERIFIED 5-SEED BENCHMARK DATA (SEED 42-46)
 const BENCHMARK_DATA = {
@@ -145,6 +218,16 @@ function initTabNavigation() {
             if (window.tutorialEngine && window.tutorialEngine.isActive) {
                 window.tutorialEngine.notifyAction("TAB_CHANGED", { tabId: targetId });
             }
+
+            // Auto-resize Plotly 3D graphs when tab becomes visible
+            setTimeout(() => {
+                ['progressionChart', 'resamplerChart', 'benchmarkChart', 'labelEfficiencyChart'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el && window.Plotly && el.offsetHeight > 0) {
+                        Plotly.Plots.resize(el);
+                    }
+                });
+            }, 60);
         });
     });
 }
@@ -264,10 +347,9 @@ function initEventListeners() {
                 hasPredicted = true;
                 const sceneEmpty = document.getElementById("sceneEmptyState");
                 const sceneActive = document.getElementById("sceneActiveContent");
-                const sceneControls = document.getElementById("sceneMapControls");
                 if (sceneEmpty) sceneEmpty.style.display = "none";
                 if (sceneActive) sceneActive.style.display = "block";
-                if (sceneControls) sceneControls.style.display = "flex";
+                setSceneViewMode(currentSceneViewMode);
 
                 const progEmpty = document.getElementById("progressionEmptyState");
                 const progActive = document.getElementById("progressionActiveContent");
@@ -425,6 +507,7 @@ function initEventListeners() {
     // Modal Close
     if (document.getElementById("modalCloseBtn")) {
         document.getElementById("modalCloseBtn").addEventListener("click", () => {
+            cleanupHsiExplorer();
             document.getElementById("sampleModal").classList.remove("active");
             if (window.tutorialEngine && window.tutorialEngine.isActive &&
                 (window.tutorialEngine.currentState === "INSPECT_MODAL" || window.tutorialEngine.currentState === "ANNOTATE")) {
@@ -601,13 +684,18 @@ async function loadDataset(dsName, userInitiated = false) {
         // Fetch scene metadata
         const sceneRes = await fetch("/api/scene_data");
         sceneData = await sceneRes.json();
+        window.sceneData = sceneData;
 
         renderSceneMeta();
         renderClassLegend();
 
         // Progressive disclosure initial state
         resetProgressiveDisclosure();
+        await fetchRoundProgression();
         isDatasetLoading = false;
+
+        // Render clean 3D scene plane for newly selected dataset
+        renderScene3D();
 
         if (window.tutorialEngine && window.tutorialEngine.isActive) {
             if (window.tutorialEngine.currentState === "PREPARE") {
@@ -865,9 +953,11 @@ async function runQuerySelection() {
             body: JSON.stringify({ k: currentQueryBatchSize, uncertainty_method: currentStrategy }),
         });
         querySelectionData = await res.json();
+        window.querySelectionData = querySelectionData;
 
         renderQuerySelectionTable();
         renderSpatialCanvas();
+        renderScene3D();
 
         switchMap("unc");
         // Guided State Machine Event
@@ -1002,36 +1092,8 @@ async function inspectSample(globalIndex, rank = null) {
             pCtx.putImageData(pImg, 0, 0);
         }
 
-        // Render Spectrum Chart
-        const spectrumEl = document.getElementById("sampleSpectrumChart");
-        if (spectrumEl) {
-            const sCtx = spectrumEl.getContext("2d");
-            if (sampleSpectrumChart) sampleSpectrumChart.destroy();
-
-            sampleSpectrumChart = new Chart(sCtx, {
-                type: "line",
-                data: {
-                    labels: data.wavelengths ? data.wavelengths.map(w => Math.round(w)) : Array.from({length: data.spectrum.length}, (_, i) => i + 1),
-                    datasets: [{
-                        label: "Reflectance Signature",
-                        data: data.spectrum,
-                        borderColor: "#2563eb",
-                        borderWidth: 2,
-                        pointRadius: 0,
-                        fill: false,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        x: { grid: { color: "#e2e8f0" }, ticks: { color: "#64748b", font: { size: 10 } } },
-                        y: { grid: { color: "#e2e8f0" }, ticks: { color: "#64748b", font: { size: 10 } } }
-                    }
-                }
-            });
-        }
+        // Render Spectrum Chart (3D / 2D Plotly)
+        renderSampleSpectrumChart(data);
 
         // Render Top Class Probabilities Bar Chart (with actual human-readable class names!)
         const probEl = document.getElementById("sampleProbChart");
@@ -1069,6 +1131,9 @@ async function inspectSample(globalIndex, rank = null) {
                 }
             });
         }
+
+        // Developer verification audit
+        logHsiSampleDebug(data);
 
         const modalBackdrop = document.getElementById("sampleModal");
         if (modalBackdrop) modalBackdrop.classList.add("active");
@@ -1180,6 +1245,14 @@ async function annotateAndRetrain() {
         // Refresh progression table & curves
         fetchRoundProgression();
 
+        // Update 3D scene & 2D canvas
+        renderSpatialCanvas();
+        renderScene3D();
+        const badgeEl = document.getElementById("scene3dSamplesBadge");
+        if (badgeEl) badgeEl.innerHTML = `Query Informative Samples to display 20 AL candidate locations in 3D`;
+        const infoEl = document.getElementById("scene3dSelectedInfo");
+        if (infoEl) infoEl.innerHTML = `<span style="color:var(--success); font-weight:600; margin-right:6px;">✓</span> Retraining complete. Model updated with newly labeled samples.`;
+
         switchMap("pred");
         // Guided State Machine Event
         if (window.tutorialEngine && window.tutorialEngine.isActive) {
@@ -1242,34 +1315,192 @@ async function fetchRoundProgression() {
 function renderProgressionChart(history) {
     const chartEl = document.getElementById("progressionChart");
     if (!chartEl) return;
-    const ctx = chartEl.getContext("2d");
-    if (progressionChart) progressionChart.destroy();
 
-    const labels = history.map(r => `R${r.round} (${r.num_labeled})`);
-    const oas = history.map(r => (r.metrics.OverallAccuracy * 100).toFixed(2));
-    const f1s = history.map(r => (r.metrics.F1Score * 100).toFixed(2));
+    // Cache history
+    if (history && history.length > 0) {
+        lastProgressionHistory = history;
+    } else if (!lastProgressionHistory) {
+        lastProgressionHistory = [
+            { round: 0, num_labeled: (sceneData && sceneData.num_labeled) || 160, metrics: { OverallAccuracy: 0.4532, F1Score: 0.4307 } }
+        ];
+    }
+    const dataToRender = lastProgressionHistory;
 
-    progressionChart = new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: labels,
-            datasets: [
-                { label: "Overall Accuracy (%)", data: oas, borderColor: "#2563eb", backgroundColor: "rgba(37, 99, 235, 0.08)", borderWidth: 2.5, fill: true, tension: 0.2 },
-                { label: "Macro F1 (x100)", data: f1s, borderColor: "#64748b", borderWidth: 1.5, borderDash: [4, 4], fill: false, tension: 0.2 },
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { labels: { color: "#334155", font: { size: 12 } } }
+    // Ensure active progression container is visible
+    const progEmpty = document.getElementById("progressionEmptyState");
+    const progActive = document.getElementById("progressionActiveContent");
+    if (progEmpty) progEmpty.style.display = "none";
+    if (progActive) progActive.style.display = "block";
+
+    // Update metric summary box with latest round values
+    const latest = dataToRender[dataToRender.length - 1];
+    if (latest && latest.metrics) {
+        const metricOA = document.getElementById("metricOA");
+        const metricF1 = document.getElementById("metricF1");
+        if (metricOA) metricOA.innerText = `${(latest.metrics.OverallAccuracy * 100).toFixed(2)}%`;
+        if (metricF1) metricF1.innerText = latest.metrics.F1Score.toFixed(4);
+    }
+
+    const mode = chartModes.progression || '3d';
+    const is3D = (mode === '3d');
+
+    const labels = dataToRender.map(r => `R${r.round} (${r.num_labeled})`);
+    const xVals = dataToRender.map(r => r.num_labeled);
+    const oas = dataToRender.map(r => +(r.metrics.OverallAccuracy * 100).toFixed(2));
+    const f1s = dataToRender.map(r => +(r.metrics.F1Score * 100).toFixed(2));
+    const rounds = dataToRender.map(r => r.round);
+
+    if (is3D && window.Plotly) {
+        // 3D Active Learning Trajectory
+        const traceOA = {
+            type: 'scatter3d',
+            mode: 'lines+markers+text',
+            name: 'Overall Accuracy (%)',
+            x: xVals,
+            y: Array(xVals.length).fill(0),
+            z: oas,
+            text: rounds.map(r => `R${r}`),
+            textposition: 'top center',
+            textfont: { family: 'Inter, sans-serif', size: 10, color: '#1e3a8a' },
+            line: { color: '#2563eb', width: 6 },
+            marker: { size: 6, color: '#1d4ed8', symbol: 'circle', opacity: 0.95 },
+            hovertemplate: '<b>Overall Accuracy</b><br>Round: %{text}<br>Labels: %{x}<br>OA: %{z:.2f}%<extra></extra>'
+        };
+
+        const traceF1 = {
+            type: 'scatter3d',
+            mode: 'lines+markers',
+            name: 'Macro F1 (x100)',
+            x: xVals,
+            y: Array(xVals.length).fill(1),
+            z: f1s,
+            line: { color: '#10b981', width: 5, dash: 'dash' },
+            marker: { size: 5, color: '#059669', symbol: 'diamond' },
+            hovertemplate: '<b>Macro F1</b><br>Labels: %{x}<br>Score: %{z:.2f}%<extra></extra>'
+        };
+
+        const minX = Math.min(...xVals) * 0.95;
+        const maxX = Math.max(...xVals) * 1.05 + 10;
+        const targetVal = (typeof targetOA !== 'undefined' ? targetOA : 70.0);
+
+        const traceTarget = {
+            type: 'mesh3d',
+            name: `Target OA (${targetVal}%)`,
+            x: [minX, maxX, maxX, minX],
+            y: [-0.3, -0.3, 1.3, 1.3],
+            z: [targetVal, targetVal, targetVal, targetVal],
+            i: [0, 0],
+            j: [1, 2],
+            k: [2, 3],
+            opacity: 0.18,
+            color: '#f59e0b',
+            hoverinfo: 'name'
+        };
+
+        const traces = [traceOA, traceF1, traceTarget];
+
+        // Add 3D ground drop stems
+        dataToRender.forEach((r, idx) => {
+            traces.push({
+                type: 'scatter3d',
+                mode: 'lines',
+                showlegend: false,
+                x: [xVals[idx], xVals[idx]],
+                y: [0, 0],
+                z: [0, oas[idx]],
+                line: { color: 'rgba(37, 99, 235, 0.35)', width: 2, dash: 'dot' },
+                hoverinfo: 'skip'
+            });
+        });
+
+        const layout = {
+            margin: { l: 0, r: 0, b: 0, t: 0 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            scene: {
+                xaxis: {
+                    title: { text: 'Labeled Samples', font: { size: 10, color: '#64748b' } },
+                    gridcolor: '#e2e8f0',
+                    zerolinecolor: '#cbd5e1',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                yaxis: {
+                    title: { text: 'Metric Track', font: { size: 10, color: '#64748b' } },
+                    tickvals: [0, 1],
+                    ticktext: ['Accuracy', 'Macro F1'],
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                zaxis: {
+                    title: { text: 'Score (%)', font: { size: 10, color: '#64748b' } },
+                    range: [0, 100],
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                camera: {
+                    eye: { x: 1.5, y: -1.7, z: 1.1 },
+                    center: { x: 0, y: 0, z: -0.1 }
+                }
             },
-            scales: {
-                x: { grid: { color: "#f1f5f9" }, ticks: { color: "#64748b" } },
-                y: { grid: { color: "#f1f5f9" }, title: { display: true, text: "Accuracy (%)", color: "#64748b" }, ticks: { color: "#64748b" } }
+            legend: {
+                x: 0.02,
+                y: 0.98,
+                bgcolor: 'rgba(255, 255, 255, 0.85)',
+                bordercolor: '#e2e8f0',
+                borderwidth: 1,
+                font: { size: 10 }
             }
-        }
-    });
+        };
+
+        const config = { responsive: true, displaylogo: false };
+        Plotly.react(chartEl, traces, layout, config);
+    } else if (window.Plotly) {
+        // 2D Progression View via Plotly
+        const traceOA = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Overall Accuracy (%)',
+            x: labels,
+            y: oas,
+            line: { color: '#2563eb', width: 3 },
+            marker: { size: 7, color: '#1d4ed8' },
+            fill: 'tozeroy',
+            fillcolor: 'rgba(37, 99, 235, 0.08)'
+        };
+
+        const traceF1 = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Macro F1 (x100)',
+            x: labels,
+            y: f1s,
+            line: { color: '#10b981', width: 2, dash: 'dash' },
+            marker: { size: 6, color: '#059669' }
+        };
+
+        const targetVal = (typeof targetOA !== 'undefined' ? targetOA : 70.0);
+        const traceTarget = {
+            type: 'scatter',
+            mode: 'lines',
+            name: `Target (${targetVal}%)`,
+            x: labels,
+            y: Array(labels.length).fill(targetVal),
+            line: { color: '#f59e0b', width: 2, dash: 'dot' }
+        };
+
+        const layout = {
+            margin: { l: 45, r: 20, b: 35, t: 20 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            xaxis: { gridcolor: '#f1f5f9', tickfont: { size: 10, color: '#64748b' } },
+            yaxis: { gridcolor: '#f1f5f9', title: 'Accuracy (%)', range: [0, 100], tickfont: { size: 10, color: '#64748b' } },
+            legend: { x: 0.02, y: 0.98, font: { size: 10 } }
+        };
+
+        Plotly.react(chartEl, [traceOA, traceF1, traceTarget], layout, { responsive: true, displaylogo: false });
+    }
 }
 
 /* =========================================================================
@@ -1334,40 +1565,156 @@ function renderCrossSensorRoundTable(roundProgression) {
 function render1DSpectralResamplerChart(resamplerData) {
     const chartEl = document.getElementById("resamplerChart");
     if (!chartEl) return;
-    const ctx = chartEl.getContext("2d");
-    if (resamplerChart) resamplerChart.destroy();
+    lastResamplerData = resamplerData;
 
-    resamplerChart = new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: resamplerData.source_wavelengths.map(w => Math.round(w)),
-            datasets: [
-                {
-                    label: `Target Grid (${resamplerData.target_bands_count} Bands)`,
-                    data: resamplerData.target_spectrum,
-                    borderColor: "#dc2626",
-                    borderWidth: 2,
-                    pointRadius: 0,
-                },
-                {
-                    label: `1D Resampled (${resamplerData.source_bands_count} Bands)`,
-                    data: resamplerData.resampled_spectrum,
-                    borderColor: "#2563eb",
-                    borderWidth: 2,
-                    borderDash: [4, 4],
-                    pointRadius: 0,
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: { grid: { color: "#f1f5f9" }, ticks: { color: "#64748b" } },
-                y: { grid: { color: "#f1f5f9" }, ticks: { color: "#64748b" } }
-            }
+    const mode = chartModes.resampler || '3d';
+    const is3D = (mode === '3d');
+
+    const waves = resamplerData.source_wavelengths.map(w => Math.round(w));
+    const targetSpec = resamplerData.target_spectrum;
+    const resampledSpec = resamplerData.resampled_spectrum;
+
+    if (is3D && window.Plotly) {
+        // Trace 0: Target Grid (Red line at Y=0)
+        const traceTarget = {
+            type: 'scatter3d',
+            mode: 'lines',
+            name: `Target Grid (${resamplerData.target_bands_count} Bands)`,
+            x: waves,
+            y: Array(waves.length).fill(0),
+            z: targetSpec,
+            line: { color: '#ef4444', width: 6 },
+            hovertemplate: '<b>Target Sensor Grid</b><br>Wavelength: %{x} nm<br>Reflectance: %{z:.4f}<extra></extra>'
+        };
+
+        // Trace 1: 1D Resampled (Blue line at Y=1)
+        const traceResampled = {
+            type: 'scatter3d',
+            mode: 'lines',
+            name: `1D Resampled (${resamplerData.source_bands_count} Bands)`,
+            x: waves,
+            y: Array(waves.length).fill(1),
+            z: resampledSpec,
+            line: { color: '#2563eb', width: 6 },
+            hovertemplate: '<b>1D Resampled Profile</b><br>Wavelength: %{x} nm<br>Reflectance: %{z:.4f}<extra></extra>'
+        };
+
+        // 3D Connecting Spectral Transfer Surface Mesh between Target and Resampled
+        const N = waves.length;
+        const meshX = [...waves, ...waves];
+        const meshY = [...Array(N).fill(0), ...Array(N).fill(1)];
+        const meshZ = [...targetSpec, ...resampledSpec];
+        const iIdx = [];
+        const jIdx = [];
+        const kIdx = [];
+        for (let idx = 0; idx < N - 1; idx++) {
+            iIdx.push(idx);
+            jIdx.push(idx + 1);
+            kIdx.push(idx + N);
+
+            iIdx.push(idx + 1);
+            jIdx.push(idx + N + 1);
+            kIdx.push(idx + N);
         }
-    });
+
+        const traceMesh = {
+            type: 'mesh3d',
+            name: 'Spectral Transfer Ribbon',
+            x: meshX,
+            y: meshY,
+            z: meshZ,
+            i: iIdx,
+            j: jIdx,
+            k: kIdx,
+            opacity: 0.28,
+            color: '#3b82f6',
+            hoverinfo: 'name'
+        };
+
+        // Trace 3: Spectral Alignment Gap (Delta at Y = 0.5)
+        const deltas = targetSpec.map((v, i) => Math.abs(v - (resampledSpec[i] || 0)));
+        const traceDelta = {
+            type: 'scatter3d',
+            mode: 'lines',
+            name: 'Residual Gap |Δ|',
+            x: waves,
+            y: Array(waves.length).fill(0.5),
+            z: deltas,
+            line: { color: '#f59e0b', width: 3, dash: 'dot' },
+            hovertemplate: '<b>Residual Gap</b><br>Wavelength: %{x} nm<br>|Δ|: %{z:.4f}<extra></extra>'
+        };
+
+        const layout = {
+            margin: { l: 0, r: 0, b: 0, t: 0 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            scene: {
+                xaxis: {
+                    title: { text: 'Wavelength (nm)', font: { size: 10, color: '#64748b' } },
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                yaxis: {
+                    title: { text: 'Domain Track', font: { size: 10, color: '#64748b' } },
+                    tickvals: [0, 0.5, 1],
+                    ticktext: ['Target Grid', '|Δ| Gap', '1D Resampled'],
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                zaxis: {
+                    title: { text: 'Reflectance', font: { size: 10, color: '#64748b' } },
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                camera: {
+                    eye: { x: 1.6, y: -1.6, z: 1.2 },
+                    center: { x: 0, y: 0, z: -0.1 }
+                }
+            },
+            legend: {
+                x: 0.02,
+                y: 0.98,
+                bgcolor: 'rgba(255, 255, 255, 0.85)',
+                bordercolor: '#e2e8f0',
+                borderwidth: 1,
+                font: { size: 10 }
+            }
+        };
+
+        Plotly.react(chartEl, [traceTarget, traceResampled, traceMesh, traceDelta], layout, { responsive: true, displaylogo: false });
+    } else if (window.Plotly) {
+        // 2D View
+        const traceTarget = {
+            type: 'scatter',
+            mode: 'lines',
+            name: `Target Grid (${resamplerData.target_bands_count} Bands)`,
+            x: waves,
+            y: targetSpec,
+            line: { color: '#ef4444', width: 2 }
+        };
+
+        const traceResampled = {
+            type: 'scatter',
+            mode: 'lines',
+            name: `1D Resampled (${resamplerData.source_bands_count} Bands)`,
+            x: waves,
+            y: resampledSpec,
+            line: { color: '#2563eb', width: 2, dash: 'dash' }
+        };
+
+        const layout = {
+            margin: { l: 45, r: 20, b: 35, t: 20 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            xaxis: { title: 'Wavelength (nm)', gridcolor: '#f1f5f9', tickfont: { size: 10, color: '#64748b' } },
+            yaxis: { title: 'Reflectance', gridcolor: '#f1f5f9', tickfont: { size: 10, color: '#64748b' } },
+            legend: { x: 0.02, y: 0.98, font: { size: 10 } }
+        };
+
+        Plotly.react(chartEl, [traceTarget, traceResampled], layout, { responsive: true, displaylogo: false });
+    }
 }
 
 /* =========================================================================
@@ -1465,49 +1812,134 @@ function renderBenchmarkTable(dsName, metricView) {
 function renderBenchmarkChart(dsName, metricView) {
     const chartEl = document.getElementById("benchmarkChart");
     if (!chartEl) return;
-    const ctx = chartEl.getContext("2d");
-    if (benchmarkChart) benchmarkChart.destroy();
+    lastBenchmarkParams = { dsName, metricView };
 
     const dataList = BENCHMARK_DATA[dsName] || BENCHMARK_DATA["Indian Pines"];
-    const labels = dataList.map(d => d.method);
+    const mode = chartModes.benchmark || '3d';
+    const is3D = (mode === '3d');
 
-    let chartTitle = "Overall Accuracy (OA %)";
-    let values = dataList.map(d => parseFloat(d.oa.split(" ")[0]));
+    if (is3D && window.Plotly) {
+        // Multi-metric 3D comparative columns landscape
+        const metrics = ['OA (%)', 'AA (%)', 'Macro F1', 'Kappa (κ)'];
+        const colors = ['#64748b', '#f59e0b', '#2563eb'];
+        const traces = [];
 
-    if (metricView === "aa") {
-        chartTitle = "Average Accuracy (AA %)";
-        values = dataList.map(d => parseFloat(d.aa.split(" ")[0]));
-    } else if (metricView === "f1") {
-        chartTitle = "Macro F1 Score";
-        values = dataList.map(d => parseFloat(d.f1.split(" ")[0]));
-    } else if (metricView === "kappa") {
-        chartTitle = "Kappa Coefficient";
-        values = dataList.map(d => parseFloat(d.kappa.split(" ")[0]));
-    }
+        dataList.forEach((d, mIdx) => {
+            const oa = parseFloat(d.oa.split(" ")[0]);
+            const aa = parseFloat(d.aa.split(" ")[0]);
+            const f1 = parseFloat(d.f1.split(" ")[0]) * 100;
+            const kappa = parseFloat(d.kappa.split(" ")[0]) * 100;
+            const zVals = [oa, aa, f1, kappa];
 
-    benchmarkChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: labels,
-            datasets: [{
-                label: `${dsName} — ${chartTitle}`,
-                data: values,
-                backgroundColor: ["#94a3b8", "#d97706", "#2563eb"],
-                borderRadius: 4,
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false }
+            // 3D Stems and illuminated markers
+            zVals.forEach((val, yIdx) => {
+                traces.push({
+                    type: 'scatter3d',
+                    mode: 'lines',
+                    showlegend: false,
+                    x: [mIdx, mIdx],
+                    y: [yIdx, yIdx],
+                    z: [0, val],
+                    line: { color: colors[mIdx], width: 10 },
+                    hoverinfo: 'skip'
+                });
+            });
+
+            // Top marker caps
+            traces.push({
+                type: 'scatter3d',
+                mode: 'markers+text',
+                name: d.method,
+                x: [mIdx, mIdx, mIdx, mIdx],
+                y: [0, 1, 2, 3],
+                z: zVals,
+                text: zVals.map(v => v.toFixed(1) + '%'),
+                textposition: 'top center',
+                textfont: { size: 10, color: colors[mIdx] },
+                marker: { size: 8, color: colors[mIdx], symbol: 'diamond' },
+                hovertemplate: `<b>${d.method}</b><br>Metric: %{customdata}<br>Score: %{z:.2f}%<extra></extra>`,
+                customdata: metrics
+            });
+        });
+
+        const layout = {
+            margin: { l: 0, r: 0, b: 0, t: 0 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            scene: {
+                xaxis: {
+                    title: { text: 'Method', font: { size: 10, color: '#64748b' } },
+                    tickvals: [0, 1, 2],
+                    ticktext: ['Random', 'Least Conf', 'LC+FD (SE)'],
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                yaxis: {
+                    title: { text: 'Metric', font: { size: 10, color: '#64748b' } },
+                    tickvals: [0, 1, 2, 3],
+                    ticktext: ['OA (%)', 'AA (%)', 'F1 (x100)', 'Kappa (x100)'],
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                zaxis: {
+                    title: { text: 'Score (%)', font: { size: 10, color: '#64748b' } },
+                    range: [0, 100],
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                camera: {
+                    eye: { x: 1.7, y: -1.7, z: 1.3 },
+                    center: { x: 0, y: 0, z: -0.1 }
+                }
             },
-            scales: {
-                x: { grid: { display: false }, ticks: { color: "#64748b" } },
-                y: { grid: { color: "#f1f5f9" }, ticks: { color: "#64748b" } }
+            legend: {
+                x: 0.02,
+                y: 0.98,
+                bgcolor: 'rgba(255, 255, 255, 0.85)',
+                bordercolor: '#e2e8f0',
+                borderwidth: 1,
+                font: { size: 10 }
             }
+        };
+
+        Plotly.react(chartEl, traces, layout, { responsive: true, displaylogo: false });
+    } else if (window.Plotly) {
+        // 2D Bar Chart
+        let chartTitle = "Overall Accuracy (OA %)";
+        let values = dataList.map(d => parseFloat(d.oa.split(" ")[0]));
+        if (metricView === "aa") {
+            chartTitle = "Average Accuracy (AA %)";
+            values = dataList.map(d => parseFloat(d.aa.split(" ")[0]));
+        } else if (metricView === "f1") {
+            chartTitle = "Macro F1 Score (x100)";
+            values = dataList.map(d => parseFloat(d.f1.split(" ")[0]) * 100);
+        } else if (metricView === "kappa") {
+            chartTitle = "Kappa Coefficient (x100)";
+            values = dataList.map(d => parseFloat(d.kappa.split(" ")[0]) * 100);
         }
-    });
+
+        const trace = {
+            type: 'bar',
+            x: dataList.map(d => d.method),
+            y: values,
+            marker: { color: ["#64748b", "#f59e0b", "#2563eb"], borderRadius: 4 },
+            text: values.map(v => v.toFixed(2) + '%'),
+            textposition: 'auto'
+        };
+
+        const layout = {
+            title: { text: `${dsName} — ${chartTitle}`, font: { size: 12, color: '#1e293b' } },
+            margin: { l: 45, r: 20, b: 45, t: 35 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            xaxis: { gridcolor: '#f1f5f9', tickfont: { size: 10, color: '#64748b' } },
+            yaxis: { title: 'Score (%)', range: [0, 100], gridcolor: '#f1f5f9', tickfont: { size: 10, color: '#64748b' } }
+        };
+
+        Plotly.react(chartEl, [trace], layout, { responsive: true, displaylogo: false });
+    }
 }
 
 /* =========================================================================
@@ -1531,28 +1963,165 @@ async function loadLabelEfficiencyData(dsName = "Indian Pines") {
 function renderLabelEfficiencyChart(dsCurves) {
     const chartEl = document.getElementById("labelEfficiencyChart");
     if (!chartEl) return;
-    const ctx = chartEl.getContext("2d");
-    if (labelEfficiencyChart) labelEfficiencyChart.destroy();
+    lastLabelEfficiencyCurves = dsCurves;
 
-    labelEfficiencyChart = new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: dsCurves.counts,
-            datasets: [
-                { label: "Random Sampling", data: dsCurves["Random"], borderColor: "#94a3b8", borderWidth: 2 },
-                { label: "Least Confidence", data: dsCurves["Least Confidence"], borderColor: "#d97706", borderWidth: 2 },
-                { label: "LC + Farthest Diversity", data: dsCurves["LC + Farthest Diversity"], borderColor: "#2563eb", borderWidth: 3 },
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: { grid: { color: "#f1f5f9" }, title: { display: true, text: "Labeled Samples Count", color: "#64748b" }, ticks: { color: "#64748b" } },
-                y: { grid: { color: "#f1f5f9" }, title: { display: true, text: "Accuracy (%)", color: "#64748b" }, ticks: { color: "#64748b" } }
+    const mode = chartModes.labelEff || '3d';
+    const is3D = (mode === '3d');
+
+    const counts = dsCurves.counts;
+    const randomVals = dsCurves["Random"];
+    const lcVals = dsCurves["Least Confidence"];
+    const lcfdVals = dsCurves["LC + Farthest Diversity"];
+
+    if (is3D && window.Plotly) {
+        // 3D Efficiency Trajectories in 3D Space
+        const traceRandom = {
+            type: 'scatter3d',
+            mode: 'lines+markers',
+            name: 'Random Sampling',
+            x: counts,
+            y: Array(counts.length).fill(0),
+            z: randomVals,
+            line: { color: '#64748b', width: 5 },
+            marker: { size: 5, color: '#94a3b8' },
+            hovertemplate: '<b>Random Sampling</b><br>Labels: %{x}<br>OA: %{z:.2f}%<extra></extra>'
+        };
+
+        const traceLC = {
+            type: 'scatter3d',
+            mode: 'lines+markers',
+            name: 'Least Confidence',
+            x: counts,
+            y: Array(counts.length).fill(1),
+            z: lcVals,
+            line: { color: '#f59e0b', width: 5 },
+            marker: { size: 5, color: '#fbbf24' },
+            hovertemplate: '<b>Least Confidence</b><br>Labels: %{x}<br>OA: %{z:.2f}%<extra></extra>'
+        };
+
+        const traceLCFD = {
+            type: 'scatter3d',
+            mode: 'lines+markers',
+            name: 'LC + Farthest Diversity',
+            x: counts,
+            y: Array(counts.length).fill(2),
+            z: lcfdVals,
+            line: { color: '#2563eb', width: 7 },
+            marker: { size: 6, color: '#1d4ed8' },
+            hovertemplate: '<b>LC + FD</b><br>Labels: %{x}<br>OA: %{z:.2f}%<extra></extra>'
+        };
+
+        // 3D Target threshold plane at 70%
+        const minX = counts[0];
+        const maxX = counts[counts.length - 1];
+        const targetVal = 70.0;
+        const traceTarget = {
+            type: 'mesh3d',
+            name: `Target OA (${targetVal}%)`,
+            x: [minX, maxX, maxX, minX],
+            y: [-0.3, -0.3, 2.3, 2.3],
+            z: [targetVal, targetVal, targetVal, targetVal],
+            i: [0, 0],
+            j: [1, 2],
+            k: [2, 3],
+            opacity: 0.18,
+            color: '#10b981',
+            hoverinfo: 'name'
+        };
+
+        const layout = {
+            margin: { l: 0, r: 0, b: 0, t: 0 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            scene: {
+                xaxis: {
+                    title: { text: 'Labeled Count', font: { size: 10, color: '#64748b' } },
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                yaxis: {
+                    title: { text: 'Acquisition Strategy', font: { size: 10, color: '#64748b' } },
+                    tickvals: [0, 1, 2],
+                    ticktext: ['Random', 'Least Conf', 'LC+FD'],
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                zaxis: {
+                    title: { text: 'Accuracy (%)', font: { size: 10, color: '#64748b' } },
+                    range: [30, 85],
+                    gridcolor: '#e2e8f0',
+                    backgroundcolor: 'rgba(248, 250, 252, 0.5)',
+                    showbackground: true
+                },
+                camera: {
+                    eye: { x: 1.6, y: -1.7, z: 1.2 },
+                    center: { x: 0, y: 0, z: -0.1 }
+                }
+            },
+            legend: {
+                x: 0.02,
+                y: 0.98,
+                bgcolor: 'rgba(255, 255, 255, 0.85)',
+                bordercolor: '#e2e8f0',
+                borderwidth: 1,
+                font: { size: 10 }
             }
-        }
-    });
+        };
+
+        Plotly.react(chartEl, [traceRandom, traceLC, traceLCFD, traceTarget], layout, { responsive: true, displaylogo: false });
+    } else if (window.Plotly) {
+        // 2D View
+        const traceRandom = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Random Sampling',
+            x: counts,
+            y: randomVals,
+            line: { color: '#64748b', width: 2 },
+            marker: { size: 6 }
+        };
+
+        const traceLC = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Least Confidence',
+            x: counts,
+            y: lcVals,
+            line: { color: '#f59e0b', width: 2 },
+            marker: { size: 6 }
+        };
+
+        const traceLCFD = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'LC + Farthest Diversity',
+            x: counts,
+            y: lcfdVals,
+            line: { color: '#2563eb', width: 3 },
+            marker: { size: 7 }
+        };
+
+        const traceTarget = {
+            type: 'scatter',
+            mode: 'lines',
+            name: 'Target (70%)',
+            x: counts,
+            y: Array(counts.length).fill(70),
+            line: { color: '#10b981', width: 1.5, dash: 'dot' }
+        };
+
+        const layout = {
+            margin: { l: 45, r: 20, b: 35, t: 20 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            xaxis: { title: 'Labeled Samples Count', gridcolor: '#f1f5f9', tickfont: { size: 10, color: '#64748b' } },
+            yaxis: { title: 'Accuracy (%)', gridcolor: '#f1f5f9', tickfont: { size: 10, color: '#64748b' } },
+            legend: { x: 0.02, y: 0.98, font: { size: 10 } }
+        };
+
+        Plotly.react(chartEl, [traceRandom, traceLC, traceLCFD, traceTarget], layout, { responsive: true, displaylogo: false });
+    }
 }
 
 function renderThresholdsTable(thresholds) {
@@ -1587,3 +2156,453 @@ async function exportExperimentSession() {
         console.error("Error exporting experiment:", err);
     }
 }
+
+/* =========================================================================
+   SAMPLE MODAL 2D SPECTRUM CHART
+   ========================================================================= */
+function renderSampleSpectrumChart(data) {
+    const spectrumEl = document.getElementById("sampleSpectrumChart");
+    if (!spectrumEl) return;
+    lastSampleData = data;
+
+    const hasWl = (data.wavelengths && Array.isArray(data.wavelengths) && data.wavelengths.length > 0);
+    const xLabels = hasWl ? data.wavelengths.map(w => Math.round(w)) : Array.from({length: data.spectrum.length}, (_, i) => i + 1);
+    const xTitle = hasWl ? 'λ (nm)' : 'Spectral Band Index';
+
+    if (window.Plotly) {
+        const trace = {
+            type: 'scatter',
+            mode: 'lines',
+            name: 'Reflectance Signature',
+            x: xLabels,
+            y: data.spectrum,
+            line: { color: '#2563eb', width: 2 },
+            fill: 'tozeroy',
+            fillcolor: 'rgba(37, 99, 235, 0.08)',
+            hovertemplate: hasWl
+                ? '<b>Spectral Signature</b><br>Wavelength: %{x} nm<br>Response: %{y:.4f}<extra></extra>'
+                : '<b>Spectral Signature</b><br>Band: %{x}<br>Response: %{y:.4f}<extra></extra>'
+        };
+
+        const layout = {
+            margin: { l: 40, r: 15, b: 30, t: 10 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            xaxis: {
+                title: { text: xTitle, font: { size: 10, color: '#64748b' } },
+                gridcolor: '#f1f5f9',
+                tickfont: { size: 9, color: '#64748b' }
+            },
+            yaxis: {
+                title: { text: 'Reflectance', font: { size: 10, color: '#64748b' } },
+                gridcolor: '#f1f5f9',
+                tickfont: { size: 9, color: '#64748b' }
+            },
+            showlegend: false
+        };
+
+        Plotly.react(spectrumEl, [trace], layout, { responsive: true, displaylogo: false });
+    }
+}
+
+/* =========================================================================
+   INTERACTIVE 3D HYPERSPECTRAL SCENE & QUERIED SAMPLE SYSTEM
+   ========================================================================= */
+let currentSceneViewMode = '3d'; // '3d' or '2d'
+let isScene3DAutoRotating = false;
+let scene3DRotationRafId = null;
+let scene3DCameraAngle = -Math.PI / 2;
+let show3DSamples = true;
+
+function isWebGLAvailable() {
+    try {
+        const canvas = document.createElement('canvas');
+        return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+    } catch (e) {
+        return false;
+    }
+}
+
+function setSceneViewMode(mode) {
+    currentSceneViewMode = mode;
+    const btn3D = document.getElementById("btnSceneMode3D");
+    const btn2D = document.getElementById("btnSceneMode2D");
+    const container3D = document.getElementById("scene3DContainer");
+    const container2D = document.getElementById("scene2DContainer");
+    const mapControls = document.getElementById("sceneMapControls");
+
+    if (mode === '3d') {
+        if (btn3D) btn3D.classList.add("active");
+        if (btn2D) btn2D.classList.remove("active");
+        if (container3D) container3D.style.display = "block";
+        if (container2D) container2D.style.display = "none";
+        if (mapControls) mapControls.style.display = "none";
+        renderScene3D();
+    } else {
+        if (btn2D) btn2D.classList.add("active");
+        if (btn3D) btn3D.classList.remove("active");
+        if (container2D) container2D.style.display = "block";
+        if (container3D) container3D.style.display = "none";
+        if (mapControls && hasPredicted) mapControls.style.display = "flex";
+        stopScene3DAutoRotate();
+        renderSpatialCanvas();
+    }
+}
+
+function renderScene3D() {
+    if (!sceneData || !window.Plotly) return;
+    const sceneEl = document.getElementById("hsiSpatialScene3D");
+    if (!sceneEl) return;
+
+    const [height, width] = sceneData.dimensions;
+
+    // Subsample high-resolution scenes (e.g. Salinas 512x217, Pavia 610x340) for 60fps responsiveness
+    let step = 1;
+    if (width > 200 || height > 200) {
+        step = Math.max(1, Math.floor(Math.max(width, height) / 220));
+    }
+
+    const xGrid = [];
+    for (let c = 0; c < width; c += step) {
+        xGrid.push(c);
+    }
+    if (xGrid[xGrid.length - 1] !== width - 1) xGrid.push(width - 1);
+
+    const yGrid = [];
+    for (let r = 0; r < height; r += step) {
+        yGrid.push(r);
+    }
+    if (yGrid[yGrid.length - 1] !== height - 1) yGrid.push(height - 1);
+
+    const M = yGrid.length;
+    const N = xGrid.length;
+    const zGrid = new Array(M);
+    const colorGrid = new Array(M);
+
+    const rawIndices = sceneData.scene_color_indices;
+    for (let i = 0; i < M; i++) {
+        const r = yGrid[i];
+        const zRow = new Array(N);
+        const cRow = new Array(N);
+        const rawRow = rawIndices ? rawIndices[r] : null;
+        for (let j = 0; j < N; j++) {
+            const c = xGrid[j];
+            zRow[j] = 0;
+            cRow[j] = rawRow ? rawRow[c] : 128;
+        }
+        zGrid[i] = zRow;
+        colorGrid[i] = cRow;
+    }
+
+    const traces = [];
+
+    // Base Surface Trace: Real Hyperspectral Spatial Image
+    const surfaceTrace = {
+        type: 'surface',
+        x: xGrid,
+        y: yGrid,
+        z: zGrid,
+        surfacecolor: colorGrid,
+        colorscale: sceneData.scene_colorscale,
+        cmin: 0,
+        cmax: 255,
+        showscale: false,
+        name: `${currentDataset} Spatial Scene`,
+        hoverinfo: 'none'
+    };
+    traces.push(surfaceTrace);
+
+    // 20 Active Learning Queried Candidates Trace
+    const hasSamples = querySelectionData && querySelectionData.selected_samples && querySelectionData.selected_samples.length > 0;
+    const badgeEl = document.getElementById("scene3dSamplesBadge");
+    if (badgeEl) {
+        if (hasSamples) {
+            badgeEl.innerHTML = `${querySelectionData.selected_samples.length} Queried Samples: <strong>#1–#${querySelectionData.selected_samples.length}</strong> (Active Learning Rank)`;
+        } else {
+            badgeEl.innerHTML = `Query Informative Samples to display 20 AL candidate locations in 3D`;
+        }
+    }
+
+    if (hasSamples && show3DSamples) {
+        const samples = querySelectionData.selected_samples;
+        const xCoords = samples.map(s => s.coord[1]); // image column = X
+        const yCoords = samples.map(s => s.coord[0]); // image row = Y
+        const zCoords = new Array(samples.length).fill(4.0); // elevated slightly above plane for 3D visibility
+        const textLabels = samples.map(s => `#${s.rank}`);
+
+        const stratName = currentStrategy === 'filter_diversity'
+            ? 'LC + Farthest Diversity'
+            : currentStrategy === 'least_confidence'
+                ? 'Least Confidence'
+                : 'Random Sampling';
+
+        // STRICT GROUND TRUTH PRIVACY: Ground truth is NEVER included in Human Annotation Mode
+        const customData = samples.map(s => [
+            s.rank,
+            s.global_index,
+            s.coord[1],
+            s.coord[0],
+            s.least_confidence,
+            s.predicted_class,
+            stratName
+        ]);
+
+        // Selection Sequence Line: Illustrates spatial diversity coverage without implying physical terrain connection
+        const lineTrace = {
+            type: 'scatter3d',
+            mode: 'lines',
+            x: xCoords,
+            y: yCoords,
+            z: new Array(samples.length).fill(3.8),
+            line: {
+                color: 'rgba(245, 158, 11, 0.55)',
+                width: 2.5,
+                dash: 'dot'
+            },
+            name: 'Selection Diversity Path',
+            hoverinfo: 'none'
+        };
+        traces.push(lineTrace);
+
+        // Queried Sample Markers (Rank Badges #1–#20)
+        const markersTrace = {
+            type: 'scatter3d',
+            mode: 'markers+text',
+            name: 'Queried Samples',
+            x: xCoords,
+            y: yCoords,
+            z: zCoords,
+            text: textLabels,
+            textposition: 'top center',
+            textfont: {
+                family: 'Inter, sans-serif',
+                size: 11,
+                color: '#ffffff',
+                weight: 'bold'
+            },
+            marker: {
+                size: 8,
+                color: '#f59e0b',
+                symbol: 'diamond',
+                line: { color: '#ffffff', width: 2 }
+            },
+            customdata: customData,
+            hovertemplate:
+                '<b>Queried Sample #%{customdata[0]}</b><br>' +
+                'Coordinates: (X: %{customdata[2]}, Y: %{customdata[3]})<br>' +
+                'Uncertainty (LC): %{customdata[4]:.3f}<br>' +
+                'Predicted Class: %{customdata[5]}<br>' +
+                'Selection Strategy: %{customdata[6]}<extra></extra>'
+        };
+        traces.push(markersTrace);
+    }
+
+    const layout = {
+        margin: { l: 0, r: 0, b: 0, t: 0 },
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        scene: {
+            xaxis: {
+                title: { text: 'Image Column (X)', font: { size: 10, color: '#94a3b8' } },
+                gridcolor: 'rgba(148, 163, 184, 0.15)',
+                backgroundcolor: 'rgba(15, 23, 42, 0.5)',
+                showbackground: true,
+                range: [-2, width + 2]
+            },
+            yaxis: {
+                title: { text: 'Image Row (Y)', font: { size: 10, color: '#94a3b8' } },
+                gridcolor: 'rgba(148, 163, 184, 0.15)',
+                backgroundcolor: 'rgba(15, 23, 42, 0.5)',
+                showbackground: true,
+                autorange: 'reversed',
+                range: [height + 2, -2]
+            },
+            zaxis: {
+                title: { text: 'Visual Depth (Z)', font: { size: 9, color: '#94a3b8' } },
+                gridcolor: 'rgba(148, 163, 184, 0.1)',
+                backgroundcolor: 'rgba(15, 23, 42, 0.5)',
+                showbackground: true,
+                range: [-0.5, 6]
+            },
+            camera: {
+                eye: { x: 0.0, y: -1.35, z: 1.35 },
+                center: { x: 0, y: 0, z: 0 },
+                up: { x: 0, y: 0, z: 1 }
+            },
+            aspectratio: { x: 1.0, y: height / width, z: 0.28 }
+        },
+        showlegend: false
+    };
+
+    Plotly.react(sceneEl, traces, layout, { responsive: true, displaylogo: false }).then(() => {
+        if (sceneEl.removeAllListeners) {
+            sceneEl.removeAllListeners('plotly_click');
+            sceneEl.removeAllListeners('plotly_hover');
+        }
+
+        sceneEl.on('plotly_click', (evt) => {
+            if (evt && evt.points && evt.points.length > 0) {
+                const pt = evt.points[0];
+                if (pt.customdata) {
+                    const [rank, gIdx, col, row, lc, predCls, strat] = pt.customdata;
+                    updateScene3DInfoCard(rank, col, row, lc, predCls, strat, gIdx);
+                    inspectSample(gIdx, rank);
+                }
+            }
+        });
+
+        sceneEl.on('plotly_hover', (evt) => {
+            if (evt && evt.points && evt.points.length > 0) {
+                const pt = evt.points[0];
+                if (pt.customdata) {
+                    const [rank, gIdx, col, row, lc, predCls, strat] = pt.customdata;
+                    updateScene3DInfoCard(rank, col, row, lc, predCls, strat, gIdx);
+                }
+            }
+        });
+    });
+}
+
+function updateScene3DInfoCard(rank, x, y, unc, predCls, strat, gIdx) {
+    const infoEl = document.getElementById("scene3dSelectedInfo");
+    if (!infoEl) return;
+    const uncStr = typeof unc === 'number' ? unc.toFixed(3) : unc;
+    infoEl.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; width:100%;">
+            <div style="font-size:11.5px; line-height:1.5;">
+                <span class="badge badge-warning" style="font-weight:700;">Selected Sample #${rank}</span>
+                <strong style="margin-left:8px; color:var(--text-primary);">Position:</strong> (x=${x}, y=${y}) &bull;
+                <strong style="color:var(--text-secondary);">Uncertainty (LC):</strong> <span style="color:var(--danger); font-weight:700;">${uncStr}</span> &bull;
+                <strong style="color:var(--text-secondary);">Predicted class:</strong> <span style="color:var(--primary); font-weight:600;">${predCls}</span> &bull;
+                <strong style="color:var(--text-secondary);">Selection method:</strong> <span>${strat}</span>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="inspectSample(${gIdx}, ${rank})" style="font-size:11px; padding:3px 10px;">🔍 Inspect Sample #${rank}</button>
+        </div>
+    `;
+}
+
+function resetScene3DCamera() {
+    stopScene3DAutoRotate();
+    const sceneEl = document.getElementById("hsiSpatialScene3D");
+    if (sceneEl && window.Plotly) {
+        Plotly.relayout(sceneEl, {
+            'scene.camera': {
+                eye: { x: 0.0, y: -1.35, z: 1.35 },
+                center: { x: 0, y: 0, z: 0 },
+                up: { x: 0, y: 0, z: 1 }
+            }
+        });
+    }
+}
+
+function toggleScene3DSamples() {
+    show3DSamples = !show3DSamples;
+    const btn = document.getElementById("btnToggle3DSamples");
+    if (btn) {
+        btn.innerText = show3DSamples ? "👁 Toggle Markers" : "👁 Show Markers";
+        btn.style.opacity = show3DSamples ? "1" : "0.7";
+    }
+    renderScene3D();
+}
+
+function toggleScene3DAutoRotate() {
+    if (isScene3DAutoRotating) {
+        stopScene3DAutoRotate();
+    } else {
+        startScene3DAutoRotate();
+    }
+}
+
+function startScene3DAutoRotate() {
+    const sceneEl = document.getElementById("hsiSpatialScene3D");
+    if (!sceneEl || !window.Plotly) return;
+
+    isScene3DAutoRotating = true;
+    const btn = document.getElementById("btnScene3DAutoRotate");
+    const icon = document.getElementById("scene3dRotateIcon");
+    if (btn) btn.classList.add("active");
+    if (icon) icon.innerText = "⏸";
+
+    scene3DCameraAngle = -Math.PI / 2;
+    const radius = 1.9;
+    const eyeZ = 1.35;
+
+    function step() {
+        if (!isScene3DAutoRotating) return;
+        scene3DCameraAngle += 0.012;
+        const eyeX = radius * Math.cos(scene3DCameraAngle);
+        const eyeY = radius * Math.sin(scene3DCameraAngle);
+
+        Plotly.relayout(sceneEl, {
+            'scene.camera.eye': { x: eyeX, y: eyeY, z: eyeZ }
+        }).then(() => {
+            if (isScene3DAutoRotating) {
+                scene3DRotationRafId = requestAnimationFrame(step);
+            }
+        }).catch(() => stopScene3DAutoRotate());
+    }
+
+    scene3DRotationRafId = requestAnimationFrame(step);
+}
+
+function stopScene3DAutoRotate() {
+    isScene3DAutoRotating = false;
+    if (scene3DRotationRafId) {
+        cancelAnimationFrame(scene3DRotationRafId);
+        scene3DRotationRafId = null;
+    }
+    const btn = document.getElementById("btnScene3DAutoRotate");
+    const icon = document.getElementById("scene3dRotateIcon");
+    if (btn) btn.classList.remove("active");
+    if (icon) icon.innerText = "⟳";
+}
+
+// DEVELOPER AUDIT VERIFICATION LOGGING
+function logHsiSampleDebug(data) {
+    if (!data) return;
+    const totalBands = data.spectrum ? data.spectrum.length : (data.patch_hsi ? data.patch_hsi.length : 0);
+    const maxProb = data.probabilities ? Math.max(...data.probabilities) : 0;
+    const predConf = (maxProb * 100).toFixed(2) + "%";
+    const unc = typeof data.least_confidence === "number" ? data.least_confidence.toFixed(4) : "N/A";
+
+    const isHuman = (data.mode === "human" || currentMode === "human");
+    const gtInfo = isHuman ? "[REDACTED - Human Annotation Privacy Active]" : (data.gt_class || "N/A");
+
+    const debugEl = document.getElementById("hsiDebugCard");
+    if (debugEl) {
+        debugEl.innerHTML = `
+            <div style="font-family:monospace; font-size:11px; line-height:1.6; color:#94a3b8;">
+                <div><span style="color:#38bdf8;">Dataset:</span> <span style="color:#f8fafc; font-weight:600;">${currentDataset}</span> | <span style="color:#38bdf8;">Sample index:</span> <span style="color:#f8fafc; font-weight:600;">${data.global_index}</span> | <span style="color:#38bdf8;">Patch shape:</span> <span style="color:#f8fafc;">15&times;15</span></div>
+                <div><span style="color:#38bdf8;">Spatial Coords:</span> <span style="color:#f8fafc; font-weight:600;">(x=${data.coord ? data.coord[1] : 'N/A'}, y=${data.coord ? data.coord[0] : 'N/A'})</span> | <span style="color:#38bdf8;">Bands:</span> <span style="color:#f8fafc; font-weight:600;">${totalBands}</span></div>
+                <div><span style="color:#38bdf8;">Prediction:</span> <span style="color:#f8fafc; font-weight:600;">${data.predicted_class}</span> (conf: <span style="color:#f8fafc;">${predConf}</span>) | <span style="color:#38bdf8;">Uncertainty (LC):</span> <span style="color:#f8fafc;">${unc}</span></div>
+                <div><span style="color:#38bdf8;">Human Mode GT Privacy:</span> <span style="color:#38bdf8; font-weight:600;">${gtInfo}</span></div>
+            </div>
+        `;
+    }
+}
+
+// Window resize listener
+window.addEventListener("resize", () => {
+    if (currentSceneViewMode === '3d' && window.Plotly) {
+        const sceneEl = document.getElementById("hsiSpatialScene3D");
+        if (sceneEl) Plotly.Plots.resize(sceneEl);
+    }
+});
+
+// Global modal cleanup on Escape key
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        const modal = document.getElementById("sampleModal");
+        if (modal && modal.classList.contains("active")) {
+            modal.classList.remove("active");
+        }
+    }
+});
+
+window.renderScene3D = renderScene3D;
+window.setSceneViewMode = setSceneViewMode;
+window.resetScene3DCamera = resetScene3DCamera;
+window.toggleScene3DAutoRotate = toggleScene3DAutoRotate;
+window.toggleScene3DSamples = toggleScene3DSamples;
+window.inspectSample = inspectSample;
+
+

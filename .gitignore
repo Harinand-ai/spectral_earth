@@ -76,6 +76,17 @@ wsl
 figures/
 
 # ================================
+# College Report and LaTeX artifacts (kept local)
+# ================================
+report/
+egreport.md
+*.pdf
+*.synctex.gz
+spectral_earth_latex_report.zip
+spectral_earth_latex_package/
+SPECTRALEARTH_FINAL_RESEARCH_REPORT*
+
+# ================================
 # OS files
 # ================================
 Thumbs.db

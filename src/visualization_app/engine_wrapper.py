@@ -67,7 +67,7 @@ DATASET_META = {
         "init_samples": 10,
         "slug": "indian_pines",
         "rgb_bands": [29, 19, 9],
-        "wavelengths": [400 + i * 5 for i in range(200)]
+        "wavelengths": None
     },
     "Salinas": {
         "module_cls": "src.datamodules.salinas.SalinasDataModule",
@@ -76,7 +76,7 @@ DATASET_META = {
         "init_samples": 10,
         "slug": "salinas",
         "rgb_bands": [29, 19, 9],
-        "wavelengths": [400 + i * 5 for i in range(204)]
+        "wavelengths": None
     },
     "Pavia University": {
         "module_cls": "src.datamodules.pavia_university.PaviaUniversityDataModule",
@@ -85,7 +85,7 @@ DATASET_META = {
         "init_samples": 10,
         "slug": "pavia_university",
         "rgb_bands": [50, 30, 10],
-        "wavelengths": [430 + i * 4.3 for i in range(103)]
+        "wavelengths": None
     }
 }
 
@@ -329,6 +329,17 @@ class ActiveLearningSession:
         labeled_lbls = self.train_lbls[self.dataset_manager.labeled_indices].numpy()
         counts = np.bincount(labeled_lbls, minlength=self.num_classes).tolist()
 
+        # Palette & color indices for real 3D HSI scene rendering
+        from PIL import Image
+        img_pil = Image.fromarray(rgb_uint8)
+        pal = img_pil.quantize(colors=256)
+        palette = pal.getpalette()
+        scene_colorscale = [
+            [round(i / 255.0, 4), f"rgb({palette[i*3]},{palette[i*3+1]},{palette[i*3+2]})"]
+            for i in range(256)
+        ]
+        scene_color_indices = np.array(pal, dtype=np.uint8).tolist()
+
         return {
             "dataset_name": self.dataset_name,
             "dimensions": [height, width],
@@ -343,6 +354,8 @@ class ActiveLearningSession:
             "gt_labels": gt_labels.tolist(),
             "spatial_mask": spatial_mask.tolist(),
             "rgb_uint8": rgb_uint8.tolist(),
+            "scene_colorscale": scene_colorscale,
+            "scene_color_indices": scene_color_indices,
         }
 
     def get_predictions_and_uncertainty(self, uncertainty_method="least_confidence"):
@@ -593,6 +606,7 @@ class ActiveLearningSession:
             "spectrum": spectrum,
             "wavelengths": self.meta["wavelengths"],
             "patch_uint8": patch_uint8.tolist(),
+            "patch_hsi": np.round(patch_arr.transpose(2, 0, 1), 4).tolist(),
         }
 
     def annotate_human_samples(self, annotations: list, epochs=25, lr=0.0005):
