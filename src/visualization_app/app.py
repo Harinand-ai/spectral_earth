@@ -30,6 +30,16 @@ app.mount("/static", StaticFiles(directory=static_dir), name="static")
 class SelectDatasetRequest(BaseModel):
     dataset_name: str
     seed: Optional[int] = 42
+    use_pseudo_labeling: Optional[bool] = False
+    pseudo_threshold: Optional[float] = 0.95
+    pseudo_weight: Optional[float] = 0.2
+    max_pseudo_per_class: Optional[int] = 15
+
+class SetPseudoLabelingRequest(BaseModel):
+    use_pseudo_labeling: bool = True
+    pseudo_threshold: Optional[float] = 0.95
+    pseudo_weight: Optional[float] = 0.2
+    max_pseudo_per_class: Optional[int] = 15
 
 class QuerySelectionRequest(BaseModel):
     k: int = 20
@@ -109,13 +119,23 @@ def select_dataset(req: SelectDatasetRequest):
         active_session = ActiveLearningSession(dataset_name=req.dataset_name, seed=req.seed)
         session_cache[req.dataset_name] = active_session
 
+    if req.use_pseudo_labeling is not None:
+        active_session.set_pseudo_labeling_config(
+            use_pseudo_labeling=req.use_pseudo_labeling,
+            pseudo_threshold=req.pseudo_threshold,
+            pseudo_weight=req.pseudo_weight,
+            max_pseudo_per_class=req.max_pseudo_per_class,
+        )
+
     return {
         "status": "success",
         "dataset_name": req.dataset_name,
         "mode": active_session.mode,
         "target_oa": active_session.target_oa,
+        "use_pseudo_labeling": active_session.use_pseudo_labeling,
         "num_labeled": active_session.dataset_manager.num_labeled,
         "num_unlabeled": active_session.dataset_manager.num_unlabeled,
+        "num_pseudo": active_session.last_pseudo_stats.get("count", 0),
         "init_metrics": active_session.history[0]["metrics"],
     }
 
@@ -128,6 +148,22 @@ def get_current_session() -> ActiveLearningSession:
             active_session = ActiveLearningSession(dataset_name="Indian Pines", seed=42)
             session_cache["Indian Pines"] = active_session
     return active_session
+
+@app.post("/api/session/set_pseudo_labeling")
+def set_pseudo_labeling(req: SetPseudoLabelingRequest):
+    """Enable/disable and configure confidence-based pseudo-labeling."""
+    session = get_current_session()
+    cfg = session.set_pseudo_labeling_config(
+        use_pseudo_labeling=req.use_pseudo_labeling,
+        pseudo_threshold=req.pseudo_threshold,
+        pseudo_weight=req.pseudo_weight,
+        max_pseudo_per_class=req.max_pseudo_per_class,
+    )
+    return {
+        "status": "success",
+        "pseudo_labeling_config": cfg,
+        "last_pseudo_stats": session.last_pseudo_stats,
+    }
 
 @app.post("/api/session/set_target")
 def set_target(req: SetTargetRequest):
@@ -201,6 +237,11 @@ def get_round_progression():
         "mode": session.mode,
         "target_oa": session.target_oa,
         "target_status": target_status,
+        "use_pseudo_labeling": session.use_pseudo_labeling,
+        "pseudo_threshold": session.pseudo_threshold,
+        "pseudo_weight": session.pseudo_weight,
+        "max_pseudo_per_class": session.max_pseudo_per_class,
+        "last_pseudo_stats": session.last_pseudo_stats,
         "history": session.history,
     }
 
@@ -343,6 +384,7 @@ def export_experiment():
             "Round": r["round"],
             "Num_Labeled": r["num_labeled"],
             "Num_Unlabeled": r["num_unlabeled"],
+            "Num_Pseudo": r.get("num_pseudo", 0),
             "Retrain_Loss": f"{r['retrain_loss']:.4f}",
             "Train_Time_s": f"{r['train_time']:.3f}",
             "Query_Time_s": f"{r['query_time']:.3f}",

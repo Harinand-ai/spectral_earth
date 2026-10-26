@@ -8,6 +8,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
+from typing import Optional, Dict, Any, List, Tuple
 
 import pyrootutils
 pyrootutils.setup_root(r"d:\Projects\spectral_earth", indicator=".project-root", pythonpath=True)
@@ -194,6 +195,19 @@ class ActiveLearningSession:
         self.last_query_details = []
         self.prev_prediction_map = None
 
+        # Pseudo-labeling configuration (kept optional and disabled by default)
+        self.use_pseudo_labeling = False
+        self.pseudo_threshold = 0.95
+        self.pseudo_weight = 0.2
+        self.max_pseudo_per_class = 15
+        from src.learning_engine.pseudo_labeler import ConfidencePseudoLabeler
+        self.pseudo_labeler = ConfidencePseudoLabeler(
+            confidence_threshold=self.pseudo_threshold,
+            max_pseudo_per_class=self.max_pseudo_per_class,
+            pseudo_weight=self.pseudo_weight,
+        )
+        self.last_pseudo_stats = {"count": 0, "per_class": {}, "mean_confidence": 0.0}
+
         self._train_classifier(epochs=25, lr=0.0005)
         init_metrics = self.evaluate_test()
 
@@ -201,6 +215,8 @@ class ActiveLearningSession:
             "round": 0,
             "num_labeled": self.dataset_manager.num_labeled,
             "num_unlabeled": self.dataset_manager.num_unlabeled,
+            "num_pseudo": 0,
+            "pseudo_stats": self.last_pseudo_stats,
             "query_time": 0.0,
             "train_time": self.last_retrain_time,
             "retrain_loss": self.last_retrain_loss,
@@ -236,12 +252,41 @@ class ActiveLearningSession:
         torch.save({"feats": feats, "lbls": lbls}, cache_file)
         return feats, lbls
 
-    def _train_classifier(self, epochs=25, lr=0.0005):
+    def set_pseudo_labeling_config(
+        self,
+        use_pseudo_labeling: bool,
+        pseudo_threshold: Optional[float] = None,
+        pseudo_weight: Optional[float] = None,
+        max_pseudo_per_class: Optional[int] = None,
+    ):
+        """Configure pseudo-labeling hyperparameters for the active session."""
+        self.use_pseudo_labeling = bool(use_pseudo_labeling)
+        if pseudo_threshold is not None:
+            self.pseudo_threshold = float(pseudo_threshold)
+        if pseudo_weight is not None:
+            self.pseudo_weight = float(pseudo_weight)
+        if max_pseudo_per_class is not None:
+            self.max_pseudo_per_class = int(max_pseudo_per_class)
+
+        from src.learning_engine.pseudo_labeler import ConfidencePseudoLabeler
+        self.pseudo_labeler = ConfidencePseudoLabeler(
+            confidence_threshold=self.pseudo_threshold,
+            max_pseudo_per_class=self.max_pseudo_per_class,
+            pseudo_weight=self.pseudo_weight,
+        )
+        return {
+            "use_pseudo_labeling": self.use_pseudo_labeling,
+            "pseudo_threshold": self.pseudo_threshold,
+            "pseudo_weight": self.pseudo_weight,
+            "max_pseudo_per_class": self.max_pseudo_per_class,
+        }
+
+    def _train_classifier(self, epochs=25, lr=0.0005, pseudo_feats=None, pseudo_lbls=None, pseudo_weight=None):
         t0 = time.time()
         self.classifier_head.train()
         lbl_idx = self.dataset_manager.labeled_indices
 
-        # STRICT ASSERTION: Train ONLY on labeled pool of training set
+        # STRICT ASSERTION: Genuine labels come ONLY from labeled pool of training set
         assert len(lbl_idx) > 0, "Labeled pool cannot be empty"
 
         feats = self.train_feats[lbl_idx].to(self.device)
@@ -256,7 +301,18 @@ class ActiveLearningSession:
                 lbls_list.append(int(self.train_lbls[g_idx_int].item()))
         lbls = torch.tensor(lbls_list, dtype=torch.long, device=self.device)
 
-        ds_t = torch.utils.data.TensorDataset(feats, lbls)
+        p_weight = self.pseudo_weight if pseudo_weight is None else pseudo_weight
+        has_pseudo = (pseudo_feats is not None and len(pseudo_feats) > 0 and p_weight > 0.0)
+
+        if has_pseudo:
+            is_pseudo_list = [False] * len(feats) + [True] * len(pseudo_feats)
+            cat_feats = torch.cat([feats, pseudo_feats.to(self.device)], dim=0)
+            cat_lbls = torch.cat([lbls, pseudo_lbls.to(self.device)], dim=0)
+            is_pseudo = torch.tensor(is_pseudo_list, dtype=torch.bool, device=self.device)
+            ds_t = torch.utils.data.TensorDataset(cat_feats, cat_lbls, is_pseudo)
+        else:
+            ds_t = torch.utils.data.TensorDataset(feats, lbls)
+
         loader_t = torch.utils.data.DataLoader(ds_t, batch_size=64, shuffle=True)
 
         opt = torch.optim.AdamW(self.classifier_head.parameters(), lr=lr, weight_decay=1e-4)
@@ -266,15 +322,29 @@ class ActiveLearningSession:
         l_loss = 0.0
         for _ in range(epochs):
             tot_l, tot_s = 0.0, 0
-            for x_b, y_b in loader_t:
-                logits_b = self.classifier_head(x_b)
-                loss_b = crit(logits_b, y_b.long())
-                opt.zero_grad()
-                loss_b.backward()
-                torch.nn.utils.clip_grad_norm_(self.classifier_head.parameters(), max_norm=1.0)
-                opt.step()
-                tot_l += loss_b.item() * len(x_b)
-                tot_s += len(x_b)
+            if has_pseudo:
+                for x_b, y_b, is_p_b in loader_t:
+                    logits_b = self.classifier_head(x_b)
+                    gen_mask = ~is_p_b
+                    loss_gen = crit(logits_b[gen_mask], y_b[gen_mask].long()) if gen_mask.any() else torch.tensor(0.0, device=self.device)
+                    loss_pseudo = crit(logits_b[is_p_b], y_b[is_p_b].long()) if is_p_b.any() else torch.tensor(0.0, device=self.device)
+                    loss_b = loss_gen + p_weight * loss_pseudo
+                    opt.zero_grad()
+                    loss_b.backward()
+                    torch.nn.utils.clip_grad_norm_(self.classifier_head.parameters(), max_norm=1.0)
+                    opt.step()
+                    tot_l += loss_b.item() * len(x_b)
+                    tot_s += len(x_b)
+            else:
+                for x_b, y_b in loader_t:
+                    logits_b = self.classifier_head(x_b)
+                    loss_b = crit(logits_b, y_b.long())
+                    opt.zero_grad()
+                    loss_b.backward()
+                    torch.nn.utils.clip_grad_norm_(self.classifier_head.parameters(), max_norm=1.0)
+                    opt.step()
+                    tot_l += loss_b.item() * len(x_b)
+                    tot_s += len(x_b)
             sch.step()
             l_loss = tot_l / max(1, tot_s)
 
@@ -647,6 +717,29 @@ class ActiveLearningSession:
 
         self.current_round += 1
         self._train_classifier(epochs=epochs, lr=lr)
+
+        # Confidence-Based Pseudo-Labeling (if enabled)
+        pseudo_stats = {"count": 0, "per_class": {}, "mean_confidence": 0.0}
+        if self.use_pseudo_labeling and self.dataset_manager.num_unlabeled > 0:
+            rem_u_idx = self.dataset_manager.unlabeled_indices
+            rem_probs_u = self.predict_probs(self.train_feats[rem_u_idx])
+            p_res = self.pseudo_labeler.select_pseudo_labels(
+                probabilities=rem_probs_u,
+                unlabeled_indices=rem_u_idx,
+                num_classes=self.num_classes,
+                labeled_indices=self.dataset_manager.labeled_indices,
+            )
+            if p_res["total_accepted"] > 0:
+                p_feats = self.train_feats[p_res["pseudo_indices"]]
+                p_lbls = torch.tensor(p_res["pseudo_labels"], dtype=torch.long)
+                self._train_classifier(epochs=epochs, lr=lr, pseudo_feats=p_feats, pseudo_lbls=p_lbls)
+                pseudo_stats = {
+                    "count": p_res["total_accepted"],
+                    "per_class": p_res["per_class_counts"],
+                    "mean_confidence": p_res["mean_confidence"],
+                }
+        self.last_pseudo_stats = pseudo_stats
+
         test_metrics = self.evaluate_test()
         target_status = self._check_target_reached(test_metrics)
 
@@ -656,6 +749,8 @@ class ActiveLearningSession:
             "round": self.current_round,
             "num_labeled": self.dataset_manager.num_labeled,
             "num_unlabeled": self.dataset_manager.num_unlabeled,
+            "num_pseudo": pseudo_stats["count"],
+            "pseudo_stats": pseudo_stats,
             "query_time": self.last_retrain_time,
             "train_time": self.last_retrain_time,
             "retrain_loss": self.last_retrain_loss,
@@ -675,6 +770,8 @@ class ActiveLearningSession:
             "current_round": self.current_round,
             "num_labeled": self.dataset_manager.num_labeled,
             "num_unlabeled": self.dataset_manager.num_unlabeled,
+            "num_pseudo": pseudo_stats["count"],
+            "pseudo_stats": pseudo_stats,
             "retrain_loss": self.last_retrain_loss,
             "train_time": self.last_retrain_time,
             "trainable_parameters": trainable_params,
@@ -703,8 +800,31 @@ class ActiveLearningSession:
         # Increment round
         self.current_round += 1
 
-        # Retrain classifier head
+        # Retrain classifier head on genuine labels
         self._train_classifier(epochs=epochs, lr=lr)
+
+        # Confidence-Based Pseudo-Labeling (if enabled)
+        pseudo_stats = {"count": 0, "per_class": {}, "mean_confidence": 0.0}
+        if self.use_pseudo_labeling and self.dataset_manager.num_unlabeled > 0:
+            rem_u_idx = self.dataset_manager.unlabeled_indices
+            rem_probs_u = self.predict_probs(self.train_feats[rem_u_idx])
+            p_res = self.pseudo_labeler.select_pseudo_labels(
+                probabilities=rem_probs_u,
+                unlabeled_indices=rem_u_idx,
+                num_classes=self.num_classes,
+                labeled_indices=self.dataset_manager.labeled_indices,
+            )
+            if p_res["total_accepted"] > 0:
+                p_feats = self.train_feats[p_res["pseudo_indices"]]
+                p_lbls = torch.tensor(p_res["pseudo_labels"], dtype=torch.long)
+                self._train_classifier(epochs=epochs, lr=lr, pseudo_feats=p_feats, pseudo_lbls=p_lbls)
+                pseudo_stats = {
+                    "count": p_res["total_accepted"],
+                    "per_class": p_res["per_class_counts"],
+                    "mean_confidence": p_res["mean_confidence"],
+                }
+        self.last_pseudo_stats = pseudo_stats
+
         test_metrics = self.evaluate_test()
         target_status = self._check_target_reached(test_metrics)
 
@@ -714,6 +834,8 @@ class ActiveLearningSession:
             "round": self.current_round,
             "num_labeled": self.dataset_manager.num_labeled,
             "num_unlabeled": self.dataset_manager.num_unlabeled,
+            "num_pseudo": pseudo_stats["count"],
+            "pseudo_stats": pseudo_stats,
             "query_time": self.last_retrain_time, # updated
             "train_time": self.last_retrain_time,
             "retrain_loss": self.last_retrain_loss,
@@ -735,6 +857,8 @@ class ActiveLearningSession:
             "current_round": self.current_round,
             "num_labeled": self.dataset_manager.num_labeled,
             "num_unlabeled": self.dataset_manager.num_unlabeled,
+            "num_pseudo": pseudo_stats["count"],
+            "pseudo_stats": pseudo_stats,
             "retrain_loss": self.last_retrain_loss,
             "train_time": self.last_retrain_time,
             "trainable_parameters": trainable_params,

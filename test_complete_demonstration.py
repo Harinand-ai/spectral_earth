@@ -59,6 +59,16 @@ def test_full_pipeline():
         retrain_res = post_json("/api/annotate_and_retrain", {"epochs": 25, "lr": 0.0005})
         print(f"  [OK] Oracle Annotation & Retraining: Annotated {retrain_res['annotated_count']} samples, Retrain Loss: {retrain_res['retrain_loss']:.4f}, OA: {retrain_res['metrics']['OverallAccuracy']*100:.2f}%")
 
+        # 6b. Verify Confidence-Based Pseudo-Labeling Endpoint & Execution
+        pseudo_cfg = post_json("/api/session/set_pseudo_labeling", {
+            "use_pseudo_labeling": True,
+            "pseudo_threshold": 0.95,
+            "pseudo_weight": 0.2,
+            "max_pseudo_per_class": 15
+        })
+        assert pseudo_cfg["status"] == "success", "Failed to configure pseudo-labeling"
+        print(f"  [OK] Pseudo-Labeling Configured: {pseudo_cfg['pseudo_labeling_config']}")
+
         # 7. Before vs After Maps
         ba_res = get_json("/api/before_after_maps")
         print(f"  [OK] Before vs After Maps generated.")

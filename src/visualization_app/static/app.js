@@ -312,6 +312,36 @@ function initEventListeners() {
         });
     }
 
+    // Pseudo-labeling toggle
+    const pseudoSel = document.getElementById("pseudoToggleSelect");
+    if (pseudoSel) {
+        pseudoSel.addEventListener("change", async (e) => {
+            const isEnabled = (e.target.value === "on");
+            try {
+                const res = await fetch("/api/session/set_pseudo_labeling", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        use_pseudo_labeling: isEnabled,
+                        pseudo_threshold: 0.95,
+                        pseudo_weight: 0.2,
+                        max_pseudo_per_class: 15
+                    }),
+                });
+                await res.json();
+                const pDot = document.getElementById("pseudoStatusDot");
+                const pLabel = document.getElementById("pseudoStatusLabel");
+                if (pDot && pLabel) {
+                    pDot.style.display = isEnabled ? "inline" : "none";
+                    pLabel.style.display = isEnabled ? "inline" : "none";
+                }
+                showToast(isEnabled ? "Confidence Pseudo-Labeling Enabled (tau=0.95, lambda=0.2, class_cap=15)" : "Pseudo-Labeling Disabled", isEnabled ? "success" : "info");
+            } catch (err) {
+                console.error("Error setting pseudo labeling:", err);
+            }
+        });
+    }
+
     // Target OA setter
     const btnSetTarget = document.getElementById("btnSetTarget");
     if (btnSetTarget) {
@@ -1216,6 +1246,17 @@ async function annotateAndRetrain() {
         const unlblEl = document.getElementById("metricUnlabeled");
         if (unlblEl) unlblEl.innerText = data.num_unlabeled.toLocaleString();
 
+        if (data.num_pseudo !== undefined) {
+            const pseudoMetricEl = document.getElementById("metricPseudo");
+            const pseudoDotEl = document.getElementById("pseudoStatusDot");
+            const pseudoLabelEl = document.getElementById("pseudoStatusLabel");
+            if (pseudoMetricEl) pseudoMetricEl.innerText = data.num_pseudo;
+            if (data.num_pseudo > 0) {
+                if (pseudoDotEl) pseudoDotEl.style.display = "inline";
+                if (pseudoLabelEl) pseudoLabelEl.style.display = "inline";
+            }
+        }
+
         if (data.target_status) {
             updateTargetBadge(data.target_status);
         }
@@ -1305,6 +1346,24 @@ async function fetchRoundProgression() {
         const res = await fetch("/api/round_progression");
         const data = await res.json();
         const history = data.history;
+
+        const pSel = document.getElementById("pseudoToggleSelect");
+        const pDot = document.getElementById("pseudoStatusDot");
+        const pLabel = document.getElementById("pseudoStatusLabel");
+        const pMetric = document.getElementById("metricPseudo");
+
+        if (data.use_pseudo_labeling) {
+            if (pSel) pSel.value = "on";
+            if (pDot) pDot.style.display = "inline";
+            if (pLabel) pLabel.style.display = "inline";
+            if (pMetric && data.last_pseudo_stats) {
+                pMetric.innerText = data.last_pseudo_stats.count || 0;
+            }
+        } else {
+            if (pSel) pSel.value = "off";
+            if (pDot) pDot.style.display = "none";
+            if (pLabel) pLabel.style.display = "none";
+        }
 
         renderProgressionChart(history);
     } catch (err) {

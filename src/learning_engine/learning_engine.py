@@ -40,11 +40,26 @@ class LearningEngine:
         device: Optional[str] = None,
         multi_label: bool = False,
         use_class_weights: bool = False,
+        use_pseudo_labeling: bool = False,
+        pseudo_threshold: float = 0.95,
+        pseudo_weight: float = 0.2,
+        max_pseudo_per_class: int = 15,
     ):
         self.num_classes = num_classes
         self.dataset_manager = dataset_manager
         self.multi_label = multi_label
         self.use_class_weights = use_class_weights
+        self.use_pseudo_labeling = use_pseudo_labeling
+        self.pseudo_threshold = pseudo_threshold
+        self.pseudo_weight = pseudo_weight
+        self.max_pseudo_per_class = max_pseudo_per_class
+
+        from .pseudo_labeler import ConfidencePseudoLabeler
+        self.pseudo_labeler = ConfidencePseudoLabeler(
+            confidence_threshold=pseudo_threshold,
+            max_pseudo_per_class=max_pseudo_per_class,
+            pseudo_weight=pseudo_weight,
+        )
 
         # Initialize Model A modules
         self.feature_extractor = FeatureExtractor(backbone=backbone, feature_dim=feature_dim)
@@ -181,6 +196,52 @@ class LearningEngine:
             lr=lr,
             class_weights=class_weights,
         )
+
+        pseudo_stats = {"count": 0, "per_class": {}, "mean_confidence": 0.0}
+        if self.use_pseudo_labeling and self.dataset_manager.num_unlabeled > 0:
+            rem_loader = self.dataset_manager.get_unlabeled_dataloader(batch_size=batch_size)
+            rem_embeds, rem_probs = self.trainer.extract_unlabeled_embeddings_and_probs(
+                feature_extractor=self.feature_extractor,
+                classifier_head=self.classifier_head,
+                unlabeled_dataloader=rem_loader,
+            )
+            p_res = self.pseudo_labeler.select_pseudo_labels(
+                probabilities=rem_probs,
+                unlabeled_indices=self.dataset_manager.unlabeled_indices,
+                num_classes=self.num_classes,
+                labeled_indices=self.dataset_manager.labeled_indices,
+            )
+            if p_res["total_accepted"] > 0:
+                class PseudoDataset(torch.utils.data.Dataset):
+                    def __init__(self, base_ds, g_indices, p_lbls):
+                        self.base_ds = base_ds
+                        self.g_indices = g_indices
+                        self.p_lbls = p_lbls
+                    def __len__(self):
+                        return len(self.g_indices)
+                    def __getitem__(self, i):
+                        it = self.base_ds[self.g_indices[i]]
+                        img = it["image"] if isinstance(it, dict) else it[0]
+                        return {"image": img, "label": int(self.p_lbls[i])}
+
+                pseudo_ds = PseudoDataset(self.dataset_manager.train_dataset, p_res["pseudo_indices"], p_res["pseudo_labels"])
+                pseudo_loader = torch.utils.data.DataLoader(pseudo_ds, batch_size=batch_size, shuffle=True)
+                retrain_loss = self.trainer.train_classifier_head(
+                    feature_extractor=self.feature_extractor,
+                    classifier_head=self.classifier_head,
+                    labeled_dataloader=labeled_loader,
+                    epochs=epochs_per_round,
+                    lr=lr,
+                    class_weights=class_weights,
+                    pseudo_dataloader=pseudo_loader,
+                    pseudo_weight=self.pseudo_weight,
+                )
+                pseudo_stats = {
+                    "count": p_res["total_accepted"],
+                    "per_class": p_res["per_class_counts"],
+                    "mean_confidence": p_res["mean_confidence"],
+                }
+
         train_time = time.time() - t_tr_start
 
         # 5. Evaluate
@@ -191,6 +252,8 @@ class LearningEngine:
             "round": current_round + 1,
             "num_labeled": self.dataset_manager.num_labeled,
             "num_unlabeled": self.dataset_manager.num_unlabeled,
+            "num_pseudo": pseudo_stats["count"],
+            "pseudo_stats": pseudo_stats,
             "queried_samples": len(added_global_indices),
             "retrain_loss": retrain_loss,
             "query_time": float(query_time),

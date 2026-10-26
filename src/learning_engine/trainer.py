@@ -48,9 +48,12 @@ class ActiveLearningTrainer:
         weight_decay: float = 1e-4,
         reset_head: bool = False,
         class_weights: Optional[torch.Tensor] = None,
+        pseudo_dataloader: Optional[DataLoader] = None,
+        pseudo_weight: float = 0.0,
     ) -> float:
         """
         Train/retrain the classifier head while keeping feature_extractor strictly frozen.
+        Supports combined loss L = L_genuine + lambda_p * L_pseudo when pseudo_dataloader is provided.
         
         Returns:
             Average training loss in the final epoch.
@@ -88,11 +91,14 @@ class ActiveLearningTrainer:
             criterion = nn.CrossEntropyLoss(weight=class_weights)
 
         last_epoch_loss = 0.0
+        use_pseudo = (pseudo_dataloader is not None and len(pseudo_dataloader) > 0 and pseudo_weight > 0.0)
 
         for epoch in range(epochs):
             total_loss = 0.0
             total_samples = 0
             
+            pseudo_iter = iter(pseudo_dataloader) if use_pseudo else None
+
             for batch in labeled_dataloader:
                 if isinstance(batch, dict):
                     x = batch["image"].to(self.device)
@@ -108,9 +114,33 @@ class ActiveLearningTrainer:
                 logits = classifier_head(embeddings)
 
                 if self.multi_label:
-                    loss = criterion(logits, y.float())
+                    gen_loss = criterion(logits, y.float())
                 else:
-                    loss = criterion(logits, y.long())
+                    gen_loss = criterion(logits, y.long())
+
+                pseudo_loss = torch.tensor(0.0, device=self.device)
+                if use_pseudo and pseudo_iter is not None:
+                    try:
+                        p_batch = next(pseudo_iter)
+                    except StopIteration:
+                        pseudo_iter = iter(pseudo_dataloader)
+                        p_batch = next(pseudo_iter)
+
+                    if isinstance(p_batch, dict):
+                        p_x = p_batch["image"].to(self.device)
+                        p_y = p_batch["label"].to(self.device)
+                    else:
+                        p_x, p_y = p_batch[0].to(self.device), p_batch[1].to(self.device)
+
+                    with torch.no_grad():
+                        p_embeds = feature_extractor(p_x)
+                    p_logits = classifier_head(p_embeds)
+                    if self.multi_label:
+                        pseudo_loss = criterion(p_logits, p_y.float())
+                    else:
+                        pseudo_loss = criterion(p_logits, p_y.long())
+
+                loss = gen_loss + pseudo_weight * pseudo_loss
 
                 optimizer.zero_grad()
                 loss.backward()

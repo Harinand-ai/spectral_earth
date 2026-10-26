@@ -98,6 +98,14 @@
                             <button class="btn btn-secondary" id="btnSetTarget" style="padding:4px 8px; font-size:11px;">Set</button>
                         </div>
                     </div>
+
+                    <div class="control-field" id="pseudoLabelContainer">
+                        <label for="pseudoToggleSelect" class="control-label" title="Confidence-Based Pseudo-Labeling (tau >= 0.95, lambda_p = 0.2, per-class cap)">Pseudo-Label:</label>
+                        <select id="pseudoToggleSelect" class="select-input" style="font-weight:600;">
+                            <option value="off" selected>Off (Baseline)</option>
+                            <option value="on">On (tau=0.95)</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="control-group-status">
@@ -105,6 +113,8 @@
                         <span class="status-label">Round: <strong id="metricRound">0 / 5</strong></span>
                         <span class="status-dot">&bull;</span>
                         <span class="status-label">Labeled: <strong id="metricLabeled">160</strong></span>
+                        <span class="status-dot" id="pseudoStatusDot" style="display:none;">&bull;</span>
+                        <span class="status-label" id="pseudoStatusLabel" style="display:none;">Pseudo: <strong id="metricPseudo" style="color:var(--accent,#38bdf8);">0</strong></span>
                     </div>
                     <span class="badge badge-warning" id="targetStatusBadge">TARGET NOT REACHED</span>
                 </div>

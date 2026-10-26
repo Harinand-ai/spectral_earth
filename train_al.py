@@ -104,11 +104,20 @@ def run_active_learning(cfg: DictConfig):
     log.info(f"Dataset Initialized: Total Train={len(train_dataset)}, Initial Labeled={dataset_manager.num_labeled}, Initial Unlabeled={dataset_manager.num_unlabeled}")
 
     # 5. Instantiate Model A (Learning Engine)
+    use_pseudo_labeling = al_cfg.get("use_pseudo_labeling", False)
+    pseudo_threshold = al_cfg.get("pseudo_threshold", 0.95)
+    pseudo_weight = al_cfg.get("pseudo_weight", 0.2)
+    max_pseudo_per_class = al_cfg.get("max_pseudo_per_class", 15)
+
     learning_engine = LearningEngine(
         backbone=backbone,
         num_classes=num_classes,
         dataset_manager=dataset_manager,
         device="cuda" if torch.cuda.is_available() else "cpu",
+        use_pseudo_labeling=use_pseudo_labeling,
+        pseudo_threshold=pseudo_threshold,
+        pseudo_weight=pseudo_weight,
+        max_pseudo_per_class=max_pseudo_per_class,
     )
 
     # Load pretrained weights if ckpt_path is provided
