@@ -102,8 +102,8 @@
                     <div class="control-field" id="pseudoLabelContainer">
                         <label for="pseudoToggleSelect" class="control-label" title="Confidence-Based Pseudo-Labeling (tau >= 0.95, lambda_p = 0.2, per-class cap)">Pseudo-Label:</label>
                         <select id="pseudoToggleSelect" class="select-input" style="font-weight:600;">
-                            <option value="off" selected>Off (Baseline)</option>
-                            <option value="on">On (tau=0.95)</option>
+                            <option value="off">Off (Baseline)</option>
+                            <option value="on" selected>On (tau=0.95 - Proposed)</option>
                         </select>
                     </div>
                 </div>
@@ -120,8 +120,8 @@
                 </div>
 
                 <div class="control-actions" id="workflowActionGroup">
-                    <button class="btn btn-primary" id="btnInitialPredict" style="font-size:12px;">⚡ Initial Prediction</button>
-                    <button class="btn btn-secondary disabled-stage" id="btnRunQuery" disabled style="font-size:12px;">1. Query Samples (k=20)</button>
+                    <button class="btn btn-secondary" id="btnInitialPredict" style="font-size:12px;">⚡ Baseline Preview</button>
+                    <button class="btn btn-primary" id="btnRunQuery" style="font-size:12px;">1. Query Samples (k=20)</button>
                     <button class="btn btn-secondary disabled-stage" id="btnSubmitAnnotate" disabled style="font-size:12px;">2. Retrain Classifier</button>
                     <button class="btn btn-outline" id="btnExportSession" style="font-size:12px;">Export</button>
                 </div>
@@ -152,14 +152,14 @@
                     </div>
 
                     <!-- EMPTY STATE PLACEHOLDER -->
-                    <div class="empty-state-box" id="sceneEmptyState">
+                    <div class="empty-state-box" id="sceneEmptyState" style="display:none;">
                         <div class="empty-state-icon">🗺️</div>
                         <h4 class="empty-state-title">No Scene Prediction Generated Yet</h4>
                         <p class="empty-state-desc">Click <span class="empty-state-cta">Initial Prediction</span> above to compute frozen SpectralEarth foundation embeddings and project the baseline classification map.</p>
                     </div>
 
                     <!-- ACTIVE VISUALIZATION CONTENT -->
-                    <div id="sceneActiveContent" style="display:none;">
+                    <div id="sceneActiveContent" style="display:block;">
                         <!-- 3D SCENE VIEW CONTAINER -->
                         <div id="scene3DContainer" style="display:block;">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
@@ -170,6 +170,31 @@
                                 <div style="display:flex; gap:6px;">
                                     <button class="btn btn-secondary btn-sm" id="btnScene3DReset" onclick="resetScene3DCamera()" style="font-size:11px; padding:2px 8px;" title="Reset 3D camera to default isometric view">↺ Reset View</button>
                                     <button class="btn btn-secondary btn-sm" id="btnScene3DAutoRotate" onclick="toggleScene3DAutoRotate()" style="font-size:11px; padding:2px 8px;" title="Toggle smooth rotation"><span id="scene3dRotateIcon">⟳</span> Auto-Rotate</button>
+                                </div>
+                            </div>
+
+                            <!-- 3D Layer Toggles & Real-Time Classification Statistics Panel -->
+                            <div id="scene3dLayerToggles" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; padding:6px 10px; background:rgba(15,23,42,0.65); border:1px solid var(--border-color); border-radius:6px; flex-wrap:wrap; gap:8px;">
+                                <div style="display:flex; align-items:center; gap:12px; font-size:11.5px; flex-wrap:wrap;">
+                                    <span style="font-weight:700; color:var(--text-primary);"><span style="color:var(--primary);">3D Layers:</span></span>
+                                    <label style="display:flex; align-items:center; gap:5px; cursor:pointer; color:var(--text-secondary); margin:0;">
+                                        <input type="checkbox" id="toggle3dPredictions" checked onchange="update3DLayers()"> <span>🎨 Model Predictions</span>
+                                    </label>
+                                    <label style="display:flex; align-items:center; gap:5px; cursor:pointer; color:var(--text-secondary); margin:0;">
+                                        <input type="checkbox" id="toggle3dHuman" checked onchange="update3DLayers()"> <span><span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:#3b82f6; border:1.5px solid #ffffff; vertical-align:middle;"></span> Human Labels</span>
+                                    </label>
+                                    <label style="display:flex; align-items:center; gap:5px; cursor:pointer; color:var(--text-secondary); margin:0;">
+                                        <input type="checkbox" id="toggle3dPseudo" checked onchange="update3DLayers()"> <span><span style="display:inline-block; width:8px; height:8px; transform:rotate(45deg); background:#fbbf24; border:1px solid #d97706; vertical-align:middle;"></span> Pseudo Labels</span>
+                                    </label>
+                                    <label style="display:flex; align-items:center; gap:5px; cursor:pointer; color:var(--text-secondary); margin:0;">
+                                        <input type="checkbox" id="toggle3dQueried" checked onchange="update3DLayers()"> <span><span style="color:#ef4444; font-weight:700;">◆</span> Queried #1–#20</span>
+                                    </label>
+                                </div>
+                                <div id="scene3dStatsStrip" style="font-size:11px; color:var(--text-muted); display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                                    <span>Human: <strong id="stat3dHumanCount" style="color:var(--text-primary);">160</strong></span> &bull;
+                                    <span>Predicted: <strong id="stat3dPredCount" style="color:var(--text-primary);">0</strong></span> &bull;
+                                    <span>Pseudo (τ≥0.95): <strong id="stat3dPseudoCount" style="color:#fbbf24;">0</strong></span> &bull;
+                                    <span>Test OA: <strong id="stat3dTestOA" style="color:var(--success);">--</strong></span>
                                 </div>
                             </div>
 
@@ -246,10 +271,13 @@
 
             <!-- SELECTED PIXELS TABLE -->
             <div class="card margin-top" id="cardQuerySelection">
-                <div class="card-header">
+                <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
                     <div>
                         <h3 class="card-title">Selected Informative Samples (Query Batch k=20)</h3>
                         <p class="card-subtitle" id="tableSubtitle">Inspect feature context or assign user annotations</p>
+                    </div>
+                    <div style="display:flex; gap:8px; align-items:center;">
+                        <button class="btn btn-secondary btn-sm" id="btnAutoFillOracle" onclick="autoFillOracleLabels()" style="display:none; font-size:11.5px; padding:4px 10px;" title="Pre-fill verified Oracle Ground Truth labels for quick inspection & training">✓ Pre-fill Oracle Labels</button>
                     </div>
                 </div>
 
@@ -734,6 +762,6 @@
 
     <!-- JS SCRIPTS -->
     <script src="/static/tutorial_engine.js?v=3"></script>
-    <script src="/static/app.js?v=3"></script>
+    <script src="/static/app.js?v=1793861744"></script>
 </body>
 </html>

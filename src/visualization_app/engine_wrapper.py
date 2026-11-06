@@ -196,7 +196,7 @@ class ActiveLearningSession:
         self.prev_prediction_map = None
 
         # Pseudo-labeling configuration (kept optional and disabled by default)
-        self.use_pseudo_labeling = False
+        self.use_pseudo_labeling = True
         self.pseudo_threshold = 0.95
         self.pseudo_weight = 0.2
         self.max_pseudo_per_class = 15
@@ -207,6 +207,7 @@ class ActiveLearningSession:
             pseudo_weight=self.pseudo_weight,
         )
         self.last_pseudo_stats = {"count": 0, "per_class": {}, "mean_confidence": 0.0}
+        self.last_pseudo_points = []
 
         self._train_classifier(epochs=25, lr=0.0005)
         init_metrics = self.evaluate_test()
@@ -317,7 +318,7 @@ class ActiveLearningSession:
 
         opt = torch.optim.AdamW(self.classifier_head.parameters(), lr=lr, weight_decay=1e-4)
         sch = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=max(1, epochs), eta_min=1e-5)
-        crit = nn.CrossEntropyLoss()
+        crit = nn.CrossEntropyLoss(reduction="none")
 
         l_loss = 0.0
         for _ in range(epochs):
@@ -325,10 +326,14 @@ class ActiveLearningSession:
             if has_pseudo:
                 for x_b, y_b, is_p_b in loader_t:
                     logits_b = self.classifier_head(x_b)
-                    gen_mask = ~is_p_b
-                    loss_gen = crit(logits_b[gen_mask], y_b[gen_mask].long()) if gen_mask.any() else torch.tensor(0.0, device=self.device)
-                    loss_pseudo = crit(logits_b[is_p_b], y_b[is_p_b].long()) if is_p_b.any() else torch.tensor(0.0, device=self.device)
-                    loss_b = loss_gen + p_weight * loss_pseudo
+                    sample_losses = crit(logits_b, y_b.long())
+                    sample_weights = torch.where(
+                        is_p_b,
+                        torch.as_tensor(p_weight, dtype=torch.float32, device=self.device),
+                        torch.tensor(1.0, dtype=torch.float32, device=self.device),
+                    )
+                    loss_b = (sample_weights * sample_losses).mean()
+
                     opt.zero_grad()
                     loss_b.backward()
                     torch.nn.utils.clip_grad_norm_(self.classifier_head.parameters(), max_norm=1.0)
@@ -338,7 +343,7 @@ class ActiveLearningSession:
             else:
                 for x_b, y_b in loader_t:
                     logits_b = self.classifier_head(x_b)
-                    loss_b = crit(logits_b, y_b.long())
+                    loss_b = crit(logits_b, y_b.long()).mean()
                     opt.zero_grad()
                     loss_b.backward()
                     torch.nn.utils.clip_grad_norm_(self.classifier_head.parameters(), max_norm=1.0)
@@ -468,11 +473,40 @@ class ActiveLearningSession:
             pred_map[r, c] = int(preds_all[idx])
             conf_map[r, c] = float(confs_all[idx])
 
+        # Verified Human-Labelled Points
+        human_points = []
+        for idx in self.dataset_manager.labeled_indices:
+            r, c = self.train_ds.samples[idx]
+            cls_idx = int(self.user_annotations.get(int(idx), self.train_lbls[idx].item()))
+            human_points.append({
+                "coord": [int(r), int(c)],
+                "row": int(r),
+                "col": int(c),
+                "class_id": cls_idx,
+                "class_name": self.class_names[cls_idx] if cls_idx < len(self.class_names) else f"Class {cls_idx}",
+                "global_index": int(idx),
+                "is_oracle_verified": True
+            })
+
+        pseudo_points = getattr(self, "last_pseudo_points", [])
+        current_oa = float((self.history[-1]["metrics"]["OverallAccuracy"] * 100) if self.history else 0.0)
+
         return {
             "prediction_map": pred_map.tolist(),
             "confidence_map": conf_map.tolist(),
             "uncertainty_map": unc_map.tolist(),
             "uncertainty_method": uncertainty_method,
+            "human_points": human_points,
+            "pseudo_points": pseudo_points,
+            "class_names": self.class_names,
+            "class_colors": self.class_colors,
+            "statistics": {
+                "human_labeled_samples": len(self.dataset_manager.labeled_indices),
+                "predicted_pixels": int(np.count_nonzero(pred_map >= 0)),
+                "accepted_pseudo_labels": len(pseudo_points),
+                "current_test_accuracy": current_oa,
+                "round": self.current_round,
+            }
         }
 
     def run_query_selection(self, k=20, uncertainty_method="filter_diversity"):
@@ -588,6 +622,8 @@ class ActiveLearningSession:
                 "relative_index": int(r_idx),
                 "coord": [int(r), int(c)],
                 "predicted_class": self.class_names[pred_cls_idx],
+                "oracle_class": self.class_names[int(self.train_lbls[g_idx].item())],
+                "oracle_class_id": int(self.train_lbls[g_idx].item()),
                 "max_probability": top_prob,
                 "least_confidence": lc_val,
                 "diversity_score": div_val,
@@ -720,6 +756,7 @@ class ActiveLearningSession:
 
         # Confidence-Based Pseudo-Labeling (if enabled)
         pseudo_stats = {"count": 0, "per_class": {}, "mean_confidence": 0.0}
+        self.last_pseudo_points = []
         if self.use_pseudo_labeling and self.dataset_manager.num_unlabeled > 0:
             rem_u_idx = self.dataset_manager.unlabeled_indices
             rem_probs_u = self.predict_probs(self.train_feats[rem_u_idx])
@@ -738,6 +775,18 @@ class ActiveLearningSession:
                     "per_class": p_res["per_class_counts"],
                     "mean_confidence": p_res["mean_confidence"],
                 }
+                self.last_pseudo_points = [
+                    {
+                        "coord": [int(self.train_ds.samples[p_idx][0]), int(self.train_ds.samples[p_idx][1])],
+                        "row": int(self.train_ds.samples[p_idx][0]),
+                        "col": int(self.train_ds.samples[p_idx][1]),
+                        "class_id": int(p_res["pseudo_labels"][i]),
+                        "class_name": self.class_names[int(p_res["pseudo_labels"][i])] if int(p_res["pseudo_labels"][i]) < len(self.class_names) else f"Class {p_res['pseudo_labels'][i]}",
+                        "confidence": float(p_res["pseudo_confidences"][i]),
+                        "global_index": int(p_idx),
+                    }
+                    for i, p_idx in enumerate(p_res["pseudo_indices"])
+                ]
         self.last_pseudo_stats = pseudo_stats
 
         test_metrics = self.evaluate_test()
@@ -805,6 +854,7 @@ class ActiveLearningSession:
 
         # Confidence-Based Pseudo-Labeling (if enabled)
         pseudo_stats = {"count": 0, "per_class": {}, "mean_confidence": 0.0}
+        self.last_pseudo_points = []
         if self.use_pseudo_labeling and self.dataset_manager.num_unlabeled > 0:
             rem_u_idx = self.dataset_manager.unlabeled_indices
             rem_probs_u = self.predict_probs(self.train_feats[rem_u_idx])
@@ -823,6 +873,18 @@ class ActiveLearningSession:
                     "per_class": p_res["per_class_counts"],
                     "mean_confidence": p_res["mean_confidence"],
                 }
+                self.last_pseudo_points = [
+                    {
+                        "coord": [int(self.train_ds.samples[p_idx][0]), int(self.train_ds.samples[p_idx][1])],
+                        "row": int(self.train_ds.samples[p_idx][0]),
+                        "col": int(self.train_ds.samples[p_idx][1]),
+                        "class_id": int(p_res["pseudo_labels"][i]),
+                        "class_name": self.class_names[int(p_res["pseudo_labels"][i])] if int(p_res["pseudo_labels"][i]) < len(self.class_names) else f"Class {p_res['pseudo_labels'][i]}",
+                        "confidence": float(p_res["pseudo_confidences"][i]),
+                        "global_index": int(p_idx),
+                    }
+                    for i, p_idx in enumerate(p_res["pseudo_indices"])
+                ]
         self.last_pseudo_stats = pseudo_stats
 
         test_metrics = self.evaluate_test()

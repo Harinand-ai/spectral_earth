@@ -25,11 +25,21 @@ cross_sensor_demo = CrossSensorDemonstrator()
 # Serve static files (HTML, CSS, JS)
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 os.makedirs(static_dir, exist_ok=True)
+@app.middleware("http")
+async def add_no_cache_headers(request, call_next):
+    response = await call_next(request)
+    if request.url.path.startswith("/static/") or request.url.path == "/" or request.url.path.startswith("/api/"):
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+    return response
+
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 class SelectDatasetRequest(BaseModel):
     dataset_name: str
     seed: Optional[int] = 42
+    reset: Optional[bool] = False
     use_pseudo_labeling: Optional[bool] = False
     pseudo_threshold: Optional[float] = 0.95
     pseudo_weight: Optional[float] = 0.2
@@ -113,7 +123,7 @@ def select_dataset(req: SelectDatasetRequest):
     if req.dataset_name not in DATASET_META:
         raise HTTPException(status_code=400, detail=f"Unknown dataset: {req.dataset_name}")
 
-    if req.dataset_name in session_cache:
+    if req.dataset_name in session_cache and not req.reset:
         active_session = session_cache[req.dataset_name]
     else:
         active_session = ActiveLearningSession(dataset_name=req.dataset_name, seed=req.seed)
@@ -181,6 +191,16 @@ def set_mode(req: SetModeRequest):
         raise HTTPException(status_code=400, detail="Mode must be 'human' or 'oracle'")
     session.mode = req.mode
     return {"status": "success", "mode": session.mode}
+
+@app.post("/api/session/reset")
+def reset_session():
+    """Reset the current dataset active learning session back to round 0."""
+    global active_session, session_cache
+    session = get_current_session()
+    ds_name = session.dataset_name
+    active_session = ActiveLearningSession(dataset_name=ds_name, seed=42)
+    session_cache[ds_name] = active_session
+    return {"status": "success", "dataset_name": ds_name, "num_labeled": active_session.dataset_manager.num_labeled}
 
 @app.get("/api/scene_data")
 def get_scene_data():

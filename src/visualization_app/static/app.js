@@ -11,6 +11,24 @@ let querySelectionData = null;
 let isDatasetLoading = false;
 let hasPredicted = false;
 let hasQueried = false;
+// currentSceneViewMode hoisted to top globals
+
+// 3D Post-Annotation Visualization Layer Toggles
+let show3DPredictions = true;
+let hasRetrained = false;
+let show3DHuman = true;
+let show3DPseudo = true;
+let show3DQueried = true;
+
+function hexToRgb(hex) {
+    if (!hex) return 'rgb(37, 99, 235)';
+    if (hex.startsWith('rgb')) return hex;
+    let c = hex.replace('#', '').trim();
+    if (c.length === 3) c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
+    const num = parseInt(c, 16);
+    if (isNaN(num)) return 'rgb(37, 99, 235)';
+    return `rgb(${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255})`;
+}
 
 // TOAST NOTIFICATIONS HELPER
 function showToast(message, type = "success", duration = 3200) {
@@ -49,14 +67,15 @@ function setButtonLoading(btn, isLoading, loadingText = "Loading...") {
 // PROGRESSIVE DISCLOSURE RESET
 function resetProgressiveDisclosure() {
     hasPredicted = false;
+    hasRetrained = false;
     hasQueried = false;
     querySelectionData = null;
 
     const sceneEmpty = document.getElementById("sceneEmptyState");
     const sceneActive = document.getElementById("sceneActiveContent");
     const sceneControls = document.getElementById("sceneMapControls");
-    if (sceneEmpty) sceneEmpty.style.display = "flex";
-    if (sceneActive) sceneActive.style.display = "none";
+    if (sceneEmpty) sceneEmpty.style.display = "none";
+    if (sceneActive) sceneActive.style.display = "block";
     if (sceneControls) sceneControls.style.display = "none";
 
     const infoEl = document.getElementById("scene3dSelectedInfo");
@@ -79,17 +98,10 @@ function resetProgressiveDisclosure() {
     if (tableEmpty) tableEmpty.style.display = "flex";
     if (tableWrapper) tableWrapper.style.display = "none";
 
-    const btnPredict = document.getElementById("btnInitialPredict");
-    if (btnPredict) {
-        btnPredict.disabled = false;
-        btnPredict.className = "btn btn-primary";
-        btnPredict.innerHTML = "⚡ Initial Prediction";
-    }
-
     const btnQuery = document.getElementById("btnRunQuery");
     if (btnQuery) {
-        btnQuery.disabled = true;
-        btnQuery.className = "btn btn-secondary disabled-stage";
+        btnQuery.disabled = false;
+        btnQuery.className = "btn btn-primary";
         btnQuery.innerHTML = "1. Query Samples (k=20)";
     }
 
@@ -719,13 +731,32 @@ async function loadDataset(dsName, userInitiated = false) {
         renderSceneMeta();
         renderClassLegend();
 
-        // Progressive disclosure initial state
-        resetProgressiveDisclosure();
+        // Ensure 3D viewport active content is immediately visible
+        const sceneEmpty = document.getElementById("sceneEmptyState");
+        const sceneActive = document.getElementById("sceneActiveContent");
+        if (sceneEmpty) sceneEmpty.style.display = "none";
+        if (sceneActive) sceneActive.style.display = "block";
+
+        const btnQuery = document.getElementById("btnRunQuery");
+        if (btnQuery) {
+            btnQuery.disabled = false;
+            btnQuery.classList.remove("disabled-stage", "btn-secondary");
+            btnQuery.classList.add("btn-primary");
+        }
+
+        // Fetch initial baseline predictions so stats & classification data are immediately available
+        try {
+            await fetchAndRenderPredictionsAndUncertainty();
+        } catch (predErr) {
+            console.warn("Initial baseline prediction fetch error:", predErr);
+        }
+
         await fetchRoundProgression();
         isDatasetLoading = false;
 
-        // Render clean 3D scene plane for newly selected dataset
+        // Render 3D scene and update stats panel
         renderScene3D();
+        update3DStatsPanel();
 
         if (window.tutorialEngine && window.tutorialEngine.isActive) {
             if (window.tutorialEngine.currentState === "PREPARE") {
@@ -787,6 +818,7 @@ async function fetchAndRenderPredictionsAndUncertainty() {
     try {
         const res = await fetch(`/api/predictions_and_uncertainty?uncertainty_method=${currentUncertaintyMethod}`);
         lastPredictionsData = await res.json();
+        window.lastPredictionsData = lastPredictionsData;
         renderSpatialCanvas();
     } catch (err) {
         console.error("Error fetching predictions:", err);
@@ -985,9 +1017,17 @@ async function runQuerySelection() {
         querySelectionData = await res.json();
         window.querySelectionData = querySelectionData;
 
+        const btnRetrain = document.getElementById("btnSubmitAnnotate");
+        if (btnRetrain) {
+            btnRetrain.disabled = false;
+            btnRetrain.classList.remove("disabled-stage", "btn-secondary");
+            btnRetrain.classList.add("btn-success");
+        }
+
         renderQuerySelectionTable();
         renderSpatialCanvas();
         renderScene3D();
+        update3DStatsPanel();
 
         switchMap("unc");
         // Guided State Machine Event
@@ -1014,14 +1054,19 @@ function renderQuerySelectionTable() {
     if (!tbody) return;
     tbody.innerHTML = "";
 
+    const btnOracle = document.getElementById("btnAutoFillOracle");
+    if (btnOracle) {
+        btnOracle.style.display = currentMode === "human" ? "inline-block" : "none";
+    }
+
     querySelectionData.selected_samples.forEach((s) => {
         const tr = document.createElement("tr");
 
         let classSelectHtml = "";
         if (sceneData && sceneData.class_names) {
             const options = sceneData.class_names.map(cName => {
-                const selected = cName === s.predicted_class ? "selected" : "";
-                return `<option value="${cName}" ${selected}>${cName}</option>`;
+                const isSelected = (s.oracle_class && cName === s.oracle_class) || (!s.oracle_class && cName === s.predicted_class);
+                return `<option value="${cName}" ${isSelected ? "selected" : ""}>${cName}</option>`;
             }).join("");
             classSelectHtml = `<select class="select-input user-class-select" data-global-index="${s.global_index}" style="padding:2px 6px; font-size:11px;">${options}</select>`;
         } else {
@@ -1035,10 +1080,21 @@ function renderQuerySelectionTable() {
             <td><strong style="color:var(--danger);">${s.least_confidence.toFixed(3)}</strong></td>
             <td style="font-size:11px; color:var(--text-secondary); max-width:180px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;" title="${s.selection_reason}">${s.selection_reason}</td>
             <td><button class="btn btn-secondary btn-sm" onclick="inspectSample(${s.global_index}, ${s.rank})">Inspect</button></td>
-            <td>${currentMode === "human" ? classSelectHtml : `<span style="font-size:11px; color:var(--text-muted);">Oracle Ground Truth</span>`}</td>
+            <td>${currentMode === "human" ? classSelectHtml : `<span style="font-size:11px; color:var(--text-muted);">Oracle: <strong>${s.oracle_class || 'Verified'}</strong></span>`}</td>
         `;
         tbody.appendChild(tr);
     });
+}
+
+function autoFillOracleLabels() {
+    if (!querySelectionData || !querySelectionData.selected_samples) return;
+    querySelectionData.selected_samples.forEach(s => {
+        const sel = document.querySelector(`.user-class-select[data-global-index="${s.global_index}"]`);
+        if (sel && s.oracle_class) {
+            sel.value = s.oracle_class;
+        }
+    });
+    showToast("Loaded Oracle Ground Truth labels for inspection & retraining.", "success");
 }
 
 function getClassColor(clsName) {
@@ -1233,7 +1289,7 @@ async function annotateAndRetrain() {
         const res = await fetch(endpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ epochs: 25, lr: 0.0005 }),
+            body: JSON.stringify(bodyPayload),
         });
         const data = await res.json();
 
@@ -1286,13 +1342,23 @@ async function annotateAndRetrain() {
         // Refresh progression table & curves
         fetchRoundProgression();
 
-        // Update 3D scene & 2D canvas
+        // Mark retrained state and ensure 3D prediction layer is active
+        hasRetrained = true;
+        show3DPredictions = true;
+        const togglePred = document.getElementById("toggle3dPredictions");
+        if (togglePred) togglePred.checked = true;
+
+        // Update 3D scene, stats, and 2D canvas
         renderSpatialCanvas();
         renderScene3D();
+        update3DStatsPanel();
+
         const badgeEl = document.getElementById("scene3dSamplesBadge");
-        if (badgeEl) badgeEl.innerHTML = `Query Informative Samples to display 20 AL candidate locations in 3D`;
+        if (badgeEl && lastPredictionsData && lastPredictionsData.statistics) {
+            badgeEl.innerHTML = `Post-Annotation 3D Classification Map &bull; Round ${lastPredictionsData.statistics.round} &bull; ${lastPredictionsData.statistics.predicted_pixels.toLocaleString()} Pixels Classified`;
+        }
         const infoEl = document.getElementById("scene3dSelectedInfo");
-        if (infoEl) infoEl.innerHTML = `<span style="color:var(--success); font-weight:600; margin-right:6px;">✓</span> Retraining complete. Model updated with newly labeled samples.`;
+        if (infoEl) infoEl.innerHTML = `<span style="color:var(--success); font-weight:600; margin-right:6px;">✓</span> Retraining complete. 3D surface updated with model predictions across all eligible pixels.`;
 
         switchMap("pred");
         // Guided State Machine Event
@@ -2267,7 +2333,7 @@ function renderSampleSpectrumChart(data) {
 /* =========================================================================
    INTERACTIVE 3D HYPERSPECTRAL SCENE & QUERIED SAMPLE SYSTEM
    ========================================================================= */
-let currentSceneViewMode = '3d'; // '3d' or '2d'
+// currentSceneViewMode hoisted to top globals
 let isScene3DAutoRotating = false;
 let scene3DRotationRafId = null;
 let scene3DCameraAngle = -Math.PI / 2;
@@ -2308,14 +2374,97 @@ function setSceneViewMode(mode) {
     }
 }
 
+function update3DLayers() {
+    const togglePred = document.getElementById("toggle3dPredictions");
+    const toggleHuman = document.getElementById("toggle3dHuman");
+    const togglePseudo = document.getElementById("toggle3dPseudo");
+    const toggleQueried = document.getElementById("toggle3dQueried");
+
+    show3DPredictions = togglePred ? togglePred.checked : true;
+    show3DHuman = toggleHuman ? toggleHuman.checked : true;
+    show3DPseudo = togglePseudo ? togglePseudo.checked : true;
+    show3DQueried = toggleQueried ? toggleQueried.checked : true;
+
+    renderScene3D();
+}
+
+function update3DStatsPanel() {
+    try {
+        const statHuman = document.getElementById("stat3dHumanCount");
+        const statPred = document.getElementById("stat3dPredCount");
+        const statPseudo = document.getElementById("stat3dPseudoCount");
+        const statOA = document.getElementById("stat3dTestOA");
+        const badgeEl = document.getElementById("scene3dSamplesBadge");
+
+        let humanCount = 160;
+        let predCount = 0;
+        let pseudoCount = 0;
+        let roundNum = 0;
+        let oaVal = "--";
+
+        if (sceneData) {
+            humanCount = sceneData.num_labeled || 160;
+        }
+
+        if (lastPredictionsData && lastPredictionsData.statistics) {
+            const s = lastPredictionsData.statistics;
+            humanCount = s.human_labeled_samples || humanCount;
+            pseudoCount = s.accepted_pseudo_labels || 0;
+            roundNum = s.round || 0;
+            if (hasRetrained || roundNum > 0) {
+                predCount = s.predicted_pixels || 0;
+            } else {
+                predCount = 0;
+            }
+            if (s.current_test_accuracy > 0) {
+                oaVal = `${s.current_test_accuracy.toFixed(2)}%`;
+            }
+        }
+
+        if (oaVal === "--") {
+            const metricOaEl = document.getElementById("metricOA");
+            if (metricOaEl && metricOaEl.innerText && metricOaEl.innerText !== "--") {
+                oaVal = metricOaEl.innerText;
+            }
+        }
+
+        if (statHuman) statHuman.innerText = humanCount;
+        if (statPred) statPred.innerText = predCount > 0 ? predCount.toLocaleString() : "0";
+        if (statPseudo) statPseudo.innerText = pseudoCount;
+        if (statOA) statOA.innerText = oaVal;
+
+        if (badgeEl) {
+            const hasSamples = querySelectionData && querySelectionData.selected_samples && querySelectionData.selected_samples.length > 0;
+            if (hasSamples) {
+                badgeEl.innerHTML = `Round ${roundNum}: <strong>${querySelectionData.selected_samples.length} Queried Candidates</strong> (#1–#20)`;
+            } else if (lastPredictionsData && lastPredictionsData.prediction_map) {
+                badgeEl.innerHTML = `Post-Annotation 3D Classification Map &bull; Round ${roundNum} &bull; ${predCount.toLocaleString()} Pixels Classified`;
+            } else {
+                badgeEl.innerHTML = `3D Hyperspectral Dataset View &bull; ${humanCount} Labeled Seeds`;
+            }
+        }
+    } catch (err) {
+        console.error("Error updating 3D stats panel:", err);
+    }
+}
+
+function showGeneric3DInfo(htmlContent) {
+    const infoEl = document.getElementById("scene3dSelectedInfo");
+    if (!infoEl) return;
+    infoEl.innerHTML = `<div style="font-size:11.5px; line-height:1.5;">${htmlContent}</div>`;
+}
+
 function renderScene3D() {
     if (!sceneData || !window.Plotly) return;
     const sceneEl = document.getElementById("hsiSpatialScene3D");
     if (!sceneEl) return;
 
+    // Immediately update stats panel on every render
+    update3DStatsPanel();
+
     const [height, width] = sceneData.dimensions;
 
-    // Subsample high-resolution scenes (e.g. Salinas 512x217, Pavia 610x340) for 60fps responsiveness
+    // Subsample high-resolution scenes for 60fps WebGL responsiveness
     let step = 1;
     if (width > 200 || height > 200) {
         step = Math.max(1, Math.floor(Math.max(width, height) / 220));
@@ -2338,55 +2487,204 @@ function renderScene3D() {
     const zGrid = new Array(M);
     const colorGrid = new Array(M);
 
-    const rawIndices = sceneData.scene_color_indices;
-    for (let i = 0; i < M; i++) {
-        const r = yGrid[i];
-        const zRow = new Array(N);
-        const cRow = new Array(N);
-        const rawRow = rawIndices ? rawIndices[r] : null;
-        for (let j = 0; j < N; j++) {
-            const c = xGrid[j];
-            zRow[j] = 0;
-            cRow[j] = rawRow ? rawRow[c] : 128;
+    const hasPredictions = lastPredictionsData && lastPredictionsData.prediction_map;
+    const roundNum = lastPredictionsData?.statistics?.round || 0;
+    const isPredictMode = (hasRetrained || roundNum > 0) && show3DPredictions && hasPredictions;
+
+    let colorscale = sceneData.scene_colorscale;
+    let cmin = 0;
+    let cmax = 255;
+
+    if (isPredictMode) {
+        // Build discrete step colorscale mapping each eligible pixel to its predicted land-cover class color
+        const numClasses = sceneData.num_classes || 16;
+        const totalBuckets = numClasses + 1; // Bucket 0: background, Buckets 1..C: classes
+        const classColors = sceneData.class_colors || [];
+
+        colorscale = [];
+        const bgRgb = 'rgb(15, 23, 42)'; // subtle dark background for non-ground-truth pixels
+        colorscale.push([0, bgRgb]);
+        colorscale.push([1 / totalBuckets, bgRgb]);
+
+        for (let c = 0; c < numClasses; c++) {
+            const rgbColor = hexToRgb(classColors[c] || '#2563eb');
+            const startVal = (c + 1) / totalBuckets;
+            const endVal = (c + 2) / totalBuckets;
+            colorscale.push([startVal, rgbColor]);
+            colorscale.push([endVal, rgbColor]);
         }
-        zGrid[i] = zRow;
-        colorGrid[i] = cRow;
+        cmin = 0;
+        cmax = totalBuckets;
+
+        const predMap = lastPredictionsData.prediction_map;
+        for (let i = 0; i < M; i++) {
+            const r = yGrid[i];
+            const zRow = new Array(N);
+            const cRow = new Array(N);
+            const pRow = predMap ? predMap[r] : null;
+            for (let j = 0; j < N; j++) {
+                const c = xGrid[j];
+                zRow[j] = 0;
+                const predVal = pRow ? pRow[c] : -1;
+                if (predVal < 0) {
+                    cRow[j] = 0.5; // background bucket
+                } else {
+                    cRow[j] = predVal + 1.5; // class bucket
+                }
+            }
+            zGrid[i] = zRow;
+            colorGrid[i] = cRow;
+        }
+    } else {
+        // Initial authentic hyperspectral false-color composite
+        const rawIndices = sceneData.scene_color_indices;
+        for (let i = 0; i < M; i++) {
+            const r = yGrid[i];
+            const zRow = new Array(N);
+            const cRow = new Array(N);
+            const rawRow = rawIndices ? rawIndices[r] : null;
+            for (let j = 0; j < N; j++) {
+                const c = xGrid[j];
+                zRow[j] = 0;
+                cRow[j] = rawRow ? rawRow[c] : 128;
+            }
+            zGrid[i] = zRow;
+            colorGrid[i] = cRow;
+        }
     }
 
     const traces = [];
 
-    // Base Surface Trace: Real Hyperspectral Spatial Image
+    // TRACE 1: Base 3D Surface (False-color HSI or Predicted Classification Map)
     const surfaceTrace = {
         type: 'surface',
         x: xGrid,
         y: yGrid,
         z: zGrid,
         surfacecolor: colorGrid,
-        colorscale: sceneData.scene_colorscale,
-        cmin: 0,
-        cmax: 255,
+        colorscale: colorscale,
+        cmin: cmin,
+        cmax: cmax,
         showscale: false,
-        name: `${currentDataset} Spatial Scene`,
+        name: isPredictMode ? 'Predicted Classification Map' : `${currentDataset} Spatial Scene`,
         hoverinfo: 'none'
     };
     traces.push(surfaceTrace);
 
-    // 20 Active Learning Queried Candidates Trace
-    const hasSamples = querySelectionData && querySelectionData.selected_samples && querySelectionData.selected_samples.length > 0;
-    const badgeEl = document.getElementById("scene3dSamplesBadge");
-    if (badgeEl) {
-        if (hasSamples) {
-            badgeEl.innerHTML = `${querySelectionData.selected_samples.length} Queried Samples: <strong>#1–#${querySelectionData.selected_samples.length}</strong> (Active Learning Rank)`;
-        } else {
-            badgeEl.innerHTML = `Query Informative Samples to display 20 AL candidate locations in 3D`;
-        }
+    // TRACE 2: Verified Human-Labelled Points Layer (solid circles with crisp white border at Z=1.0)
+    if (show3DHuman && lastPredictionsData && lastPredictionsData.human_points && lastPredictionsData.human_points.length > 0) {
+        const humanPts = lastPredictionsData.human_points;
+        const hX = humanPts.map(p => p.col);
+        const hY = humanPts.map(p => p.row);
+        const hZ = new Array(humanPts.length).fill(1.0);
+        const hColors = humanPts.map(p => {
+            if (sceneData.class_colors && p.class_id >= 0 && p.class_id < sceneData.class_colors.length) {
+                return sceneData.class_colors[p.class_id];
+            }
+            return '#3b82f6';
+        });
+        const hCustom = humanPts.map((p, idx) => [
+            p.class_name,
+            idx + 1,
+            p.global_index,
+            p.col,
+            p.row
+        ]);
+
+        const humanTrace = {
+            type: 'scatter3d',
+            mode: 'markers',
+            name: 'Human-Labelled Points',
+            x: hX,
+            y: hY,
+            z: hZ,
+            marker: {
+                size: 5.5,
+                color: hColors,
+                symbol: 'circle',
+                line: { color: '#ffffff', width: 2.0 },
+                opacity: 0.95
+            },
+            customdata: hCustom,
+            hovertemplate:
+                '<b>✓ Human-Labelled (Oracle Ground Truth)</b><br>' +
+                'Class: <b>%{customdata[0]}</b><br>' +
+                'Coordinates: (X: %{customdata[3]}, Y: %{customdata[4]})<br>' +
+                'Verified Sample #%{customdata[1]} (Global: %{customdata[2]})<extra></extra>'
+        };
+        traces.push(humanTrace);
     }
 
-    if (hasSamples && show3DSamples) {
+    // TRACE 3: Accepted High-Confidence Pseudo-Labelled Points Layer (gold diamonds at Z=2.0 with stems)
+    if (show3DPseudo && lastPredictionsData && lastPredictionsData.pseudo_points && lastPredictionsData.pseudo_points.length > 0) {
+        const pseudoPts = lastPredictionsData.pseudo_points;
+        const pX = pseudoPts.map(p => p.col);
+        const pY = pseudoPts.map(p => p.row);
+        const pZ = new Array(pseudoPts.length).fill(2.0);
+        const pCustom = pseudoPts.map((p, idx) => [
+            p.class_name,
+            p.confidence,
+            idx + 1,
+            p.col,
+            p.row
+        ]);
+
+        const pLineX = [];
+        const pLineY = [];
+        const pLineZ = [];
+        for (let i = 0; i < pseudoPts.length; i++) {
+            pLineX.push(pseudoPts[i].col, pseudoPts[i].col, null);
+            pLineY.push(pseudoPts[i].row, pseudoPts[i].row, null);
+            pLineZ.push(0, 2.0, null);
+        }
+
+        const pseudoLinesTrace = {
+            type: 'scatter3d',
+            mode: 'lines',
+            x: pLineX,
+            y: pLineY,
+            z: pLineZ,
+            line: {
+                color: 'rgba(251, 191, 36, 0.40)',
+                width: 1.5,
+                dash: 'dot'
+            },
+            name: 'Pseudo-Label Projections',
+            hoverinfo: 'none'
+        };
+        traces.push(pseudoLinesTrace);
+
+        const pseudoTrace = {
+            type: 'scatter3d',
+            mode: 'markers',
+            name: 'Accepted Pseudo-Labels (τ ≥ 0.95)',
+            x: pX,
+            y: pY,
+            z: pZ,
+            marker: {
+                size: 6.5,
+                color: '#fbbf24',
+                symbol: 'diamond',
+                line: { color: '#f59e0b', width: 2.0 },
+                opacity: 0.95
+            },
+            customdata: pCustom,
+            hovertemplate:
+                '<b>⚡ Accepted Pseudo-Label (τ ≥ 0.95, λ=0.2)</b><br>' +
+                'Predicted Class: <b>%{customdata[0]}</b><br>' +
+                'Model Confidence: <b>%{customdata[1]:.4f}</b><br>' +
+                'Coordinates: (X: %{customdata[3]}, Y: %{customdata[4]})<extra></extra>'
+        };
+        traces.push(pseudoTrace);
+    }
+
+    // TRACE 4: Queried Candidates Trace (at Z=4.0 with drop lines)
+    const hasSamples = querySelectionData && querySelectionData.selected_samples && querySelectionData.selected_samples.length > 0;
+    if (hasSamples && show3DQueried) {
         const samples = querySelectionData.selected_samples;
-        const xCoords = samples.map(s => s.coord[1]); // image column = X
-        const yCoords = samples.map(s => s.coord[0]); // image row = Y
-        const zCoords = new Array(samples.length).fill(4.0); // elevated slightly above plane for 3D visibility
+        const xCoords = samples.map(s => s.coord[1]);
+        const yCoords = samples.map(s => s.coord[0]);
+        const zCoords = new Array(samples.length).fill(4.0);
         const textLabels = samples.map(s => `#${s.rank}`);
 
         const stratName = currentStrategy === 'filter_diversity'
@@ -2395,7 +2693,6 @@ function renderScene3D() {
                 ? 'Least Confidence'
                 : 'Random Sampling';
 
-        // STRICT GROUND TRUTH PRIVACY: Ground truth is NEVER included in Human Annotation Mode
         const customData = samples.map(s => [
             s.rank,
             s.global_index,
@@ -2403,31 +2700,39 @@ function renderScene3D() {
             s.coord[0],
             s.least_confidence,
             s.predicted_class,
-            stratName
+            stratName,
+            s.oracle_class || 'Oracle Verified'
         ]);
 
-        // Selection Sequence Line: Illustrates spatial diversity coverage without implying physical terrain connection
-        const lineTrace = {
+        const qLineX = [];
+        const qLineY = [];
+        const qLineZ = [];
+        for (let i = 0; i < samples.length; i++) {
+            qLineX.push(samples[i].coord[1], samples[i].coord[1], null);
+            qLineY.push(samples[i].coord[0], samples[i].coord[0], null);
+            qLineZ.push(0, 4.0, null);
+        }
+
+        const dropLinesTrace = {
             type: 'scatter3d',
             mode: 'lines',
-            x: xCoords,
-            y: yCoords,
-            z: new Array(samples.length).fill(3.8),
+            x: qLineX,
+            y: qLineY,
+            z: qLineZ,
             line: {
-                color: 'rgba(245, 158, 11, 0.55)',
-                width: 2.5,
-                dash: 'dot'
+                color: 'rgba(239, 68, 68, 0.45)',
+                width: 1.5,
+                dash: 'dash'
             },
-            name: 'Selection Diversity Path',
+            name: 'Queried Drop Lines',
             hoverinfo: 'none'
         };
-        traces.push(lineTrace);
+        traces.push(dropLinesTrace);
 
-        // Queried Sample Markers (Rank Badges #1–#20)
-        const markersTrace = {
+        const queriedTrace = {
             type: 'scatter3d',
             mode: 'markers+text',
-            name: 'Queried Samples',
+            name: 'Queried Candidates (#1–#20)',
             x: xCoords,
             y: yCoords,
             z: zCoords,
@@ -2441,19 +2746,41 @@ function renderScene3D() {
             },
             marker: {
                 size: 8,
-                color: '#f59e0b',
+                color: '#ef4444',
                 symbol: 'diamond',
                 line: { color: '#ffffff', width: 2 }
             },
             customdata: customData,
             hovertemplate:
-                '<b>Queried Sample #%{customdata[0]}</b><br>' +
+                '<b>Queried Candidate #%{customdata[0]}</b><br>' +
                 'Coordinates: (X: %{customdata[2]}, Y: %{customdata[3]})<br>' +
                 'Uncertainty (LC): %{customdata[4]:.3f}<br>' +
-                'Predicted Class: %{customdata[5]}<br>' +
+                'Predicted: %{customdata[5]}<br>' +
+                'Oracle Class: <b>%{customdata[7]}</b><br>' +
                 'Selection Strategy: %{customdata[6]}<extra></extra>'
         };
-        traces.push(markersTrace);
+        traces.push(queriedTrace);
+    }
+
+    // Preserve existing camera orientation safely without calling non-existent functions
+    let camera = {
+        eye: { x: 0.0, y: -1.35, z: 1.35 },
+        center: { x: 0, y: 0, z: 0 },
+        up: { x: 0, y: 0, z: 1 }
+    };
+    try {
+        if (sceneEl._fullLayout && sceneEl._fullLayout.scene && sceneEl._fullLayout.scene.camera) {
+            const curCam = sceneEl._fullLayout.scene.camera;
+            if (curCam && curCam.eye) {
+                camera = {
+                    eye: { x: curCam.eye.x, y: curCam.eye.y, z: curCam.eye.z },
+                    center: curCam.center ? { x: curCam.center.x, y: curCam.center.y, z: curCam.center.z } : { x: 0, y: 0, z: 0 },
+                    up: curCam.up ? { x: curCam.up.x, y: curCam.up.y, z: curCam.up.z } : { x: 0, y: 0, z: 1 }
+                };
+            }
+        }
+    } catch (camErr) {
+        console.warn("Could not read existing Plotly camera:", camErr);
     }
 
     const layout = {
@@ -2476,17 +2803,13 @@ function renderScene3D() {
                 range: [height + 2, -2]
             },
             zaxis: {
-                title: { text: 'Visual Depth (Z)', font: { size: 9, color: '#94a3b8' } },
+                title: { text: 'Visual Layers (Z)', font: { size: 9, color: '#94a3b8' } },
                 gridcolor: 'rgba(148, 163, 184, 0.1)',
                 backgroundcolor: 'rgba(15, 23, 42, 0.5)',
                 showbackground: true,
                 range: [-0.5, 6]
             },
-            camera: {
-                eye: { x: 0.0, y: -1.35, z: 1.35 },
-                center: { x: 0, y: 0, z: 0 },
-                up: { x: 0, y: 0, z: 1 }
-            },
+            camera: camera,
             aspectratio: { x: 1.0, y: height / width, z: 0.28 }
         },
         showlegend: false
@@ -2502,9 +2825,17 @@ function renderScene3D() {
             if (evt && evt.points && evt.points.length > 0) {
                 const pt = evt.points[0];
                 if (pt.customdata) {
-                    const [rank, gIdx, col, row, lc, predCls, strat] = pt.customdata;
-                    updateScene3DInfoCard(rank, col, row, lc, predCls, strat, gIdx);
-                    inspectSample(gIdx, rank);
+                    if (pt.data.name && pt.data.name.includes('Queried')) {
+                        const [rank, gIdx, col, row, lc, predCls, strat, oraCls] = pt.customdata;
+                        updateScene3DInfoCard(rank, col, row, lc, predCls, strat, gIdx, oraCls);
+                        inspectSample(gIdx, rank);
+                    } else if (pt.data.name && pt.data.name.includes('Human')) {
+                        const [cName, sampleNum, gIdx, col, row] = pt.customdata;
+                        showGeneric3DInfo(`<b>✓ Verified Human-Labelled #${sampleNum}</b> &bull; Class: <strong style="color:var(--primary);">${cName}</strong> &bull; Coord: (${col}, ${row}) &bull; Global Index: ${gIdx}`);
+                    } else if (pt.data.name && pt.data.name.includes('Pseudo')) {
+                        const [cName, conf, pNum, col, row] = pt.customdata;
+                        showGeneric3DInfo(`<b>⚡ Accepted Pseudo-Label #${pNum} (τ ≥ 0.95)</b> &bull; Predicted: <strong style="color:#fbbf24;">${cName}</strong> &bull; Confidence: <strong>${conf.toFixed(4)}</strong> &bull; Coord: (${col}, ${row})`);
+                    }
                 }
             }
         });
@@ -2513,18 +2844,28 @@ function renderScene3D() {
             if (evt && evt.points && evt.points.length > 0) {
                 const pt = evt.points[0];
                 if (pt.customdata) {
-                    const [rank, gIdx, col, row, lc, predCls, strat] = pt.customdata;
-                    updateScene3DInfoCard(rank, col, row, lc, predCls, strat, gIdx);
+                    if (pt.data.name && pt.data.name.includes('Queried')) {
+                        const [rank, gIdx, col, row, lc, predCls, strat, oraCls] = pt.customdata;
+                        updateScene3DInfoCard(rank, col, row, lc, predCls, strat, gIdx, oraCls);
+                    } else if (pt.data.name && pt.data.name.includes('Human')) {
+                        const [cName, sampleNum, gIdx, col, row] = pt.customdata;
+                        showGeneric3DInfo(`<b>✓ Verified Human-Labelled #${sampleNum}</b> &bull; Class: <strong style="color:var(--primary);">${cName}</strong> &bull; Coord: (${col}, ${row}) &bull; Global Index: ${gIdx}`);
+                    } else if (pt.data.name && pt.data.name.includes('Pseudo')) {
+                        const [cName, conf, pNum, col, row] = pt.customdata;
+                        showGeneric3DInfo(`<b>⚡ Accepted Pseudo-Label #${pNum} (τ ≥ 0.95)</b> &bull; Predicted: <strong style="color:#fbbf24;">${cName}</strong> &bull; Confidence: <strong>${conf.toFixed(4)}</strong> &bull; Coord: (${col}, ${row})`);
+                    }
                 }
             }
         });
+    }).catch(err => {
+        console.error("Plotly.react render error in 3D scene:", err);
     });
 }
-
-function updateScene3DInfoCard(rank, x, y, unc, predCls, strat, gIdx) {
+function updateScene3DInfoCard(rank, x, y, unc, predCls, strat, gIdx, oraCls) {
     const infoEl = document.getElementById("scene3dSelectedInfo");
     if (!infoEl) return;
     const uncStr = typeof unc === 'number' ? unc.toFixed(3) : unc;
+    const oracleSnippet = oraCls ? `<strong style="color:var(--text-secondary); margin-left:6px;">Oracle:</strong> <span style="color:var(--success); font-weight:700;">${oraCls}</span> &bull;` : '';
     infoEl.innerHTML = `
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; width:100%;">
             <div style="font-size:11.5px; line-height:1.5;">
@@ -2532,6 +2873,7 @@ function updateScene3DInfoCard(rank, x, y, unc, predCls, strat, gIdx) {
                 <strong style="margin-left:8px; color:var(--text-primary);">Position:</strong> (x=${x}, y=${y}) &bull;
                 <strong style="color:var(--text-secondary);">Uncertainty (LC):</strong> <span style="color:var(--danger); font-weight:700;">${uncStr}</span> &bull;
                 <strong style="color:var(--text-secondary);">Predicted class:</strong> <span style="color:var(--primary); font-weight:600;">${predCls}</span> &bull;
+                ${oracleSnippet}
                 <strong style="color:var(--text-secondary);">Selection method:</strong> <span>${strat}</span>
             </div>
             <button class="btn btn-primary btn-sm" onclick="inspectSample(${gIdx}, ${rank})" style="font-size:11px; padding:3px 10px;">🔍 Inspect Sample #${rank}</button>
@@ -2663,5 +3005,8 @@ window.resetScene3DCamera = resetScene3DCamera;
 window.toggleScene3DAutoRotate = toggleScene3DAutoRotate;
 window.toggleScene3DSamples = toggleScene3DSamples;
 window.inspectSample = inspectSample;
+window.update3DLayers = update3DLayers;
+window.autoFillOracleLabels = autoFillOracleLabels;
+window.update3DStatsPanel = update3DStatsPanel;
 
 

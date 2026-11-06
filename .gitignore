@@ -82,9 +82,34 @@ report/
 egreport.md
 *.pdf
 *.synctex.gz
+*.tex
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.out
+*.toc
+*.lof
+*.lot
+*.bak*
+preview_pages/
 spectral_earth_latex_report.zip
 spectral_earth_latex_package/
 SPECTRALEARTH_FINAL_RESEARCH_REPORT*
+
+# Local markdown files (kept local, only README.md tracked in GitHub)
+*.md
+!README.md
+
+
+# Report / presentation figures & screenshots (kept local)
+/*.png
+ui_*.png
+fig_*.png
+downstream_tasks_*.png
+*logo*.png
+
 
 # ================================
 # OS files
