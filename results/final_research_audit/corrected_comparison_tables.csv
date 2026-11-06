@@ -1,0 +1,82 @@
+dataset,budget,comparison_type,method_name,classifier_head,oa_mean,oa_std,aa_mean,kappa_mean,macro_f1_mean
+Indian Pines,100,A. Acquisition Strategy Comparison (Same Improved Head),Random Sampling,"Improved (512-dim, BN, Cosine Anneal)",50.65,3.48,56.09,0.4378,0.4861
+Indian Pines,100,A. Acquisition Strategy Comparison (Same Improved Head),Pure Uncertainty (Least Confidence),"Improved (512-dim, BN, Cosine Anneal)",47.55,1.29,55.99,0.4129,0.469
+Indian Pines,100,A. Acquisition Strategy Comparison (Same Improved Head),Baseline Unc + Diversity (Euclidean),"Improved (512-dim, BN, Cosine Anneal)",49.35,1.18,56.83,0.4318,0.4769
+Indian Pines,100,A. Acquisition Strategy Comparison (Same Improved Head),Proposed Cosine AL (Unc + Pool Diversity),"Improved (512-dim, BN, Cosine Anneal)",46.58,2.89,57.54,0.4051,0.4753
+Indian Pines,100,A. Acquisition Strategy Comparison (Same Improved Head),Proposed AL + Pseudo-Labeling,"Improved (512-dim, BN, Cosine Anneal)",37.54,14.66,44.42,0.3172,0.362
+Indian Pines,100,B. Classifier Head Ablation,Random (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",42.98,2.06,52.19,0.3519,0.4193
+Indian Pines,100,B. Classifier Head Ablation,Unc+Div (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",41.31,1.56,52.55,0.3392,0.4111
+Indian Pines,100,C. Historical Framework Comparison (Composite System),Original Pipeline (256-dim Head + Euclidean Div),Original (256-dim),41.31,1.56,52.55,0.3392,0.4111
+Indian Pines,100,C. Historical Framework Comparison (Composite System),Proposed Pipeline (512-dim Head + Cosine Pool Div),Improved (512-dim),46.58,2.89,57.54,0.4051,0.4753
+Indian Pines,260,A. Acquisition Strategy Comparison (Same Improved Head),Random Sampling,"Improved (512-dim, BN, Cosine Anneal)",61.66,1.16,61.51,0.5565,0.5665
+Indian Pines,260,A. Acquisition Strategy Comparison (Same Improved Head),Pure Uncertainty (Least Confidence),"Improved (512-dim, BN, Cosine Anneal)",53.03,3.47,59.84,0.4707,0.5419
+Indian Pines,260,A. Acquisition Strategy Comparison (Same Improved Head),Baseline Unc + Diversity (Euclidean),"Improved (512-dim, BN, Cosine Anneal)",59.84,2.6,63.45,0.5374,0.5791
+Indian Pines,260,A. Acquisition Strategy Comparison (Same Improved Head),Proposed Cosine AL (Unc + Pool Diversity),"Improved (512-dim, BN, Cosine Anneal)",60.21,1.37,64.22,0.5461,0.6031
+Indian Pines,260,A. Acquisition Strategy Comparison (Same Improved Head),Proposed AL + Pseudo-Labeling,"Improved (512-dim, BN, Cosine Anneal)",56.03,3.01,51.8,0.4932,0.5191
+Indian Pines,260,B. Classifier Head Ablation,Random (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",45.38,6.2,44.65,0.37,0.42
+Indian Pines,260,B. Classifier Head Ablation,Unc+Div (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",43.61,4.89,39.4,0.3394,0.3668
+Indian Pines,260,C. Historical Framework Comparison (Composite System),Original Pipeline (256-dim Head + Euclidean Div),Original (256-dim),43.61,4.89,39.4,0.3394,0.3668
+Indian Pines,260,C. Historical Framework Comparison (Composite System),Proposed Pipeline (512-dim Head + Cosine Pool Div),Improved (512-dim),60.21,1.37,64.22,0.5461,0.6031
+Indian Pines,980,A. Acquisition Strategy Comparison (Same Improved Head),Random Sampling,"Improved (512-dim, BN, Cosine Anneal)",83.03,1.24,79.91,0.8045,0.8012
+Indian Pines,980,A. Acquisition Strategy Comparison (Same Improved Head),Pure Uncertainty (Least Confidence),"Improved (512-dim, BN, Cosine Anneal)",80.56,0.66,77.98,0.776,0.7779
+Indian Pines,980,A. Acquisition Strategy Comparison (Same Improved Head),Baseline Unc + Diversity (Euclidean),"Improved (512-dim, BN, Cosine Anneal)",85.93,0.39,84.32,0.8378,0.8476
+Indian Pines,980,A. Acquisition Strategy Comparison (Same Improved Head),Proposed Cosine AL (Unc + Pool Diversity),"Improved (512-dim, BN, Cosine Anneal)",86.17,0.2,84.87,0.8412,0.8397
+Indian Pines,980,A. Acquisition Strategy Comparison (Same Improved Head),Proposed AL + Pseudo-Labeling,"Improved (512-dim, BN, Cosine Anneal)",83.59,1.65,79.6,0.8105,0.8245
+Indian Pines,980,B. Classifier Head Ablation,Random (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",66.8,2.15,61.0,0.6109,0.6182
+Indian Pines,980,B. Classifier Head Ablation,Unc+Div (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",67.01,1.46,62.09,0.6133,0.633
+Indian Pines,980,C. Historical Framework Comparison (Composite System),Original Pipeline (256-dim Head + Euclidean Div),Original (256-dim),67.01,1.46,62.09,0.6133,0.633
+Indian Pines,980,C. Historical Framework Comparison (Composite System),Proposed Pipeline (512-dim Head + Cosine Pool Div),Improved (512-dim),86.17,0.2,84.87,0.8412,0.8397
+Salinas,100,A. Acquisition Strategy Comparison (Same Improved Head),Random Sampling,"Improved (512-dim, BN, Cosine Anneal)",65.86,1.41,70.28,0.6238,0.668
+Salinas,100,A. Acquisition Strategy Comparison (Same Improved Head),Pure Uncertainty (Least Confidence),"Improved (512-dim, BN, Cosine Anneal)",62.58,2.27,68.11,0.5906,0.6362
+Salinas,100,A. Acquisition Strategy Comparison (Same Improved Head),Baseline Unc + Diversity (Euclidean),"Improved (512-dim, BN, Cosine Anneal)",63.46,2.54,69.28,0.6009,0.642
+Salinas,100,A. Acquisition Strategy Comparison (Same Improved Head),Proposed Cosine AL (Unc + Pool Diversity),"Improved (512-dim, BN, Cosine Anneal)",62.57,2.42,69.59,0.5916,0.6432
+Salinas,100,A. Acquisition Strategy Comparison (Same Improved Head),Proposed AL + Pseudo-Labeling,"Improved (512-dim, BN, Cosine Anneal)",49.91,20.96,55.05,0.4531,0.4827
+Salinas,100,B. Classifier Head Ablation,Random (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",49.48,4.68,49.9,0.4413,0.4363
+Salinas,100,B. Classifier Head Ablation,Unc+Div (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",39.4,3.93,45.11,0.3393,0.3743
+Salinas,100,C. Historical Framework Comparison (Composite System),Original Pipeline (256-dim Head + Euclidean Div),Original (256-dim),39.4,3.93,45.11,0.3393,0.3743
+Salinas,100,C. Historical Framework Comparison (Composite System),Proposed Pipeline (512-dim Head + Cosine Pool Div),Improved (512-dim),62.57,2.42,69.59,0.5916,0.6432
+Salinas,260,A. Acquisition Strategy Comparison (Same Improved Head),Random Sampling,"Improved (512-dim, BN, Cosine Anneal)",71.94,1.32,73.53,0.6878,0.717
+Salinas,260,A. Acquisition Strategy Comparison (Same Improved Head),Pure Uncertainty (Least Confidence),"Improved (512-dim, BN, Cosine Anneal)",62.88,1.15,68.74,0.595,0.6464
+Salinas,260,A. Acquisition Strategy Comparison (Same Improved Head),Baseline Unc + Diversity (Euclidean),"Improved (512-dim, BN, Cosine Anneal)",67.94,1.49,73.36,0.6476,0.7002
+Salinas,260,A. Acquisition Strategy Comparison (Same Improved Head),Proposed Cosine AL (Unc + Pool Diversity),"Improved (512-dim, BN, Cosine Anneal)",71.99,2.31,76.53,0.6897,0.7399
+Salinas,260,A. Acquisition Strategy Comparison (Same Improved Head),Proposed AL + Pseudo-Labeling,"Improved (512-dim, BN, Cosine Anneal)",65.62,1.01,69.2,0.6214,0.673
+Salinas,260,B. Classifier Head Ablation,Random (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",50.6,3.53,41.07,0.4384,0.3542
+Salinas,260,B. Classifier Head Ablation,Unc+Div (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",45.07,3.81,38.76,0.3847,0.3181
+Salinas,260,C. Historical Framework Comparison (Composite System),Original Pipeline (256-dim Head + Euclidean Div),Original (256-dim),45.07,3.81,38.76,0.3847,0.3181
+Salinas,260,C. Historical Framework Comparison (Composite System),Proposed Pipeline (512-dim Head + Cosine Pool Div),Improved (512-dim),71.99,2.31,76.53,0.6897,0.7399
+Salinas,980,A. Acquisition Strategy Comparison (Same Improved Head),Random Sampling,"Improved (512-dim, BN, Cosine Anneal)",85.17,0.28,87.73,0.8346,0.8752
+Salinas,980,A. Acquisition Strategy Comparison (Same Improved Head),Pure Uncertainty (Least Confidence),"Improved (512-dim, BN, Cosine Anneal)",81.73,0.91,85.98,0.797,0.8555
+Salinas,980,A. Acquisition Strategy Comparison (Same Improved Head),Baseline Unc + Diversity (Euclidean),"Improved (512-dim, BN, Cosine Anneal)",84.4,0.55,89.68,0.8267,0.8943
+Salinas,980,A. Acquisition Strategy Comparison (Same Improved Head),Proposed Cosine AL (Unc + Pool Diversity),"Improved (512-dim, BN, Cosine Anneal)",84.87,1.05,89.13,0.8317,0.8934
+Salinas,980,A. Acquisition Strategy Comparison (Same Improved Head),Proposed AL + Pseudo-Labeling,"Improved (512-dim, BN, Cosine Anneal)",84.52,0.51,88.45,0.8276,0.8863
+Salinas,980,B. Classifier Head Ablation,Random (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",73.87,1.75,72.2,0.7077,0.7174
+Salinas,980,B. Classifier Head Ablation,Unc+Div (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",66.24,1.37,67.92,0.6242,0.6608
+Salinas,980,C. Historical Framework Comparison (Composite System),Original Pipeline (256-dim Head + Euclidean Div),Original (256-dim),66.24,1.37,67.92,0.6242,0.6608
+Salinas,980,C. Historical Framework Comparison (Composite System),Proposed Pipeline (512-dim Head + Cosine Pool Div),Improved (512-dim),84.87,1.05,89.13,0.8317,0.8934
+Pavia University,100,A. Acquisition Strategy Comparison (Same Improved Head),Random Sampling,"Improved (512-dim, BN, Cosine Anneal)",61.17,1.14,54.39,0.4829,0.5244
+Pavia University,100,A. Acquisition Strategy Comparison (Same Improved Head),Pure Uncertainty (Least Confidence),"Improved (512-dim, BN, Cosine Anneal)",50.38,4.43,54.02,0.3857,0.4621
+Pavia University,100,A. Acquisition Strategy Comparison (Same Improved Head),Baseline Unc + Diversity (Euclidean),"Improved (512-dim, BN, Cosine Anneal)",51.53,4.6,56.25,0.3972,0.4797
+Pavia University,100,A. Acquisition Strategy Comparison (Same Improved Head),Proposed Cosine AL (Unc + Pool Diversity),"Improved (512-dim, BN, Cosine Anneal)",49.33,5.19,56.04,0.3877,0.4706
+Pavia University,100,A. Acquisition Strategy Comparison (Same Improved Head),Proposed AL + Pseudo-Labeling,"Improved (512-dim, BN, Cosine Anneal)",43.16,4.57,50.37,0.3221,0.4152
+Pavia University,100,B. Classifier Head Ablation,Random (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",58.75,0.52,49.66,0.4354,0.4737
+Pavia University,100,B. Classifier Head Ablation,Unc+Div (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",51.25,4.38,54.53,0.3943,0.4731
+Pavia University,100,C. Historical Framework Comparison (Composite System),Original Pipeline (256-dim Head + Euclidean Div),Original (256-dim),51.25,4.38,54.53,0.3943,0.4731
+Pavia University,100,C. Historical Framework Comparison (Composite System),Proposed Pipeline (512-dim Head + Cosine Pool Div),Improved (512-dim),49.33,5.19,56.04,0.3877,0.4706
+Pavia University,260,A. Acquisition Strategy Comparison (Same Improved Head),Random Sampling,"Improved (512-dim, BN, Cosine Anneal)",66.79,1.37,60.04,0.5563,0.5885
+Pavia University,260,A. Acquisition Strategy Comparison (Same Improved Head),Pure Uncertainty (Least Confidence),"Improved (512-dim, BN, Cosine Anneal)",64.09,2.96,59.48,0.5303,0.5896
+Pavia University,260,A. Acquisition Strategy Comparison (Same Improved Head),Baseline Unc + Diversity (Euclidean),"Improved (512-dim, BN, Cosine Anneal)",60.34,2.73,59.77,0.4918,0.5433
+Pavia University,260,A. Acquisition Strategy Comparison (Same Improved Head),Proposed Cosine AL (Unc + Pool Diversity),"Improved (512-dim, BN, Cosine Anneal)",56.05,2.91,58.62,0.453,0.5309
+Pavia University,260,A. Acquisition Strategy Comparison (Same Improved Head),Proposed AL + Pseudo-Labeling,"Improved (512-dim, BN, Cosine Anneal)",61.96,4.11,57.58,0.5067,0.5541
+Pavia University,260,B. Classifier Head Ablation,Random (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",60.46,1.65,48.96,0.4578,0.4743
+Pavia University,260,B. Classifier Head Ablation,Unc+Div (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",42.94,4.82,54.75,0.3329,0.4589
+Pavia University,260,C. Historical Framework Comparison (Composite System),Original Pipeline (256-dim Head + Euclidean Div),Original (256-dim),42.94,4.82,54.75,0.3329,0.4589
+Pavia University,260,C. Historical Framework Comparison (Composite System),Proposed Pipeline (512-dim Head + Cosine Pool Div),Improved (512-dim),56.05,2.91,58.62,0.453,0.5309
+Pavia University,980,A. Acquisition Strategy Comparison (Same Improved Head),Random Sampling,"Improved (512-dim, BN, Cosine Anneal)",80.66,0.47,75.58,0.7434,0.7567
+Pavia University,980,A. Acquisition Strategy Comparison (Same Improved Head),Pure Uncertainty (Least Confidence),"Improved (512-dim, BN, Cosine Anneal)",74.17,2.8,72.58,0.6612,0.7216
+Pavia University,980,A. Acquisition Strategy Comparison (Same Improved Head),Baseline Unc + Diversity (Euclidean),"Improved (512-dim, BN, Cosine Anneal)",71.84,1.99,74.53,0.637,0.7146
+Pavia University,980,A. Acquisition Strategy Comparison (Same Improved Head),Proposed Cosine AL (Unc + Pool Diversity),"Improved (512-dim, BN, Cosine Anneal)",73.46,2.09,72.82,0.659,0.7188
+Pavia University,980,A. Acquisition Strategy Comparison (Same Improved Head),Proposed AL + Pseudo-Labeling,"Improved (512-dim, BN, Cosine Anneal)",77.03,2.05,73.34,0.6982,0.7301
+Pavia University,980,B. Classifier Head Ablation,Random (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",72.44,3.1,62.78,0.6203,0.636
+Pavia University,980,B. Classifier Head Ablation,Unc+Div (Original 256-dim Head),"Original (256-dim, LN, Fixed lr)",63.46,2.26,65.12,0.5322,0.6324
+Pavia University,980,C. Historical Framework Comparison (Composite System),Original Pipeline (256-dim Head + Euclidean Div),Original (256-dim),63.46,2.26,65.12,0.5322,0.6324
+Pavia University,980,C. Historical Framework Comparison (Composite System),Proposed Pipeline (512-dim Head + Cosine Pool Div),Improved (512-dim),73.46,2.09,72.82,0.659,0.7188
