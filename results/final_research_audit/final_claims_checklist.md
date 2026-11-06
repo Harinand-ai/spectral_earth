@@ -51,3 +51,4 @@ All differences between Experiment 1 and Track B at $N=980$ are fully explained 
 - **Experiment 1 (7-stage active learning schedule)**: Updates intermediate models at budgets $80, 100, 140, 180, 220, 260, 645$, refining decision boundaries before each small query batch.
 - **Track B (3-stage external benchmark schedule)**: Evaluates non-deep baselines at budgets $100, 260, 980$, selecting a larger batch of 720 samples from the $N=260$ model.
 - Both schedules are methodologically valid and confirm identical relative performance hierarchies.
+

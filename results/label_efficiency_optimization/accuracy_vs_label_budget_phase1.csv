@@ -1,0 +1,76 @@
+dataset,strategy,strategy_code,budget,sample_fraction_pct,oa_mean,oa_sample_std,aa_mean,aa_sample_std,kappa_mean,kappa_sample_std,macro_f1_mean,macro_f1_sample_std,ece_mean,acq_time_mean_s
+Indian Pines,Random Sampling,random,100,0.98,50.65,3.48,56.09,3.24,0.4378,0.0389,0.4861,0.0239,0.1846,0.0013
+Indian Pines,Random Sampling,random,140,1.37,52.28,2.96,57.42,3.87,0.4559,0.0325,0.5044,0.0305,0.1646,0.0013
+Indian Pines,Random Sampling,random,180,1.76,60.14,0.28,61.58,1.95,0.5416,0.0047,0.573,0.0135,0.1757,0.0006
+Indian Pines,Random Sampling,random,220,2.15,63.37,1.43,64.07,1.47,0.5781,0.0167,0.6053,0.0117,0.1286,0.0031
+Indian Pines,Random Sampling,random,260,2.54,61.66,1.17,61.51,1.96,0.5565,0.0106,0.5665,0.0137,0.037,0.0011
+Indian Pines,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,100,0.98,46.57,2.89,57.54,3.83,0.4051,0.0288,0.4753,0.0315,0.2039,0.112
+Indian Pines,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,140,1.37,50.87,4.4,59.83,4.0,0.4521,0.0435,0.5149,0.0359,0.1314,0.111
+Indian Pines,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,180,1.76,57.56,4.32,64.27,1.63,0.5212,0.0456,0.5713,0.0242,0.167,0.1044
+Indian Pines,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,220,2.15,60.57,3.06,66.94,2.28,0.5531,0.0315,0.6296,0.0227,0.1367,0.1158
+Indian Pines,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,260,2.54,60.21,1.36,64.22,1.04,0.5461,0.0153,0.603,0.0206,0.0551,0.1781
+Indian Pines,Pure Uncertainty (Least Confidence),least_confidence,100,0.98,47.55,1.29,55.99,2.54,0.4129,0.0146,0.469,0.0235,0.1922,0.0802
+Indian Pines,Pure Uncertainty (Least Confidence),least_confidence,140,1.37,48.42,3.52,55.56,2.8,0.4219,0.0364,0.4791,0.04,0.1118,0.0693
+Indian Pines,Pure Uncertainty (Least Confidence),least_confidence,180,1.76,53.86,2.01,59.41,2.6,0.4786,0.0222,0.523,0.0256,0.1728,0.0761
+Indian Pines,Pure Uncertainty (Least Confidence),least_confidence,220,2.15,56.55,1.95,60.65,3.26,0.5075,0.0231,0.5479,0.0278,0.1516,0.0696
+Indian Pines,Pure Uncertainty (Least Confidence),least_confidence,260,2.54,53.03,3.47,59.84,2.29,0.4707,0.0378,0.5419,0.0255,0.0539,0.0765
+Indian Pines,Margin Sampling,margin,100,0.98,49.65,2.44,55.99,2.62,0.4287,0.0261,0.4832,0.0292,0.185,0.0793
+Indian Pines,Margin Sampling,margin,140,1.37,53.79,3.46,59.24,2.55,0.4765,0.0325,0.5291,0.0334,0.1077,0.0796
+Indian Pines,Margin Sampling,margin,180,1.76,60.86,1.66,61.44,1.52,0.5498,0.0158,0.5759,0.0176,0.1346,0.0825
+Indian Pines,Margin Sampling,margin,220,2.15,63.8,1.21,64.06,2.44,0.5841,0.013,0.608,0.0072,0.112,0.0723
+Indian Pines,Margin Sampling,margin,260,2.54,62.7,1.22,61.32,0.82,0.5702,0.0122,0.5724,0.0266,0.0469,0.0686
+Indian Pines,Entropy Sampling,entropy,100,0.98,46.08,1.15,54.82,2.39,0.3975,0.0139,0.4502,0.0202,0.1924,0.0843
+Indian Pines,Entropy Sampling,entropy,140,1.37,46.36,1.49,57.03,1.87,0.4017,0.0153,0.4676,0.017,0.1418,0.0773
+Indian Pines,Entropy Sampling,entropy,180,1.76,51.21,2.5,59.47,1.59,0.4516,0.0254,0.5034,0.0136,0.2027,0.0697
+Indian Pines,Entropy Sampling,entropy,220,2.15,55.29,0.33,63.16,1.52,0.494,0.0034,0.5585,0.0054,0.1719,0.081
+Indian Pines,Entropy Sampling,entropy,260,2.54,51.21,6.31,59.61,2.96,0.4511,0.0662,0.5276,0.0465,0.066,0.0655
+Salinas,Random Sampling,random,100,0.18,65.86,1.41,70.28,1.5,0.6238,0.0151,0.668,0.0075,0.0972,0.0086
+Salinas,Random Sampling,random,140,0.25,68.78,0.61,72.29,2.06,0.6548,0.0076,0.699,0.0114,0.065,0.0059
+Salinas,Random Sampling,random,180,0.32,71.68,0.47,74.91,0.87,0.6855,0.0047,0.7387,0.0057,0.11,0.0026
+Salinas,Random Sampling,random,220,0.39,73.59,0.59,76.56,1.45,0.7063,0.0069,0.7532,0.0138,0.0825,0.0037
+Salinas,Random Sampling,random,260,0.46,71.94,1.32,73.53,0.49,0.6878,0.0145,0.717,0.0156,0.0233,0.0014
+Salinas,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,100,0.18,62.57,2.42,69.59,2.46,0.5916,0.0257,0.6432,0.0234,0.1153,0.382
+Salinas,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,140,0.25,63.41,3.76,71.19,2.84,0.6016,0.0393,0.6593,0.0377,0.0722,0.4593
+Salinas,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,180,0.32,71.21,0.98,75.89,1.85,0.6826,0.0107,0.7324,0.014,0.0939,0.4508
+Salinas,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,220,0.39,72.75,1.1,78.16,1.41,0.6994,0.0124,0.7547,0.0143,0.0907,0.3622
+Salinas,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,260,0.46,71.99,2.31,76.53,1.58,0.6897,0.0241,0.7399,0.0213,0.0457,0.3555
+Salinas,Pure Uncertainty (Least Confidence),least_confidence,100,0.18,62.58,2.27,68.11,0.5,0.5906,0.0231,0.6363,0.0097,0.1074,0.3597
+Salinas,Pure Uncertainty (Least Confidence),least_confidence,140,0.25,61.29,1.21,69.03,0.96,0.5799,0.0108,0.6315,0.0031,0.0793,0.3671
+Salinas,Pure Uncertainty (Least Confidence),least_confidence,180,0.32,66.17,1.53,72.2,0.55,0.6296,0.0145,0.6821,0.006,0.1334,0.3083
+Salinas,Pure Uncertainty (Least Confidence),least_confidence,220,0.39,67.56,1.52,73.39,1.47,0.6438,0.0165,0.7028,0.0116,0.1221,0.3449
+Salinas,Pure Uncertainty (Least Confidence),least_confidence,260,0.46,62.88,1.15,68.74,1.66,0.595,0.0111,0.6464,0.02,0.0677,0.3287
+Salinas,Margin Sampling,margin,100,0.18,64.37,1.91,70.56,0.24,0.6091,0.0188,0.6655,0.0131,0.1216,0.3649
+Salinas,Margin Sampling,margin,140,0.25,64.84,2.08,71.45,0.48,0.6152,0.0196,0.6719,0.0018,0.0738,0.4026
+Salinas,Margin Sampling,margin,180,0.32,72.23,1.33,75.84,0.81,0.6916,0.0139,0.742,0.0171,0.0815,0.3291
+Salinas,Margin Sampling,margin,220,0.39,74.09,1.38,77.13,1.88,0.7118,0.0157,0.7577,0.0256,0.077,0.3127
+Salinas,Margin Sampling,margin,260,0.46,71.71,1.7,73.89,2.11,0.6844,0.0173,0.7272,0.0337,0.045,0.3631
+Salinas,Entropy Sampling,entropy,100,0.18,62.94,2.33,68.8,0.52,0.595,0.0235,0.6411,0.0093,0.1039,0.4341
+Salinas,Entropy Sampling,entropy,140,0.25,60.68,2.21,67.88,2.72,0.5728,0.0234,0.6197,0.03,0.0532,0.383
+Salinas,Entropy Sampling,entropy,180,0.32,65.7,0.8,71.53,1.96,0.6241,0.0087,0.6763,0.0215,0.1212,0.3814
+Salinas,Entropy Sampling,entropy,220,0.39,67.25,2.82,73.0,2.55,0.6402,0.0299,0.7011,0.0281,0.1183,0.4119
+Salinas,Entropy Sampling,entropy,260,0.46,64.96,3.37,68.81,4.15,0.6145,0.036,0.661,0.0451,0.0649,0.3939
+Pavia University,Random Sampling,random,100,0.23,61.17,1.14,54.39,2.22,0.4829,0.0084,0.5244,0.0215,0.2247,0.0
+Pavia University,Random Sampling,random,140,0.33,63.56,0.96,55.8,3.71,0.5144,0.0232,0.5442,0.03,0.1598,0.0056
+Pavia University,Random Sampling,random,180,0.42,65.46,1.32,59.24,3.41,0.5406,0.0248,0.5793,0.0338,0.1863,0.0054
+Pavia University,Random Sampling,random,220,0.51,67.08,1.98,60.58,3.34,0.564,0.0264,0.5951,0.0346,0.158,0.0056
+Pavia University,Random Sampling,random,260,0.61,66.79,1.37,60.04,1.86,0.5563,0.0181,0.5885,0.0187,0.061,0.0028
+Pavia University,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,100,0.23,49.33,5.18,56.04,1.2,0.3876,0.045,0.4706,0.0179,0.2907,0.3647
+Pavia University,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,140,0.33,50.48,4.25,56.46,1.4,0.4007,0.0335,0.4863,0.0182,0.2558,0.3251
+Pavia University,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,180,0.42,54.02,1.42,59.73,2.33,0.4398,0.0155,0.5334,0.0129,0.2831,0.3559
+Pavia University,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,220,0.51,56.69,1.39,60.85,2.05,0.4649,0.0187,0.5533,0.0155,0.2486,0.3568
+Pavia University,Proposed Cosine AL (Unc + Pool Diversity),proposed_cosine_al,260,0.61,56.05,2.9,58.62,0.7,0.453,0.0284,0.5309,0.0248,0.1537,0.3491
+Pavia University,Pure Uncertainty (Least Confidence),least_confidence,100,0.23,50.38,4.44,54.02,1.85,0.3857,0.0322,0.4621,0.0098,0.2769,0.313
+Pavia University,Pure Uncertainty (Least Confidence),least_confidence,140,0.33,52.15,6.16,56.79,0.87,0.4117,0.057,0.4885,0.0355,0.2081,0.3064
+Pavia University,Pure Uncertainty (Least Confidence),least_confidence,180,0.42,54.76,7.34,58.09,2.5,0.4396,0.069,0.5205,0.0391,0.2531,0.3127
+Pavia University,Pure Uncertainty (Least Confidence),least_confidence,220,0.51,61.96,3.54,60.34,2.27,0.5126,0.0345,0.5727,0.0095,0.2086,0.329
+Pavia University,Pure Uncertainty (Least Confidence),least_confidence,260,0.61,64.09,2.96,59.48,1.47,0.5303,0.034,0.5896,0.0098,0.0859,0.3214
+Pavia University,Margin Sampling,margin,100,0.23,54.52,2.06,55.4,0.31,0.4272,0.0198,0.4955,0.0054,0.2679,0.596
+Pavia University,Margin Sampling,margin,140,0.33,61.03,1.32,57.8,1.41,0.4923,0.0133,0.548,0.0205,0.1693,0.286
+Pavia University,Margin Sampling,margin,180,0.42,66.32,2.59,61.61,2.21,0.5542,0.0303,0.5968,0.035,0.1631,0.2733
+Pavia University,Margin Sampling,margin,220,0.51,69.36,1.59,64.02,1.0,0.5924,0.019,0.6271,0.0217,0.1485,0.2382
+Pavia University,Margin Sampling,margin,260,0.61,67.96,1.06,61.41,2.88,0.5695,0.0153,0.6083,0.0188,0.04,0.2804
+Pavia University,Entropy Sampling,entropy,100,0.23,49.51,4.52,55.4,2.04,0.3783,0.0368,0.4725,0.0066,0.2926,0.1792
+Pavia University,Entropy Sampling,entropy,140,0.33,49.05,5.34,53.48,0.56,0.3677,0.0502,0.4551,0.0331,0.2396,0.1828
+Pavia University,Entropy Sampling,entropy,180,0.42,51.4,4.37,56.28,2.22,0.3969,0.034,0.4951,0.0141,0.2909,0.1772
+Pavia University,Entropy Sampling,entropy,220,0.51,52.69,3.56,56.45,3.57,0.4087,0.0249,0.4995,0.0217,0.2889,0.1737
+Pavia University,Entropy Sampling,entropy,260,0.61,51.32,4.42,55.05,3.55,0.394,0.0402,0.4993,0.0287,0.1913,0.1844

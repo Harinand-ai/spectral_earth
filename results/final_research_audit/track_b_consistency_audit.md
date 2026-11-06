@@ -132,3 +132,4 @@ All literature comparisons in the paper must reference published protocols and b
 - `results/final_research_audit/pavia_allocation_reconciliation.csv` (Audited per-class training allocations across seeds)
 - `results/final_research_audit/experiment1_trackb_reconciliation.csv` (Metric reconciliation table between Exp 1 and Track B)
 - `results/final_research_audit/final_claims_checklist.md` (Verified paper writing claims and guardrails)
+
