@@ -1,73 +1,73 @@
-dataset,target_oa_threshold,strategy,random_measured_budget,random_measured_oa,strategy_measured_budget,strategy_measured_oa,measured_annotation_reduction_pct,measured_labels_saved,random_interp_estimate_budget,strategy_interp_estimate_budget,interp_annotation_reduction_pct,interp_labels_saved,comparison_status
-Indian Pines,55.0,Pure Uncertainty (Least Confidence),180,60.14,220,56.55,-22.22,-40,153.9,197.0,-28.01,-43.1,Both Reached
-Indian Pines,55.0,Baseline Unc + Diversity (Euclidean),180,60.14,180,57.43,0.0,0,153.9,169.0,-9.81,-15.1,Both Reached
-Indian Pines,55.0,Proposed Cosine AL (Unc + Pool Diversity),180,60.14,180,57.56,0.0,0,153.9,164.7,-7.02,-10.8,Both Reached
-Indian Pines,55.0,Proposed AL + Pseudo-Labeling,180,60.14,220,57.63,-22.22,-40,153.9,199.2,-29.43,-45.3,Both Reached
-Indian Pines,60.0,Pure Uncertainty (Least Confidence),180,60.14,645,69.38,-258.33,-465,179.3,424.1,-136.53,-244.8,Both Reached
-Indian Pines,60.0,Baseline Unc + Diversity (Euclidean),180,60.14,220,62.03,-22.22,-40,179.3,202.3,-12.83,-23.0,Both Reached
-Indian Pines,60.0,Proposed Cosine AL (Unc + Pool Diversity),180,60.14,220,60.58,-22.22,-40,179.3,212.3,-18.4,-33.0,Both Reached
-Indian Pines,60.0,Proposed AL + Pseudo-Labeling,180,60.14,645,70.46,-258.33,-465,179.3,366.0,-104.13,-186.7,Both Reached
-Indian Pines,65.0,Pure Uncertainty (Least Confidence),645,73.73,645,69.38,0.0,0,366.5,541.9,-47.86,-175.4,Both Reached
-Indian Pines,65.0,Baseline Unc + Diversity (Euclidean),645,73.73,645,76.35,0.0,0,366.5,380.3,-3.77,-13.8,Both Reached
-Indian Pines,65.0,Proposed Cosine AL (Unc + Pool Diversity),645,73.73,645,75.96,0.0,0,366.5,377.1,-2.89,-10.6,Both Reached
-Indian Pines,65.0,Proposed AL + Pseudo-Labeling,645,73.73,645,70.46,0.0,0,366.5,499.4,-36.26,-132.9,Both Reached
-Indian Pines,70.0,Pure Uncertainty (Least Confidence),645,73.73,980,80.56,-51.94,-335,526.0,663.7,-26.18,-137.7,Both Reached
-Indian Pines,70.0,Baseline Unc + Diversity (Euclidean),645,73.73,645,76.35,0.0,0,526.0,496.9,5.53,29.1,Both Reached
-Indian Pines,70.0,Proposed Cosine AL (Unc + Pool Diversity),645,73.73,645,75.96,0.0,0,526.0,499.3,5.08,26.7,Both Reached
-Indian Pines,70.0,Proposed AL + Pseudo-Labeling,645,73.73,645,70.46,0.0,0,526.0,632.7,-20.29,-106.7,Both Reached
-Indian Pines,75.0,Pure Uncertainty (Least Confidence),980,83.03,980,80.56,0.0,0,690.7,813.5,-17.78,-122.8,Both Reached
-Indian Pines,75.0,Baseline Unc + Diversity (Euclidean),980,83.03,645,76.35,34.18,335,690.7,613.4,11.19,77.3,Both Reached
-Indian Pines,75.0,Proposed Cosine AL (Unc + Pool Diversity),980,83.03,645,75.96,34.18,335,690.7,621.4,10.03,69.3,Both Reached
-Indian Pines,75.0,Proposed AL + Pseudo-Labeling,980,83.03,980,83.59,0.0,0,690.7,760.8,-10.15,-70.1,Both Reached
-Indian Pines,80.0,Pure Uncertainty (Least Confidence),980,83.03,980,80.56,0.0,0,870.8,963.2,-10.61,-92.4,Both Reached
-Indian Pines,80.0,Baseline Unc + Diversity (Euclidean),980,83.03,980,85.93,0.0,0,870.8,772.5,11.29,98.3,Both Reached
-Indian Pines,80.0,Proposed Cosine AL (Unc + Pool Diversity),980,83.03,980,86.17,0.0,0,870.8,777.4,10.73,93.4,Both Reached
-Indian Pines,80.0,Proposed AL + Pseudo-Labeling,980,83.03,980,83.59,0.0,0,870.8,888.3,-2.01,-17.5,Both Reached
-Salinas,55.0,Pure Uncertainty (Least Confidence),100,65.86,100,62.58,0.0,0,100.0,100.0,0.0,0.0,Both Reached
-Salinas,55.0,Baseline Unc + Diversity (Euclidean),100,65.86,100,63.46,0.0,0,100.0,100.0,0.0,0.0,Both Reached
-Salinas,55.0,Proposed Cosine AL (Unc + Pool Diversity),100,65.86,100,62.57,0.0,0,100.0,100.0,0.0,0.0,Both Reached
-Salinas,55.0,Proposed AL + Pseudo-Labeling,100,65.86,180,63.6,-80.0,-80,100.0,141.0,-41.0,-41.0,Both Reached
-Salinas,60.0,Pure Uncertainty (Least Confidence),100,65.86,100,62.58,0.0,0,100.0,100.0,0.0,0.0,Both Reached
-Salinas,60.0,Baseline Unc + Diversity (Euclidean),100,65.86,100,63.46,0.0,0,100.0,100.0,0.0,0.0,Both Reached
-Salinas,60.0,Proposed Cosine AL (Unc + Pool Diversity),100,65.86,100,62.57,0.0,0,100.0,100.0,0.0,0.0,Both Reached
-Salinas,60.0,Proposed AL + Pseudo-Labeling,100,65.86,180,63.6,-80.0,-80,100.0,163.6,-63.6,-63.6,Both Reached
-Salinas,65.0,Pure Uncertainty (Least Confidence),100,65.86,180,66.17,-80.0,-80,100.0,170.4,-70.4,-70.4,Both Reached
-Salinas,65.0,Baseline Unc + Diversity (Euclidean),100,65.86,180,67.81,-80.0,-80,100.0,164.6,-64.6,-64.6,Both Reached
-Salinas,65.0,Proposed Cosine AL (Unc + Pool Diversity),100,65.86,180,71.21,-80.0,-80,100.0,148.2,-48.2,-48.2,Both Reached
-Salinas,65.0,Proposed AL + Pseudo-Labeling,100,65.86,220,69.2,-120.0,-120,100.0,190.0,-90.0,-90.0,Both Reached
-Salinas,70.0,Pure Uncertainty (Least Confidence),180,71.68,645,71.94,-258.33,-465,156.8,562.7,-258.86,-405.9,Both Reached
-Salinas,70.0,Baseline Unc + Diversity (Euclidean),180,71.68,645,77.73,-258.33,-465,156.8,341.2,-117.6,-184.4,Both Reached
-Salinas,70.0,Proposed Cosine AL (Unc + Pool Diversity),180,71.68,180,71.21,0.0,0,156.8,173.8,-10.84,-17.0,Both Reached
-Salinas,70.0,Proposed AL + Pseudo-Labeling,180,71.68,645,77.99,-258.33,-465,156.8,396.3,-152.74,-239.5,Both Reached
-Salinas,75.0,Pure Uncertainty (Least Confidence),645,80.48,980,81.73,-51.94,-335,398.1,749.8,-88.34,-351.7,Both Reached
-Salinas,75.0,Baseline Unc + Diversity (Euclidean),645,80.48,645,77.73,0.0,0,398.1,537.8,-35.09,-139.7,Both Reached
-Salinas,75.0,Proposed Cosine AL (Unc + Pool Diversity),645,80.48,645,79.06,0.0,0,398.1,423.8,-6.46,-25.7,Both Reached
-Salinas,75.0,Proposed AL + Pseudo-Labeling,645,80.48,645,77.99,0.0,0,398.1,551.9,-38.63,-153.8,Both Reached
-Salinas,80.0,Pure Uncertainty (Least Confidence),645,80.48,980,81.73,-51.94,-335,623.5,920.9,-47.7,-297.4,Both Reached
-Salinas,80.0,Baseline Unc + Diversity (Euclidean),645,80.48,980,84.4,-51.94,-335,623.5,759.2,-21.76,-135.7,Both Reached
-Salinas,80.0,Proposed Cosine AL (Unc + Pool Diversity),645,80.48,980,84.87,-51.94,-335,623.5,699.0,-12.11,-75.5,Both Reached
-Salinas,80.0,Proposed AL + Pseudo-Labeling,645,80.48,980,84.52,-51.94,-335,623.5,748.0,-19.97,-124.5,Both Reached
-Pavia University,55.0,Pure Uncertainty (Least Confidence),100,61.17,220,61.96,-120.0,-120,100.0,181.3,-81.3,-81.3,Both Reached
-Pavia University,55.0,Baseline Unc + Diversity (Euclidean),100,61.17,180,57.29,-80.0,-80,100.0,161.0,-61.0,-61.0,Both Reached
-Pavia University,55.0,Proposed Cosine AL (Unc + Pool Diversity),100,61.17,220,56.69,-120.0,-120,100.0,194.7,-94.7,-94.7,Both Reached
-Pavia University,55.0,Proposed AL + Pseudo-Labeling,100,61.17,180,58.89,-80.0,-80,100.0,156.3,-56.3,-56.3,Both Reached
-Pavia University,60.0,Pure Uncertainty (Least Confidence),100,61.17,220,61.96,-120.0,-120,100.0,209.1,-109.1,-109.1,Both Reached
-Pavia University,60.0,Baseline Unc + Diversity (Euclidean),100,61.17,220,62.17,-120.0,-120,100.0,202.2,-102.2,-102.2,Both Reached
-Pavia University,60.0,Proposed Cosine AL (Unc + Pool Diversity),100,61.17,645,66.22,-545.0,-545,100.0,409.4,-309.4,-309.4,Both Reached
-Pavia University,60.0,Proposed AL + Pseudo-Labeling,100,61.17,220,61.92,-120.0,-120,100.0,194.6,-94.6,-94.6,Both Reached
-Pavia University,65.0,Pure Uncertainty (Least Confidence),180,65.46,645,66.98,-258.33,-465,170.3,381.3,-123.9,-211.0,Both Reached
-Pavia University,65.0,Baseline Unc + Diversity (Euclidean),180,65.46,645,67.3,-258.33,-465,170.3,517.8,-204.05,-347.5,Both Reached
-Pavia University,65.0,Proposed Cosine AL (Unc + Pool Diversity),180,65.46,645,66.22,-258.33,-465,170.3,598.8,-251.61,-428.5,Both Reached
-Pavia University,65.0,Proposed AL + Pseudo-Labeling,180,65.46,645,69.28,-258.33,-465,170.3,419.9,-146.56,-249.6,Both Reached
-Pavia University,70.0,Pure Uncertainty (Least Confidence),645,75.68,980,74.17,-51.94,-335,399.1,785.7,-96.87,-386.6,Both Reached
-Pavia University,70.0,Baseline Unc + Diversity (Euclidean),645,75.68,980,71.84,-51.94,-335,399.1,844.2,-111.53,-445.1,Both Reached
-Pavia University,70.0,Proposed Cosine AL (Unc + Pool Diversity),645,75.68,980,73.46,-51.94,-335,399.1,819.9,-105.44,-420.8,Both Reached
-Pavia University,70.0,Proposed AL + Pseudo-Labeling,645,75.68,980,77.03,-51.94,-335,399.1,675.9,-69.36,-276.8,Both Reached
-Pavia University,75.0,Pure Uncertainty (Least Confidence),645,75.68,Not Reached,N/A,N/A,N/A,615.4,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
-Pavia University,75.0,Baseline Unc + Diversity (Euclidean),645,75.68,Not Reached,N/A,N/A,N/A,615.4,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
-Pavia University,75.0,Proposed Cosine AL (Unc + Pool Diversity),645,75.68,Not Reached,N/A,N/A,N/A,615.4,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
-Pavia University,75.0,Proposed AL + Pseudo-Labeling,645,75.68,980,77.03,-51.94,-335,615.4,892.0,-44.95,-276.6,Both Reached
-Pavia University,80.0,Pure Uncertainty (Least Confidence),980,80.66,Not Reached,N/A,N/A,N/A,935.8,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
-Pavia University,80.0,Baseline Unc + Diversity (Euclidean),980,80.66,Not Reached,N/A,N/A,N/A,935.8,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
-Pavia University,80.0,Proposed Cosine AL (Unc + Pool Diversity),980,80.66,Not Reached,N/A,N/A,N/A,935.8,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
-Pavia University,80.0,Proposed AL + Pseudo-Labeling,980,80.66,Not Reached,N/A,N/A,N/A,935.8,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
+dataset,target_oa_threshold,strategy,primary_threshold_definition,random_measured_budget,random_measured_oa,strategy_measured_budget,strategy_measured_oa,measured_annotation_reduction_pct,measured_labels_saved,random_interp_estimate_budget,strategy_interp_estimate_budget,interp_annotation_reduction_pct,interp_labels_saved,comparison_status
+Indian Pines,55.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,180,60.14,220,56.55,-22.22,-40,153.9,197.0,-28.01,-43.1,Both Reached
+Indian Pines,55.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,180,60.14,180,57.43,0.0,0,153.9,169.0,-9.81,-15.1,Both Reached
+Indian Pines,55.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,180,60.14,180,57.56,0.0,0,153.9,164.7,-7.02,-10.8,Both Reached
+Indian Pines,55.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,180,60.14,220,57.63,-22.22,-40,153.9,199.2,-29.43,-45.3,Both Reached
+Indian Pines,60.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,180,60.14,645,69.38,-258.33,-465,179.3,424.1,-136.53,-244.8,Both Reached
+Indian Pines,60.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,180,60.14,220,62.03,-22.22,-40,179.3,202.3,-12.83,-23.0,Both Reached
+Indian Pines,60.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,180,60.14,220,60.58,-22.22,-40,179.3,212.3,-18.4,-33.0,Both Reached
+Indian Pines,60.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,180,60.14,645,70.46,-258.33,-465,179.3,366.0,-104.13,-186.7,Both Reached
+Indian Pines,65.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,645,73.73,645,69.38,0.0,0,366.5,541.9,-47.86,-175.4,Both Reached
+Indian Pines,65.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,645,73.73,645,76.35,0.0,0,366.5,380.3,-3.77,-13.8,Both Reached
+Indian Pines,65.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,645,73.73,645,75.96,0.0,0,366.5,377.1,-2.89,-10.6,Both Reached
+Indian Pines,65.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,645,73.73,645,70.46,0.0,0,366.5,499.4,-36.26,-132.9,Both Reached
+Indian Pines,70.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,645,73.73,980,80.56,-51.94,-335,526.0,663.7,-26.18,-137.7,Both Reached
+Indian Pines,70.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,645,73.73,645,76.35,0.0,0,526.0,496.9,5.53,29.1,Both Reached
+Indian Pines,70.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,645,73.73,645,75.96,0.0,0,526.0,499.3,5.08,26.7,Both Reached
+Indian Pines,70.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,645,73.73,645,70.46,0.0,0,526.0,632.7,-20.29,-106.7,Both Reached
+Indian Pines,75.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,980,83.03,980,80.56,0.0,0,690.7,813.5,-17.78,-122.8,Both Reached
+Indian Pines,75.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,980,83.03,645,76.35,34.18,335,690.7,613.4,11.19,77.3,Both Reached
+Indian Pines,75.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,980,83.03,645,75.96,34.18,335,690.7,621.4,10.03,69.3,Both Reached
+Indian Pines,75.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,980,83.03,980,83.59,0.0,0,690.7,760.8,-10.15,-70.1,Both Reached
+Indian Pines,80.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,980,83.03,980,80.56,0.0,0,870.8,963.2,-10.61,-92.4,Both Reached
+Indian Pines,80.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,980,83.03,980,85.93,0.0,0,870.8,772.5,11.29,98.3,Both Reached
+Indian Pines,80.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,980,83.03,980,86.17,0.0,0,870.8,777.4,10.73,93.4,Both Reached
+Indian Pines,80.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,980,83.03,980,83.59,0.0,0,870.8,888.3,-2.01,-17.5,Both Reached
+Salinas,55.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,100,65.86,100,62.58,0.0,0,100.0,100.0,0.0,0.0,Both Reached
+Salinas,55.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,100,65.86,100,63.46,0.0,0,100.0,100.0,0.0,0.0,Both Reached
+Salinas,55.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,100,65.86,100,62.57,0.0,0,100.0,100.0,0.0,0.0,Both Reached
+Salinas,55.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,100,65.86,180,63.6,-80.0,-80,100.0,141.0,-41.0,-41.0,Both Reached
+Salinas,60.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,100,65.86,100,62.58,0.0,0,100.0,100.0,0.0,0.0,Both Reached
+Salinas,60.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,100,65.86,100,63.46,0.0,0,100.0,100.0,0.0,0.0,Both Reached
+Salinas,60.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,100,65.86,100,62.57,0.0,0,100.0,100.0,0.0,0.0,Both Reached
+Salinas,60.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,100,65.86,180,63.6,-80.0,-80,100.0,163.6,-63.6,-63.6,Both Reached
+Salinas,65.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,100,65.86,180,66.17,-80.0,-80,100.0,170.4,-70.4,-70.4,Both Reached
+Salinas,65.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,100,65.86,180,67.81,-80.0,-80,100.0,164.6,-64.6,-64.6,Both Reached
+Salinas,65.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,100,65.86,180,71.21,-80.0,-80,100.0,148.2,-48.2,-48.2,Both Reached
+Salinas,65.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,100,65.86,220,69.2,-120.0,-120,100.0,190.0,-90.0,-90.0,Both Reached
+Salinas,70.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,180,71.68,645,71.94,-258.33,-465,156.8,562.7,-258.86,-405.9,Both Reached
+Salinas,70.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,180,71.68,645,77.73,-258.33,-465,156.8,341.2,-117.6,-184.4,Both Reached
+Salinas,70.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,180,71.68,180,71.21,0.0,0,156.8,173.8,-10.84,-17.0,Both Reached
+Salinas,70.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,180,71.68,645,77.99,-258.33,-465,156.8,396.3,-152.74,-239.5,Both Reached
+Salinas,75.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,645,80.48,980,81.73,-51.94,-335,398.1,749.8,-88.34,-351.7,Both Reached
+Salinas,75.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,645,80.48,645,77.73,0.0,0,398.1,537.8,-35.09,-139.7,Both Reached
+Salinas,75.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,645,80.48,645,79.06,0.0,0,398.1,423.8,-6.46,-25.7,Both Reached
+Salinas,75.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,645,80.48,645,77.99,0.0,0,398.1,551.9,-38.63,-153.8,Both Reached
+Salinas,80.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,645,80.48,980,81.73,-51.94,-335,623.5,920.9,-47.7,-297.4,Both Reached
+Salinas,80.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,645,80.48,980,84.4,-51.94,-335,623.5,759.2,-21.76,-135.7,Both Reached
+Salinas,80.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,645,80.48,980,84.87,-51.94,-335,623.5,699.0,-12.11,-75.5,Both Reached
+Salinas,80.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,645,80.48,980,84.52,-51.94,-335,623.5,748.0,-19.97,-124.5,Both Reached
+Pavia University,55.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,100,61.17,220,61.96,-120.0,-120,100.0,181.3,-81.3,-81.3,Both Reached
+Pavia University,55.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,100,61.17,180,57.29,-80.0,-80,100.0,161.0,-61.0,-61.0,Both Reached
+Pavia University,55.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,100,61.17,220,56.69,-120.0,-120,100.0,194.7,-94.7,-94.7,Both Reached
+Pavia University,55.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,100,61.17,180,58.89,-80.0,-80,100.0,156.3,-56.3,-56.3,Both Reached
+Pavia University,60.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,100,61.17,220,61.96,-120.0,-120,100.0,209.1,-109.1,-109.1,Both Reached
+Pavia University,60.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,100,61.17,220,62.17,-120.0,-120,100.0,202.2,-102.2,-102.2,Both Reached
+Pavia University,60.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,100,61.17,645,66.22,-545.0,-545,100.0,409.4,-309.4,-309.4,Both Reached
+Pavia University,60.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,100,61.17,220,61.92,-120.0,-120,100.0,194.6,-94.6,-94.6,Both Reached
+Pavia University,65.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,180,65.46,645,66.98,-258.33,-465,170.3,381.3,-123.9,-211.0,Both Reached
+Pavia University,65.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,180,65.46,645,67.3,-258.33,-465,170.3,517.8,-204.05,-347.5,Both Reached
+Pavia University,65.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,180,65.46,645,66.22,-258.33,-465,170.3,598.8,-251.61,-428.5,Both Reached
+Pavia University,65.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,180,65.46,645,69.28,-258.33,-465,170.3,419.9,-146.56,-249.6,Both Reached
+Pavia University,70.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,645,75.68,980,74.17,-51.94,-335,399.1,785.7,-96.87,-386.6,Both Reached
+Pavia University,70.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,645,75.68,980,71.84,-51.94,-335,399.1,844.2,-111.53,-445.1,Both Reached
+Pavia University,70.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,645,75.68,980,73.46,-51.94,-335,399.1,819.9,-105.44,-420.8,Both Reached
+Pavia University,70.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,645,75.68,980,77.03,-51.94,-335,399.1,675.9,-69.36,-276.8,Both Reached
+Pavia University,75.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,645,75.68,Not Reached,N/A,N/A,N/A,615.4,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,75.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,645,75.68,Not Reached,N/A,N/A,N/A,615.4,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,75.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,645,75.68,Not Reached,N/A,N/A,N/A,615.4,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,75.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,645,75.68,980,77.03,-51.94,-335,615.4,892.0,-44.95,-276.6,Both Reached
+Pavia University,80.0,Pure Uncertainty (Least Confidence),Mean OA across 3 seeds >= threshold,980,80.66,Not Reached,N/A,N/A,N/A,935.8,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,80.0,Baseline Unc + Diversity (Euclidean),Mean OA across 3 seeds >= threshold,980,80.66,Not Reached,N/A,N/A,N/A,935.8,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,80.0,Proposed Cosine AL (Unc + Pool Diversity),Mean OA across 3 seeds >= threshold,980,80.66,Not Reached,N/A,N/A,N/A,935.8,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,80.0,Proposed AL + Pseudo-Labeling,Mean OA across 3 seeds >= threshold,980,80.66,Not Reached,N/A,N/A,N/A,935.8,Not Reached,N/A,N/A,Only Random Reached (Strategy Failed)

@@ -1,0 +1,16 @@
+dataset,model,budget,train_time_mean_s,train_time_sample_std,inference_time_mean_s,inference_time_sample_std,throughput_samples_per_s
+Indian Pines,Linear Probe,980,1.745,0.136,0.0065,0.0007,1584896.9
+Indian Pines,SVM (RBF Kernel),980,0.622,0.019,6.1764,0.0861,1659.4
+Indian Pines,Random Forest,980,0.736,0.016,0.0823,0.0055,124481.8
+Indian Pines,ConformAL-HSI (Random),980,3.206,0.073,0.0092,0.0034,1110000.0
+Indian Pines,ConformAL-HSI (Proposed AL),980,3.076,0.018,0.0099,0.0035,1035252.5
+Salinas,Linear Probe,980,1.692,0.011,0.0236,0.0045,2417609.6
+Salinas,SVM (RBF Kernel),980,0.398,0.01,33.7616,0.4793,1687.6
+Salinas,Random Forest,980,0.688,0.008,0.1992,0.001,286066.9
+Salinas,ConformAL-HSI (Random),980,3.245,0.132,0.0346,0.0006,1646676.3
+Salinas,ConformAL-HSI (Proposed AL),980,3.104,0.032,0.035,0.0003,1626308.3
+Pavia University,Linear Probe,980,1.68,0.03,0.0216,0.0009,1977319.0
+Pavia University,SVM (RBF Kernel),980,0.615,0.009,21.29,0.3656,2009.2
+Pavia University,Random Forest,980,0.694,0.024,0.1558,0.0068,274498.4
+Pavia University,ConformAL-HSI (Random),980,3.18,0.038,0.0275,0.0011,1553607.7
+Pavia University,ConformAL-HSI (Proposed AL),980,3.113,0.011,0.0288,0.0004,1485277.8

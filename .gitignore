@@ -98,9 +98,11 @@ spectral_earth_latex_report.zip
 spectral_earth_latex_package/
 SPECTRALEARTH_FINAL_RESEARCH_REPORT*
 
-# Local markdown files (kept local, only README.md tracked in GitHub)
+# Local markdown files (kept local, only README.md and results documentation tracked in GitHub)
 *.md
 !README.md
+!results/**/*.md
+
 
 
 # Report / presentation figures & screenshots (kept local)
