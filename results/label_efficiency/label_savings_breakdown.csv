@@ -1,0 +1,73 @@
+dataset,target_oa_threshold,strategy,random_samples_required,random_is_estimate,strategy_samples_required,strategy_is_estimate,annotation_reduction_pct,samples_saved,comparison_status
+Indian Pines,55.0,Pure Uncertainty (Least Confidence),153.9,True,197.0,True,-28.01,-43.1,Both Reached
+Indian Pines,55.0,Baseline Unc + Diversity (Euclidean),153.9,True,169.0,True,-9.81,-15.1,Both Reached
+Indian Pines,55.0,Proposed Cosine AL (Unc + Pool Diversity),153.9,True,164.7,True,-7.02,-10.8,Both Reached
+Indian Pines,55.0,Proposed AL + Pseudo-Labeling,153.9,True,199.2,True,-29.43,-45.3,Both Reached
+Indian Pines,60.0,Pure Uncertainty (Least Confidence),180.0,False,424.1,True,-135.61,-244.1,Both Reached
+Indian Pines,60.0,Baseline Unc + Diversity (Euclidean),180.0,False,260.0,False,-44.44,-80.0,Both Reached
+Indian Pines,60.0,Proposed Cosine AL (Unc + Pool Diversity),180.0,False,212.3,True,-17.94,-32.3,Both Reached
+Indian Pines,60.0,Proposed AL + Pseudo-Labeling,180.0,False,366.0,True,-103.33,-186.0,Both Reached
+Indian Pines,65.0,Pure Uncertainty (Least Confidence),366.5,True,541.9,True,-47.86,-175.4,Both Reached
+Indian Pines,65.0,Baseline Unc + Diversity (Euclidean),366.5,True,380.3,True,-3.77,-13.8,Both Reached
+Indian Pines,65.0,Proposed Cosine AL (Unc + Pool Diversity),366.5,True,377.1,True,-2.89,-10.6,Both Reached
+Indian Pines,65.0,Proposed AL + Pseudo-Labeling,366.5,True,499.4,True,-36.26,-132.9,Both Reached
+Indian Pines,70.0,Pure Uncertainty (Least Confidence),526.0,True,663.7,True,-26.18,-137.7,Both Reached
+Indian Pines,70.0,Baseline Unc + Diversity (Euclidean),526.0,True,496.9,True,5.53,29.1,Both Reached
+Indian Pines,70.0,Proposed Cosine AL (Unc + Pool Diversity),526.0,True,499.3,True,5.08,26.7,Both Reached
+Indian Pines,70.0,Proposed AL + Pseudo-Labeling,526.0,True,632.7,True,-20.29,-106.7,Both Reached
+Indian Pines,75.0,Pure Uncertainty (Least Confidence),690.7,True,813.5,True,-17.78,-122.8,Both Reached
+Indian Pines,75.0,Baseline Unc + Diversity (Euclidean),690.7,True,613.4,True,11.19,77.3,Both Reached
+Indian Pines,75.0,Proposed Cosine AL (Unc + Pool Diversity),690.7,True,621.4,True,10.03,69.3,Both Reached
+Indian Pines,75.0,Proposed AL + Pseudo-Labeling,690.7,True,760.8,True,-10.15,-70.1,Both Reached
+Indian Pines,80.0,Pure Uncertainty (Least Confidence),870.8,True,963.2,True,-10.61,-92.4,Both Reached
+Indian Pines,80.0,Baseline Unc + Diversity (Euclidean),870.8,True,772.5,True,11.29,98.3,Both Reached
+Indian Pines,80.0,Proposed Cosine AL (Unc + Pool Diversity),870.8,True,777.4,True,10.73,93.4,Both Reached
+Indian Pines,80.0,Proposed AL + Pseudo-Labeling,870.8,True,888.3,True,-2.01,-17.5,Both Reached
+Salinas,55.0,Pure Uncertainty (Least Confidence),100.0,False,100.0,False,0.0,0.0,Both Reached
+Salinas,55.0,Baseline Unc + Diversity (Euclidean),100.0,False,100.0,False,0.0,0.0,Both Reached
+Salinas,55.0,Proposed Cosine AL (Unc + Pool Diversity),100.0,False,100.0,False,0.0,0.0,Both Reached
+Salinas,55.0,Proposed AL + Pseudo-Labeling,100.0,False,141.0,True,-41.0,-41.0,Both Reached
+Salinas,60.0,Pure Uncertainty (Least Confidence),100.0,False,100.0,False,0.0,0.0,Both Reached
+Salinas,60.0,Baseline Unc + Diversity (Euclidean),100.0,False,100.0,False,0.0,0.0,Both Reached
+Salinas,60.0,Proposed Cosine AL (Unc + Pool Diversity),100.0,False,100.0,False,0.0,0.0,Both Reached
+Salinas,60.0,Proposed AL + Pseudo-Labeling,100.0,False,163.6,True,-63.6,-63.6,Both Reached
+Salinas,65.0,Pure Uncertainty (Least Confidence),100.0,False,170.4,True,-70.4,-70.4,Both Reached
+Salinas,65.0,Baseline Unc + Diversity (Euclidean),100.0,False,164.6,True,-64.6,-64.6,Both Reached
+Salinas,65.0,Proposed Cosine AL (Unc + Pool Diversity),100.0,False,148.2,True,-48.2,-48.2,Both Reached
+Salinas,65.0,Proposed AL + Pseudo-Labeling,100.0,False,190.0,True,-90.0,-90.0,Both Reached
+Salinas,70.0,Pure Uncertainty (Least Confidence),156.8,True,562.7,True,-258.86,-405.9,Both Reached
+Salinas,70.0,Baseline Unc + Diversity (Euclidean),156.8,True,341.2,True,-117.6,-184.4,Both Reached
+Salinas,70.0,Proposed Cosine AL (Unc + Pool Diversity),156.8,True,173.8,True,-10.84,-17.0,Both Reached
+Salinas,70.0,Proposed AL + Pseudo-Labeling,156.8,True,396.3,True,-152.74,-239.5,Both Reached
+Salinas,75.0,Pure Uncertainty (Least Confidence),398.1,True,749.8,True,-88.34,-351.7,Both Reached
+Salinas,75.0,Baseline Unc + Diversity (Euclidean),398.1,True,537.8,True,-35.09,-139.7,Both Reached
+Salinas,75.0,Proposed Cosine AL (Unc + Pool Diversity),398.1,True,423.8,True,-6.46,-25.7,Both Reached
+Salinas,75.0,Proposed AL + Pseudo-Labeling,398.1,True,551.9,True,-38.63,-153.8,Both Reached
+Salinas,80.0,Pure Uncertainty (Least Confidence),623.5,True,920.9,True,-47.7,-297.4,Both Reached
+Salinas,80.0,Baseline Unc + Diversity (Euclidean),623.5,True,759.2,True,-21.76,-135.7,Both Reached
+Salinas,80.0,Proposed Cosine AL (Unc + Pool Diversity),623.5,True,699.0,True,-12.11,-75.5,Both Reached
+Salinas,80.0,Proposed AL + Pseudo-Labeling,623.5,True,748.0,True,-19.97,-124.5,Both Reached
+Pavia University,55.0,Pure Uncertainty (Least Confidence),100.0,False,181.3,True,-81.3,-81.3,Both Reached
+Pavia University,55.0,Baseline Unc + Diversity (Euclidean),100.0,False,161.0,True,-61.0,-61.0,Both Reached
+Pavia University,55.0,Proposed Cosine AL (Unc + Pool Diversity),100.0,False,194.7,True,-94.7,-94.7,Both Reached
+Pavia University,55.0,Proposed AL + Pseudo-Labeling,100.0,False,156.3,True,-56.3,-56.3,Both Reached
+Pavia University,60.0,Pure Uncertainty (Least Confidence),100.0,False,209.1,True,-109.1,-109.1,Both Reached
+Pavia University,60.0,Baseline Unc + Diversity (Euclidean),100.0,False,202.2,True,-102.2,-102.2,Both Reached
+Pavia University,60.0,Proposed Cosine AL (Unc + Pool Diversity),100.0,False,409.4,True,-309.4,-309.4,Both Reached
+Pavia University,60.0,Proposed AL + Pseudo-Labeling,100.0,False,194.6,True,-94.6,-94.6,Both Reached
+Pavia University,65.0,Pure Uncertainty (Least Confidence),170.3,True,381.3,True,-123.9,-211.0,Both Reached
+Pavia University,65.0,Baseline Unc + Diversity (Euclidean),170.3,True,517.8,True,-204.05,-347.5,Both Reached
+Pavia University,65.0,Proposed Cosine AL (Unc + Pool Diversity),170.3,True,598.8,True,-251.61,-428.5,Both Reached
+Pavia University,65.0,Proposed AL + Pseudo-Labeling,170.3,True,419.9,True,-146.56,-249.6,Both Reached
+Pavia University,70.0,Pure Uncertainty (Least Confidence),399.1,True,785.7,True,-96.87,-386.6,Both Reached
+Pavia University,70.0,Baseline Unc + Diversity (Euclidean),399.1,True,844.2,True,-111.53,-445.1,Both Reached
+Pavia University,70.0,Proposed Cosine AL (Unc + Pool Diversity),399.1,True,819.9,True,-105.44,-420.8,Both Reached
+Pavia University,70.0,Proposed AL + Pseudo-Labeling,399.1,True,675.9,True,-69.36,-276.8,Both Reached
+Pavia University,75.0,Pure Uncertainty (Least Confidence),615.4,True,Not Reached,False,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,75.0,Baseline Unc + Diversity (Euclidean),615.4,True,Not Reached,False,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,75.0,Proposed Cosine AL (Unc + Pool Diversity),615.4,True,Not Reached,False,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,75.0,Proposed AL + Pseudo-Labeling,615.4,True,892.0,True,-44.95,-276.6,Both Reached
+Pavia University,80.0,Pure Uncertainty (Least Confidence),935.8,True,Not Reached,False,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,80.0,Baseline Unc + Diversity (Euclidean),935.8,True,Not Reached,False,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,80.0,Proposed Cosine AL (Unc + Pool Diversity),935.8,True,Not Reached,False,N/A,N/A,Only Random Reached (Strategy Failed)
+Pavia University,80.0,Proposed AL + Pseudo-Labeling,935.8,True,Not Reached,False,N/A,N/A,Only Random Reached (Strategy Failed)

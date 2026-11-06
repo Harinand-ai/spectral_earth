@@ -1,0 +1,52 @@
+{
+  "framework_name": "ConformAL-HSI (Selected Adaptive Configuration)",
+  "backbone": {
+    "model": "spec_resnet50",
+    "pretraining": "SpectralEarth 3D-MAE (1.2M patches)",
+    "parameters": 24244512,
+    "trainable_parameters": 0,
+    "status": "Strictly Frozen (nabla_theta = 0)"
+  },
+  "feature_representation": {
+    "raw_dimension": 2048,
+    "projection": "Unit Hypersphere Mapping (L2 normalization)",
+    "invariance": "Invariant to sample-norm variance (45x-117x dynamic range eliminated)"
+  },
+  "classifier_head": {
+    "architecture": "ImprovedClassifierHead",
+    "layers": "Linear(2048, 512) -> BatchNorm1d(512) -> ReLU -> Dropout(0.10) -> Linear(512, 256) -> BatchNorm1d(256) -> ReLU -> Dropout(0.05) -> Linear(256, C)",
+    "optimizer": "AdamW (lr=2e-3, weight_decay=1e-3)",
+    "scheduler": "CosineAnnealingLR (T_max=45)",
+    "epochs": 45,
+    "batch_size": 64,
+    "drop_last_guards": true
+  },
+  "acquisition_strategy": {
+    "name": "Pool-Relative Cosine Farthest Diversity with Density Regularization",
+    "uncertainty_metric": "Least Confidence (1 - max_c p_c)",
+    "candidate_filter_size": "min(len(U), max(4*k, 100))",
+    "diversity_metric": "Cosine Distance to Labeled Pool (1.0 - max_{y in L} x_hat . y_hat)",
+    "density_regularizer": {
+      "centroid": "Global Cosine Dataset Centroid",
+      "exponent_beta": 0.3,
+      "formulation": "acq_score = (1 - max p) * (density_norm ** 0.30)",
+      "purpose": "Prevents boundary-trapping in large spatial parcels without sacrificing class discovery"
+    }
+  },
+  "pseudo_labeling": {
+    "status": "Disabled in Default Configuration (Retained as Ablation)",
+    "reason": "At low budgets (N <= 180), uncalibrated pseudo-labels induce confirmation bias and 9-13% accuracy drops. Only provides marginal gains at N >= 645."
+  },
+  "reproducibility": {
+    "evaluation_seeds": [
+      42,
+      43,
+      44
+    ],
+    "datasets": [
+      "Indian Pines",
+      "Salinas",
+      "Pavia University"
+    ]
+  }
+}

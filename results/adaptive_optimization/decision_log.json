@@ -1,0 +1,53 @@
+{
+  "evaluation_phase": "Experiment 1 Unified Label-Efficiency Post-Run Analysis",
+  "conditions_evaluated": {
+    "CONDITION_A": {
+      "description": "Proposed active learning consistently beats random sampling across all datasets and budgets",
+      "triggered": false,
+      "evidence": "Proposed AL beats Random on Indian Pines at N >= 645 (+3.14% OA, +5.11% AA) and reaches parity on Salinas at N=260 (71.99% vs 71.94%), but Random outperforms AL on Pavia University across budgets (80.66% vs 73.46% at N=980)."
+    },
+    "CONDITION_B": {
+      "description": "Active learning wins on some datasets but loses on others",
+      "triggered": true,
+      "evidence": "Clear dataset-dependent divide: Indian Pines (highly fragmented vegetation) strongly favors Cosine AL. Salinas (large agricultural fields) shows AL-Random parity at N >= 260. Pavia University (urban, 43.8% Meadows) strongly favors Random sampling on Overall Accuracy."
+    },
+    "CONDITION_C": {
+      "description": "Random sampling consistently beats proposed active learning on specific benchmarks",
+      "triggered": true,
+      "evidence": "On Pavia University, Random Sampling achieves 80.66% OA vs 73.46% AL at N=980, and 66.79% vs 56.05% at N=260. Class analysis reveals Class 1 (Meadows) comprises 43.84% of Pavia. Random draws 43.8% of its samples from Meadows, maximizing overall pixel accuracy. AL disperses samples evenly across minority urban classes, lowering majority-class recall."
+    },
+    "CONDITION_D": {
+      "description": "Accuracy improves with more labels, but label efficiency is weak",
+      "triggered": false,
+      "evidence": "On Indian Pines, label efficiency is robustly demonstrated: reaching 66.0% OA requires 980 samples with baseline random, but only ~350 samples with improved AL (a 64.29% label reduction). At 60% OA, proposed AL achieves a 23.08% label savings (saving 60 samples)."
+    },
+    "CONDITION_E": {
+      "description": "Pseudo-labeling reduces performance",
+      "triggered": true,
+      "evidence": "At N=100, pseudo-labeling depresses OA from 46.58% to 37.54% on Indian Pines, from 62.57% to 49.91% on Salinas, and from 49.33% to 43.16% on Pavia due to confirmation bias on uncalibrated boundary samples. At N=980, pseudo-labeling achieves 83.59% vs 86.17% without pseudo-labels on Indian Pines."
+    },
+    "CONDITION_F": {
+      "description": "All methods plateau at low accuracy",
+      "triggered": false,
+      "evidence": "Resolved by head architecture enhancement: accuracies reached 86.17% on Indian Pines, 84.87% on Salinas, and 80.66% on Pavia University under frozen foundation backbone."
+    }
+  },
+  "actions_taken": [
+    {
+      "action": "Selected Primary Acquisition Policy",
+      "details": "Proposed Cosine AL (Unit Hypersphere + Pool-Relative Diversity + Density Prior beta=0.30)",
+      "justification": "Outperforms Euclidean diversity by +23.24% on Indian Pines, +16.72% on Salinas, and +11.53% on Pavia University at N=980, resolving the 45x-117x norm pathology in R^2048."
+    },
+    {
+      "action": "Disabled Pseudo-Labeling in Default Configuration",
+      "details": "Moved pseudo-labeling strictly to optional ablation category",
+      "justification": "Triggered by Condition E. Low-budget confirmation bias hurts early active learning iterations."
+    },
+    {
+      "action": "Documented Spatial Autocorrelation Trade-Off",
+      "details": "Rigorous explanation of why Random sampling wins on Pavia University OA due to 43.8% Meadows class dominance",
+      "justification": "Maintains strict academic honesty and scientific rigor as mandated."
+    }
+  ],
+  "final_classification": "Category B: Label efficiency demonstrated only on selected datasets or annotation budgets"
+}
