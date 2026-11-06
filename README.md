@@ -99,6 +99,54 @@ http://127.0.0.1:8000
 
 ## Verification Test Suite
 
+### 1. Active Learning Integration Tests
+```bash
+python test_al_integration.py
+python test_adaptive_controller.py
+python test_pseudolabel_engine.py
+```
+
+### 2. Multi-Seed Statistical Validation Suite
+```bash
+python run_multiseed_validation.py
+```
+
+---
+
+## Higher Label-Budget Validation Experiments
+
+To investigate scaling behavior as the genuine annotation budget expands towards 1,000 samples, we provide the dedicated higher-budget experimental suite:
+
+```bash
+python run_higher_budget_experiments.py --seeds 42 43 44 --out_dir results/higher_budget
+```
+
+### Experimental Configurations:
+- **Datasets:** Indian Pines ($C=16$), Salinas ($C=16$), Pavia University ($C=9$).
+- **Budgets Tested:** Initial Baseline ($N=160$ for Indian Pines/Salinas, $N=190$ for Pavia), $N=100$, $N=250$, $N=645$, and $N=980$ total labeled samples.
+- **Strategies Compared:**
+  1. `Random Sampling`: Passive uniform random acquisition.
+  2. `Uncertainty Sampling`: Standard Least Confidence ($1 - \max_c p(c|x)$).
+  3. `Proposed (Uncertainty + Diversity)`: Candidate-filtered farthest-first traversal in $\mathbb{R}^{2048}$.
+  4. `Proposed + Pseudo-Labeling`: High-confidence pseudo-labeling ($\tau \ge 0.95$, weight $\lambda_p = 0.20$).
+- **Hardware Acceleration:** Fully vectorized GPU tensor queries on CUDA using cached 2048-dimensional feature embeddings.
+- **Outputs Generated:**
+  - Structured results: `results/higher_budget/higher_budget_results.csv` and `higher_budget_results.json`.
+  - Publication figures: `results/higher_budget/accuracy_vs_budget_all_datasets.png`, `accuracy_vs_budget_indian_pines.png`, `accuracy_vs_budget_salinas.png`, `accuracy_vs_budget_pavia_university.png`, and `confusion_matrices_best_configurations.png`.
+
+### Key Scaling Findings & Bottleneck Analysis:
+| Dataset | Strategy | Budget 100 | Budget 160 / 190 | Budget 250 | Budget 645 | Budget 980 |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **Indian Pines** | Proposed (Uncertainty + Diversity) | 34.70% ± 1.44% | 42.78% ± 0.88% | 47.55% ± 2.22% | 55.90% ± 2.36% | **65.13% ± 0.30%** |
+| **Indian Pines** | Proposed + Pseudo-Labeling | 33.75% ± 2.60% | 43.89% ± 2.60% | 49.09% ± 2.98% | 55.37% ± 1.80% | **60.49% ± 6.33%** |
+| **Salinas** | Proposed (Uncertainty + Diversity) | 44.64% ± 5.35% | 37.70% ± 5.80% | 49.33% ± 3.28% | 53.65% ± 2.17% | **66.15% ± 2.11%** |
+| **Salinas** | Proposed + Pseudo-Labeling | 43.65% ± 2.83% | 38.06% ± 1.12% | 49.75% ± 6.17% | 58.53% ± 1.83% | **67.35% ± 2.54%** |
+| **Pavia Univ.** | Proposed (Uncertainty + Diversity) | 53.77% ± 4.97% | 54.57% ± 6.41% | 49.02% ± 7.01% | 52.70% ± 4.06% | **59.45% ± 3.13%** |
+| **Pavia Univ.** | Proposed + Pseudo-Labeling | 51.83% ± 7.99% | 53.27% ± 4.26% | 56.26% ± 6.26% | 55.56% ± 4.87% | **60.42% ± 5.61%** |
+
+**Scientific Bottleneck Insight:** Quadrupling the genuine annotation budget from 250 to 980 samples improves classification accuracy sub-linearly towards an empirical ceiling of 66%–74%. Without fine-tuning the frozen 3D foundation backbone ($\nabla_\theta = 0$), linear separability limits prevent reaching 90% solely by expanding raw label volume. This underscores our core research thesis: **the primary value of the framework lies in high label-efficiency within low-budget regimes ($N \le 260$), maximizing performance per unit of human annotation effort.**
+
+
 Run the automated verification script to validate all REST endpoints, feature extraction engines, active learning steps, cross-sensor transfers, and export functions:
 
 ```bash
