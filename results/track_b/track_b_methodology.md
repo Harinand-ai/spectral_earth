@@ -79,22 +79,27 @@ To ensure a 100% fair, leakage-free comparison:
 
 ---
 
-## 5. End-to-End Literature Models Feasibility Protocol
+## 5. Published Literature Reference Context (Not Benchmarked in Track B)
 
-To contextualize our foundation-based results against the broader HSI literature, we analyzed three popular end-to-end architectures:
+To contextualize our foundation-based results within published literature, we reference three prominent end-to-end architectures. **Note: These architectures were not experimentally trained in Track B; their figures reflect published literature protocols and serve solely as contextual references.**
+
 1. **HybridSN (Roy et al., IEEE GRSL 2020)**:
-   - 3D convolution layers ($8 \times 3 \times 3 \times 3$, $16 \times 3 \times 3 \times 3$, $32 \times 3 \times 3 \times 3$) followed by 2D convolution ($64 \times 3 \times 3$) and dense layers ($256 \to 128 \to C$).
-   - Trainable parameters: $4,323,696$.
-   - Literature protocol: Requires 10%–20% of entire scene (1,024–2,048 pixels) for 100 epochs.
-   - Few-shot feasibility: Overfits severely when $N \le 260$; training time is ~1.0 s per forward-backward pass, requiring >12 hours across seeds without pretraining.
+   - *Citation:* Roy, S. K., Krishna, G., Dubey, S. R., & Chaudhuri, B. B. (2020). HybridSN: Exploring 3-D–2-D CNN Feature Hierarchy for Hyperspectral Image Classification. *IEEE Geoscience and Remote Sensing Letters*, 17(2), 277-281.
+   - *Architecture:* 3D-2D CNN hierarchy ($4,323,696$ parameters).
+   - *Published Protocol:* Evaluated with **30% training samples on Indian Pines** (3,074 samples, reported OA $99.14\%$) and **10% on Salinas and Pavia** (5,697 and 4,277 samples, reported OA $99.98\%$ and $99.78\%$).
+   - *Operational Distinction:* Requires substantial labeled pools (10%–30%) to optimize millions of spatial-spectral convolutional filters from scratch.
+
 2. **SpectralFormer (Hong et al., IEEE TGRS 2021)**:
-   - Vision Transformer utilizing cross-layer spectral patch attention and positional encodings (~1.2M parameters).
-   - Literature protocol: Evaluated with 10% to 30% labeled pixels.
-   - Few-shot feasibility: Lacks inductive spatial bias; transformer attention weights fail to converge when $N \le 100$ without extensive pretraining.
+   - *Citation:* Hong, D., Han, Z., Yao, J., Gao, L., Zhang, B., Plaza, A., & Chanussot, J. (2021). SpectralFormer: Rethinking Hyperspectral Image Classification with Transformers. *IEEE Transactions on Geoscience and Remote Sensing*, 60, 1-15.
+   - *Architecture:* Cross-layer spectral-spatial patch Vision Transformer (~1.2M parameters).
+   - *Published Protocol:* Evaluated with **10% to 30% training samples** (e.g., 10% on Indian Pines = 1,024 samples, reported OA $90.84\%$).
+   - *Operational Distinction:* Self-attention mechanisms require large sample densities to construct patch relationship graphs.
+
 3. **SSFTT (Sun et al., IEEE TGRS 2022)**:
-   - Spectral-Spatial Feature Token Transformer combining 3D-2D CNN feature extraction with a Gaussian-weighted token visual transformer (~1.5M parameters).
-   - Literature protocol: Evaluated with 10% of samples.
-   - Few-shot feasibility: Tokenizer fails on rare classes under $N \le 260$.
+   - *Citation:* Sun, L., Zhao, G., Zheng, Y., & Wu, Z. (2022). Spectral-Spatial Feature Tokenizer for Hyperspectral Image Classification. *IEEE Transactions on Geoscience and Remote Sensing*, 60, 1-14.
+   - *Architecture:* Spectral-Spatial Feature Token Transformer combining 3D-2D CNNs with visual tokens (~1.5M parameters).
+   - *Published Protocol:* Evaluated with **10% labeled samples** (Indian Pines: 1,024 samples, reported OA $98.49\%$).
+   - *Operational Distinction:* Relies on 10% of scene pixels to extract stable token representations.
 
 ---
 
@@ -118,3 +123,4 @@ All execution outputs will be written to `results/track_b/` and include:
 - `runtime_comparison.csv` (Train time, inference time, sample throughput)
 - `label_efficiency_comparison.csv` (First checkpoint reaching $\tau \in \{50\%, 60\%, 70\%, 80\%\}$)
 - `oa_vs_budget.png`, `aa_vs_budget.png`, `macro_f1_vs_budget.png`, `runtime_comparison.png`, `label_efficiency_comparison.png`
+

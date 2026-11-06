@@ -175,42 +175,41 @@ At $N=980$, we record wall-clock training duration, inference latency, and test 
 | **ConformAL-HSI (Proposed AL)**| 1,182,224 | $3.10 \pm 0.04$ | $0.025 \pm 0.013$ | **1,382,000** |
 
 ```
-Inference Speedup of ConformAL-HSI MLP Head over SVM (RBF Kernel):
-  Indian Pines: 6.18s (SVM) vs 0.0099s (Ours)  -->  624x faster
-  Salinas:     33.76s (SVM) vs 0.0350s (Ours)  -->  965x faster
-  Pavia Univ:  21.29s (SVM) vs 0.0288s (Ours)  -->  739x faster
+Inference Comparison across Platforms at N=980:
+  Indian Pines (5,125 test): 6.18s (SVM, CPU) vs 0.0099s (ConformAL-HSI, GPU)
+  Salinas     (28,488 test): 33.76s (SVM, CPU) vs 0.0350s (ConformAL-HSI, GPU)
+  Pavia Univ  (21,388 test): 21.29s (SVM, CPU) vs 0.0288s (ConformAL-HSI, GPU)
 ```
 
-### Computational Profile Findings
-- **SVM Inference Bottleneck**: While SVM trains fast on 980 samples ($0.54\text{ s}$), its non-linear RBF evaluation requires computing kernel distances against all support vectors for every test pixel. On Salinas (28,488 test pixels), SVM inference takes **$33.76\text{ seconds}$** ($1,687\text{ samples/s}$).
-- **ConformAL-HSI Throughput**: The lightweight MLP head evaluates the entire test set in **$0.025–0.035\text{ seconds}$**, achieving **$1.38–1.62\text{ million samples/s}$** on GPU—a **$700\times–965\times$ speedup** over SVM.
-- **Fast Training**: Training ConformAL-HSI for 45 epochs requires only **$3.1\text{ seconds}$**, demonstrating high practical utility for active interactive labeling workflows.
+### Computational Profile & Hardware Disclosure
+- **Execution Environments**:
+  - **ConformAL-HSI & Linear Probe**: PyTorch 2.x, executed on an **NVIDIA GeForce RTX 2050 Laptop GPU** (4GB VRAM) with batch size 2048.
+  - **SVM (RBF Kernel)**: scikit-learn (`SVC`), executed on **Intel CPU** via single-threaded C routines (`LIBSVM`).
+  - **Random Forest**: scikit-learn (`RandomForestClassifier`), executed on **Intel CPU** with multi-core parallelization (`n_jobs=-1`).
+- **Algorithmic and Platform Drivers**:
+  - While SVM trains quickly on 980 samples ($0.54\text{ s}$), its non-linear RBF evaluation requires computing kernel distances against all support vectors for every test pixel ($O(N_{\text{test}} \cdot M_{\text{support}} \cdot d)$). On Salinas (28,488 test pixels), single-threaded CPU SVM inference requires **$33.76\text{ seconds}$** ($1,687\text{ samples/s}$).
+  - In contrast, ConformAL-HSI's lightweight MLP head projects representations via dense matrix multiplications ($O(N_{\text{test}} \cdot d)$), completing Salinas test inference in **$0.035\text{ seconds}$** ($1.62\times 10^6\text{ samples/s}$) on GPU.
+  - This latency difference reflects both linear vs. non-linear algorithmic scaling and GPU hardware acceleration.
+- **Fast Training**: Training ConformAL-HSI for 45 epochs requires only **$3.1\text{ seconds}$**, enabling practical real-time active learning interaction.
 
 ---
 
-## 6. End-to-End Literature Models Feasibility Comparison
+## 6. Contextual Comparison with Published Literature Architectures
 
-In our Track B investigation, we examined training end-to-end hyperspectral architectures from scratch:
-- **HybridSN (Roy et al., 2020)**: 3D-2D CNN with $4,323,696$ trainable parameters.
-- **SpectralFormer (Hong et al., 2021)**: Vision Transformer with patch attention and positional encodings (~1.2M parameters).
-- **SSFTT (Sun et al., 2022)**: Spectral-Spatial Feature Token Transformer (~1.5M parameters).
+To contextualize our foundation-based results within the broader hyperspectral literature, we examine published metrics from leading end-to-end architectures. **Note: These architectures were not experimentally retrained in Track B; the figures below are taken directly from their original publications.**
 
-### Literature Comparison Table
+### Literature Reference Table
 
-| Architecture | Training Strategy | Typical Literature Protocol | Labeled Samples | Reported OA (%) | Feasibility at $N \le 260$ Few-Shot |
+| Architecture | Source Publication | Literature Training Protocol | Labeled Training Samples | Published OA (%) | Operational Characteristics vs. Frozen Foundation |
 |---|---|---|---|---|---|
-| **HybridSN** | Trained from scratch | 10%–20% of entire scene | 1,024–2,048 (IP) | ~92.4% (at 10%) | Severe overfitting; forward pass = $1.0\text{ s/batch}$; 100 epochs takes ~12 hours across seeds. |
-| **SpectralFormer** | Trained from scratch | 10%–30% of entire scene | 1,024–3,074 (IP) | ~90.8% (at 10%) | Severe sample hunger; patch token attention collapses under $N \le 100$ without massive pretraining. |
-| **SSFTT** | Trained from scratch | 10% of entire scene | 1,024 (IP) | ~91.5% (at 10%) | Tokenizer fails on rare classes under $N \le 260$. |
-| **ConformAL-HSI (Ours)**| **Frozen Pretrained 3D-ResNet50 + MLP Head** | **0.18%–9.56% of scene** | **100–980** | **84.20% (at 9.5% IP)**<br>**84.64% (at 1.7% SA)**<br>**80.57% (at 2.3% PU)** | **Excellent convergence ($3.1\text{ s}$); zero gradient updates to backbone; stable across random seeds.** |
+| **HybridSN** | Roy et al. (IEEE GRSL 2020) | 30% on IP, 10% on SA & PU | 3,074 (IP), 5,697 (SA), 4,277 (PU) | 99.14% (IP), 99.98% (SA), 99.78% (PU) | End-to-end 3D-2D CNN (4.32M params). Requires massive labeled pools (10%–30%) for spatial-spectral filter optimization from scratch. |
+| **SpectralFormer** | Hong et al. (IEEE TGRS 2021) | 10% on IP, 10% on PU | 1,024 (IP), 4,277 (PU) | 90.84% (IP), 92.45% (PU) | Pure Vision Transformer (~1.2M params). Self-attention mechanisms require large sample pools to estimate patch relationships. |
+| **SSFTT** | Sun et al. (IEEE TGRS 2022) | 10% on IP, 10% on SA & PU | 1,024 (IP), 5,413 (SA), 4,277 (PU) | 98.49% (IP), 99.72% (SA), 99.28% (PU) | Spectral-spatial token transformer (~1.5M params). High representation power under standard 10% literature benchmarks. |
+| **ConformAL-HSI (Ours)**| **Empirically Reproduced (Track B)** | **0.18%–9.56% of scene** | **100–980** | **84.20% (IP, 9.5%)**<br>**84.64% (SA, 1.7%)**<br>**80.57% (PU, 2.3%)** | **Frozen Pretrained 3D-ResNet50 + 1.18M MLP Head ($\nabla_\theta = 0$). Trains in 3.1s; generalizes with few-shot labeled samples.** |
 
-### Key Insight
-End-to-end deep models report >90% OA only when provided with **1,024 to 5,697 labeled pixels** (10% to 20% of the dataset). At genuine few-shot budgets ($N \in \{100, 260\}$), their millions of uninitialized spatial-spectral parameters catastrophically overfit.
-
-By contrast, **ConformAL-HSI preserves frozen SpectralEarth foundation embeddings** ($\nabla_\theta = 0$) and trains only a 1.18M bottleneck head. This ensures:
-1. Instant training convergence ($3.1\text{ s}$ vs. hours).
-2. Resistance to few-shot overfitting.
-3. Top-tier representation transfer from pre-training.
+### Key Scientific Distinctions
+1. **Sample Regime Disparity**: Published end-to-end deep models report >90% accuracies when trained on **1,024 to 5,697 labeled pixels** (10% to 30% of the entire scene). In contrast, ConformAL-HSI is explicitly designed for the **ultra-low to moderate label regime** ($N \in [100, 980]$, corresponding to $0.18\%$ to $9.56\%$ of scenes).
+2. **Computational and Generalization Trade-Off**: Training 4.3M parameters from scratch on very small sample counts ($N \le 260$) requires extensive regularization to avoid overfitting, whereas utilizing frozen **SpectralEarth foundation embeddings** provides pre-trained feature representations with zero backbone gradient computation.
 
 ---
 
@@ -228,3 +227,4 @@ The benchmark execution produced the following verified artifacts in `results/tr
   3. `macro_f1_vs_budget.png`: Macro F1 trajectories.
   4. `runtime_comparison.png`: Computational efficiency comparison (log scale).
   5. `label_efficiency_comparison.png`: 3-panel grouped bar chart illustrating comparative label efficiency.
+

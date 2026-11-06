@@ -66,7 +66,7 @@ We audited every recorded metric directly against the underlying $441$ experimen
 - **Audit Ground Truth**:
   - `Random Sampling` reaches $61.17\% \pm 0.93\%$ at **Budget 100**.
   - `Proposed Cosine AL` reaches $66.22\% \pm 0.08\%$ only at **Budget 645**.
-- **Root Cause**: Fully established in `pavia_class_analysis.md`. The 43.84% dominance of the *Meadows* class allows uniform random sampling to achieve high pixel accuracy immediately, whereas active learning disperses queries into rare urban classes and perimeter transitions.
+- **Root Cause**: Fully established in `pavia_class_analysis.md`. The 43.84% dominance of the *Meadows* class allows uniform random sampling to match the test area prior immediately (42.59% allocation), whereas active learning over-allocates queries to ambiguous urban classes (Asphalt at 28.16% and Bare Soil at 15.99%) and under-allocates to Meadows (22.79% vs 43.84%), reducing Meadows test recall.
 
 ---
 

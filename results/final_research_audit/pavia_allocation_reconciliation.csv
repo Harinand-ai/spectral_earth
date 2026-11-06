@@ -1,0 +1,10 @@
+class_id,class_name,train_pool_support,train_pool_pct,test_support,test_pct,initial_seed_labels,random_total_labels_mean,random_total_labels_std,random_allocation_pct,al_total_labels_mean,al_total_labels_std,al_allocation_pct,allocation_diff_labels_al_minus_rand,allocation_diff_pct,allocation_verdict
+0,Asphalt,4629,15.46,960,14.96,5,150.0,12.0,15.31,276.0,84.3,28.16,126.0,12.86,Over-Allocated by AL
+1,Meadows,13127,43.84,2763,43.06,5,417.3,7.0,42.59,223.3,96.1,22.79,-194.0,-19.8,Under-Allocated by AL (Starved)
+2,Gravel,1472,4.92,296,4.61,5,52.3,10.1,5.34,37.3,18.7,3.81,-15.0,-1.53,Balanced Allocation
+3,Trees,2078,6.94,517,8.06,5,68.0,8.9,6.94,71.0,6.9,7.25,3.0,0.31,Balanced Allocation
+4,Painted Metal,951,3.18,201,3.13,5,37.0,6.0,3.78,9.7,3.1,0.99,-27.3,-2.79,Under-Allocated by AL (Starved)
+5,Bare Soil,3524,11.77,774,12.06,5,119.3,9.5,12.17,156.7,54.5,15.99,37.3,3.81,Over-Allocated by AL
+6,Bitumen,937,3.13,193,3.01,5,27.7,3.1,2.82,48.3,19.5,4.93,20.7,2.11,Over-Allocated by AL
+7,Self-Blocking Bricks,2557,8.54,565,8.8,5,81.0,8.5,8.26,103.7,50.3,10.58,22.7,2.32,Over-Allocated by AL
+8,Shadows,668,2.23,148,2.31,5,27.3,4.0,2.79,54.0,17.5,5.51,26.7,2.72,Over-Allocated by AL
