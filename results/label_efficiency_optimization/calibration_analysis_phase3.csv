@@ -1,0 +1,136 @@
+dataset,strategy,seed,budget,optimal_temperature_T,val_ece_uncalibrated,val_ece_calibrated
+Indian Pines,Margin + Cosine Diversity,42,100,1.4976,0.1223,0.0158
+Indian Pines,Margin + Cosine Diversity,42,140,1.3227,0.0242,0.0596
+Indian Pines,Margin + Cosine Diversity,42,180,1.4849,0.1113,0.022
+Indian Pines,Margin + Cosine Diversity,42,220,1.4061,0.0656,0.0353
+Indian Pines,Margin + Cosine Diversity,42,260,1.0314,0.0844,0.0863
+Indian Pines,Margin + Cosine Diversity,43,100,1.6135,0.2217,0.0668
+Indian Pines,Margin + Cosine Diversity,43,140,1.5239,0.1299,0.0209
+Indian Pines,Margin + Cosine Diversity,43,180,1.5913,0.1563,0.0288
+Indian Pines,Margin + Cosine Diversity,43,220,1.4947,0.1009,0.0295
+Indian Pines,Margin + Cosine Diversity,43,260,1.1807,0.0573,0.1123
+Indian Pines,Margin + Cosine Diversity,44,100,1.5124,0.1567,0.0426
+Indian Pines,Margin + Cosine Diversity,44,140,1.3446,0.085,0.0419
+Indian Pines,Margin + Cosine Diversity,44,180,1.4678,0.1425,0.0374
+Indian Pines,Margin + Cosine Diversity,44,220,1.4396,0.0979,0.0461
+Indian Pines,Margin + Cosine Diversity,44,260,1.0553,0.038,0.0524
+Indian Pines,BALD + Cosine Diversity,42,100,1.5083,0.1275,0.0281
+Indian Pines,BALD + Cosine Diversity,42,140,1.4107,0.0637,0.0434
+Indian Pines,BALD + Cosine Diversity,42,180,1.5107,0.1379,0.0197
+Indian Pines,BALD + Cosine Diversity,42,220,1.4636,0.07,0.0257
+Indian Pines,BALD + Cosine Diversity,42,260,1.1496,0.0365,0.0684
+Indian Pines,BALD + Cosine Diversity,43,100,1.6373,0.2443,0.0698
+Indian Pines,BALD + Cosine Diversity,43,140,1.4866,0.0952,0.0812
+Indian Pines,BALD + Cosine Diversity,43,180,1.5507,0.1517,0.0296
+Indian Pines,BALD + Cosine Diversity,43,220,1.5,0.1314,0.039
+Indian Pines,BALD + Cosine Diversity,43,260,1.2308,0.0485,0.0474
+Indian Pines,BALD + Cosine Diversity,44,100,1.5228,0.1726,0.0316
+Indian Pines,BALD + Cosine Diversity,44,140,1.4543,0.1249,0.0339
+Indian Pines,BALD + Cosine Diversity,44,180,1.4897,0.1439,0.0376
+Indian Pines,BALD + Cosine Diversity,44,220,1.3807,0.0915,0.049
+Indian Pines,BALD + Cosine Diversity,44,260,1.0038,0.0482,0.0495
+Indian Pines,Adaptive Class-Coverage AL,42,100,1.503,0.1284,0.0238
+Indian Pines,Adaptive Class-Coverage AL,42,140,1.4104,0.0923,0.0294
+Indian Pines,Adaptive Class-Coverage AL,42,180,1.5155,0.1339,0.044
+Indian Pines,Adaptive Class-Coverage AL,42,220,1.437,0.0826,0.0395
+Indian Pines,Adaptive Class-Coverage AL,42,260,1.0977,0.0475,0.0808
+Indian Pines,Adaptive Class-Coverage AL,43,100,1.6119,0.2252,0.077
+Indian Pines,Adaptive Class-Coverage AL,43,140,1.4937,0.0927,0.0775
+Indian Pines,Adaptive Class-Coverage AL,43,180,1.5587,0.1618,0.0234
+Indian Pines,Adaptive Class-Coverage AL,43,220,1.5365,0.1373,0.0421
+Indian Pines,Adaptive Class-Coverage AL,43,260,1.1451,0.0199,0.052
+Indian Pines,Adaptive Class-Coverage AL,44,100,1.5,0.1607,0.0264
+Indian Pines,Adaptive Class-Coverage AL,44,140,1.4522,0.1326,0.0321
+Indian Pines,Adaptive Class-Coverage AL,44,180,1.4822,0.1347,0.0232
+Indian Pines,Adaptive Class-Coverage AL,44,220,1.4362,0.1091,0.044
+Indian Pines,Adaptive Class-Coverage AL,44,260,1.0629,0.0543,0.0678
+Salinas,Margin + Cosine Diversity,42,100,1.4176,0.09,0.0257
+Salinas,Margin + Cosine Diversity,42,140,1.3024,0.0497,0.0453
+Salinas,Margin + Cosine Diversity,42,180,1.4005,0.0746,0.0322
+Salinas,Margin + Cosine Diversity,42,220,1.3482,0.042,0.0498
+Salinas,Margin + Cosine Diversity,42,260,0.98,0.0932,0.0838
+Salinas,Margin + Cosine Diversity,43,100,1.4363,0.0919,0.0404
+Salinas,Margin + Cosine Diversity,43,140,1.3231,0.038,0.0602
+Salinas,Margin + Cosine Diversity,43,180,1.4421,0.1017,0.0154
+Salinas,Margin + Cosine Diversity,43,220,1.3855,0.0678,0.0336
+Salinas,Margin + Cosine Diversity,43,260,1.0008,0.1017,0.1018
+Salinas,Margin + Cosine Diversity,44,100,1.4308,0.1028,0.0245
+Salinas,Margin + Cosine Diversity,44,140,1.3295,0.0455,0.0511
+Salinas,Margin + Cosine Diversity,44,180,1.3329,0.0411,0.0454
+Salinas,Margin + Cosine Diversity,44,220,1.2865,0.0381,0.0425
+Salinas,Margin + Cosine Diversity,44,260,0.867,0.1066,0.0569
+Salinas,BALD + Cosine Diversity,42,100,1.3945,0.0843,0.0309
+Salinas,BALD + Cosine Diversity,42,140,1.3361,0.0855,0.0535
+Salinas,BALD + Cosine Diversity,42,180,1.3293,0.0512,0.0386
+Salinas,BALD + Cosine Diversity,42,220,1.3203,0.044,0.0387
+Salinas,BALD + Cosine Diversity,42,260,0.8874,0.0904,0.0535
+Salinas,BALD + Cosine Diversity,43,100,1.4321,0.0754,0.0497
+Salinas,BALD + Cosine Diversity,43,140,1.2131,0.0685,0.1028
+Salinas,BALD + Cosine Diversity,43,180,1.3309,0.0343,0.053
+Salinas,BALD + Cosine Diversity,43,220,1.2958,0.0234,0.0534
+Salinas,BALD + Cosine Diversity,43,260,0.05,0.1623,0.3024
+Salinas,BALD + Cosine Diversity,44,100,1.4301,0.1009,0.0459
+Salinas,BALD + Cosine Diversity,44,140,1.3808,0.0691,0.045
+Salinas,BALD + Cosine Diversity,44,180,1.391,0.0729,0.0527
+Salinas,BALD + Cosine Diversity,44,220,1.4201,0.0743,0.0676
+Salinas,BALD + Cosine Diversity,44,260,0.05,0.0921,0.3527
+Salinas,Adaptive Class-Coverage AL,42,100,1.4248,0.0976,0.0257
+Salinas,Adaptive Class-Coverage AL,42,140,1.2839,0.0522,0.0363
+Salinas,Adaptive Class-Coverage AL,42,180,1.3782,0.0841,0.0326
+Salinas,Adaptive Class-Coverage AL,42,220,1.3638,0.074,0.0222
+Salinas,Adaptive Class-Coverage AL,42,260,1.0103,0.0869,0.0795
+Salinas,Adaptive Class-Coverage AL,43,100,1.4197,0.0708,0.0477
+Salinas,Adaptive Class-Coverage AL,43,140,1.2151,0.0236,0.0794
+Salinas,Adaptive Class-Coverage AL,43,180,1.3483,0.0516,0.0325
+Salinas,Adaptive Class-Coverage AL,43,220,1.3179,0.0271,0.0424
+Salinas,Adaptive Class-Coverage AL,43,260,0.9341,0.1134,0.0826
+Salinas,Adaptive Class-Coverage AL,44,100,1.4031,0.0914,0.0384
+Salinas,Adaptive Class-Coverage AL,44,140,1.3176,0.0534,0.0643
+Salinas,Adaptive Class-Coverage AL,44,180,1.3049,0.0425,0.0359
+Salinas,Adaptive Class-Coverage AL,44,220,1.286,0.0366,0.0375
+Salinas,Adaptive Class-Coverage AL,44,260,0.7982,0.0999,0.0341
+Pavia University,Margin + Cosine Diversity,42,100,1.6717,0.2399,0.0898
+Pavia University,Margin + Cosine Diversity,42,140,1.4753,0.1286,0.0201
+Pavia University,Margin + Cosine Diversity,42,180,1.5785,0.173,0.0513
+Pavia University,Margin + Cosine Diversity,42,220,1.5448,0.1385,0.028
+Pavia University,Margin + Cosine Diversity,42,260,1.1893,0.0452,0.0849
+Pavia University,Margin + Cosine Diversity,43,100,1.6402,0.2287,0.0731
+Pavia University,Margin + Cosine Diversity,43,140,1.461,0.117,0.0201
+Pavia University,Margin + Cosine Diversity,43,180,1.5627,0.152,0.0394
+Pavia University,Margin + Cosine Diversity,43,220,1.5891,0.1621,0.0497
+Pavia University,Margin + Cosine Diversity,43,260,1.3494,0.0714,0.0503
+Pavia University,Margin + Cosine Diversity,44,100,1.644,0.2324,0.0781
+Pavia University,Margin + Cosine Diversity,44,140,1.5,0.1501,0.0315
+Pavia University,Margin + Cosine Diversity,44,180,1.5373,0.133,0.0175
+Pavia University,Margin + Cosine Diversity,44,220,1.523,0.1137,0.0194
+Pavia University,Margin + Cosine Diversity,44,260,1.2219,0.0492,0.0314
+Pavia University,BALD + Cosine Diversity,42,100,1.6518,0.2447,0.0965
+Pavia University,BALD + Cosine Diversity,42,140,1.5104,0.0945,0.0377
+Pavia University,BALD + Cosine Diversity,42,180,1.5585,0.1331,0.0321
+Pavia University,BALD + Cosine Diversity,42,220,1.5317,0.1098,0.0347
+Pavia University,BALD + Cosine Diversity,42,260,1.2093,0.038,0.0755
+Pavia University,BALD + Cosine Diversity,43,100,1.5641,0.1737,0.0537
+Pavia University,BALD + Cosine Diversity,43,140,1.4585,0.0938,0.0353
+Pavia University,BALD + Cosine Diversity,43,180,1.5726,0.1484,0.031
+Pavia University,BALD + Cosine Diversity,43,220,1.5181,0.113,0.0276
+Pavia University,BALD + Cosine Diversity,43,260,1.2456,0.0736,0.0642
+Pavia University,BALD + Cosine Diversity,44,100,1.6502,0.2232,0.0895
+Pavia University,BALD + Cosine Diversity,44,140,1.5606,0.1744,0.0374
+Pavia University,BALD + Cosine Diversity,44,180,1.6235,0.197,0.0756
+Pavia University,BALD + Cosine Diversity,44,220,1.6044,0.1614,0.0534
+Pavia University,BALD + Cosine Diversity,44,260,1.2824,0.0464,0.0705
+Pavia University,Adaptive Class-Coverage AL,42,100,1.6613,0.2772,0.1339
+Pavia University,Adaptive Class-Coverage AL,42,140,1.5089,0.1466,0.0323
+Pavia University,Adaptive Class-Coverage AL,42,180,1.5483,0.1636,0.0401
+Pavia University,Adaptive Class-Coverage AL,42,220,1.5594,0.1534,0.0376
+Pavia University,Adaptive Class-Coverage AL,42,260,1.3211,0.0792,0.0127
+Pavia University,Adaptive Class-Coverage AL,43,100,1.6632,0.2393,0.0957
+Pavia University,Adaptive Class-Coverage AL,43,140,1.5057,0.1389,0.0204
+Pavia University,Adaptive Class-Coverage AL,43,180,1.6316,0.1967,0.068
+Pavia University,Adaptive Class-Coverage AL,43,220,1.5514,0.1463,0.0251
+Pavia University,Adaptive Class-Coverage AL,43,260,1.2656,0.0399,0.0517
+Pavia University,Adaptive Class-Coverage AL,44,100,1.6436,0.2282,0.0713
+Pavia University,Adaptive Class-Coverage AL,44,140,1.4931,0.1392,0.0288
+Pavia University,Adaptive Class-Coverage AL,44,180,1.5551,0.1625,0.0444
+Pavia University,Adaptive Class-Coverage AL,44,220,1.5336,0.1455,0.0256
+Pavia University,Adaptive Class-Coverage AL,44,260,1.2492,0.0722,0.0526

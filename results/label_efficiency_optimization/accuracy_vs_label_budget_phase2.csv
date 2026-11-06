@@ -1,0 +1,61 @@
+dataset,strategy,strategy_code,budget,sample_fraction_pct,oa_mean,oa_sample_std,aa_mean,aa_sample_std,kappa_mean,kappa_sample_std,macro_f1_mean,macro_f1_sample_std,ece_mean,acq_time_mean_s
+Indian Pines,K-Center Greedy (Core-Set),kcenter_greedy,100,0.98,47.37,1.6,56.25,5.21,0.4096,0.0215,0.467,0.0274,0.1859,0.1086
+Indian Pines,K-Center Greedy (Core-Set),kcenter_greedy,140,1.37,50.02,2.24,60.59,1.8,0.4415,0.0235,0.4978,0.03,0.1139,0.1199
+Indian Pines,K-Center Greedy (Core-Set),kcenter_greedy,180,1.76,53.49,0.79,61.33,1.64,0.4754,0.0086,0.5298,0.0169,0.1592,0.1121
+Indian Pines,K-Center Greedy (Core-Set),kcenter_greedy,220,2.15,53.92,0.88,61.68,1.34,0.4806,0.0084,0.546,0.014,0.15,0.1135
+Indian Pines,K-Center Greedy (Core-Set),kcenter_greedy,260,2.54,53.47,3.76,61.76,1.86,0.4756,0.0391,0.5324,0.0219,0.0416,0.1137
+Indian Pines,BALD (MC Dropout Disagreement),bald_mc,100,0.98,44.45,1.17,54.23,2.37,0.3824,0.0126,0.4426,0.0151,0.1987,0.1502
+Indian Pines,BALD (MC Dropout Disagreement),bald_mc,140,1.37,46.4,4.36,56.83,3.77,0.3979,0.0416,0.4635,0.0379,0.1109,0.1303
+Indian Pines,BALD (MC Dropout Disagreement),bald_mc,180,1.76,51.97,2.67,59.08,3.38,0.4563,0.027,0.5042,0.0248,0.1582,0.1282
+Indian Pines,BALD (MC Dropout Disagreement),bald_mc,220,2.15,53.99,1.77,60.6,1.51,0.4796,0.0184,0.5419,0.035,0.1083,0.125
+Indian Pines,BALD (MC Dropout Disagreement),bald_mc,260,2.54,52.3,2.16,57.46,2.38,0.4581,0.0206,0.5054,0.0069,0.052,0.1332
+Indian Pines,Exact BADGE (Loss Gradient Diversity),badge,100,0.98,48.7,1.09,56.91,3.6,0.4228,0.0091,0.4691,0.0148,0.1676,0.1121
+Indian Pines,Exact BADGE (Loss Gradient Diversity),badge,140,1.37,50.72,1.45,58.52,3.23,0.4429,0.0139,0.4938,0.0263,0.11,0.1214
+Indian Pines,Exact BADGE (Loss Gradient Diversity),badge,180,1.76,55.72,2.5,62.11,3.6,0.4975,0.0266,0.5394,0.0166,0.1555,0.1237
+Indian Pines,Exact BADGE (Loss Gradient Diversity),badge,220,2.15,57.91,0.81,63.54,2.88,0.5194,0.0097,0.5733,0.0083,0.1385,0.1145
+Indian Pines,Exact BADGE (Loss Gradient Diversity),badge,260,2.54,57.85,1.95,62.85,2.01,0.5138,0.0174,0.5703,0.026,0.0418,0.1195
+Indian Pines,Cluster Diversity (Spherical K-Means),cluster_diversity,100,0.98,51.69,0.62,56.62,3.09,0.4519,0.0094,0.5007,0.0205,0.1826,2.2907
+Indian Pines,Cluster Diversity (Spherical K-Means),cluster_diversity,140,1.37,55.42,1.97,60.46,0.6,0.4907,0.0199,0.5379,0.0293,0.1103,4.0376
+Indian Pines,Cluster Diversity (Spherical K-Means),cluster_diversity,180,1.76,59.95,0.43,62.16,2.49,0.5406,0.0058,0.5731,0.0016,0.1524,3.729
+Indian Pines,Cluster Diversity (Spherical K-Means),cluster_diversity,220,2.15,61.27,1.47,63.47,1.64,0.5545,0.0166,0.5913,0.0161,0.148,3.8723
+Indian Pines,Cluster Diversity (Spherical K-Means),cluster_diversity,260,2.54,60.38,0.81,59.51,1.76,0.5401,0.0093,0.5612,0.0034,0.0459,4.3027
+Salinas,K-Center Greedy (Core-Set),kcenter_greedy,100,0.18,62.6,2.21,68.91,0.77,0.5912,0.0226,0.6357,0.0108,0.0801,0.4968
+Salinas,K-Center Greedy (Core-Set),kcenter_greedy,140,0.25,60.56,1.23,68.04,1.63,0.5708,0.0128,0.6224,0.0156,0.0481,0.6242
+Salinas,K-Center Greedy (Core-Set),kcenter_greedy,180,0.32,66.02,1.27,72.16,1.84,0.6282,0.0129,0.6757,0.0129,0.071,0.529
+Salinas,K-Center Greedy (Core-Set),kcenter_greedy,220,0.39,65.93,0.67,73.0,1.26,0.6275,0.0073,0.6843,0.0089,0.06,0.5567
+Salinas,K-Center Greedy (Core-Set),kcenter_greedy,260,0.46,59.67,0.87,66.03,1.73,0.5616,0.009,0.6115,0.0135,0.1013,0.5782
+Salinas,BALD (MC Dropout Disagreement),bald_mc,100,0.18,63.75,1.54,70.09,1.08,0.6036,0.0156,0.6566,0.0016,0.0862,0.7145
+Salinas,BALD (MC Dropout Disagreement),bald_mc,140,0.25,62.37,3.97,68.88,2.23,0.5902,0.0408,0.6524,0.0163,0.0712,0.6753
+Salinas,BALD (MC Dropout Disagreement),bald_mc,180,0.32,68.51,3.56,72.65,1.36,0.6536,0.0363,0.7009,0.0191,0.0815,0.6859
+Salinas,BALD (MC Dropout Disagreement),bald_mc,220,0.39,71.46,0.8,73.42,2.27,0.6837,0.0093,0.7215,0.0204,0.0369,0.6706
+Salinas,BALD (MC Dropout Disagreement),bald_mc,260,0.46,63.57,3.03,64.85,2.28,0.5982,0.0292,0.6218,0.0131,0.0708,0.7127
+Salinas,Exact BADGE (Loss Gradient Diversity),badge,100,0.18,63.42,2.23,69.48,1.22,0.6001,0.0217,0.6451,0.0112,0.0768,0.4698
+Salinas,Exact BADGE (Loss Gradient Diversity),badge,140,0.25,61.46,2.35,68.71,2.04,0.5805,0.0236,0.6383,0.0202,0.052,0.556
+Salinas,Exact BADGE (Loss Gradient Diversity),badge,180,0.32,68.23,0.93,73.74,1.75,0.6505,0.0086,0.709,0.0063,0.0518,0.5312
+Salinas,Exact BADGE (Loss Gradient Diversity),badge,220,0.39,70.68,1.91,75.48,1.96,0.6761,0.0197,0.7359,0.0207,0.0327,0.5564
+Salinas,Exact BADGE (Loss Gradient Diversity),badge,260,0.46,65.24,1.7,68.55,0.76,0.6166,0.0165,0.6555,0.0133,0.1242,0.5789
+Salinas,Cluster Diversity (Spherical K-Means),cluster_diversity,100,0.18,66.41,1.4,70.33,1.11,0.63,0.0139,0.6719,0.0109,0.0942,1.43
+Salinas,Cluster Diversity (Spherical K-Means),cluster_diversity,140,0.25,69.61,1.29,71.19,1.92,0.6623,0.0138,0.694,0.0267,0.0406,4.7698
+Salinas,Cluster Diversity (Spherical K-Means),cluster_diversity,180,0.32,72.69,0.93,73.9,0.87,0.6958,0.0101,0.7312,0.0111,0.0889,4.2136
+Salinas,Cluster Diversity (Spherical K-Means),cluster_diversity,220,0.39,73.82,0.12,74.39,1.76,0.7081,0.002,0.739,0.0119,0.0858,4.1509
+Salinas,Cluster Diversity (Spherical K-Means),cluster_diversity,260,0.46,70.66,1.42,70.08,2.06,0.6731,0.0161,0.6876,0.0244,0.0202,4.4794
+Pavia University,K-Center Greedy (Core-Set),kcenter_greedy,100,0.23,52.71,3.86,55.98,2.26,0.4086,0.0362,0.5048,0.0156,0.2665,0.511
+Pavia University,K-Center Greedy (Core-Set),kcenter_greedy,140,0.33,52.08,3.97,55.87,1.01,0.4058,0.0335,0.5075,0.0132,0.215,0.4433
+Pavia University,K-Center Greedy (Core-Set),kcenter_greedy,180,0.42,54.58,3.79,57.64,1.6,0.4315,0.0328,0.5321,0.0184,0.265,0.4288
+Pavia University,K-Center Greedy (Core-Set),kcenter_greedy,220,0.51,57.28,2.97,59.31,1.03,0.4612,0.0266,0.5552,0.0169,0.2367,0.4556
+Pavia University,K-Center Greedy (Core-Set),kcenter_greedy,260,0.61,53.2,4.28,55.88,0.89,0.418,0.0422,0.5077,0.0095,0.1531,0.4567
+Pavia University,BALD (MC Dropout Disagreement),bald_mc,100,0.23,59.92,0.64,55.97,2.16,0.4779,0.0085,0.5322,0.0135,0.2056,0.5765
+Pavia University,BALD (MC Dropout Disagreement),bald_mc,140,0.33,61.4,1.05,59.77,2.82,0.4991,0.0169,0.5577,0.0237,0.1474,0.5285
+Pavia University,BALD (MC Dropout Disagreement),bald_mc,180,0.42,63.58,1.4,60.5,2.47,0.5228,0.0161,0.5735,0.0191,0.1927,0.5555
+Pavia University,BALD (MC Dropout Disagreement),bald_mc,220,0.51,65.02,1.16,61.68,0.69,0.54,0.015,0.5963,0.0057,0.176,0.5416
+Pavia University,BALD (MC Dropout Disagreement),bald_mc,260,0.61,65.25,1.34,61.32,0.43,0.5363,0.0152,0.5967,0.0134,0.055,0.5749
+Pavia University,Exact BADGE (Loss Gradient Diversity),badge,100,0.23,55.68,4.89,56.25,2.09,0.4357,0.049,0.5156,0.0191,0.2255,0.5205
+Pavia University,Exact BADGE (Loss Gradient Diversity),badge,140,0.33,57.81,6.7,56.61,1.87,0.4553,0.064,0.5234,0.0225,0.1762,0.446
+Pavia University,Exact BADGE (Loss Gradient Diversity),badge,180,0.42,60.37,6.54,59.22,2.71,0.4907,0.074,0.5586,0.0346,0.2017,0.443
+Pavia University,Exact BADGE (Loss Gradient Diversity),badge,220,0.51,63.36,6.06,62.07,0.64,0.5261,0.066,0.5891,0.024,0.1721,0.4481
+Pavia University,Exact BADGE (Loss Gradient Diversity),badge,260,0.61,58.93,8.84,59.99,1.68,0.4807,0.0831,0.5626,0.04,0.0808,0.4668
+Pavia University,Cluster Diversity (Spherical K-Means),cluster_diversity,100,0.23,61.74,1.38,58.0,1.3,0.503,0.0198,0.5504,0.0108,0.2141,12.4882
+Pavia University,Cluster Diversity (Spherical K-Means),cluster_diversity,140,0.33,63.1,0.58,59.42,0.61,0.5191,0.007,0.5673,0.0112,0.1605,4.2533
+Pavia University,Cluster Diversity (Spherical K-Means),cluster_diversity,180,0.42,64.71,1.03,60.95,1.31,0.5395,0.0123,0.5841,0.0129,0.2037,4.4273
+Pavia University,Cluster Diversity (Spherical K-Means),cluster_diversity,220,0.51,66.21,0.85,61.84,1.34,0.5584,0.0123,0.5983,0.0094,0.1837,4.6763
+Pavia University,Cluster Diversity (Spherical K-Means),cluster_diversity,260,0.61,65.01,0.45,60.53,0.74,0.5401,0.0039,0.5874,0.0087,0.099,4.8837

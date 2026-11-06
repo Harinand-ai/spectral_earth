@@ -75,7 +75,7 @@ PHASE1_STRATEGIES = [
 PHASE2_STRATEGIES = [
     ("K-Center Greedy (Core-Set)", "kcenter_greedy"),
     ("BALD (MC Dropout Disagreement)", "bald_mc"),
-    ("BADGE (Diverse Loss Gradients)", "badge"),
+    ("Exact BADGE (Loss Gradient Diversity)", "badge"),
     ("Cluster Diversity (Spherical K-Means)", "cluster_diversity"),
 ]
 
@@ -274,92 +274,97 @@ def select_query_batch(
 
     # 6. K-Center Greedy (Core-Set Facility Location on Unit Hypersphere)
     if strategy_code == "kcenter_greedy":
-        # Candidate pool: filter to top 1500 if pool is large
-        cand_size = min(len(unlabeled_idx), max(10 * k, 500))
-        # Initial distance: distance to nearest currently labeled sample
-        cand_idx = rng.choice(len(unlabeled_idx), size=cand_size, replace=False) if len(unlabeled_idx) > cand_size else np.arange(len(unlabeled_idx))
-        cand_l2 = train_feats_l2[unlabeled_idx[cand_idx]].to(DEVICE)
+        # Full-pool Core-Set selection
+        unlab_l2 = train_feats_l2[unlabeled_idx].to(DEVICE)
         lab_l2 = train_feats_l2[labeled_idx].to(DEVICE)
 
         with torch.no_grad():
-            dots = torch.matmul(cand_l2, lab_l2.t())
+            dots = torch.matmul(unlab_l2, lab_l2.t())
             dists = 1.0 - torch.max(dots, dim=1)[0]
             sel = [torch.argmax(dists).item()]
+            dists[sel[-1]] = -1.0
             for _ in range(1, k):
-                new_dots = torch.matmul(cand_l2, cand_l2[sel[-1] : sel[-1] + 1].t()).squeeze(1)
+                new_dots = torch.matmul(unlab_l2, unlab_l2[sel[-1] : sel[-1] + 1].t()).squeeze(1)
                 dists = torch.minimum(dists, 1.0 - new_dots)
+                dists[sel[-1]] = -1.0
                 sel.append(torch.argmax(dists).item())
 
-        return unlabeled_idx[cand_idx[sel]], time.time() - t0
+        return unlabeled_idx[sel], time.time() - t0
 
     # 7. BALD (Monte Carlo Dropout Disagreement)
     if strategy_code == "bald_mc":
-        # Enable dropout during evaluation
         for m in model.modules():
             if isinstance(m, nn.Dropout):
                 m.train()
         T = 10
-        cand_size = min(len(unlabeled_idx), max(10 * k, 500))
-        cand_local = rng.choice(len(unlabeled_idx), size=cand_size, replace=False) if len(unlabeled_idx) > cand_size else np.arange(len(unlabeled_idx))
-        cand_x = train_feats_l2[unlabeled_idx[cand_local]].to(DEVICE)
-
-        probs_mc = []
+        chunk_size = 4096
+        bald_scores = []
         with torch.no_grad():
-            for _ in range(T):
-                logits_t = model(cand_x, normalize_input=False)
-                probs_mc.append(torch.softmax(logits_t, dim=-1).cpu().numpy())
-        probs_mc = np.stack(probs_mc, axis=0)  # (T, cand_size, C)
-
-        mean_p = np.mean(probs_mc, axis=0)
-        eps = 1e-12
-        total_entropy = -np.sum(mean_p * np.log(np.clip(mean_p, eps, 1.0)), axis=-1)
-        sample_entropies = -np.sum(probs_mc * np.log(np.clip(probs_mc, eps, 1.0)), axis=-1)
-        expected_entropy = np.mean(sample_entropies, axis=0)
-        bald_scores = total_entropy - expected_entropy
-
+            for bi in range(0, len(unlabeled_idx), chunk_size):
+                bx = train_feats_l2[unlabeled_idx[bi : bi + chunk_size]].to(DEVICE)
+                probs_mc = []
+                for _ in range(T):
+                    logits_t = model(bx, normalize_input=False)
+                    probs_mc.append(torch.softmax(logits_t, dim=-1))
+                probs_mc = torch.stack(probs_mc, dim=0)  # (T, chunk, C)
+                mean_p = torch.mean(probs_mc, dim=0)
+                eps = 1e-12
+                total_entropy = -torch.sum(mean_p * torch.log(torch.clamp(mean_p, min=eps)), dim=-1)
+                expected_entropy = torch.mean(-torch.sum(probs_mc * torch.log(torch.clamp(probs_mc, min=eps)), dim=-1), dim=0)
+                bald = total_entropy - expected_entropy
+                bald_scores.append(bald.cpu().numpy())
+        bald_scores = np.concatenate(bald_scores, axis=0)
         top_k = np.argsort(-bald_scores)[:k]
-        return unlabeled_idx[cand_local[top_k]], time.time() - t0
+        return unlabeled_idx[top_k], time.time() - t0
 
-    # 8. BADGE (Diverse Loss Gradient Embeddings with Farthest-First on Gradients)
+    # 8. Exact BADGE (Diverse Loss Gradient Embeddings via Tensor Decomposition)
     if strategy_code == "badge":
-        # Pre-filter candidates by uncertainty to keep gradient tensor small & fit in 4GB VRAM
-        margin_val = np.sort(probs, axis=1)[:, -1] - np.sort(probs, axis=1)[:, -2]
-        unc_badge = 1.0 - margin_val
-        cand_size = min(len(unlabeled_idx), max(4 * k, 200))
-        top_cand = np.argsort(-unc_badge)[:cand_size]
+        # Exact BADGE (Ash et al., 2020) without candidate prefiltering.
+        # Tensor decomposition: ||g_i - g_j||^2 = ||r_i||^2 + ||r_j||^2 - 2 (r_i . r_j) * (f_i . f_j)
+        y_hat = np.argmax(probs, axis=-1)
+        M_unlab = len(unlabeled_idx)
 
-        cand_probs = probs[top_cand]
-        y_hat = np.argmax(cand_probs, axis=-1)
-        M_cand, C_cls = cand_probs.shape
+        r_np = probs.copy()
+        r_np[np.arange(M_unlab), y_hat] -= 1.0
+        r_t = torch.tensor(r_np, dtype=torch.float32, device=DEVICE)  # (N_unlab, C)
+        f_t = train_feats_l2[unlabeled_idx].to(DEVICE)                 # (N_unlab, d)
 
-        scale = cand_probs.copy()
-        for i in range(M_cand):
-            scale[i, y_hat[i]] -= 1.0
-        scale_t = torch.tensor(scale, dtype=torch.float32, device=DEVICE)  # (M, C)
-        cand_x = train_feats_l2[unlabeled_idx[top_cand]].to(DEVICE)        # (M, d)
-
-        # Gradient embeddings g: (M, C * d)
         with torch.no_grad():
-            g = torch.bmm(scale_t.unsqueeze(2), cand_x.unsqueeze(1)).view(M_cand, C_cls * 2048)
-            # Pick first sample with maximum gradient norm (highest uncertainty)
-            norms = torch.norm(g, dim=1)
-            sel = [torch.argmax(norms).item()]
-            dists = torch.norm(g - g[sel[-1] : sel[-1] + 1], dim=1)
-            for _ in range(1, k):
-                sel.append(torch.argmax(dists).item())
-                new_dists = torch.norm(g - g[sel[-1] : sel[-1] + 1], dim=1)
-                dists = torch.minimum(dists, new_dists)
+            norm_r_sq = torch.sum(r_t ** 2, dim=1)  # ||g_i||^2 = ||r_i||^2 since ||f_i|| = 1
 
-        return unlabeled_idx[top_cand[sel]], time.time() - t0
+            # First center: sample with highest gradient norm (maximum uncertainty)
+            sel = [torch.argmax(norm_r_sq).item()]
+
+            # Initial distances to first center
+            r_s0 = r_t[sel[0] : sel[0] + 1]
+            f_s0 = f_t[sel[0] : sel[0] + 1]
+            dot_r = torch.matmul(r_t, r_s0.t()).squeeze(1)
+            dot_f = torch.matmul(f_t, f_s0.t()).squeeze(1)
+            min_dists = norm_r_sq + norm_r_sq[sel[0]] - 2.0 * dot_r * dot_f
+            min_dists[sel[0]] = -1.0
+
+            # Greedy farthest-first traversal in gradient space
+            for _ in range(1, k):
+                next_idx = torch.argmax(min_dists).item()
+                sel.append(next_idx)
+                r_s = r_t[next_idx : next_idx + 1]
+                f_s = f_t[next_idx : next_idx + 1]
+                dot_r = torch.matmul(r_t, r_s.t()).squeeze(1)
+                dot_f = torch.matmul(f_t, f_s.t()).squeeze(1)
+                new_dists = norm_r_sq + norm_r_sq[next_idx] - 2.0 * dot_r * dot_f
+                min_dists = torch.minimum(min_dists, new_dists)
+                min_dists[next_idx] = -1.0
+
+        return unlabeled_idx[sel], time.time() - t0
 
     # 9. Cluster Diversity (Spherical K-Means / Cosine Centers)
     if strategy_code == "cluster_diversity":
         from sklearn.cluster import MiniBatchKMeans
-        cand_size = min(len(unlabeled_idx), max(10 * k, 500))
+        cand_size = min(len(unlabeled_idx), 10000)
         cand_local = rng.choice(len(unlabeled_idx), size=cand_size, replace=False) if len(unlabeled_idx) > cand_size else np.arange(len(unlabeled_idx))
         cand_x_np = train_feats_l2[unlabeled_idx[cand_local]].numpy()
 
-        mbk = MiniBatchKMeans(n_clusters=k, random_state=42, batch_size=128)
+        mbk = MiniBatchKMeans(n_clusters=k, random_state=42, batch_size=256, n_init=3)
         cluster_labels = mbk.fit_predict(cand_x_np)
         centers = mbk.cluster_centers_
         centers = centers / np.linalg.norm(centers, axis=1, keepdims=True)
@@ -383,7 +388,7 @@ def select_query_batch(
     if strategy_code == "hybrid_margin_cosine":
         sorted_probs = np.sort(probs, axis=1)
         margin_unc = 1.0 - (sorted_probs[:, -1] - sorted_probs[:, -2])
-        cand_size = min(len(unlabeled_idx), max(4 * k, 100))
+        cand_size = min(len(unlabeled_idx), max(4 * k, 200))
         top_cand = np.argsort(-margin_unc)[:cand_size]
 
         cand_l2 = train_feats_l2[unlabeled_idx[top_cand]].to(DEVICE)
@@ -393,9 +398,11 @@ def select_query_batch(
             dots = torch.matmul(cand_l2, lab_l2.t())
             dists = 1.0 - torch.max(dots, dim=1)[0]
             sel = [torch.argmax(dists).item()]
+            dists[sel[-1]] = -1.0
             for _ in range(1, k):
                 new_dots = torch.matmul(cand_l2, cand_l2[sel[-1] : sel[-1] + 1].t()).squeeze(1)
                 dists = torch.minimum(dists, 1.0 - new_dots)
+                dists[sel[-1]] = -1.0
                 sel.append(torch.argmax(dists).item())
 
         return unlabeled_idx[top_cand[sel]], time.time() - t0
@@ -406,60 +413,26 @@ def select_query_batch(
             if isinstance(m, nn.Dropout):
                 m.train()
         T = 10
+        chunk_size = 4096
+        bald_scores = []
+        with torch.no_grad():
+            for bi in range(0, len(unlabeled_idx), chunk_size):
+                bx = train_feats_l2[unlabeled_idx[bi : bi + chunk_size]].to(DEVICE)
+                probs_mc = []
+                for _ in range(T):
+                    logits_t = model(bx, normalize_input=False)
+                    probs_mc.append(torch.softmax(logits_t, dim=-1))
+                probs_mc = torch.stack(probs_mc, dim=0)
+                mean_p = torch.mean(probs_mc, dim=0)
+                eps = 1e-12
+                total_entropy = -torch.sum(mean_p * torch.log(torch.clamp(mean_p, min=eps)), dim=-1)
+                expected_entropy = torch.mean(-torch.sum(probs_mc * torch.log(torch.clamp(probs_mc, min=eps)), dim=-1), dim=0)
+                bald = total_entropy - expected_entropy
+                bald_scores.append(bald.cpu().numpy())
+        bald_scores = np.concatenate(bald_scores, axis=0)
+
         cand_size = min(len(unlabeled_idx), max(4 * k, 200))
-        # Initial filter by margin to get top uncertain pool
-        margin_val = np.sort(probs, axis=1)[:, -1] - np.sort(probs, axis=1)[:, -2]
-        top_filter = np.argsort(margin_val)[:cand_size]
-
-        cand_x = train_feats_l2[unlabeled_idx[top_filter]].to(DEVICE)
-        probs_mc = []
-        with torch.no_grad():
-            for _ in range(T):
-                logits_t = model(cand_x, normalize_input=False)
-                probs_mc.append(torch.softmax(logits_t, dim=-1).cpu().numpy())
-        probs_mc = np.stack(probs_mc, axis=0)
-        mean_p = np.mean(probs_mc, axis=0)
-        eps = 1e-12
-        total_entropy = -np.sum(mean_p * np.log(np.clip(mean_p, eps, 1.0)), axis=-1)
-        expected_entropy = np.mean(-np.sum(probs_mc * np.log(np.clip(probs_mc, eps, 1.0)), axis=-1), axis=0)
-        bald_scores = total_entropy - expected_entropy
-
-        # Now apply Cosine diversity over top BALD candidates
-        top_bald = np.argsort(-bald_scores)[:max(2 * k, 50)]
-        cand_l2 = cand_x[top_bald]
-        lab_l2 = train_feats_l2[labeled_idx].to(DEVICE)
-
-        with torch.no_grad():
-            dots = torch.matmul(cand_l2, lab_l2.t())
-            dists = 1.0 - torch.max(dots, dim=1)[0]
-            sel = [torch.argmax(dists).item()]
-            for _ in range(1, k):
-                new_dots = torch.matmul(cand_l2, cand_l2[sel[-1] : sel[-1] + 1].t()).squeeze(1)
-                dists = torch.minimum(dists, 1.0 - new_dots)
-                sel.append(torch.argmax(dists).item())
-
-        return unlabeled_idx[top_filter[top_bald[sel]]], time.time() - t0
-
-    # 12. Adaptive Class-Coverage AL: S(x) = alpha * U(x) + beta * D(x) + gamma * C(x)
-    if strategy_code == "adaptive_coverage_al":
-        # Calculate Margin Uncertainty
-        sorted_probs = np.sort(probs, axis=1)
-        u_score = 1.0 - (sorted_probs[:, -1] - sorted_probs[:, -2])
-        u_norm = (u_score - u_score.min()) / (u_score.max() - u_score.min() + 1e-8)
-
-        # Calculate Predicted Class & Current Class Frequencies
-        pred_c = np.argmax(probs, axis=1)
-        cur_labels = train_lbls[labeled_idx].numpy()
-        cur_counts = np.bincount(cur_labels, minlength=num_classes)
-
-        # Class coverage score: C(x) = 1 / sqrt(count(c) + 1)
-        c_score = np.array([1.0 / np.sqrt(cur_counts[c] + 1) for c in pred_c])
-        c_norm = (c_score - c_score.min()) / (c_score.max() - c_score.min() + 1e-8)
-
-        # Combine Uncertainty + Class Coverage to form top candidates
-        cand_acq = 0.60 * u_norm + 0.40 * c_norm
-        cand_size = min(len(unlabeled_idx), max(4 * k, 100))
-        top_cand = np.argsort(-cand_acq)[:cand_size]
+        top_cand = np.argsort(-bald_scores)[:cand_size]
 
         cand_l2 = train_feats_l2[unlabeled_idx[top_cand]].to(DEVICE)
         lab_l2 = train_feats_l2[labeled_idx].to(DEVICE)
@@ -468,10 +441,66 @@ def select_query_batch(
             dots = torch.matmul(cand_l2, lab_l2.t())
             dists = 1.0 - torch.max(dots, dim=1)[0]
             sel = [torch.argmax(dists).item()]
+            dists[sel[-1]] = -1.0
             for _ in range(1, k):
                 new_dots = torch.matmul(cand_l2, cand_l2[sel[-1] : sel[-1] + 1].t()).squeeze(1)
                 dists = torch.minimum(dists, 1.0 - new_dots)
+                dists[sel[-1]] = -1.0
                 sel.append(torch.argmax(dists).item())
+
+        return unlabeled_idx[top_cand[sel]], time.time() - t0
+
+    # 12. Adaptive Class-Coverage AL: S(x) = alpha * U(x) + beta * D(x) + gamma * C(x)
+    if strategy_code == "adaptive_coverage_al":
+        alpha, beta, gamma = 0.50, 0.30, 0.20
+        # Margin uncertainty
+        sorted_probs = np.sort(probs, axis=1)
+        u_score = 1.0 - (sorted_probs[:, -1] - sorted_probs[:, -2])
+        u_norm = (u_score - u_score.min()) / (u_score.max() - u_score.min() + 1e-8)
+
+        # Predicted class on unlabeled pool & current labeled training set counts (NEVER test labels)
+        pred_c = np.argmax(probs, axis=1)
+        cur_labels = train_lbls[labeled_idx].numpy()
+        cur_counts = np.bincount(cur_labels, minlength=num_classes).astype(np.float32)
+
+        # Candidate pool: filter top candidates by (alpha * U + gamma * C) to accelerate pairwise distance
+        c_score = 1.0 / np.sqrt(cur_counts[pred_c] + 1.0)
+        c_norm = (c_score - c_score.min()) / (c_score.max() - c_score.min() + 1e-8)
+        pre_score = alpha * u_norm + gamma * c_norm
+        cand_size = min(len(unlabeled_idx), max(6 * k, 300))
+        top_cand = np.argsort(-pre_score)[:cand_size]
+
+        cand_l2 = train_feats_l2[unlabeled_idx[top_cand]].to(DEVICE)
+        lab_l2 = train_feats_l2[labeled_idx].to(DEVICE)
+        u_cand = u_norm[top_cand]
+        c_cand = c_norm[top_cand]
+        pred_c_cand = pred_c[top_cand]
+
+        with torch.no_grad():
+            dots = torch.matmul(cand_l2, lab_l2.t())
+            dists = 1.0 - torch.max(dots, dim=1)[0].cpu().numpy()
+            d_norm = (dists - dists.min()) / (dists.max() - dists.min() + 1e-8)
+
+            total_scores = alpha * u_cand + beta * d_norm + gamma * c_cand
+            sel = [int(np.argmax(total_scores))]
+            total_scores[sel[-1]] = -1e9
+
+            # Dynamic greedy batch acquisition
+            for _ in range(1, k):
+                # Update distances with newly selected sample
+                new_dot = torch.matmul(cand_l2, cand_l2[sel[-1] : sel[-1] + 1].t()).squeeze(1).cpu().numpy()
+                dists = np.minimum(dists, 1.0 - new_dot)
+                d_norm = (dists - dists.min()) / (dists.max() - dists.min() + 1e-8)
+
+                # Increment count of chosen predicted class and update C
+                cur_counts[pred_c_cand[sel[-1]]] += 1.0
+                c_score = 1.0 / np.sqrt(cur_counts[pred_c_cand] + 1.0)
+                c_norm = (c_score - c_score.min()) / (c_score.max() - c_score.min() + 1e-8)
+
+                total_scores = alpha * u_cand + beta * d_norm + gamma * c_cand
+                for s in sel:
+                    total_scores[s] = -1e9
+                sel.append(int(np.argmax(total_scores)))
 
         return unlabeled_idx[top_cand[sel]], time.time() - t0
 
@@ -485,16 +514,20 @@ def run_label_efficiency_suite(
 ):
     os.makedirs(out_dir, exist_ok=True)
 
-    if phase == 1:
+    phase_str = str(phase).lower()
+    if phase_str == "1":
         strategies_to_run = PHASE1_STRATEGIES
         phase_title = "PHASE 1: LOW-BUDGET BASELINES REPRODUCTION & VERIFICATION"
-    elif phase == 2:
+    elif phase_str == "2":
         strategies_to_run = PHASE2_STRATEGIES
-        phase_title = "PHASE 2: ADVANCED ACQUISITION STRATEGIES (CORE-SET, BALD, BADGE, CLUSTERING)"
-    elif phase == 3:
+        phase_title = "PHASE 2: ADVANCED ACQUISITION STRATEGIES (CORE-SET, BALD, EXACT BADGE, CLUSTERING)"
+    elif phase_str == "3":
         strategies_to_run = PHASE3_STRATEGIES
         phase_title = "PHASE 3: ADAPTIVE & HYBRID ACQUISITION STRATEGIES (CLASS-COVERAGE AL)"
-    elif phase == "all":
+    elif phase_str in ("2_3", "2-3", "2,3"):
+        strategies_to_run = PHASE2_STRATEGIES + PHASE3_STRATEGIES
+        phase_title = "PHASES 2 & 3: ADVANCED ACQUISITION & HYBRID / ADAPTIVE STRATEGIES"
+    elif phase_str in ("all", "1_2_3"):
         strategies_to_run = PHASE1_STRATEGIES + PHASE2_STRATEGIES + PHASE3_STRATEGIES
         phase_title = "FULL BENCHMARK: ALL ACQUISITION STRATEGIES ACROSS PHASES 1-3"
     else:
@@ -629,13 +662,31 @@ def run_label_efficiency_suite(
                     )
 
     # Save seed-level records
-    phase_tag = f"phase{phase}" if isinstance(phase, int) else "all"
+    phase_tag = f"phase{phase_str}"
     seed_csv = os.path.join(out_dir, f"seed_level_results_{phase_tag}.csv")
     with open(seed_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=list(all_records[0].keys()))
         writer.writeheader()
         writer.writerows(all_records)
     print(f"\n[Saved] {seed_csv}", flush=True)
+
+    # Save runtime records
+    if runtime_records:
+        rt_csv = os.path.join(out_dir, f"acquisition_runtime_{phase_tag}.csv")
+        with open(rt_csv, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=list(runtime_records[0].keys()))
+            writer.writeheader()
+            writer.writerows(runtime_records)
+        print(f"[Saved] {rt_csv}", flush=True)
+
+    # Save calibration records
+    if calibration_records:
+        cal_csv = os.path.join(out_dir, f"calibration_analysis_{phase_tag}.csv")
+        with open(cal_csv, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=list(calibration_records[0].keys()))
+            writer.writeheader()
+            writer.writerows(calibration_records)
+        print(f"[Saved] {cal_csv}", flush=True)
 
     # Generate aggregated summary (Mean +/- Sample Std)
     res_df = pd.DataFrame(all_records)
