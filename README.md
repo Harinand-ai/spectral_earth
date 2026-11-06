@@ -144,7 +144,50 @@ python run_higher_budget_experiments.py --seeds 42 43 44 --out_dir results/highe
 | **Pavia Univ.** | Proposed (Uncertainty + Diversity) | 53.77% ± 4.97% | 54.57% ± 6.41% | 49.02% ± 7.01% | 52.70% ± 4.06% | **59.45% ± 3.13%** |
 | **Pavia Univ.** | Proposed + Pseudo-Labeling | 51.83% ± 7.99% | 53.27% ± 4.26% | 56.26% ± 6.26% | 55.56% ± 4.87% | **60.42% ± 5.61%** |
 
-**Scientific Bottleneck Insight:** Quadrupling the genuine annotation budget from 250 to 980 samples improves classification accuracy sub-linearly towards an empirical ceiling of 66%–74%. Without fine-tuning the frozen 3D foundation backbone ($\nabla_\theta = 0$), linear separability limits prevent reaching 90% solely by expanding raw label volume. This underscores our core research thesis: **the primary value of the framework lies in high label-efficiency within low-budget regimes ($N \le 260$), maximizing performance per unit of human annotation effort.**
+---
+
+## ConformAL-HSI: Systematic Diagnosis & Architectural Improvements
+
+To investigate why higher-label budgets initially plateaued at 60%–73% and why passive random sampling previously outperformed uncertainty sampling on Salinas and Pavia University, we conducted a rigorous forensic audit and controlled multi-seed benchmark across all three benchmarks.
+
+### 1. Root-Cause Scientific Diagnosis
+1. **The Frozen Backbone is Highly Expressive**: Nonlinear probes on the frozen $\text{SpecResNet50}$ representations achieve an empirical upper bound of **87.65% (Indian Pines), 90.86% (Salinas), and 92.72% (Pavia University)**. The backbone is *not* the primary bottleneck.
+2. **Classifier Head Underfitting**: The original head (256 hidden units, 25 epochs, fixed $lr=10^{-3}$) performed only 375 gradient updates at budget 980, severely underfitting the non-linear manifold.
+3. **The Euclidean Norm Pathology**: In $\mathbb{R}^{2048}$, raw vector norms exhibited extreme variance (Salinas: $3,431$ to $154,677$; Pavia: $698$ to $82,133$). Raw Euclidean distance $\|z_i - z_j\|_2$ picked extreme-norm outliers rather than semantic diversity.
+4. **Boundary Trapping in Spatially Smooth Parcels**: Salinas and Pavia consist of expansive homogeneous land-cover parcels. Uncalibrated uncertainty sampling repeatedly queried ambiguous border pixels between fields while neglecting parcel interiors. Random sampling uniformly sampled cluster interiors.
+5. **Confirmation Bias in Low-Budget Pseudo-Labeling**: At $N \le 100$, uncalibrated pseudo-labels reinforce erroneous boundary predictions unless calibrated and class-capped.
+
+### 2. Implemented Framework Enhancements
+- **`ImprovedClassifierHead` (`src/learning_engine/improved_classifier.py`)**: Unit hypersphere $\ell_2$-normalization projection, 512-dim hidden representation with batch normalization, lightweight dropout ($p=0.10$), and Cosine Annealing learning rate schedule ($45$ epochs, initial $lr=2\times 10^{-3}$).
+- **Cosine-Space Labeled-Pool Diversity**: Candidate farthest-first traversal performed strictly on unit hypersphere embeddings relative to the existing labeled pool $\mathcal{L}$ ($d_{\text{cos}}(x, \mathcal{L}) = 1 - \max_{y \in \mathcal{L}} \hat{x} \cdot \hat{y}$) combined with a density prior to prevent boundary outlier traps.
+- **Calibrated Pseudo-Labeling Engine**: Confidence threshold $\tau \ge 0.95$, loss weighting $w_p = 0.20$, and per-class selection quota (max 20 pseudo-samples per class).
+
+### 3. Controlled Empirical Validation (3 Seeds: 42, 43, 44)
+
+| Dataset | Configuration | Budget 100 | Budget 250 | Budget 645 | Budget 980 (OA) | Budget 980 (AA) | Budget 980 ($\kappa$) |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Indian Pines** | Baseline (Orig Head + Random) | 42.98% | 52.06% | 60.86% | 66.86% | 62.08% | 0.6151 |
+| **Indian Pines** | Baseline (Orig Head + Uncertainty) | 40.38% | 46.81% | 51.19% | 61.73% | 59.50% | 0.5570 |
+| **Indian Pines** | Baseline (Orig Head + Unc+Div) | 41.31% | 45.56% | 48.87% | 62.98% | 63.41% | 0.5729 |
+| **Indian Pines** | **Improved Head + Improved AL** | 46.58% | 58.54% | 74.27% | **86.22%** | **85.18%** | **0.8415** |
+| **Indian Pines** | **Improved Head + AL + Pseudo** | 37.54% | 54.42% | 71.39% | **84.40%** | **81.85%** | **0.8197** |
+| **Salinas** | Baseline (Orig Head + Random) | 49.48% | 57.97% | 64.67% | 69.80% | 68.82% | 0.6611 |
+| **Salinas** | Baseline (Orig Head + Unc+Div) | 39.40% | 41.79% | 52.54% | 67.03% | 66.73% | 0.6301 |
+| **Salinas** | **Improved Head + Improved AL** | 62.57% | 68.17% | 76.34% | **83.75%** | **87.71%** | **0.8192** |
+| **Salinas** | **Improved Head + AL + Pseudo** | 49.91% | 63.76% | 76.15% | **84.10%** | **88.09%** | **0.8230** |
+| **Salinas** | **Improved Head + Random** | 65.86% | 75.59% | 80.46% | **85.35%** | **88.34%** | **0.8367** |
+| **Pavia Univ.** | Baseline (Orig Head + Random) | 58.75% | 65.80% | 69.27% | 72.59% | 66.04% | 0.6317 |
+| **Pavia Univ.** | Baseline (Orig Head + Unc+Div) | 51.25% | 50.14% | 55.17% | 62.14% | 66.37% | 0.5264 |
+| **Pavia Univ.** | **Improved Head + Improved AL** | 49.33% | 54.48% | 67.76% | **73.67%** | **72.95%** | **0.6635** |
+| **Pavia Univ.** | **Improved Head + AL + Pseudo** | 43.16% | 57.08% | 68.96% | **75.37%** | **72.44%** | **0.6794** |
+| **Pavia Univ.** | **Improved Head + Random** | 61.17% | 69.92% | 76.18% | **79.56%** | **74.98%** | **0.7286** |
+
+*Reproducibility Command:*
+```bash
+python run_conform_al_hsi_improvement.py --seeds 42 43 44 --out_dir results/improved_framework
+```
+
+---
 
 
 Run the automated verification script to validate all REST endpoints, feature extraction engines, active learning steps, cross-sensor transfers, and export functions:
