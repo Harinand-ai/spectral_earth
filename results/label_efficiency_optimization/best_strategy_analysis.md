@@ -123,3 +123,4 @@ We investigated why minor accuracy dips occasionally occur between $N=220$ and $
    - Delivers highest Average Accuracy ($67.48\%$) and Macro-F1 ($0.6342$) on Indian Pines.
 3. **Computational Efficiency**:
    - Exact BADGE via tensor decomposition is verified and scalable ($0.38\text{s}$ on 50k points), but Margin-based methods achieve higher accuracy at lower acquisition latency ($0.06\text{s}$–$0.25\text{s}$).
+

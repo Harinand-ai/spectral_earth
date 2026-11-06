@@ -1,0 +1,73 @@
+dataset,classifier_head,strategy,norm_type,oa_budget_220,oa_std_220,oa_budget_260,oa_std_260,delta_260_minus_220,residual_batch_samples_220,residual_batch_samples_260,dip_observed
+Indian Pines,Head B (Improved 512),Random Sampling,batchnorm,63.366,1.6999,60.95,1.3549,-2.416,28,4,True
+Indian Pines,Head B (Improved 512),Random Sampling,layernorm,51.6933,2.2384,50.3467,1.5157,-1.347,28,4,True
+Indian Pines,Head B (Improved 512),Margin Sampling,batchnorm,63.496,2.7534,61.818,1.3964,-1.678,28,4,True
+Indian Pines,Head B (Improved 512),Margin Sampling,layernorm,53.99,0.378,49.1767,1.9201,-4.813,28,4,True
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,batchnorm,65.096,1.9355,61.664,2.9332,-3.432,28,4,True
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,layernorm,43.6933,8.5271,43.9767,5.5343,0.283,28,4,False
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,batchnorm,59.596,2.9359,57.816,2.5844,-1.78,28,4,True
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,layernorm,46.0767,2.6033,43.5833,3.0366,-2.493,28,4,True
+Indian Pines,Head C (Wider 1024),Random Sampling,batchnorm,62.666,1.7802,60.792,2.0238,-1.874,28,4,True
+Indian Pines,Head C (Wider 1024),Random Sampling,layernorm,50.3233,0.8958,48.1567,1.8393,-2.167,28,4,True
+Indian Pines,Head C (Wider 1024),Margin Sampling,batchnorm,62.782,1.4159,62.716,2.6488,-0.066,28,4,True
+Indian Pines,Head C (Wider 1024),Margin Sampling,layernorm,46.25,3.8338,44.04,5.2905,-2.21,28,4,True
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,batchnorm,62.054,2.6066,61.222,1.1169,-0.832,28,4,True
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,layernorm,44.6033,4.0192,40.9833,3.8374,-3.62,28,4,True
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,batchnorm,60.48,2.65,59.18,3.3122,-1.3,28,4,True
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,layernorm,46.6833,4.0115,43.6933,0.8326,-2.99,28,4,True
+Indian Pines,Head D (Deeper 1024-512-256),Random Sampling,batchnorm,63.37,1.2879,59.62,0.8525,-3.75,28,4,True
+Indian Pines,Head D (Deeper 1024-512-256),Random Sampling,layernorm,50.52,8.1087,41.0933,4.4638,-9.427,28,4,True
+Indian Pines,Head D (Deeper 1024-512-256),Margin Sampling,batchnorm,60.3167,3.3472,61.16,0.7502,0.843,28,4,False
+Indian Pines,Head D (Deeper 1024-512-256),Margin Sampling,layernorm,46.6167,2.2799,38.7533,3.5126,-7.863,28,4,True
+Indian Pines,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,batchnorm,60.0767,2.4473,60.4667,1.4228,0.39,28,4,False
+Indian Pines,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,layernorm,44.58,1.3374,34.31,1.714,-10.27,28,4,True
+Indian Pines,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,batchnorm,58.5167,3.6195,56.8933,5.6917,-1.623,28,4,True
+Indian Pines,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,layernorm,44.4933,2.893,35.9333,3.8008,-8.56,28,4,True
+Salinas,Head B (Improved 512),Random Sampling,batchnorm,73.9,0.7702,71.944,0.9455,-1.956,28,4,True
+Salinas,Head B (Improved 512),Random Sampling,layernorm,52.4667,4.2371,52.4933,3.4382,0.027,28,4,False
+Salinas,Head B (Improved 512),Margin Sampling,batchnorm,76.322,1.3212,74.526,1.0392,-1.796,28,4,True
+Salinas,Head B (Improved 512),Margin Sampling,layernorm,55.64,5.5911,51.8467,6.1656,-3.793,28,4,True
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,batchnorm,77.106,1.8936,74.304,1.878,-2.802,28,4,True
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,layernorm,44.0533,2.5108,43.94,4.0679,-0.113,28,4,True
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,batchnorm,76.05,1.5556,73.234,1.9315,-2.816,28,4,True
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,layernorm,40.8533,6.9915,35.1767,2.7624,-5.677,28,4,True
+Salinas,Head C (Wider 1024),Random Sampling,batchnorm,73.96,0.8051,71.64,1.2547,-2.32,28,4,True
+Salinas,Head C (Wider 1024),Random Sampling,layernorm,53.7367,0.9908,49.2433,3.0523,-4.493,28,4,True
+Salinas,Head C (Wider 1024),Margin Sampling,batchnorm,74.996,0.7944,74.824,1.3902,-0.172,28,4,True
+Salinas,Head C (Wider 1024),Margin Sampling,layernorm,54.0,3.7102,52.5267,1.9032,-1.473,28,4,True
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,batchnorm,76.166,1.506,74.976,2.4203,-1.19,28,4,True
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,layernorm,38.6133,2.8754,41.0367,2.0139,2.423,28,4,False
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,batchnorm,75.61,2.2257,72.798,3.431,-2.812,28,4,True
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,layernorm,37.86,7.0478,33.33,1.3355,-4.53,28,4,True
+Salinas,Head D (Deeper 1024-512-256),Random Sampling,batchnorm,73.4367,1.1129,70.9167,1.0775,-2.52,28,4,True
+Salinas,Head D (Deeper 1024-512-256),Random Sampling,layernorm,47.1367,0.6113,45.8733,3.0984,-1.263,28,4,True
+Salinas,Head D (Deeper 1024-512-256),Margin Sampling,batchnorm,73.6333,0.9886,72.4233,1.9545,-1.21,28,4,True
+Salinas,Head D (Deeper 1024-512-256),Margin Sampling,layernorm,49.63,6.644,38.9633,2.4972,-10.667,28,4,True
+Salinas,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,batchnorm,73.26,2.7094,71.7033,0.3873,-1.557,28,4,True
+Salinas,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,layernorm,38.1067,5.2059,35.0567,7.0425,-3.05,28,4,True
+Salinas,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,batchnorm,72.49,1.0904,71.11,2.424,-1.38,28,4,True
+Salinas,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,layernorm,41.1733,9.213,29.5833,4.8123,-11.59,28,4,True
+Pavia University,Head B (Improved 512),Random Sampling,batchnorm,67.43,1.5705,67.476,1.07,0.046,28,4,False
+Pavia University,Head B (Improved 512),Random Sampling,layernorm,62.0867,0.8208,61.86,0.8861,-0.227,28,4,True
+Pavia University,Head B (Improved 512),Margin Sampling,batchnorm,69.58,0.7461,69.472,0.9863,-0.108,28,4,True
+Pavia University,Head B (Improved 512),Margin Sampling,layernorm,63.76,0.9635,61.6667,0.683,-2.093,28,4,True
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,batchnorm,65.516,3.6183,64.62,3.4919,-0.896,28,4,True
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,layernorm,57.95,2.0393,55.6633,5.0106,-2.287,28,4,True
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,batchnorm,62.398,6.7511,62.532,5.103,0.134,28,4,False
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,layernorm,56.8767,1.5607,56.79,3.4214,-0.087,28,4,True
+Pavia University,Head C (Wider 1024),Random Sampling,batchnorm,67.246,1.7754,66.836,1.5135,-0.41,28,4,True
+Pavia University,Head C (Wider 1024),Random Sampling,layernorm,62.0367,1.1443,61.28,1.7103,-0.757,28,4,True
+Pavia University,Head C (Wider 1024),Margin Sampling,batchnorm,69.004,0.8309,68.85,1.1724,-0.154,28,4,True
+Pavia University,Head C (Wider 1024),Margin Sampling,layernorm,63.2567,2.0994,62.9967,2.6649,-0.26,28,4,True
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,batchnorm,64.304,3.9118,61.862,5.0368,-2.442,28,4,True
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,layernorm,56.5733,3.6311,57.04,2.4595,0.467,28,4,False
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,batchnorm,62.2,2.2388,60.47,2.6122,-1.73,28,4,True
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,layernorm,54.04,7.4331,51.8833,3.872,-2.157,28,4,True
+Pavia University,Head D (Deeper 1024-512-256),Random Sampling,batchnorm,66.27,2.152,66.8367,0.7135,0.567,28,4,False
+Pavia University,Head D (Deeper 1024-512-256),Random Sampling,layernorm,60.2033,1.1154,58.33,1.1412,-1.873,28,4,True
+Pavia University,Head D (Deeper 1024-512-256),Margin Sampling,batchnorm,66.46,1.841,66.4633,1.5077,0.003,28,4,False
+Pavia University,Head D (Deeper 1024-512-256),Margin Sampling,layernorm,62.37,4.5658,61.4067,3.0167,-0.963,28,4,True
+Pavia University,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,batchnorm,64.43,1.8275,60.4633,5.4268,-3.967,28,4,True
+Pavia University,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,layernorm,58.9833,0.5666,56.2633,2.597,-2.72,28,4,True
+Pavia University,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,batchnorm,62.3567,2.2604,57.71,4.9585,-4.647,28,4,True
+Pavia University,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,layernorm,52.3233,6.2931,51.83,3.8795,-0.493,28,4,True

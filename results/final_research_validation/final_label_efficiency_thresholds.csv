@@ -1,0 +1,337 @@
+dataset,classifier_head,strategy,target_threshold_oa,budget_required,actual_oa_at_budget,random_budget_required,random_actual_oa,label_savings_pct,labels_saved,status
+Indian Pines,Head A (Original 256),Random Sampling,50.0,>260,38.6,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin Sampling,50.0,>260,41.33,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin + Cosine Diversity,50.0,>260,30.21,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Adaptive Class-Coverage AL,50.0,>260,30.84,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Random Sampling,55.0,>260,38.6,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin Sampling,55.0,>260,41.33,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin + Cosine Diversity,55.0,>260,30.21,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Adaptive Class-Coverage AL,55.0,>260,30.84,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Random Sampling,60.0,>260,38.6,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin Sampling,60.0,>260,41.33,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin + Cosine Diversity,60.0,>260,30.21,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Adaptive Class-Coverage AL,60.0,>260,30.84,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Random Sampling,65.0,>260,38.6,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin Sampling,65.0,>260,41.33,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin + Cosine Diversity,65.0,>260,30.21,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Adaptive Class-Coverage AL,65.0,>260,30.84,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Random Sampling,66.0,>260,38.6,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin Sampling,66.0,>260,41.33,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin + Cosine Diversity,66.0,>260,30.21,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Adaptive Class-Coverage AL,66.0,>260,30.84,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Random Sampling,70.0,>260,38.6,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin Sampling,70.0,>260,41.33,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin + Cosine Diversity,70.0,>260,30.21,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Adaptive Class-Coverage AL,70.0,>260,30.84,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Random Sampling,75.0,>260,38.6,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin Sampling,75.0,>260,41.33,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Margin + Cosine Diversity,75.0,>260,30.21,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head A (Original 256),Adaptive Class-Coverage AL,75.0,>260,30.84,>260,38.6,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Random Sampling,50.0,140,52.19,140,52.19,0.0,0,Achieved
+Indian Pines,Head B (Improved 512),Margin Sampling,50.0,140,54.14,140,52.19,0.0,0,Achieved
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,50.0,140,54.03,140,52.19,0.0,0,Achieved
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,50.0,140,51.67,140,52.19,0.0,0,Achieved
+Indian Pines,Head B (Improved 512),Random Sampling,55.0,180,58.93,180,58.93,0.0,0,Achieved
+Indian Pines,Head B (Improved 512),Margin Sampling,55.0,180,61.21,180,58.93,0.0,0,Achieved
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,55.0,180,60.49,180,58.93,0.0,0,Achieved
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,55.0,180,55.93,180,58.93,0.0,0,Achieved
+Indian Pines,Head B (Improved 512),Random Sampling,60.0,220,63.37,220,63.37,0.0,0,Achieved
+Indian Pines,Head B (Improved 512),Margin Sampling,60.0,180,61.21,220,63.37,18.18,40,Achieved
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,60.0,180,60.49,220,63.37,18.18,40,Achieved
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,60.0,>260,59.6,220,63.37,< 0.0,< -40,Random Solely Achieved
+Indian Pines,Head B (Improved 512),Random Sampling,65.0,>260,63.37,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Margin Sampling,65.0,>260,63.5,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,65.0,220,65.1,>260,63.37,> 0.0,> 40,AL Solely Achieved
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,65.0,>260,59.6,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Random Sampling,66.0,>260,63.37,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Margin Sampling,66.0,>260,63.5,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,66.0,>260,65.1,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,66.0,>260,59.6,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Random Sampling,70.0,>260,63.37,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Margin Sampling,70.0,>260,63.5,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,70.0,>260,65.1,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,70.0,>260,59.6,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Random Sampling,75.0,>260,63.37,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Margin Sampling,75.0,>260,63.5,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,75.0,>260,65.1,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,75.0,>260,59.6,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Random Sampling,50.0,140,53.71,140,53.71,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Margin Sampling,50.0,140,53.63,140,53.71,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,50.0,140,52.13,140,53.71,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,50.0,140,51.62,140,53.71,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Random Sampling,55.0,180,58.84,180,58.84,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Margin Sampling,55.0,180,58.71,180,58.84,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,55.0,180,57.66,180,58.84,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,55.0,180,57.46,180,58.84,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Random Sampling,60.0,220,62.67,220,62.67,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Margin Sampling,60.0,220,62.78,220,62.67,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,60.0,220,62.05,220,62.67,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,60.0,220,60.48,220,62.67,0.0,0,Achieved
+Indian Pines,Head C (Wider 1024),Random Sampling,65.0,>260,62.67,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Margin Sampling,65.0,>260,62.78,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,65.0,>260,62.05,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,65.0,>260,60.48,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Random Sampling,66.0,>260,62.67,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Margin Sampling,66.0,>260,62.78,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,66.0,>260,62.05,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,66.0,>260,60.48,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Random Sampling,70.0,>260,62.67,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Margin Sampling,70.0,>260,62.78,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,70.0,>260,62.05,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,70.0,>260,60.48,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Random Sampling,75.0,>260,62.67,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Margin Sampling,75.0,>260,62.78,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,75.0,>260,62.05,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,75.0,>260,60.48,>260,62.67,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Random Sampling,50.0,140,51.54,140,51.54,0.0,0,Achieved
+Indian Pines,Head D (Deeper 1024-512-256),Margin Sampling,50.0,140,51.52,140,51.54,0.0,0,Achieved
+Indian Pines,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,50.0,180,57.52,140,51.54,-28.57,-40,Random Superior
+Indian Pines,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,50.0,180,54.66,140,51.54,-28.57,-40,Random Superior
+Indian Pines,Head D (Deeper 1024-512-256),Random Sampling,55.0,180,59.08,180,59.08,0.0,0,Achieved
+Indian Pines,Head D (Deeper 1024-512-256),Margin Sampling,55.0,180,56.72,180,59.08,0.0,0,Achieved
+Indian Pines,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,55.0,180,57.52,180,59.08,0.0,0,Achieved
+Indian Pines,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,55.0,220,58.52,180,59.08,-22.22,-40,Random Superior
+Indian Pines,Head D (Deeper 1024-512-256),Random Sampling,60.0,220,63.37,220,63.37,0.0,0,Achieved
+Indian Pines,Head D (Deeper 1024-512-256),Margin Sampling,60.0,220,60.32,220,63.37,0.0,0,Achieved
+Indian Pines,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,60.0,220,60.08,220,63.37,0.0,0,Achieved
+Indian Pines,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,60.0,>260,58.52,220,63.37,< 0.0,< -40,Random Solely Achieved
+Indian Pines,Head D (Deeper 1024-512-256),Random Sampling,65.0,>260,63.37,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Margin Sampling,65.0,>260,61.16,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,65.0,>260,60.47,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,65.0,>260,58.52,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Random Sampling,66.0,>260,63.37,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Margin Sampling,66.0,>260,61.16,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,66.0,>260,60.47,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,66.0,>260,58.52,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Random Sampling,70.0,>260,63.37,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Margin Sampling,70.0,>260,61.16,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,70.0,>260,60.47,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,70.0,>260,58.52,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Random Sampling,75.0,>260,63.37,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Margin Sampling,75.0,>260,61.16,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,75.0,>260,60.47,>260,63.37,N/A,N/A,Neither Reached
+Indian Pines,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,75.0,>260,58.52,>260,63.37,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Random Sampling,50.0,>260,42.64,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin Sampling,50.0,>260,41.77,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin + Cosine Diversity,50.0,>260,33.41,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Adaptive Class-Coverage AL,50.0,>260,32.56,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Random Sampling,55.0,>260,42.64,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin Sampling,55.0,>260,41.77,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin + Cosine Diversity,55.0,>260,33.41,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Adaptive Class-Coverage AL,55.0,>260,32.56,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Random Sampling,60.0,>260,42.64,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin Sampling,60.0,>260,41.77,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin + Cosine Diversity,60.0,>260,33.41,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Adaptive Class-Coverage AL,60.0,>260,32.56,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Random Sampling,65.0,>260,42.64,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin Sampling,65.0,>260,41.77,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin + Cosine Diversity,65.0,>260,33.41,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Adaptive Class-Coverage AL,65.0,>260,32.56,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Random Sampling,66.0,>260,42.64,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin Sampling,66.0,>260,41.77,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin + Cosine Diversity,66.0,>260,33.41,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Adaptive Class-Coverage AL,66.0,>260,32.56,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Random Sampling,70.0,>260,42.64,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin Sampling,70.0,>260,41.77,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin + Cosine Diversity,70.0,>260,33.41,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Adaptive Class-Coverage AL,70.0,>260,32.56,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Random Sampling,75.0,>260,42.64,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin Sampling,75.0,>260,41.77,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Margin + Cosine Diversity,75.0,>260,33.41,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head A (Original 256),Adaptive Class-Coverage AL,75.0,>260,32.56,>260,42.64,N/A,N/A,Neither Reached
+Salinas,Head B (Improved 512),Random Sampling,50.0,100,66.04,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin Sampling,50.0,100,66.02,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,50.0,100,65.54,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,50.0,100,65.64,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Random Sampling,55.0,100,66.04,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin Sampling,55.0,100,66.02,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,55.0,100,65.54,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,55.0,100,65.64,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Random Sampling,60.0,100,66.04,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin Sampling,60.0,100,66.02,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,60.0,100,65.54,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,60.0,100,65.64,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Random Sampling,65.0,100,66.04,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin Sampling,65.0,100,66.02,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,65.0,100,65.54,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,65.0,100,65.64,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Random Sampling,66.0,100,66.04,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin Sampling,66.0,100,66.02,100,66.04,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,66.0,140,69.52,100,66.04,-40.0,-40,Random Superior
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,66.0,140,68.8,100,66.04,-40.0,-40,Random Superior
+Salinas,Head B (Improved 512),Random Sampling,70.0,180,72.28,180,72.28,0.0,0,Achieved
+Salinas,Head B (Improved 512),Margin Sampling,70.0,140,70.77,180,72.28,22.22,40,Achieved
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,70.0,180,75.11,180,72.28,0.0,0,Achieved
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,70.0,180,73.83,180,72.28,0.0,0,Achieved
+Salinas,Head B (Improved 512),Random Sampling,75.0,>260,73.9,>260,73.9,N/A,N/A,Neither Reached
+Salinas,Head B (Improved 512),Margin Sampling,75.0,220,76.32,>260,73.9,> 0.0,> 40,AL Solely Achieved
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,75.0,180,75.11,>260,73.9,> 0.0,> 80,AL Solely Achieved
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,75.0,220,76.05,>260,73.9,> 0.0,> 40,AL Solely Achieved
+Salinas,Head C (Wider 1024),Random Sampling,50.0,100,65.81,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin Sampling,50.0,100,66.6,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,50.0,100,65.43,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,50.0,100,65.13,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Random Sampling,55.0,100,65.81,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin Sampling,55.0,100,66.6,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,55.0,100,65.43,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,55.0,100,65.13,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Random Sampling,60.0,100,65.81,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin Sampling,60.0,100,66.6,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,60.0,100,65.43,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,60.0,100,65.13,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Random Sampling,65.0,100,65.81,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin Sampling,65.0,100,66.6,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,65.0,100,65.43,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,65.0,100,65.13,100,65.81,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Random Sampling,66.0,140,67.99,140,67.99,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin Sampling,66.0,100,66.6,140,67.99,28.57,40,Achieved
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,66.0,140,71.08,140,67.99,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,66.0,140,69.04,140,67.99,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Random Sampling,70.0,180,72.33,180,72.33,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin Sampling,70.0,180,73.47,180,72.33,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,70.0,140,71.08,180,72.33,22.22,40,Achieved
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,70.0,180,73.56,180,72.33,0.0,0,Achieved
+Salinas,Head C (Wider 1024),Random Sampling,75.0,>260,73.96,>260,73.96,N/A,N/A,Neither Reached
+Salinas,Head C (Wider 1024),Margin Sampling,75.0,>260,75.0,>260,73.96,N/A,N/A,Neither Reached
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,75.0,220,76.17,>260,73.96,> 0.0,> 40,AL Solely Achieved
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,75.0,220,75.61,>260,73.96,> 0.0,> 40,AL Solely Achieved
+Salinas,Head D (Deeper 1024-512-256),Random Sampling,50.0,100,64.47,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin Sampling,50.0,100,64.4,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,50.0,100,64.92,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,50.0,100,64.35,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Random Sampling,55.0,100,64.47,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin Sampling,55.0,100,64.4,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,55.0,100,64.92,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,55.0,100,64.35,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Random Sampling,60.0,100,64.47,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin Sampling,60.0,100,64.4,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,60.0,100,64.92,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,60.0,100,64.35,100,64.47,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Random Sampling,65.0,140,68.86,140,68.86,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin Sampling,65.0,140,67.0,140,68.86,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,65.0,140,65.87,140,68.86,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,65.0,180,70.41,140,68.86,-28.57,-40,Random Superior
+Salinas,Head D (Deeper 1024-512-256),Random Sampling,66.0,140,68.86,140,68.86,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin Sampling,66.0,140,67.0,140,68.86,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,66.0,180,71.84,140,68.86,-28.57,-40,Random Superior
+Salinas,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,66.0,180,70.41,140,68.86,-28.57,-40,Random Superior
+Salinas,Head D (Deeper 1024-512-256),Random Sampling,70.0,180,70.92,180,70.92,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin Sampling,70.0,180,72.0,180,70.92,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,70.0,180,71.84,180,70.92,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,70.0,180,70.41,180,70.92,0.0,0,Achieved
+Salinas,Head D (Deeper 1024-512-256),Random Sampling,75.0,>260,73.44,>260,73.44,N/A,N/A,Neither Reached
+Salinas,Head D (Deeper 1024-512-256),Margin Sampling,75.0,>260,73.63,>260,73.44,N/A,N/A,Neither Reached
+Salinas,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,75.0,>260,73.26,>260,73.44,N/A,N/A,Neither Reached
+Salinas,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,75.0,>260,72.49,>260,73.44,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Random Sampling,50.0,100,55.34,100,55.34,0.0,0,Achieved
+Pavia University,Head A (Original 256),Margin Sampling,50.0,100,54.92,100,55.34,0.0,0,Achieved
+Pavia University,Head A (Original 256),Margin + Cosine Diversity,50.0,100,53.02,100,55.34,0.0,0,Achieved
+Pavia University,Head A (Original 256),Adaptive Class-Coverage AL,50.0,100,50.35,100,55.34,0.0,0,Achieved
+Pavia University,Head A (Original 256),Random Sampling,55.0,100,55.34,100,55.34,0.0,0,Achieved
+Pavia University,Head A (Original 256),Margin Sampling,55.0,140,56.57,100,55.34,-40.0,-40,Random Superior
+Pavia University,Head A (Original 256),Margin + Cosine Diversity,55.0,>260,54.76,100,55.34,< 0.0,< -160,Random Solely Achieved
+Pavia University,Head A (Original 256),Adaptive Class-Coverage AL,55.0,>260,54.14,100,55.34,< 0.0,< -160,Random Solely Achieved
+Pavia University,Head A (Original 256),Random Sampling,60.0,>260,59.74,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Margin Sampling,60.0,220,60.05,>260,59.74,> 0.0,> 40,AL Solely Achieved
+Pavia University,Head A (Original 256),Margin + Cosine Diversity,60.0,>260,54.76,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Adaptive Class-Coverage AL,60.0,>260,54.14,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Random Sampling,65.0,>260,59.74,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Margin Sampling,65.0,>260,60.05,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Margin + Cosine Diversity,65.0,>260,54.76,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Adaptive Class-Coverage AL,65.0,>260,54.14,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Random Sampling,66.0,>260,59.74,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Margin Sampling,66.0,>260,60.05,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Margin + Cosine Diversity,66.0,>260,54.76,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Adaptive Class-Coverage AL,66.0,>260,54.14,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Random Sampling,70.0,>260,59.74,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Margin Sampling,70.0,>260,60.05,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Margin + Cosine Diversity,70.0,>260,54.76,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Adaptive Class-Coverage AL,70.0,>260,54.14,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Random Sampling,75.0,>260,59.74,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Margin Sampling,75.0,>260,60.05,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Margin + Cosine Diversity,75.0,>260,54.76,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head A (Original 256),Adaptive Class-Coverage AL,75.0,>260,54.14,>260,59.74,N/A,N/A,Neither Reached
+Pavia University,Head B (Improved 512),Random Sampling,50.0,100,61.72,100,61.72,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Margin Sampling,50.0,100,56.91,100,61.72,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,50.0,100,56.69,100,61.72,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,50.0,100,56.8,100,61.72,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Random Sampling,55.0,100,61.72,100,61.72,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Margin Sampling,55.0,100,56.91,100,61.72,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,55.0,100,56.69,100,61.72,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,55.0,100,56.8,100,61.72,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Random Sampling,60.0,100,61.72,100,61.72,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Margin Sampling,60.0,140,64.66,100,61.72,-40.0,-40,Random Superior
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,60.0,180,62.45,100,61.72,-80.0,-80,Random Superior
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,60.0,180,61.04,100,61.72,-80.0,-80,Random Superior
+Pavia University,Head B (Improved 512),Random Sampling,65.0,180,65.88,180,65.88,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Margin Sampling,65.0,180,67.47,180,65.88,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,65.0,220,65.52,180,65.88,-22.22,-40,Random Superior
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,65.0,>260,62.53,180,65.88,< 0.0,< -80,Random Solely Achieved
+Pavia University,Head B (Improved 512),Random Sampling,66.0,220,67.43,220,67.43,0.0,0,Achieved
+Pavia University,Head B (Improved 512),Margin Sampling,66.0,180,67.47,220,67.43,18.18,40,Achieved
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,66.0,>260,65.52,220,67.43,< 0.0,< -40,Random Solely Achieved
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,66.0,>260,62.53,220,67.43,< 0.0,< -40,Random Solely Achieved
+Pavia University,Head B (Improved 512),Random Sampling,70.0,>260,67.48,>260,67.48,N/A,N/A,Neither Reached
+Pavia University,Head B (Improved 512),Margin Sampling,70.0,>260,69.58,>260,67.48,N/A,N/A,Neither Reached
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,70.0,>260,65.52,>260,67.48,N/A,N/A,Neither Reached
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,70.0,>260,62.53,>260,67.48,N/A,N/A,Neither Reached
+Pavia University,Head B (Improved 512),Random Sampling,75.0,>260,67.48,>260,67.48,N/A,N/A,Neither Reached
+Pavia University,Head B (Improved 512),Margin Sampling,75.0,>260,69.58,>260,67.48,N/A,N/A,Neither Reached
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,75.0,>260,65.52,>260,67.48,N/A,N/A,Neither Reached
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,75.0,>260,62.53,>260,67.48,N/A,N/A,Neither Reached
+Pavia University,Head C (Wider 1024),Random Sampling,50.0,100,61.62,100,61.62,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Margin Sampling,50.0,100,56.45,100,61.62,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,50.0,100,57.0,100,61.62,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,50.0,100,55.6,100,61.62,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Random Sampling,55.0,100,61.62,100,61.62,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Margin Sampling,55.0,100,56.45,100,61.62,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,55.0,100,57.0,100,61.62,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,55.0,100,55.6,100,61.62,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Random Sampling,60.0,100,61.62,100,61.62,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Margin Sampling,60.0,140,61.61,100,61.62,-40.0,-40,Random Superior
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,60.0,180,63.22,100,61.62,-80.0,-80,Random Superior
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,60.0,220,62.2,100,61.62,-120.0,-120,Random Superior
+Pavia University,Head C (Wider 1024),Random Sampling,65.0,180,66.01,180,66.01,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Margin Sampling,65.0,180,66.89,180,66.01,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,65.0,>260,64.3,180,66.01,< 0.0,< -80,Random Solely Achieved
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,65.0,>260,62.2,180,66.01,< 0.0,< -80,Random Solely Achieved
+Pavia University,Head C (Wider 1024),Random Sampling,66.0,180,66.01,180,66.01,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Margin Sampling,66.0,180,66.89,180,66.01,0.0,0,Achieved
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,66.0,>260,64.3,180,66.01,< 0.0,< -80,Random Solely Achieved
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,66.0,>260,62.2,180,66.01,< 0.0,< -80,Random Solely Achieved
+Pavia University,Head C (Wider 1024),Random Sampling,70.0,>260,67.25,>260,67.25,N/A,N/A,Neither Reached
+Pavia University,Head C (Wider 1024),Margin Sampling,70.0,>260,69.0,>260,67.25,N/A,N/A,Neither Reached
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,70.0,>260,64.3,>260,67.25,N/A,N/A,Neither Reached
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,70.0,>260,62.2,>260,67.25,N/A,N/A,Neither Reached
+Pavia University,Head C (Wider 1024),Random Sampling,75.0,>260,67.25,>260,67.25,N/A,N/A,Neither Reached
+Pavia University,Head C (Wider 1024),Margin Sampling,75.0,>260,69.0,>260,67.25,N/A,N/A,Neither Reached
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,75.0,>260,64.3,>260,67.25,N/A,N/A,Neither Reached
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,75.0,>260,62.2,>260,67.25,N/A,N/A,Neither Reached
+Pavia University,Head D (Deeper 1024-512-256),Random Sampling,50.0,100,60.36,100,60.36,0.0,0,Achieved
+Pavia University,Head D (Deeper 1024-512-256),Margin Sampling,50.0,100,53.25,100,60.36,0.0,0,Achieved
+Pavia University,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,50.0,100,53.41,100,60.36,0.0,0,Achieved
+Pavia University,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,50.0,100,53.86,100,60.36,0.0,0,Achieved
+Pavia University,Head D (Deeper 1024-512-256),Random Sampling,55.0,100,60.36,100,60.36,0.0,0,Achieved
+Pavia University,Head D (Deeper 1024-512-256),Margin Sampling,55.0,140,57.55,100,60.36,-40.0,-40,Random Superior
+Pavia University,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,55.0,140,57.7,100,60.36,-40.0,-40,Random Superior
+Pavia University,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,55.0,140,56.12,100,60.36,-40.0,-40,Random Superior
+Pavia University,Head D (Deeper 1024-512-256),Random Sampling,60.0,100,60.36,100,60.36,0.0,0,Achieved
+Pavia University,Head D (Deeper 1024-512-256),Margin Sampling,60.0,180,63.45,100,60.36,-80.0,-80,Random Superior
+Pavia University,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,60.0,180,64.22,100,60.36,-80.0,-80,Random Superior
+Pavia University,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,60.0,180,60.79,100,60.36,-80.0,-80,Random Superior
+Pavia University,Head D (Deeper 1024-512-256),Random Sampling,65.0,220,66.27,220,66.27,0.0,0,Achieved
+Pavia University,Head D (Deeper 1024-512-256),Margin Sampling,65.0,220,66.46,220,66.27,0.0,0,Achieved
+Pavia University,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,65.0,>260,64.43,220,66.27,< 0.0,< -40,Random Solely Achieved
+Pavia University,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,65.0,>260,62.36,220,66.27,< 0.0,< -40,Random Solely Achieved
+Pavia University,Head D (Deeper 1024-512-256),Random Sampling,66.0,220,66.27,220,66.27,0.0,0,Achieved
+Pavia University,Head D (Deeper 1024-512-256),Margin Sampling,66.0,220,66.46,220,66.27,0.0,0,Achieved
+Pavia University,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,66.0,>260,64.43,220,66.27,< 0.0,< -40,Random Solely Achieved
+Pavia University,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,66.0,>260,62.36,220,66.27,< 0.0,< -40,Random Solely Achieved
+Pavia University,Head D (Deeper 1024-512-256),Random Sampling,70.0,>260,66.84,>260,66.84,N/A,N/A,Neither Reached
+Pavia University,Head D (Deeper 1024-512-256),Margin Sampling,70.0,>260,66.46,>260,66.84,N/A,N/A,Neither Reached
+Pavia University,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,70.0,>260,64.43,>260,66.84,N/A,N/A,Neither Reached
+Pavia University,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,70.0,>260,62.36,>260,66.84,N/A,N/A,Neither Reached
+Pavia University,Head D (Deeper 1024-512-256),Random Sampling,75.0,>260,66.84,>260,66.84,N/A,N/A,Neither Reached
+Pavia University,Head D (Deeper 1024-512-256),Margin Sampling,75.0,>260,66.46,>260,66.84,N/A,N/A,Neither Reached
+Pavia University,Head D (Deeper 1024-512-256),Margin + Cosine Diversity,75.0,>260,64.43,>260,66.84,N/A,N/A,Neither Reached
+Pavia University,Head D (Deeper 1024-512-256),Adaptive Class-Coverage AL,75.0,>260,62.36,>260,66.84,N/A,N/A,Neither Reached

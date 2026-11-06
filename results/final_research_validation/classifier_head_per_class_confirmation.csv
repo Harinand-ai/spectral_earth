@@ -1,0 +1,1969 @@
+dataset,classifier_head,strategy,seed,budget,class_id,labeled_count,support,precision,recall,f1
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,0,5,7,24.14,100.0,0.3889
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,1,7,231,34.69,36.8,0.3571
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,2,7,126,16.85,23.81,0.1974
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,3,6,35,15.12,37.14,0.2149
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,4,7,71,77.46,77.46,0.7746
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,5,6,109,62.5,36.7,0.4624
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,6,5,4,11.11,75.0,0.1935
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,7,5,65,82.26,78.46,0.8031
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,8,5,4,8.33,100.0,0.1538
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,9,6,148,33.09,31.08,0.3206
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,10,10,378,53.79,37.57,0.4424
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,11,6,84,26.47,10.71,0.1525
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,12,5,26,45.71,61.54,0.5246
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,13,10,188,76.6,76.6,0.766
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,14,5,49,33.93,38.78,0.3619
+Indian Pines,Head B (Improved 512),Random Sampling,45,100,15,5,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,0,5,7,50.0,100.0,0.6667
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,1,16,231,54.49,41.99,0.4743
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,2,12,126,37.14,20.63,0.2653
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,3,7,35,26.19,31.43,0.2857
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,4,9,71,73.91,71.83,0.7286
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,5,12,109,80.65,45.87,0.5848
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,6,6,4,21.43,75.0,0.3333
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,7,9,65,90.62,89.23,0.8992
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,8,5,4,14.81,100.0,0.2581
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,9,15,148,38.46,50.68,0.4373
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,10,29,378,62.44,69.05,0.6558
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,11,11,84,41.43,34.52,0.3766
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,12,8,26,42.5,65.38,0.5152
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,13,19,188,79.38,81.91,0.8063
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,14,12,49,43.48,61.22,0.5085
+Indian Pines,Head B (Improved 512),Random Sampling,45,180,15,5,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,0,5,7,53.85,100.0,0.7
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,1,20,231,65.73,40.69,0.5027
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,2,14,126,43.24,25.4,0.32
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,3,8,35,30.56,31.43,0.3099
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,4,11,71,80.95,71.83,0.7612
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,5,15,109,77.78,44.95,0.5698
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,6,6,4,21.43,75.0,0.3333
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,7,14,65,89.39,90.77,0.9008
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,8,5,4,20.0,100.0,0.3333
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,9,16,148,42.22,51.35,0.4634
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,10,41,378,64.08,80.69,0.7143
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,11,11,84,40.0,35.71,0.3774
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,12,11,26,51.16,84.62,0.6377
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,13,21,188,84.18,79.26,0.8164
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,14,17,49,43.37,73.47,0.5455
+Indian Pines,Head B (Improved 512),Random Sampling,45,220,15,5,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,0,5,7,16.67,100.0,0.2857
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,1,5,231,50.89,24.68,0.3324
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,2,7,126,51.92,21.43,0.3034
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,3,6,35,12.21,45.71,0.1928
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,4,6,71,97.87,64.79,0.7797
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,5,5,109,61.67,33.94,0.4379
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,6,5,4,11.11,50.0,0.1818
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,7,6,65,75.0,78.46,0.7669
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,8,5,4,15.0,75.0,0.25
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,9,9,148,32.58,48.65,0.3902
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,10,11,378,54.37,52.65,0.5349
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,11,7,84,29.91,38.1,0.3351
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,12,7,26,74.19,88.46,0.807
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,13,6,188,75.77,78.19,0.7696
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,14,5,49,23.21,26.53,0.2476
+Indian Pines,Head B (Improved 512),Random Sampling,46,100,15,5,13,100.0,100.0,1.0
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,0,5,7,46.67,100.0,0.6364
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,1,15,231,54.97,40.69,0.4677
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,2,12,126,57.14,25.4,0.3516
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,3,7,35,26.79,42.86,0.3297
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,4,9,71,88.46,64.79,0.748
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,5,12,109,69.7,42.2,0.5257
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,6,5,4,16.67,50.0,0.25
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,7,10,65,84.48,75.38,0.7967
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,8,5,4,15.79,75.0,0.2609
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,9,14,148,38.89,42.57,0.4065
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,10,35,378,60.25,77.78,0.679
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,11,12,84,43.21,41.67,0.4242
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,12,7,26,81.48,84.62,0.8302
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,13,18,188,77.51,86.17,0.8161
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,14,8,49,45.28,48.98,0.4706
+Indian Pines,Head B (Improved 512),Random Sampling,46,180,15,6,13,100.0,100.0,1.0
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,0,6,7,35.0,100.0,0.5185
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,1,19,231,61.54,41.56,0.4961
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,2,13,126,61.54,31.75,0.4188
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,3,7,35,35.0,40.0,0.3733
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,4,12,71,96.23,71.83,0.8226
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,5,13,109,73.44,43.12,0.5434
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,6,5,4,20.0,50.0,0.2857
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,7,11,65,85.94,84.62,0.8527
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,8,5,4,17.65,75.0,0.2857
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,9,21,148,45.22,47.97,0.4656
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,10,46,378,61.79,83.86,0.7116
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,11,14,84,48.78,47.62,0.4819
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,12,7,26,88.0,84.62,0.8627
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,13,23,188,80.53,81.38,0.8095
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,14,12,49,43.48,61.22,0.5085
+Indian Pines,Head B (Improved 512),Random Sampling,46,220,15,6,13,100.0,100.0,1.0
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,0,5,7,36.84,100.0,0.5385
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,1,6,231,38.19,23.81,0.2933
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,2,8,126,12.83,26.98,0.1739
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,3,5,35,11.49,28.57,0.1639
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,4,6,71,68.29,78.87,0.732
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,5,7,109,56.94,37.61,0.453
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,6,5,4,21.43,75.0,0.3333
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,7,6,65,84.72,93.85,0.8905
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,8,5,4,9.76,100.0,0.1778
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,9,6,148,30.53,27.03,0.2867
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,10,12,378,53.14,38.1,0.4438
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,11,6,84,28.57,19.05,0.2286
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,12,5,26,40.0,69.23,0.507
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,13,7,188,83.43,77.66,0.8044
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,14,6,49,42.31,44.9,0.4356
+Indian Pines,Head B (Improved 512),Margin Sampling,45,100,15,5,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,0,5,7,77.78,100.0,0.875
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,1,21,231,52.79,53.25,0.5302
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,2,19,126,58.0,46.03,0.5133
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,3,7,35,17.65,34.29,0.233
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,4,6,71,88.71,77.46,0.8271
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,5,12,109,67.11,46.79,0.5514
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,6,6,4,30.0,75.0,0.4286
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,7,8,65,87.14,93.85,0.9037
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,8,5,4,16.0,100.0,0.2759
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,9,15,148,42.55,27.03,0.3306
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,10,37,378,68.11,79.1,0.7319
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,11,10,84,34.78,28.57,0.3137
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,12,5,26,50.0,61.54,0.5517
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,13,9,188,86.84,70.21,0.7765
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,14,10,49,33.33,59.18,0.4265
+Indian Pines,Head B (Improved 512),Margin Sampling,45,180,15,5,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,0,5,7,87.5,100.0,0.9333
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,1,27,231,62.2,56.28,0.5909
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,2,24,126,68.69,53.97,0.6044
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,3,8,35,24.07,37.14,0.2921
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,4,7,71,86.15,78.87,0.8235
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,5,12,109,71.43,50.46,0.5914
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,6,6,4,25.0,75.0,0.375
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,7,9,65,93.65,90.77,0.9219
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,8,5,4,17.39,100.0,0.2963
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,9,23,148,57.48,49.32,0.5309
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,10,47,378,68.79,82.8,0.7515
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,11,12,84,38.1,28.57,0.3265
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,12,5,26,46.15,69.23,0.5538
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,13,14,188,88.2,75.53,0.8138
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,14,11,49,41.43,59.18,0.4874
+Indian Pines,Head B (Improved 512),Margin Sampling,45,220,15,5,13,100.0,100.0,1.0
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,0,5,7,24.14,100.0,0.3889
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,1,8,231,50.91,36.36,0.4242
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,2,6,126,31.03,14.29,0.1957
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,3,5,35,9.09,51.43,0.1545
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,4,6,71,92.0,64.79,0.7603
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,5,5,109,60.66,33.94,0.4353
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,6,5,4,10.0,50.0,0.1667
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,7,5,65,75.81,72.31,0.7402
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,8,5,4,15.0,75.0,0.25
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,9,10,148,29.74,39.19,0.3382
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,10,12,378,66.88,56.08,0.6101
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,11,6,84,26.39,22.62,0.2436
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,12,5,26,78.57,84.62,0.8148
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,13,6,188,75.44,68.62,0.7187
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,14,6,49,30.38,48.98,0.375
+Indian Pines,Head B (Improved 512),Margin Sampling,46,100,15,5,13,100.0,100.0,1.0
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,0,5,7,50.0,100.0,0.6667
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,1,22,231,56.99,47.62,0.5189
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,2,13,126,29.79,22.22,0.2545
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,3,6,35,15.04,48.57,0.2297
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,4,9,71,94.34,70.42,0.8065
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,5,8,109,57.75,37.61,0.4556
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,6,5,4,15.38,50.0,0.2353
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,7,8,65,81.36,73.85,0.7742
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,8,5,4,30.77,100.0,0.4706
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,9,17,148,41.79,37.84,0.3972
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,10,34,378,67.49,72.49,0.699
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,11,12,84,39.29,39.29,0.3929
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,12,5,26,91.67,84.62,0.88
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,13,17,188,75.94,85.64,0.805
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,14,8,49,48.78,40.82,0.4444
+Indian Pines,Head B (Improved 512),Margin Sampling,46,180,15,6,13,92.86,100.0,0.963
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,0,5,7,70.0,100.0,0.8235
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,1,30,231,61.93,52.81,0.5701
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,2,19,126,41.28,35.71,0.383
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,3,6,35,11.19,42.86,0.1775
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,4,9,71,96.0,67.61,0.7934
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,5,14,109,74.51,34.86,0.475
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,6,5,4,13.33,50.0,0.2105
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,7,8,65,86.67,80.0,0.832
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,8,5,4,33.33,100.0,0.5
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,9,22,148,44.74,45.95,0.4533
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,10,42,378,71.1,73.54,0.723
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,11,14,84,42.67,38.1,0.4025
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,12,5,26,95.24,76.92,0.8511
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,13,19,188,75.98,82.45,0.7908
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,14,11,49,37.21,32.65,0.3478
+Indian Pines,Head B (Improved 512),Margin Sampling,46,220,15,6,13,92.86,100.0,0.963
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,0,5,7,20.0,100.0,0.3333
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,1,8,231,34.53,41.56,0.3772
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,2,9,126,21.43,42.86,0.2857
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,3,6,35,18.97,31.43,0.2366
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,4,5,71,80.88,77.46,0.7914
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,5,5,109,73.33,30.28,0.4286
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,6,5,4,18.75,75.0,0.3
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,7,8,65,81.33,93.85,0.8714
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,8,5,4,9.09,100.0,0.1667
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,9,5,148,28.87,37.84,0.3275
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,10,9,378,46.63,20.11,0.281
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,11,5,84,25.93,8.33,0.1261
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,12,5,26,72.0,69.23,0.7059
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,13,7,188,85.12,76.06,0.8034
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,14,8,49,39.74,63.27,0.4882
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,100,15,5,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,0,5,7,29.17,100.0,0.4516
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,1,20,231,43.11,63.64,0.514
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,2,14,126,41.86,42.86,0.4235
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,3,11,35,29.69,54.29,0.3838
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,4,11,71,84.72,85.92,0.8531
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,5,15,109,88.41,55.96,0.6854
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,6,5,4,33.33,50.0,0.4
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,7,10,65,95.16,90.77,0.9291
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,8,5,4,11.76,100.0,0.2105
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,9,8,148,37.1,31.08,0.3382
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,10,17,378,68.38,42.33,0.5229
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,11,16,84,49.41,50.0,0.497
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,12,7,26,86.21,96.15,0.9091
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,13,17,188,87.57,82.45,0.8493
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,14,13,49,39.47,61.22,0.48
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,180,15,6,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,0,5,7,31.82,100.0,0.4828
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,1,30,231,46.76,68.83,0.5569
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,2,19,126,51.82,45.24,0.4831
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,3,14,35,50.0,71.43,0.5882
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,4,13,71,92.42,85.92,0.8905
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,5,18,109,89.33,61.47,0.7283
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,6,5,4,50.0,50.0,0.5
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,7,11,65,96.92,96.92,0.9692
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,8,5,4,17.39,100.0,0.2963
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,9,9,148,41.59,31.76,0.3602
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,10,22,378,75.84,59.79,0.6686
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,11,19,84,56.63,55.95,0.5629
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,12,7,26,86.21,96.15,0.9091
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,13,21,188,88.4,85.11,0.8672
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,14,16,49,53.73,73.47,0.6207
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,45,220,15,6,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,0,5,7,22.58,100.0,0.3684
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,1,6,231,51.35,32.9,0.4011
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,2,7,126,32.17,29.37,0.3071
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,3,7,35,8.12,45.71,0.1379
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,4,5,71,97.87,64.79,0.7797
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,5,6,109,66.22,44.95,0.5355
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,6,5,4,18.18,50.0,0.2667
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,7,7,65,88.52,83.08,0.8571
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,8,5,4,20.0,100.0,0.3333
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,9,7,148,30.73,39.86,0.3471
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,10,5,378,68.02,35.45,0.4661
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,11,10,84,25.95,48.81,0.3388
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,12,5,26,78.57,84.62,0.8148
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,13,8,188,80.43,78.72,0.7957
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,14,7,49,35.48,44.9,0.3964
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,100,15,5,13,100.0,100.0,1.0
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,0,5,7,41.18,100.0,0.5833
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,1,17,231,55.56,49.78,0.5251
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,2,16,126,53.03,55.56,0.5426
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,3,11,35,24.68,54.29,0.3393
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,4,7,71,98.04,70.42,0.8197
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,5,17,109,70.09,68.81,0.6944
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,6,5,4,25.0,50.0,0.3333
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,7,10,65,96.43,83.08,0.8926
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,8,5,4,25.0,100.0,0.4
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,9,10,148,48.78,40.54,0.4428
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,10,16,378,71.13,54.76,0.6188
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,11,23,84,32.14,64.29,0.4286
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,12,6,26,92.31,92.31,0.9231
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,13,16,188,85.03,84.57,0.848
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,14,11,49,38.33,46.94,0.422
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,180,15,5,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,0,5,7,38.89,100.0,0.56
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,1,24,231,69.46,50.22,0.5829
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,2,21,126,58.41,52.38,0.5523
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,3,13,35,33.33,62.86,0.4356
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,4,9,71,96.49,77.46,0.8594
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,5,18,109,77.45,72.48,0.7488
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,6,5,4,25.0,50.0,0.3333
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,7,10,65,96.61,87.69,0.9194
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,8,5,4,28.57,100.0,0.4444
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,9,15,148,48.0,40.54,0.4396
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,10,25,378,68.04,74.34,0.7105
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,11,28,84,56.19,70.24,0.6243
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,12,7,26,86.21,96.15,0.9091
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,13,19,188,83.59,86.7,0.8512
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,14,11,49,49.09,55.1,0.5192
+Indian Pines,Head B (Improved 512),Margin + Cosine Diversity,46,220,15,5,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,0,5,7,23.33,100.0,0.3784
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,1,8,231,35.09,43.29,0.3876
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,2,11,126,18.8,37.3,0.25
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,3,5,35,18.37,25.71,0.2143
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,4,5,71,78.57,77.46,0.7801
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,5,6,109,64.81,32.11,0.4294
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,6,5,4,13.04,75.0,0.2222
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,7,7,65,84.29,90.77,0.8741
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,8,5,4,8.89,100.0,0.1633
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,9,5,148,28.87,37.84,0.3275
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,10,9,378,48.43,20.37,0.2868
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,11,5,84,28.57,9.52,0.1429
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,12,5,26,53.33,61.54,0.5714
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,13,6,188,85.99,71.81,0.7826
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,14,8,49,37.8,63.27,0.4733
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,15,5,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,0,5,7,33.33,100.0,0.5
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,1,16,231,33.49,61.04,0.4325
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,2,20,126,35.63,49.21,0.4133
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,3,8,35,26.53,37.14,0.3095
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,4,12,71,83.56,85.92,0.8472
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,5,15,109,79.75,57.8,0.6702
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,6,6,4,50.0,50.0,0.5
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,7,12,65,92.86,100.0,0.963
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,8,5,4,22.22,100.0,0.3636
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,9,6,148,37.9,31.76,0.3456
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,10,13,378,45.93,20.9,0.2873
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,11,14,84,68.18,35.71,0.4688
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,12,8,26,95.83,88.46,0.92
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,13,22,188,87.22,83.51,0.8533
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,14,12,49,45.21,67.35,0.541
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,15,6,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,0,5,7,41.18,100.0,0.5833
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,1,23,231,35.82,64.5,0.4606
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,2,26,126,38.58,60.32,0.4706
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,3,10,35,28.89,37.14,0.325
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,4,12,71,82.89,88.73,0.8571
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,5,19,109,81.82,49.54,0.6171
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,6,6,4,50.0,50.0,0.5
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,7,12,65,94.12,98.46,0.9624
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,8,5,4,25.0,100.0,0.4
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,9,11,148,47.62,27.03,0.3448
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,10,18,378,61.5,30.42,0.4071
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,11,21,84,67.8,47.62,0.5594
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,12,8,26,96.15,96.15,0.9615
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,13,25,188,86.41,84.57,0.8548
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,14,13,49,44.44,73.47,0.5538
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,15,6,13,100.0,92.31,0.96
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,0,5,7,21.21,100.0,0.35
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,1,7,231,55.88,32.9,0.4142
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,2,9,126,35.92,40.48,0.3806
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,3,7,35,8.99,48.57,0.1518
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,4,5,71,97.87,64.79,0.7797
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,5,5,109,72.22,35.78,0.4785
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,6,5,4,12.5,50.0,0.2
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,7,6,65,88.24,69.23,0.7759
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,8,5,4,14.29,75.0,0.24
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,9,7,148,33.33,52.03,0.4063
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,10,5,378,69.44,33.07,0.448
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,11,9,84,25.55,41.67,0.3167
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,12,6,26,76.67,88.46,0.8214
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,13,7,188,79.44,76.06,0.7772
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,14,7,49,35.9,57.14,0.4409
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,15,5,13,100.0,100.0,1.0
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,0,5,7,53.85,100.0,0.7
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,1,21,231,60.0,53.25,0.5642
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,2,13,126,39.51,50.79,0.4444
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,3,8,35,11.72,48.57,0.1889
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,4,13,71,93.85,85.92,0.8971
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,5,12,109,80.0,44.04,0.568
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,6,7,4,40.0,50.0,0.4444
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,7,10,65,98.31,89.23,0.9355
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,8,5,4,30.77,100.0,0.4706
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,9,10,148,36.36,48.65,0.4162
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,10,11,378,75.65,46.03,0.5724
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,11,16,84,44.44,38.1,0.4103
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,12,8,26,92.59,96.15,0.9434
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,13,24,188,77.62,86.7,0.8191
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,14,10,49,34.43,42.86,0.3818
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,15,7,13,100.0,100.0,1.0
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,0,5,7,46.67,100.0,0.6364
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,1,25,231,58.05,59.31,0.5867
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,2,16,126,50.93,43.65,0.4701
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,3,12,35,19.05,45.71,0.2689
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,4,13,71,96.83,85.92,0.9104
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,5,17,109,77.5,56.88,0.6561
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,6,7,4,100.0,50.0,0.6667
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,7,12,65,100.0,96.92,0.9844
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,8,5,4,30.77,100.0,0.4706
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,9,14,148,34.82,52.7,0.4194
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,10,19,378,74.91,52.91,0.6202
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,11,19,84,54.24,38.1,0.4476
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,12,10,26,96.15,96.15,0.9615
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,13,26,188,78.87,89.36,0.8379
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,14,13,49,37.5,55.1,0.4463
+Indian Pines,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,15,7,13,100.0,100.0,1.0
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,0,5,7,21.21,100.0,0.35
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,1,7,231,32.43,36.36,0.3429
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,2,7,126,16.23,19.84,0.1786
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,3,6,35,11.02,37.14,0.1699
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,4,7,71,81.25,73.24,0.7704
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,5,6,109,68.33,37.61,0.4852
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,6,5,4,9.38,75.0,0.1667
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,7,5,65,78.85,63.08,0.7009
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,8,5,4,7.55,100.0,0.1404
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,9,6,148,32.47,33.78,0.3311
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,10,10,378,50.68,29.63,0.374
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,11,6,84,30.0,14.29,0.1935
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,12,5,26,47.37,69.23,0.5625
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,13,10,188,76.92,79.79,0.7833
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,14,5,49,37.74,40.82,0.3922
+Indian Pines,Head C (Wider 1024),Random Sampling,45,100,15,5,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,0,5,7,50.0,100.0,0.6667
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,1,16,231,53.18,39.83,0.4554
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,2,12,126,34.21,20.63,0.2574
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,3,7,35,25.64,28.57,0.2703
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,4,9,71,71.43,70.42,0.7092
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,5,12,109,77.97,42.2,0.5476
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,6,6,4,21.43,75.0,0.3333
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,7,9,65,90.62,89.23,0.8992
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,8,5,4,16.0,100.0,0.2759
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,9,15,148,37.67,54.73,0.4463
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,10,29,378,63.17,68.52,0.6574
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,11,11,84,41.18,33.33,0.3684
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,12,8,26,45.0,69.23,0.5455
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,13,19,188,78.24,80.32,0.7927
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,14,12,49,42.42,57.14,0.487
+Indian Pines,Head C (Wider 1024),Random Sampling,45,180,15,5,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,0,5,7,53.85,100.0,0.7
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,1,20,231,65.38,36.8,0.4709
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,2,14,126,41.94,20.63,0.2766
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,3,8,35,26.19,31.43,0.2857
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,4,11,71,71.23,73.24,0.7222
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,5,15,109,75.76,45.87,0.5714
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,6,6,4,23.08,75.0,0.3529
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,7,14,65,89.23,89.23,0.8923
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,8,5,4,15.38,100.0,0.2667
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,9,16,148,40.56,49.32,0.4451
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,10,41,378,62.3,81.75,0.7071
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,11,11,84,43.08,33.33,0.3758
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,12,11,26,46.15,69.23,0.5538
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,13,21,188,83.61,81.38,0.8248
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,14,17,49,42.47,63.27,0.5082
+Indian Pines,Head C (Wider 1024),Random Sampling,45,220,15,5,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,0,5,7,17.5,100.0,0.2979
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,1,5,231,49.57,25.11,0.3333
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,2,7,126,55.56,23.81,0.3333
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,3,6,35,10.11,51.43,0.169
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,4,6,71,97.96,67.61,0.8
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,5,5,109,59.26,29.36,0.3926
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,6,5,4,8.7,50.0,0.1481
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,7,6,65,71.67,66.15,0.688
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,8,5,4,15.0,75.0,0.25
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,9,9,148,33.33,47.97,0.3934
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,10,11,378,58.2,49.74,0.5364
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,11,7,84,27.34,41.67,0.3302
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,12,7,26,82.76,92.31,0.8727
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,13,6,188,76.22,75.0,0.756
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,14,5,49,23.08,24.49,0.2376
+Indian Pines,Head C (Wider 1024),Random Sampling,46,100,15,5,13,100.0,100.0,1.0
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,0,5,7,35.0,100.0,0.5185
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,1,15,231,54.02,40.69,0.4642
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,2,12,126,54.1,26.19,0.3529
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,3,7,35,25.49,37.14,0.3023
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,4,9,71,87.27,67.61,0.7619
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,5,12,109,68.18,41.28,0.5143
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,6,5,4,18.75,75.0,0.3
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,7,10,65,78.69,73.85,0.7619
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,8,5,4,21.43,75.0,0.3333
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,9,14,148,34.76,43.92,0.3881
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,10,35,378,61.74,73.02,0.6691
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,11,12,84,41.38,42.86,0.4211
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,12,7,26,85.19,88.46,0.8679
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,13,18,188,77.78,85.64,0.8152
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,14,8,49,42.31,44.9,0.4356
+Indian Pines,Head C (Wider 1024),Random Sampling,46,180,15,6,13,100.0,100.0,1.0
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,0,6,7,31.82,100.0,0.4828
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,1,19,231,58.39,40.69,0.4796
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,2,13,126,60.0,30.95,0.4084
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,3,7,35,36.11,37.14,0.3662
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,4,12,71,91.23,73.24,0.8125
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,5,13,109,68.18,41.28,0.5143
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,6,5,4,18.18,50.0,0.2667
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,7,11,65,81.82,83.08,0.8244
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,8,5,4,17.65,75.0,0.2857
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,9,21,148,45.21,44.59,0.449
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,10,46,378,61.98,82.8,0.7089
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,11,14,84,48.39,53.57,0.5085
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,12,7,26,92.0,88.46,0.902
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,13,23,188,85.25,82.98,0.841
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,14,12,49,48.61,71.43,0.5785
+Indian Pines,Head C (Wider 1024),Random Sampling,46,220,15,6,13,100.0,100.0,1.0
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,0,5,7,41.18,100.0,0.5833
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,1,7,231,55.8,33.33,0.4173
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,2,7,126,15.7,21.43,0.1812
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,3,5,35,11.36,28.57,0.1626
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,4,5,71,86.67,73.24,0.7939
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,5,9,109,49.18,55.05,0.5195
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,6,5,4,11.11,75.0,0.1935
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,7,5,65,78.57,67.69,0.7273
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,8,5,4,7.41,100.0,0.1379
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,9,8,148,29.11,41.89,0.3435
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,10,10,378,65.79,46.3,0.5435
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,11,6,84,27.08,15.48,0.197
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,12,5,26,40.91,69.23,0.5143
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,13,8,188,80.0,78.72,0.7936
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,14,5,49,52.78,38.78,0.4471
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,100,15,5,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,0,5,7,63.64,100.0,0.7778
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,1,23,231,51.4,47.62,0.4944
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,2,16,126,54.55,38.1,0.4486
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,3,9,35,14.63,34.29,0.2051
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,4,9,71,71.23,73.24,0.7222
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,5,10,109,62.96,46.79,0.5368
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,6,5,4,30.0,75.0,0.4286
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,7,7,65,86.3,96.92,0.913
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,8,5,4,8.7,100.0,0.16
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,9,16,148,37.95,42.57,0.4013
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,10,30,378,71.09,63.76,0.6722
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,11,17,84,50.54,55.95,0.5311
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,12,5,26,78.26,69.23,0.7347
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,13,11,188,80.65,79.79,0.8021
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,14,7,49,56.1,46.94,0.5111
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,180,15,5,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,0,5,7,87.5,100.0,0.9333
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,1,29,231,54.35,54.11,0.5423
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,2,21,126,66.67,38.1,0.4848
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,3,11,35,26.09,34.29,0.2963
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,4,11,71,89.66,73.24,0.8062
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,5,13,109,66.67,47.71,0.5561
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,6,5,4,23.08,75.0,0.3529
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,7,7,65,91.3,96.92,0.9403
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,8,5,4,9.76,100.0,0.1778
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,9,20,148,42.94,47.3,0.4502
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,10,39,378,70.63,73.81,0.7219
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,11,21,84,45.16,50.0,0.4746
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,12,5,26,75.86,84.62,0.8
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,13,15,188,81.54,84.57,0.8303
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,14,8,49,55.56,40.82,0.4706
+Indian Pines,Head C (Wider 1024),Margin Sampling,45,220,15,5,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,0,5,7,22.58,100.0,0.3684
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,1,8,231,46.91,39.39,0.4282
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,2,6,126,32.86,18.25,0.2347
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,3,6,35,8.55,57.14,0.1487
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,4,7,71,96.15,70.42,0.813
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,5,7,109,59.76,44.95,0.5131
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,6,5,4,11.11,50.0,0.1818
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,7,5,65,72.88,66.15,0.6935
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,8,5,4,15.0,75.0,0.25
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,9,7,148,36.65,39.86,0.3819
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,10,11,378,59.36,39.42,0.4738
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,11,5,84,24.0,28.57,0.2609
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,12,5,26,95.65,84.62,0.898
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,13,8,188,78.72,78.72,0.7872
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,14,5,49,26.19,22.45,0.2418
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,100,15,5,13,100.0,100.0,1.0
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,0,5,7,35.0,100.0,0.5185
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,1,20,231,58.0,50.22,0.5383
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,2,12,126,42.86,19.05,0.2637
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,3,9,35,14.39,54.29,0.2275
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,4,7,71,98.11,73.24,0.8387
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,5,11,109,61.73,45.87,0.5263
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,6,5,4,13.33,50.0,0.2105
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,7,6,65,76.56,75.38,0.7597
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,8,5,4,23.08,75.0,0.3529
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,9,16,148,55.56,43.92,0.4906
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,10,41,378,64.01,70.11,0.6692
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,11,8,84,40.91,32.14,0.36
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,12,6,26,92.31,92.31,0.9231
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,13,16,188,83.59,86.7,0.8512
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,14,8,49,34.25,51.02,0.4098
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,180,15,5,13,100.0,100.0,1.0
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,0,5,7,43.75,100.0,0.6087
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,1,29,231,67.28,47.19,0.5547
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,2,17,126,43.21,27.78,0.3382
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,3,9,35,15.6,48.57,0.2361
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,4,10,71,89.66,73.24,0.8062
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,5,13,109,59.22,55.96,0.5755
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,6,5,4,13.33,50.0,0.2105
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,7,6,65,80.33,75.38,0.7778
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,8,5,4,25.0,75.0,0.375
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,9,23,148,63.85,56.08,0.5971
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,10,50,378,63.7,73.81,0.6838
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,11,10,84,50.0,33.33,0.4
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,12,6,26,88.0,84.62,0.8627
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,13,18,188,82.65,86.17,0.8438
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,14,9,49,39.34,48.98,0.4364
+Indian Pines,Head C (Wider 1024),Margin Sampling,46,220,15,5,13,86.67,100.0,0.9286
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,0,5,7,20.59,100.0,0.3415
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,1,8,231,31.87,34.63,0.332
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,2,6,126,12.44,22.22,0.1595
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,3,5,35,23.26,28.57,0.2564
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,4,5,71,79.41,76.06,0.777
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,5,8,109,58.89,48.62,0.5327
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,6,5,4,15.0,75.0,0.25
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,7,8,65,78.87,86.15,0.8235
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,8,5,4,10.26,100.0,0.186
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,9,5,148,28.35,37.16,0.3216
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,10,7,378,44.14,16.93,0.2447
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,11,7,84,29.69,22.62,0.2568
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,12,5,26,43.59,65.38,0.5231
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,13,8,188,81.5,75.0,0.7812
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,14,8,49,44.29,63.27,0.521
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,100,15,5,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,0,5,7,28.0,100.0,0.4375
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,1,22,231,39.22,51.95,0.4469
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,2,16,126,24.54,52.38,0.3342
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,3,11,35,41.67,42.86,0.4225
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,4,7,71,78.87,78.87,0.7887
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,5,16,109,81.33,55.96,0.663
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,6,6,4,11.11,50.0,0.1818
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,7,8,65,82.81,81.54,0.8217
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,8,5,4,23.53,100.0,0.381
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,9,10,148,37.5,34.46,0.3592
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,10,17,378,55.48,22.75,0.3227
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,11,18,84,47.62,47.62,0.4762
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,12,7,26,79.31,88.46,0.8364
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,13,16,188,84.39,77.66,0.8089
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,14,11,49,54.41,75.51,0.6325
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,180,15,5,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,0,5,7,30.43,100.0,0.4667
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,1,26,231,52.03,55.41,0.5367
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,2,17,126,28.57,49.21,0.3615
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,3,17,35,40.43,54.29,0.4634
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,4,7,71,87.88,81.69,0.8467
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,5,19,109,73.68,64.22,0.6863
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,6,6,4,28.57,50.0,0.3636
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,7,10,65,92.06,89.23,0.9062
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,8,5,4,21.05,100.0,0.3478
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,9,17,148,39.2,46.62,0.4259
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,10,27,378,65.24,40.21,0.4975
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,11,20,84,62.9,46.43,0.5342
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,12,7,26,76.67,88.46,0.8214
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,13,21,188,86.1,85.64,0.8587
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,14,11,49,50.91,57.14,0.5385
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,45,220,15,5,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,0,5,7,25.0,100.0,0.4
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,1,10,231,49.74,41.13,0.4502
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,2,6,126,29.49,18.25,0.2255
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,3,5,35,8.56,54.29,0.1479
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,4,5,71,97.83,63.38,0.7692
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,5,7,109,58.62,46.79,0.5204
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,6,5,4,15.38,50.0,0.2353
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,7,8,65,90.74,75.38,0.8235
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,8,5,4,21.05,100.0,0.3478
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,9,7,148,34.17,45.95,0.3919
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,10,5,378,61.05,27.78,0.3818
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,11,6,84,22.54,38.1,0.2832
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,12,5,26,82.14,88.46,0.8519
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,13,9,188,87.34,73.4,0.7977
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,14,7,49,37.5,67.35,0.4818
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,100,15,5,13,100.0,100.0,1.0
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,0,5,7,43.75,100.0,0.6087
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,1,21,231,51.3,51.08,0.5119
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,2,13,126,37.93,34.92,0.3636
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,3,9,35,19.51,45.71,0.2735
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,4,6,71,98.0,69.01,0.8099
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,5,20,109,66.37,68.81,0.6757
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,6,5,4,50.0,50.0,0.5
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,7,11,65,96.61,87.69,0.9194
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,8,5,4,28.57,100.0,0.4444
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,9,15,148,28.69,45.95,0.3532
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,10,11,378,76.17,47.35,0.584
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,11,17,84,35.23,36.9,0.3605
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,12,5,26,92.31,92.31,0.9231
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,13,23,188,80.19,88.3,0.8405
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,14,9,49,48.94,46.94,0.4792
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,180,15,5,13,92.86,100.0,0.963
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,0,5,7,58.33,100.0,0.7368
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,1,26,231,54.02,61.04,0.5732
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,2,17,126,59.6,46.83,0.5244
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,3,9,35,28.57,40.0,0.3333
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,4,9,71,89.47,71.83,0.7969
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,5,24,109,78.0,71.56,0.7464
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,6,5,4,66.67,50.0,0.5714
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,7,11,65,95.24,92.31,0.9375
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,8,5,4,26.67,100.0,0.4211
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,9,19,148,34.02,56.08,0.4235
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,10,21,378,75.38,52.65,0.6199
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,11,23,84,36.9,36.9,0.369
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,12,5,26,92.0,88.46,0.902
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,13,26,188,82.83,87.23,0.8497
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,14,10,49,50.0,51.02,0.5051
+Indian Pines,Head C (Wider 1024),Margin + Cosine Diversity,46,220,15,5,13,92.86,100.0,0.963
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,0,5,7,22.58,100.0,0.3684
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,1,7,231,32.26,34.63,0.334
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,2,7,126,20.34,38.1,0.2652
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,3,5,35,23.91,31.43,0.2716
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,4,5,71,91.23,73.24,0.8125
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,5,6,109,68.75,40.37,0.5087
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,6,5,4,13.64,75.0,0.2308
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,7,9,65,72.5,89.23,0.8
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,8,5,4,7.55,100.0,0.1404
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,9,6,148,27.85,44.59,0.3429
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,10,7,378,54.24,16.93,0.2581
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,11,8,84,30.56,26.19,0.2821
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,12,6,26,63.89,88.46,0.7419
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,13,7,188,85.62,72.87,0.7874
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,14,7,49,45.45,61.22,0.5217
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,15,5,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,0,5,7,58.33,100.0,0.7368
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,1,24,231,41.56,57.58,0.4828
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,2,15,126,29.36,50.79,0.3721
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,3,10,35,36.67,31.43,0.3385
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,4,8,71,88.06,83.1,0.8551
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,5,15,109,77.17,65.14,0.7065
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,6,6,4,20.0,50.0,0.2857
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,7,10,65,86.36,87.69,0.8702
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,8,5,4,21.05,100.0,0.3478
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,9,10,148,37.34,39.86,0.3856
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,10,19,378,63.78,31.22,0.4192
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,11,15,84,44.0,52.38,0.4783
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,12,7,26,69.7,88.46,0.7797
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,13,16,188,86.52,81.91,0.8415
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,14,7,49,66.67,53.06,0.5909
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,15,8,13,100.0,84.62,0.9167
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,0,5,7,43.75,100.0,0.6087
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,1,28,231,42.55,60.61,0.5
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,2,18,126,34.4,59.52,0.436
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,3,11,35,48.48,45.71,0.4706
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,4,11,71,89.39,83.1,0.8613
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,5,22,109,72.45,65.14,0.686
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,6,6,4,40.0,50.0,0.4444
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,7,12,65,90.14,98.46,0.9412
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,8,5,4,25.0,100.0,0.4
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,9,11,148,41.06,41.89,0.4147
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,10,20,378,71.28,36.77,0.4852
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,11,17,84,53.33,47.62,0.5031
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,12,8,26,92.0,88.46,0.902
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,13,22,188,92.68,80.85,0.8636
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,14,16,49,56.25,73.47,0.6372
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,15,8,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,0,5,7,17.5,100.0,0.2979
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,1,8,231,57.66,34.2,0.4293
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,2,8,126,39.37,39.68,0.3953
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,3,6,35,9.17,57.14,0.1581
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,4,6,71,97.92,66.2,0.7899
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,5,7,109,59.14,50.46,0.5446
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,6,5,4,11.76,50.0,0.1905
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,7,6,65,88.24,69.23,0.7759
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,8,5,4,17.39,100.0,0.2963
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,9,5,148,29.69,38.51,0.3353
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,10,6,378,66.89,26.19,0.3764
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,11,9,84,20.99,40.48,0.2764
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,12,5,26,82.14,88.46,0.8519
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,13,7,188,86.11,65.96,0.747
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,14,7,49,36.08,71.43,0.4795
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,15,5,13,100.0,100.0,1.0
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,0,5,7,58.33,100.0,0.7368
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,1,19,231,46.92,52.81,0.4969
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,2,12,126,45.3,42.06,0.4362
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,3,11,35,24.32,51.43,0.3303
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,4,9,71,90.74,69.01,0.784
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,5,13,109,75.0,57.8,0.6528
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,6,5,4,25.0,50.0,0.3333
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,7,14,65,91.04,93.85,0.9242
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,8,5,4,23.08,75.0,0.3529
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,9,9,148,41.88,54.05,0.472
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,10,18,378,60.92,42.06,0.4977
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,11,14,84,41.05,46.43,0.4358
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,12,10,26,78.12,96.15,0.8621
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,13,17,188,89.71,83.51,0.865
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,14,13,49,43.37,73.47,0.5455
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,15,6,13,100.0,92.31,0.96
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,0,5,7,87.5,100.0,0.9333
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,1,23,231,48.15,56.28,0.519
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,2,16,126,37.59,42.06,0.397
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,3,13,35,24.66,51.43,0.3333
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,4,13,71,87.3,77.46,0.8209
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,5,18,109,82.19,55.05,0.6593
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,6,7,4,33.33,50.0,0.4
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,7,16,65,98.33,90.77,0.944
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,8,5,4,36.36,100.0,0.5333
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,9,12,148,44.97,45.27,0.4512
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,10,19,378,67.26,50.0,0.5736
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,11,20,84,42.39,46.43,0.4432
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,12,10,26,69.44,96.15,0.8065
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,13,23,188,89.39,85.11,0.8719
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,14,13,49,43.37,73.47,0.5455
+Indian Pines,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,15,7,13,100.0,100.0,1.0
+Salinas,Head B (Improved 512),Random Sampling,45,100,0,5,319,42.94,45.77,0.4431
+Salinas,Head B (Improved 512),Random Sampling,45,100,1,5,524,64.77,60.69,0.6266
+Salinas,Head B (Improved 512),Random Sampling,45,100,2,6,326,79.67,60.12,0.6853
+Salinas,Head B (Improved 512),Random Sampling,45,100,3,6,208,65.23,94.71,0.7725
+Salinas,Head B (Improved 512),Random Sampling,45,100,4,6,411,95.53,67.64,0.792
+Salinas,Head B (Improved 512),Random Sampling,45,100,5,8,567,91.19,98.59,0.9475
+Salinas,Head B (Improved 512),Random Sampling,45,100,6,6,545,84.03,66.61,0.7431
+Salinas,Head B (Improved 512),Random Sampling,45,100,7,9,1733,65.39,52.22,0.5807
+Salinas,Head B (Improved 512),Random Sampling,45,100,8,5,926,82.22,92.87,0.8722
+Salinas,Head B (Improved 512),Random Sampling,45,100,9,7,489,73.62,62.78,0.6777
+Salinas,Head B (Improved 512),Random Sampling,45,100,10,6,155,63.21,78.71,0.7011
+Salinas,Head B (Improved 512),Random Sampling,45,100,11,6,293,66.97,99.66,0.8011
+Salinas,Head B (Improved 512),Random Sampling,45,100,12,5,124,90.91,72.58,0.8072
+Salinas,Head B (Improved 512),Random Sampling,45,100,13,5,142,32.77,82.39,0.4689
+Salinas,Head B (Improved 512),Random Sampling,45,100,14,8,1082,53.33,57.76,0.5546
+Salinas,Head B (Improved 512),Random Sampling,45,100,15,7,276,50.5,55.07,0.5269
+Salinas,Head B (Improved 512),Random Sampling,45,180,0,6,319,61.88,31.03,0.4134
+Salinas,Head B (Improved 512),Random Sampling,45,180,1,16,524,65.92,83.78,0.7378
+Salinas,Head B (Improved 512),Random Sampling,45,180,2,10,326,90.0,60.74,0.7253
+Salinas,Head B (Improved 512),Random Sampling,45,180,3,8,208,82.98,93.75,0.8804
+Salinas,Head B (Improved 512),Random Sampling,45,180,4,8,411,96.14,72.75,0.8283
+Salinas,Head B (Improved 512),Random Sampling,45,180,5,12,567,94.55,97.88,0.9619
+Salinas,Head B (Improved 512),Random Sampling,45,180,6,13,545,83.65,79.82,0.8169
+Salinas,Head B (Improved 512),Random Sampling,45,180,7,29,1733,66.05,76.57,0.7092
+Salinas,Head B (Improved 512),Random Sampling,45,180,8,13,926,82.8,95.14,0.8854
+Salinas,Head B (Improved 512),Random Sampling,45,180,9,11,489,75.15,74.85,0.75
+Salinas,Head B (Improved 512),Random Sampling,45,180,10,8,155,75.61,80.0,0.7774
+Salinas,Head B (Improved 512),Random Sampling,45,180,11,8,293,76.01,96.25,0.8494
+Salinas,Head B (Improved 512),Random Sampling,45,180,12,6,124,93.1,65.32,0.7678
+Salinas,Head B (Improved 512),Random Sampling,45,180,13,5,142,40.47,85.21,0.5488
+Salinas,Head B (Improved 512),Random Sampling,45,180,14,18,1082,60.25,40.76,0.4862
+Salinas,Head B (Improved 512),Random Sampling,45,180,15,9,276,71.15,53.62,0.6116
+Salinas,Head B (Improved 512),Random Sampling,45,220,0,11,319,53.65,46.08,0.4958
+Salinas,Head B (Improved 512),Random Sampling,45,220,1,20,524,66.9,72.52,0.696
+Salinas,Head B (Improved 512),Random Sampling,45,220,2,11,326,85.15,59.82,0.7027
+Salinas,Head B (Improved 512),Random Sampling,45,220,3,8,208,85.28,94.71,0.8975
+Salinas,Head B (Improved 512),Random Sampling,45,220,4,10,411,93.24,83.94,0.8835
+Salinas,Head B (Improved 512),Random Sampling,45,220,5,15,567,95.06,98.41,0.9671
+Salinas,Head B (Improved 512),Random Sampling,45,220,6,15,545,84.99,80.0,0.8242
+Salinas,Head B (Improved 512),Random Sampling,45,220,7,38,1733,68.52,71.96,0.7019
+Salinas,Head B (Improved 512),Random Sampling,45,220,8,19,926,85.36,96.33,0.9051
+Salinas,Head B (Improved 512),Random Sampling,45,220,9,13,489,78.26,69.94,0.7387
+Salinas,Head B (Improved 512),Random Sampling,45,220,10,9,155,73.49,78.71,0.7601
+Salinas,Head B (Improved 512),Random Sampling,45,220,11,9,293,73.55,99.66,0.8464
+Salinas,Head B (Improved 512),Random Sampling,45,220,12,7,124,95.83,74.19,0.8364
+Salinas,Head B (Improved 512),Random Sampling,45,220,13,5,142,44.94,84.51,0.5868
+Salinas,Head B (Improved 512),Random Sampling,45,220,14,20,1082,58.14,49.82,0.5366
+Salinas,Head B (Improved 512),Random Sampling,45,220,15,10,276,77.72,54.35,0.6397
+Salinas,Head B (Improved 512),Random Sampling,46,100,0,5,319,36.81,52.04,0.4312
+Salinas,Head B (Improved 512),Random Sampling,46,100,1,5,524,60.19,59.73,0.5996
+Salinas,Head B (Improved 512),Random Sampling,46,100,2,5,326,71.33,62.58,0.6667
+Salinas,Head B (Improved 512),Random Sampling,46,100,3,6,208,59.75,67.79,0.6351
+Salinas,Head B (Improved 512),Random Sampling,46,100,4,5,411,85.49,80.29,0.8281
+Salinas,Head B (Improved 512),Random Sampling,46,100,5,9,567,93.78,98.41,0.9604
+Salinas,Head B (Improved 512),Random Sampling,46,100,6,5,545,70.62,43.67,0.5397
+Salinas,Head B (Improved 512),Random Sampling,46,100,7,10,1733,63.63,47.14,0.5416
+Salinas,Head B (Improved 512),Random Sampling,46,100,8,6,926,79.73,96.87,0.8747
+Salinas,Head B (Improved 512),Random Sampling,46,100,9,7,489,76.82,56.24,0.6494
+Salinas,Head B (Improved 512),Random Sampling,46,100,10,6,155,62.57,75.48,0.6842
+Salinas,Head B (Improved 512),Random Sampling,46,100,11,5,293,62.81,61.09,0.6194
+Salinas,Head B (Improved 512),Random Sampling,46,100,12,5,124,44.38,60.48,0.5119
+Salinas,Head B (Improved 512),Random Sampling,46,100,13,5,142,57.78,73.24,0.646
+Salinas,Head B (Improved 512),Random Sampling,46,100,14,9,1082,49.69,59.52,0.5416
+Salinas,Head B (Improved 512),Random Sampling,46,100,15,7,276,28.24,43.48,0.3424
+Salinas,Head B (Improved 512),Random Sampling,46,180,0,9,319,41.36,49.53,0.4508
+Salinas,Head B (Improved 512),Random Sampling,46,180,1,8,524,64.64,62.79,0.637
+Salinas,Head B (Improved 512),Random Sampling,46,180,2,7,326,83.61,61.04,0.7057
+Salinas,Head B (Improved 512),Random Sampling,46,180,3,9,208,77.11,92.31,0.8403
+Salinas,Head B (Improved 512),Random Sampling,46,180,4,7,411,84.5,82.24,0.8335
+Salinas,Head B (Improved 512),Random Sampling,46,180,5,13,567,94.12,98.77,0.9639
+Salinas,Head B (Improved 512),Random Sampling,46,180,6,10,545,91.39,81.83,0.8635
+Salinas,Head B (Improved 512),Random Sampling,46,180,7,30,1733,65.42,64.63,0.6502
+Salinas,Head B (Improved 512),Random Sampling,46,180,8,18,926,86.48,98.81,0.9224
+Salinas,Head B (Improved 512),Random Sampling,46,180,9,9,489,75.71,54.81,0.6358
+Salinas,Head B (Improved 512),Random Sampling,46,180,10,6,155,75.68,72.26,0.7393
+Salinas,Head B (Improved 512),Random Sampling,46,180,11,10,293,72.77,97.61,0.8338
+Salinas,Head B (Improved 512),Random Sampling,46,180,12,7,124,48.67,58.87,0.5328
+Salinas,Head B (Improved 512),Random Sampling,46,180,13,6,142,61.81,62.68,0.6224
+Salinas,Head B (Improved 512),Random Sampling,46,180,14,21,1082,55.46,54.44,0.5494
+Salinas,Head B (Improved 512),Random Sampling,46,180,15,10,276,74.37,64.13,0.6887
+Salinas,Head B (Improved 512),Random Sampling,46,220,0,12,319,42.52,56.11,0.4838
+Salinas,Head B (Improved 512),Random Sampling,46,220,1,9,524,66.67,59.16,0.6269
+Salinas,Head B (Improved 512),Random Sampling,46,220,2,8,326,85.17,61.66,0.7153
+Salinas,Head B (Improved 512),Random Sampling,46,220,3,10,208,81.12,90.87,0.8571
+Salinas,Head B (Improved 512),Random Sampling,46,220,4,8,411,85.86,82.73,0.8426
+Salinas,Head B (Improved 512),Random Sampling,46,220,5,15,567,96.03,98.24,0.9712
+Salinas,Head B (Improved 512),Random Sampling,46,220,6,12,545,91.51,79.08,0.8484
+Salinas,Head B (Improved 512),Random Sampling,46,220,7,43,1733,68.61,57.65,0.6265
+Salinas,Head B (Improved 512),Random Sampling,46,220,8,20,926,84.64,99.35,0.9141
+Salinas,Head B (Improved 512),Random Sampling,46,220,9,10,489,82.8,62.99,0.7154
+Salinas,Head B (Improved 512),Random Sampling,46,220,10,8,155,74.67,72.26,0.7344
+Salinas,Head B (Improved 512),Random Sampling,46,220,11,13,293,71.78,98.98,0.8321
+Salinas,Head B (Improved 512),Random Sampling,46,220,12,7,124,52.63,56.45,0.5447
+Salinas,Head B (Improved 512),Random Sampling,46,220,13,7,142,76.15,69.72,0.7279
+Salinas,Head B (Improved 512),Random Sampling,46,220,14,27,1082,53.71,64.88,0.5877
+Salinas,Head B (Improved 512),Random Sampling,46,220,15,11,276,68.46,69.2,0.6883
+Salinas,Head B (Improved 512),Margin Sampling,45,100,0,5,319,42.46,47.65,0.449
+Salinas,Head B (Improved 512),Margin Sampling,45,100,1,6,524,62.6,60.69,0.6163
+Salinas,Head B (Improved 512),Margin Sampling,45,100,2,6,326,74.48,65.34,0.6961
+Salinas,Head B (Improved 512),Margin Sampling,45,100,3,6,208,52.25,94.71,0.6735
+Salinas,Head B (Improved 512),Margin Sampling,45,100,4,6,411,93.85,70.56,0.8056
+Salinas,Head B (Improved 512),Margin Sampling,45,100,5,5,567,91.95,98.77,0.9524
+Salinas,Head B (Improved 512),Margin Sampling,45,100,6,10,545,84.65,64.77,0.7339
+Salinas,Head B (Improved 512),Margin Sampling,45,100,7,8,1733,64.21,40.8,0.4989
+Salinas,Head B (Improved 512),Margin Sampling,45,100,8,5,926,76.01,91.68,0.8311
+Salinas,Head B (Improved 512),Margin Sampling,45,100,9,5,489,74.03,54.81,0.6298
+Salinas,Head B (Improved 512),Margin Sampling,45,100,10,7,155,60.45,85.81,0.7093
+Salinas,Head B (Improved 512),Margin Sampling,45,100,11,5,293,69.01,73.72,0.7129
+Salinas,Head B (Improved 512),Margin Sampling,45,100,12,5,124,91.84,72.58,0.8108
+Salinas,Head B (Improved 512),Margin Sampling,45,100,13,5,142,36.73,83.8,0.5107
+Salinas,Head B (Improved 512),Margin Sampling,45,100,14,11,1082,49.52,72.09,0.5871
+Salinas,Head B (Improved 512),Margin Sampling,45,100,15,5,276,47.26,25.0,0.327
+Salinas,Head B (Improved 512),Margin Sampling,45,180,0,6,319,74.51,35.74,0.4831
+Salinas,Head B (Improved 512),Margin Sampling,45,180,1,15,524,67.96,83.4,0.7489
+Salinas,Head B (Improved 512),Margin Sampling,45,180,2,9,326,79.72,69.94,0.7451
+Salinas,Head B (Improved 512),Margin Sampling,45,180,3,9,208,74.9,91.83,0.8251
+Salinas,Head B (Improved 512),Margin Sampling,45,180,4,9,411,92.54,75.43,0.8311
+Salinas,Head B (Improved 512),Margin Sampling,45,180,5,5,567,97.37,97.88,0.9763
+Salinas,Head B (Improved 512),Margin Sampling,45,180,6,18,545,84.56,84.4,0.8448
+Salinas,Head B (Improved 512),Margin Sampling,45,180,7,33,1733,67.59,77.38,0.7215
+Salinas,Head B (Improved 512),Margin Sampling,45,180,8,6,926,88.81,91.68,0.9022
+Salinas,Head B (Improved 512),Margin Sampling,45,180,9,9,489,63.19,73.01,0.6774
+Salinas,Head B (Improved 512),Margin Sampling,45,180,10,8,155,75.71,86.45,0.8072
+Salinas,Head B (Improved 512),Margin Sampling,45,180,11,12,293,75.26,99.66,0.8576
+Salinas,Head B (Improved 512),Margin Sampling,45,180,12,6,124,96.59,68.55,0.8019
+Salinas,Head B (Improved 512),Margin Sampling,45,180,13,9,142,67.58,86.62,0.7593
+Salinas,Head B (Improved 512),Margin Sampling,45,180,14,18,1082,63.45,44.92,0.526
+Salinas,Head B (Improved 512),Margin Sampling,45,180,15,8,276,66.23,54.71,0.5992
+Salinas,Head B (Improved 512),Margin Sampling,45,220,0,7,319,68.99,34.17,0.457
+Salinas,Head B (Improved 512),Margin Sampling,45,220,1,16,524,69.41,85.31,0.7654
+Salinas,Head B (Improved 512),Margin Sampling,45,220,2,11,326,81.95,69.63,0.7529
+Salinas,Head B (Improved 512),Margin Sampling,45,220,3,11,208,75.48,94.71,0.8401
+Salinas,Head B (Improved 512),Margin Sampling,45,220,4,14,411,92.54,87.59,0.9
+Salinas,Head B (Improved 512),Margin Sampling,45,220,5,5,567,95.55,98.41,0.9696
+Salinas,Head B (Improved 512),Margin Sampling,45,220,6,23,545,88.1,86.97,0.8753
+Salinas,Head B (Improved 512),Margin Sampling,45,220,7,33,1733,70.47,69.42,0.6994
+Salinas,Head B (Improved 512),Margin Sampling,45,220,8,9,926,89.19,95.36,0.9217
+Salinas,Head B (Improved 512),Margin Sampling,45,220,9,15,489,72.63,79.75,0.7602
+Salinas,Head B (Improved 512),Margin Sampling,45,220,10,9,155,71.35,85.16,0.7765
+Salinas,Head B (Improved 512),Margin Sampling,45,220,11,15,293,85.38,99.66,0.9197
+Salinas,Head B (Improved 512),Margin Sampling,45,220,12,6,124,96.59,68.55,0.8019
+Salinas,Head B (Improved 512),Margin Sampling,45,220,13,11,142,63.59,92.25,0.7529
+Salinas,Head B (Improved 512),Margin Sampling,45,220,14,26,1082,60.87,56.65,0.5869
+Salinas,Head B (Improved 512),Margin Sampling,45,220,15,9,276,78.26,58.7,0.6708
+Salinas,Head B (Improved 512),Margin Sampling,46,100,0,5,319,27.68,33.23,0.302
+Salinas,Head B (Improved 512),Margin Sampling,46,100,1,12,524,58.37,77.86,0.6672
+Salinas,Head B (Improved 512),Margin Sampling,46,100,2,7,326,58.17,64.42,0.6114
+Salinas,Head B (Improved 512),Margin Sampling,46,100,3,6,208,56.4,93.27,0.7029
+Salinas,Head B (Improved 512),Margin Sampling,46,100,4,5,411,82.58,79.56,0.8104
+Salinas,Head B (Improved 512),Margin Sampling,46,100,5,5,567,93.65,98.77,0.9614
+Salinas,Head B (Improved 512),Margin Sampling,46,100,6,7,545,88.06,60.92,0.7202
+Salinas,Head B (Improved 512),Margin Sampling,46,100,7,9,1733,67.62,50.61,0.5789
+Salinas,Head B (Improved 512),Margin Sampling,46,100,8,5,926,84.24,90.6,0.873
+Salinas,Head B (Improved 512),Margin Sampling,46,100,9,6,489,72.17,50.92,0.5971
+Salinas,Head B (Improved 512),Margin Sampling,46,100,10,5,155,60.34,67.74,0.6383
+Salinas,Head B (Improved 512),Margin Sampling,46,100,11,5,293,57.09,57.68,0.5739
+Salinas,Head B (Improved 512),Margin Sampling,46,100,12,6,124,54.84,82.26,0.6581
+Salinas,Head B (Improved 512),Margin Sampling,46,100,13,5,142,59.04,69.01,0.6364
+Salinas,Head B (Improved 512),Margin Sampling,46,100,14,7,1082,52.2,57.12,0.5455
+Salinas,Head B (Improved 512),Margin Sampling,46,100,15,5,276,51.89,59.78,0.5556
+Salinas,Head B (Improved 512),Margin Sampling,46,180,0,5,319,50.71,22.26,0.3094
+Salinas,Head B (Improved 512),Margin Sampling,46,180,1,16,524,59.78,83.97,0.6984
+Salinas,Head B (Improved 512),Margin Sampling,46,180,2,8,326,80.08,62.88,0.7045
+Salinas,Head B (Improved 512),Margin Sampling,46,180,3,11,208,87.17,94.71,0.9078
+Salinas,Head B (Improved 512),Margin Sampling,46,180,4,9,411,77.02,88.08,0.8218
+Salinas,Head B (Improved 512),Margin Sampling,46,180,5,6,567,97.16,96.47,0.9681
+Salinas,Head B (Improved 512),Margin Sampling,46,180,6,21,545,74.59,92.11,0.8243
+Salinas,Head B (Improved 512),Margin Sampling,46,180,7,25,1733,66.27,71.44,0.6876
+Salinas,Head B (Improved 512),Margin Sampling,46,180,8,12,926,91.21,96.33,0.937
+Salinas,Head B (Improved 512),Margin Sampling,46,180,9,10,489,90.33,66.87,0.7685
+Salinas,Head B (Improved 512),Margin Sampling,46,180,10,7,155,82.55,79.35,0.8092
+Salinas,Head B (Improved 512),Margin Sampling,46,180,11,9,293,69.76,97.61,0.8137
+Salinas,Head B (Improved 512),Margin Sampling,46,180,12,7,124,78.63,74.19,0.7635
+Salinas,Head B (Improved 512),Margin Sampling,46,180,13,6,142,85.71,80.28,0.8291
+Salinas,Head B (Improved 512),Margin Sampling,46,180,14,12,1082,60.61,44.36,0.5123
+Salinas,Head B (Improved 512),Margin Sampling,46,180,15,16,276,69.23,61.96,0.6539
+Salinas,Head B (Improved 512),Margin Sampling,46,220,0,6,319,51.45,27.9,0.3618
+Salinas,Head B (Improved 512),Margin Sampling,46,220,1,19,524,62.98,83.78,0.7191
+Salinas,Head B (Improved 512),Margin Sampling,46,220,2,8,326,93.81,65.03,0.7681
+Salinas,Head B (Improved 512),Margin Sampling,46,220,3,12,208,91.32,96.15,0.9368
+Salinas,Head B (Improved 512),Margin Sampling,46,220,4,11,411,76.4,92.94,0.8386
+Salinas,Head B (Improved 512),Margin Sampling,46,220,5,6,567,99.09,95.94,0.9749
+Salinas,Head B (Improved 512),Margin Sampling,46,220,6,23,545,82.45,91.38,0.8668
+Salinas,Head B (Improved 512),Margin Sampling,46,220,7,37,1733,69.57,72.42,0.7096
+Salinas,Head B (Improved 512),Margin Sampling,46,220,8,13,926,90.43,96.98,0.9359
+Salinas,Head B (Improved 512),Margin Sampling,46,220,9,11,489,85.26,70.96,0.7746
+Salinas,Head B (Improved 512),Margin Sampling,46,220,10,9,155,80.52,80.0,0.8026
+Salinas,Head B (Improved 512),Margin Sampling,46,220,11,9,293,74.41,96.25,0.8393
+Salinas,Head B (Improved 512),Margin Sampling,46,220,12,8,124,76.67,74.19,0.7541
+Salinas,Head B (Improved 512),Margin Sampling,46,220,13,9,142,94.74,88.73,0.9164
+Salinas,Head B (Improved 512),Margin Sampling,46,220,14,22,1082,61.0,50.74,0.554
+Salinas,Head B (Improved 512),Margin Sampling,46,220,15,17,276,80.53,76.45,0.7844
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,0,5,319,43.48,43.89,0.4368
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,1,7,524,61.43,64.12,0.6275
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,2,5,326,78.45,55.83,0.6523
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,3,6,208,51.86,93.75,0.6678
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,4,8,411,88.24,76.64,0.8203
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,5,5,567,95.45,96.12,0.9578
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,6,6,545,82.77,67.89,0.746
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,7,12,1733,60.79,38.83,0.4739
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,8,7,926,71.62,93.74,0.812
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,9,7,489,73.58,55.83,0.6349
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,10,5,155,65.98,82.58,0.7335
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,11,5,293,69.46,70.65,0.7005
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,12,5,124,91.43,77.42,0.8384
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,13,6,142,47.27,85.21,0.608
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,14,6,1082,47.04,69.78,0.562
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,100,15,5,276,57.5,25.0,0.3485
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,0,9,319,53.44,65.83,0.5899
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,1,8,524,76.65,66.41,0.7117
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,2,8,326,94.17,59.51,0.7293
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,3,10,208,87.91,90.87,0.8936
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,4,13,411,89.51,89.29,0.894
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,5,5,567,99.44,94.0,0.9665
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,6,14,545,90.61,95.6,0.9304
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,7,32,1733,70.37,67.69,0.69
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,8,9,926,85.71,99.14,0.9194
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,9,17,489,88.07,87.53,0.8779
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,10,8,155,95.07,87.1,0.9091
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,11,6,293,78.67,93.17,0.8531
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,12,6,124,97.0,78.23,0.8661
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,13,14,142,84.28,94.37,0.8904
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,14,11,1082,56.7,54.71,0.5569
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,180,15,10,276,70.79,80.8,0.7547
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,0,10,319,55.56,67.4,0.6091
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,1,9,524,75.82,66.41,0.708
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,2,8,326,95.75,62.27,0.7546
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,3,11,208,90.78,94.71,0.9271
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,4,17,411,89.27,95.13,0.9211
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,5,5,567,99.62,93.65,0.9655
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,6,17,545,87.84,95.41,0.9147
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,7,49,1733,69.01,77.09,0.7283
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,8,9,926,87.57,98.92,0.929
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,9,24,489,90.49,91.41,0.9095
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,10,8,155,95.1,87.74,0.9128
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,11,8,293,84.84,99.32,0.9151
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,12,6,124,96.0,77.42,0.8571
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,13,14,142,91.67,92.96,0.9231
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,14,14,1082,60.0,47.97,0.5331
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,45,220,15,11,276,92.89,71.01,0.8049
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,0,5,319,28.81,54.55,0.377
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,1,5,524,61.45,51.72,0.5617
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,2,6,326,74.03,69.94,0.7192
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,3,5,208,56.13,83.65,0.6718
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,4,6,411,82.37,82.97,0.8267
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,5,5,567,98.58,97.71,0.9814
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,6,7,545,78.06,50.28,0.6116
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,7,12,1733,68.35,45.24,0.5444
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,8,6,926,81.55,96.44,0.8837
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,9,10,489,82.2,68.92,0.7497
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,10,5,155,71.18,78.06,0.7446
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,11,5,293,72.04,68.6,0.7028
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,12,6,124,78.9,69.35,0.7382
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,13,6,142,58.33,78.87,0.6707
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,14,5,1082,51.17,62.75,0.5637
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,100,15,6,276,38.15,55.43,0.452
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,0,8,319,35.09,56.43,0.4327
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,1,5,524,66.04,66.79,0.6641
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,2,13,326,85.81,81.6,0.8365
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,3,10,208,91.2,94.71,0.9292
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,4,12,411,93.47,90.51,0.9197
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,5,6,567,99.11,98.59,0.9885
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,6,10,545,80.45,58.9,0.6801
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,7,30,1733,65.77,59.09,0.6225
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,8,9,926,93.17,98.7,0.9586
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,9,19,489,93.5,85.28,0.892
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,10,9,155,69.95,82.58,0.7574
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,11,8,293,85.89,97.61,0.9137
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,12,8,124,94.23,79.03,0.8596
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,13,10,142,86.71,87.32,0.8702
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,14,14,1082,51.57,60.72,0.5577
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,180,15,9,276,76.92,47.1,0.5843
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,0,8,319,39.79,70.22,0.5079
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,1,6,524,63.91,53.05,0.5798
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,2,13,326,87.33,80.37,0.8371
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,3,11,208,95.48,91.35,0.9337
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,4,13,411,94.24,91.48,0.9284
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,5,7,567,99.47,99.82,0.9965
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,6,12,545,86.53,63.67,0.7336
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,7,42,1733,66.87,57.53,0.6185
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,8,9,926,92.7,98.7,0.9561
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,9,23,489,91.65,85.28,0.8835
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,10,9,155,77.64,80.65,0.7911
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,11,10,293,83.67,97.95,0.9025
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,12,8,124,94.17,78.23,0.8546
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,13,13,142,85.53,91.55,0.8844
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,14,23,1082,51.3,65.71,0.5762
+Salinas,Head B (Improved 512),Margin + Cosine Diversity,46,220,15,13,276,84.18,53.99,0.6578
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,0,5,319,46.79,41.07,0.4374
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,1,7,524,63.32,69.85,0.6642
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,2,6,326,78.6,58.59,0.6714
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,3,6,208,53.76,92.79,0.6808
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,4,8,411,90.52,76.64,0.83
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,5,5,567,96.13,96.3,0.9621
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,6,6,545,82.92,67.71,0.7455
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,7,12,1733,58.73,37.45,0.4574
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,8,6,926,73.85,92.12,0.8198
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,9,7,489,65.78,55.83,0.604
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,10,5,155,64.18,83.23,0.7247
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,11,5,293,67.08,74.4,0.7055
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,12,5,124,91.18,75.0,0.823
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,13,6,142,54.38,83.1,0.6574
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,14,6,1082,46.15,69.78,0.5556
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,15,5,276,47.55,24.64,0.3246
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,0,6,319,53.63,48.59,0.5099
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,1,10,524,57.09,61.45,0.5919
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,2,8,326,92.86,67.79,0.7837
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,3,6,208,81.9,91.35,0.8636
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,4,11,411,88.97,84.43,0.8664
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,5,9,567,98.42,99.12,0.9877
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,6,19,545,79.39,72.11,0.7558
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,7,24,1733,71.95,53.43,0.6132
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,8,9,926,86.29,97.84,0.917
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,9,12,489,81.51,79.35,0.8041
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,10,22,155,89.1,89.68,0.8939
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,11,6,293,80.34,96.25,0.8758
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,12,6,124,97.17,83.06,0.8957
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,13,14,142,59.91,93.66,0.7308
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,14,8,1082,51.22,65.71,0.5757
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,15,10,276,70.16,77.54,0.7367
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,0,8,319,57.93,49.22,0.5322
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,1,10,524,60.18,64.89,0.6244
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,2,10,326,95.75,76.07,0.8479
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,3,9,208,82.48,92.79,0.8733
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,4,11,411,90.5,78.83,0.8427
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,5,9,567,98.6,99.12,0.9886
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,6,19,545,81.71,77.06,0.7932
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,7,33,1733,71.81,47.03,0.5683
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,8,13,926,90.19,99.24,0.945
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,9,16,489,86.14,82.62,0.8434
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,10,23,155,85.98,90.97,0.884
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,11,14,293,87.66,92.15,0.8985
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,12,12,124,88.71,88.71,0.8871
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,13,15,142,64.49,97.18,0.7753
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,14,8,1082,49.75,73.75,0.5942
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,15,10,276,66.99,75.72,0.7109
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,0,5,319,28.46,56.11,0.3776
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,1,5,524,62.25,52.86,0.5717
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,2,6,326,75.34,68.4,0.717
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,3,5,208,42.71,77.4,0.5504
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,4,6,411,84.83,82.97,0.8389
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,5,5,567,97.73,98.59,0.9816
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,6,5,545,74.54,44.59,0.558
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,7,12,1733,78.3,33.53,0.4695
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,8,6,926,81.56,96.98,0.886
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,9,10,489,82.87,67.28,0.7427
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,10,5,155,70.59,77.42,0.7385
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,11,5,293,68.64,67.24,0.6793
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,12,6,124,77.12,73.39,0.7521
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,13,6,142,57.84,75.35,0.6544
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,14,7,1082,48.75,79.11,0.6032
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,15,6,276,49.21,56.52,0.5261
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,0,6,319,51.39,23.2,0.3197
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,1,11,524,59.62,83.97,0.6973
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,2,7,326,87.5,68.71,0.7698
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,3,8,208,83.02,84.62,0.8381
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,4,10,411,84.1,84.91,0.845
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,5,7,567,98.91,95.59,0.9722
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,6,15,545,85.96,84.22,0.8508
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,7,29,1733,71.32,38.03,0.496
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,8,11,926,90.65,96.33,0.934
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,9,18,489,88.96,82.41,0.8556
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,10,9,155,81.48,85.16,0.8328
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,11,10,293,86.73,95.9,0.9109
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,12,8,124,83.48,77.42,0.8033
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,13,9,142,85.91,90.14,0.8797
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,14,13,1082,47.08,86.32,0.6093
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,15,9,276,66.85,43.12,0.5242
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,0,19,319,70.21,41.38,0.5207
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,1,27,524,66.96,87.79,0.7597
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,2,7,326,89.45,70.25,0.7869
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,3,8,208,79.43,79.81,0.7962
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,4,10,411,85.96,84.91,0.8543
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,5,7,567,99.45,95.94,0.9767
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,6,24,545,89.71,91.19,0.9045
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,7,29,1733,71.84,37.39,0.4918
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,8,11,926,91.89,97.84,0.9477
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,9,18,489,90.22,83.03,0.8647
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,10,11,155,82.39,93.55,0.8761
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,11,10,293,85.67,97.95,0.914
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,12,8,124,82.5,79.84,0.8115
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,13,9,142,87.67,90.14,0.8889
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,14,13,1082,46.55,86.6,0.6055
+Salinas,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,15,9,276,70.34,36.96,0.4846
+Salinas,Head C (Wider 1024),Random Sampling,45,100,0,5,319,44.22,42.01,0.4309
+Salinas,Head C (Wider 1024),Random Sampling,45,100,1,5,524,60.76,66.79,0.6364
+Salinas,Head C (Wider 1024),Random Sampling,45,100,2,6,326,76.59,59.2,0.6678
+Salinas,Head C (Wider 1024),Random Sampling,45,100,3,6,208,62.94,94.71,0.7562
+Salinas,Head C (Wider 1024),Random Sampling,45,100,4,6,411,95.85,67.4,0.7914
+Salinas,Head C (Wider 1024),Random Sampling,45,100,5,8,567,90.98,99.65,0.9512
+Salinas,Head C (Wider 1024),Random Sampling,45,100,6,6,545,82.0,60.18,0.6942
+Salinas,Head C (Wider 1024),Random Sampling,45,100,7,9,1733,63.32,61.57,0.6243
+Salinas,Head C (Wider 1024),Random Sampling,45,100,8,5,926,83.25,93.41,0.8804
+Salinas,Head C (Wider 1024),Random Sampling,45,100,9,7,489,73.66,58.9,0.6545
+Salinas,Head C (Wider 1024),Random Sampling,45,100,10,6,155,61.26,75.48,0.6763
+Salinas,Head C (Wider 1024),Random Sampling,45,100,11,6,293,65.91,99.66,0.7935
+Salinas,Head C (Wider 1024),Random Sampling,45,100,12,5,124,90.53,69.35,0.7854
+Salinas,Head C (Wider 1024),Random Sampling,45,100,13,5,142,32.2,80.28,0.4597
+Salinas,Head C (Wider 1024),Random Sampling,45,100,14,8,1082,56.55,44.27,0.4966
+Salinas,Head C (Wider 1024),Random Sampling,45,100,15,7,276,47.98,55.8,0.5159
+Salinas,Head C (Wider 1024),Random Sampling,45,180,0,6,319,65.58,31.66,0.4271
+Salinas,Head C (Wider 1024),Random Sampling,45,180,1,16,524,65.04,84.16,0.7338
+Salinas,Head C (Wider 1024),Random Sampling,45,180,2,10,326,86.02,62.27,0.7224
+Salinas,Head C (Wider 1024),Random Sampling,45,180,3,8,208,82.13,92.79,0.8713
+Salinas,Head C (Wider 1024),Random Sampling,45,180,4,8,411,97.02,71.29,0.8219
+Salinas,Head C (Wider 1024),Random Sampling,45,180,5,12,567,92.46,99.47,0.9584
+Salinas,Head C (Wider 1024),Random Sampling,45,180,6,13,545,84.95,78.72,0.8171
+Salinas,Head C (Wider 1024),Random Sampling,45,180,7,29,1733,66.28,76.0,0.7081
+Salinas,Head C (Wider 1024),Random Sampling,45,180,8,13,926,84.59,94.82,0.8941
+Salinas,Head C (Wider 1024),Random Sampling,45,180,9,11,489,78.59,75.05,0.7678
+Salinas,Head C (Wider 1024),Random Sampling,45,180,10,8,155,71.84,80.65,0.7599
+Salinas,Head C (Wider 1024),Random Sampling,45,180,11,8,293,75.59,98.29,0.8546
+Salinas,Head C (Wider 1024),Random Sampling,45,180,12,6,124,94.19,65.32,0.7714
+Salinas,Head C (Wider 1024),Random Sampling,45,180,13,5,142,41.24,84.51,0.5543
+Salinas,Head C (Wider 1024),Random Sampling,45,180,14,18,1082,60.23,42.7,0.4997
+Salinas,Head C (Wider 1024),Random Sampling,45,180,15,9,276,71.29,53.99,0.6144
+Salinas,Head C (Wider 1024),Random Sampling,45,220,0,11,319,56.9,42.63,0.4875
+Salinas,Head C (Wider 1024),Random Sampling,45,220,1,20,524,63.59,75.0,0.6883
+Salinas,Head C (Wider 1024),Random Sampling,45,220,2,11,326,85.53,61.66,0.7166
+Salinas,Head C (Wider 1024),Random Sampling,45,220,3,8,208,83.76,94.23,0.8869
+Salinas,Head C (Wider 1024),Random Sampling,45,220,4,10,411,95.24,77.86,0.8568
+Salinas,Head C (Wider 1024),Random Sampling,45,220,5,15,567,94.93,99.12,0.9698
+Salinas,Head C (Wider 1024),Random Sampling,45,220,6,15,545,85.16,76.88,0.8081
+Salinas,Head C (Wider 1024),Random Sampling,45,220,7,38,1733,68.82,72.99,0.7085
+Salinas,Head C (Wider 1024),Random Sampling,45,220,8,19,926,87.61,96.22,0.9171
+Salinas,Head C (Wider 1024),Random Sampling,45,220,9,13,489,76.97,77.91,0.7744
+Salinas,Head C (Wider 1024),Random Sampling,45,220,10,9,155,76.33,83.23,0.7963
+Salinas,Head C (Wider 1024),Random Sampling,45,220,11,9,293,78.02,99.32,0.8739
+Salinas,Head C (Wider 1024),Random Sampling,45,220,12,7,124,94.68,71.77,0.8165
+Salinas,Head C (Wider 1024),Random Sampling,45,220,13,5,142,44.44,84.51,0.5825
+Salinas,Head C (Wider 1024),Random Sampling,45,220,14,20,1082,59.64,49.17,0.539
+Salinas,Head C (Wider 1024),Random Sampling,45,220,15,10,276,71.24,58.33,0.6414
+Salinas,Head C (Wider 1024),Random Sampling,46,100,0,5,319,35.67,52.66,0.4253
+Salinas,Head C (Wider 1024),Random Sampling,46,100,1,5,524,61.36,55.15,0.5809
+Salinas,Head C (Wider 1024),Random Sampling,46,100,2,5,326,72.99,61.35,0.6667
+Salinas,Head C (Wider 1024),Random Sampling,46,100,3,6,208,56.42,59.13,0.5775
+Salinas,Head C (Wider 1024),Random Sampling,46,100,4,5,411,83.04,79.81,0.8139
+Salinas,Head C (Wider 1024),Random Sampling,46,100,5,9,567,93.19,98.94,0.9598
+Salinas,Head C (Wider 1024),Random Sampling,46,100,6,5,545,68.84,42.57,0.5261
+Salinas,Head C (Wider 1024),Random Sampling,46,100,7,10,1733,63.32,45.82,0.5316
+Salinas,Head C (Wider 1024),Random Sampling,46,100,8,6,926,81.09,96.33,0.8806
+Salinas,Head C (Wider 1024),Random Sampling,46,100,9,7,489,72.54,57.26,0.64
+Salinas,Head C (Wider 1024),Random Sampling,46,100,10,6,155,61.29,73.55,0.6686
+Salinas,Head C (Wider 1024),Random Sampling,46,100,11,5,293,61.48,59.39,0.6042
+Salinas,Head C (Wider 1024),Random Sampling,46,100,12,5,124,42.61,60.48,0.5
+Salinas,Head C (Wider 1024),Random Sampling,46,100,13,5,142,61.68,72.54,0.6667
+Salinas,Head C (Wider 1024),Random Sampling,46,100,14,9,1082,48.53,61.09,0.5409
+Salinas,Head C (Wider 1024),Random Sampling,46,100,15,7,276,26.48,42.03,0.3249
+Salinas,Head C (Wider 1024),Random Sampling,46,180,0,9,319,42.82,52.35,0.4711
+Salinas,Head C (Wider 1024),Random Sampling,46,180,1,8,524,67.87,60.88,0.6419
+Salinas,Head C (Wider 1024),Random Sampling,46,180,2,7,326,83.4,63.19,0.719
+Salinas,Head C (Wider 1024),Random Sampling,46,180,3,9,208,77.46,90.87,0.8363
+Salinas,Head C (Wider 1024),Random Sampling,46,180,4,7,411,86.51,82.73,0.8458
+Salinas,Head C (Wider 1024),Random Sampling,46,180,5,13,567,93.75,97.88,0.9577
+Salinas,Head C (Wider 1024),Random Sampling,46,180,6,10,545,90.82,81.65,0.8599
+Salinas,Head C (Wider 1024),Random Sampling,46,180,7,30,1733,68.14,57.88,0.6259
+Salinas,Head C (Wider 1024),Random Sampling,46,180,8,18,926,86.6,99.14,0.9245
+Salinas,Head C (Wider 1024),Random Sampling,46,180,9,9,489,77.12,55.83,0.6477
+Salinas,Head C (Wider 1024),Random Sampling,46,180,10,6,155,64.33,70.97,0.6748
+Salinas,Head C (Wider 1024),Random Sampling,46,180,11,10,293,71.28,96.59,0.8203
+Salinas,Head C (Wider 1024),Random Sampling,46,180,12,7,124,44.94,57.26,0.5035
+Salinas,Head C (Wider 1024),Random Sampling,46,180,13,6,142,64.67,68.31,0.6644
+Salinas,Head C (Wider 1024),Random Sampling,46,180,14,21,1082,53.11,62.29,0.5734
+Salinas,Head C (Wider 1024),Random Sampling,46,180,15,10,276,75.29,71.74,0.7347
+Salinas,Head C (Wider 1024),Random Sampling,46,220,0,12,319,46.19,55.17,0.5029
+Salinas,Head C (Wider 1024),Random Sampling,46,220,1,9,524,67.56,67.56,0.6756
+Salinas,Head C (Wider 1024),Random Sampling,46,220,2,8,326,83.06,63.19,0.7178
+Salinas,Head C (Wider 1024),Random Sampling,46,220,3,10,208,77.87,87.98,0.8262
+Salinas,Head C (Wider 1024),Random Sampling,46,220,4,8,411,86.77,79.81,0.8314
+Salinas,Head C (Wider 1024),Random Sampling,46,220,5,15,567,94.57,98.24,0.9637
+Salinas,Head C (Wider 1024),Random Sampling,46,220,6,12,545,91.03,78.17,0.8411
+Salinas,Head C (Wider 1024),Random Sampling,46,220,7,43,1733,67.16,60.18,0.6348
+Salinas,Head C (Wider 1024),Random Sampling,46,220,8,20,926,85.74,99.35,0.9205
+Salinas,Head C (Wider 1024),Random Sampling,46,220,9,10,489,85.59,61.96,0.7189
+Salinas,Head C (Wider 1024),Random Sampling,46,220,10,8,155,68.42,75.48,0.7178
+Salinas,Head C (Wider 1024),Random Sampling,46,220,11,13,293,71.71,98.63,0.8305
+Salinas,Head C (Wider 1024),Random Sampling,46,220,12,7,124,52.76,54.03,0.5339
+Salinas,Head C (Wider 1024),Random Sampling,46,220,13,7,142,81.15,69.72,0.75
+Salinas,Head C (Wider 1024),Random Sampling,46,220,14,27,1082,53.02,61.74,0.5705
+Salinas,Head C (Wider 1024),Random Sampling,46,220,15,11,276,75.21,63.77,0.6902
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,0,5,319,45.51,42.95,0.4419
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,1,5,524,55.56,66.79,0.6066
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,2,5,326,73.22,53.68,0.6195
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,3,6,208,71.64,92.31,0.8067
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,4,8,411,87.68,74.45,0.8053
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,5,5,567,91.4,99.29,0.9518
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,6,5,545,80.23,51.38,0.6264
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,7,10,1733,67.46,45.7,0.5449
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,8,6,926,76.8,91.14,0.8336
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,9,5,489,77.68,51.94,0.6225
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,10,6,155,58.85,85.81,0.6982
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,11,6,293,70.16,89.08,0.785
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,12,5,124,90.0,72.58,0.8036
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,13,5,142,34.86,80.28,0.4861
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,14,12,1082,50.4,70.33,0.5872
+Salinas,Head C (Wider 1024),Margin Sampling,45,100,15,6,276,47.21,39.86,0.4322
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,0,11,319,39.03,32.92,0.3571
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,1,23,524,64.2,79.39,0.7099
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,2,5,326,83.65,53.37,0.6517
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,3,10,208,92.92,94.71,0.9381
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,4,10,411,89.25,80.78,0.848
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,5,5,567,93.21,99.29,0.9616
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,6,14,545,86.94,70.83,0.7806
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,7,29,1733,69.66,61.74,0.6546
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,8,6,926,83.54,93.2,0.8811
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,9,9,489,77.27,66.05,0.7122
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,10,7,155,68.65,81.94,0.7471
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,11,11,293,63.01,100.0,0.7731
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,12,5,124,92.63,70.97,0.8037
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,13,5,142,49.79,83.8,0.6247
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,14,21,1082,56.56,60.17,0.5831
+Salinas,Head C (Wider 1024),Margin Sampling,45,180,15,9,276,66.39,57.97,0.619
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,0,11,319,57.52,27.59,0.3729
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,1,25,524,62.98,84.73,0.7225
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,2,8,326,79.42,67.48,0.7297
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,3,11,208,94.76,95.67,0.9522
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,4,12,411,90.54,86.13,0.8828
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,5,5,567,95.44,99.65,0.975
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,6,16,545,88.0,80.73,0.8421
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,7,43,1733,69.0,61.92,0.6527
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,8,9,926,85.9,97.41,0.913
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,9,10,489,76.94,64.83,0.7037
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,10,8,155,71.89,85.81,0.7824
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,11,11,293,78.98,100.0,0.8825
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,12,5,124,94.51,69.35,0.8
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,13,6,142,61.5,86.62,0.7193
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,14,30,1082,54.69,63.03,0.5857
+Salinas,Head C (Wider 1024),Margin Sampling,45,220,15,10,276,66.3,43.48,0.5252
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,0,10,319,27.68,46.08,0.3459
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,1,10,524,48.24,62.6,0.5449
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,2,5,326,77.59,55.21,0.6452
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,3,5,208,38.48,68.27,0.4922
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,4,5,411,78.19,82.0,0.8005
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,5,5,567,95.28,96.12,0.957
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,6,6,545,79.82,47.89,0.5986
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,7,8,1733,70.87,40.57,0.516
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,8,6,926,86.33,93.41,0.8973
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,9,7,489,83.09,57.26,0.678
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,10,5,155,67.09,68.39,0.6773
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,11,7,293,62.99,81.91,0.7122
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,12,6,124,50.24,83.87,0.6284
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,13,5,142,78.26,63.38,0.7004
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,14,5,1082,50.95,66.64,0.5775
+Salinas,Head C (Wider 1024),Margin Sampling,46,100,15,5,276,46.63,62.68,0.5348
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,0,13,319,36.93,27.9,0.3179
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,1,23,524,56.48,79.01,0.6587
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,2,7,326,88.35,67.48,0.7652
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,3,8,208,82.46,83.65,0.8305
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,4,9,411,91.44,83.21,0.8713
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,5,5,567,95.89,98.77,0.9731
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,6,12,545,90.48,69.72,0.7876
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,7,25,1733,72.27,57.59,0.641
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,8,12,926,85.2,98.81,0.915
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,9,12,489,83.64,73.21,0.7808
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,10,9,155,57.77,76.77,0.6593
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,11,8,293,82.07,92.15,0.8682
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,12,7,124,61.45,88.71,0.7261
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,13,6,142,85.71,67.61,0.7559
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,14,15,1082,55.0,68.67,0.6108
+Salinas,Head C (Wider 1024),Margin Sampling,46,180,15,9,276,79.03,71.01,0.7481
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,0,14,319,50.48,32.92,0.3985
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,1,26,524,57.77,80.15,0.6715
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,2,8,326,86.27,67.48,0.7573
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,3,10,208,92.19,85.1,0.885
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,4,12,411,84.72,91.73,0.8808
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,5,5,567,96.71,98.59,0.9764
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,6,20,545,89.89,78.35,0.8373
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,7,30,1733,76.99,46.34,0.5785
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,8,12,926,86.24,98.81,0.921
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,9,14,489,88.89,76.89,0.8246
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,10,10,155,69.41,76.13,0.7262
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,11,8,293,80.6,92.15,0.8599
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,12,7,124,66.67,87.1,0.7552
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,13,8,142,85.91,90.14,0.8797
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,14,26,1082,52.42,79.94,0.6332
+Salinas,Head C (Wider 1024),Margin Sampling,46,220,15,10,276,83.81,75.0,0.7916
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,0,5,319,49.14,35.74,0.4138
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,1,7,524,54.45,80.53,0.6497
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,2,5,326,80.26,56.13,0.6606
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,3,6,208,31.32,89.9,0.4646
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,4,7,411,87.39,75.91,0.8125
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,5,5,567,92.01,99.47,0.9559
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,6,5,545,85.23,46.61,0.6026
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,7,11,1733,66.63,31.79,0.4305
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,8,5,926,81.71,92.66,0.8684
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,9,9,489,79.28,71.98,0.7546
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,10,5,155,73.26,81.29,0.7706
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,11,5,293,75.37,87.71,0.8107
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,12,6,124,96.0,77.42,0.8571
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,13,5,142,51.29,83.8,0.6364
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,14,6,1082,50.23,70.43,0.5864
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,100,15,8,276,48.37,59.06,0.5318
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,0,6,319,53.07,54.23,0.5364
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,1,10,524,70.33,66.03,0.6811
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,2,5,326,95.72,54.91,0.6979
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,3,7,208,86.46,79.81,0.83
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,4,9,411,93.47,87.1,0.9018
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,5,6,567,91.75,100.0,0.957
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,6,11,545,85.71,81.47,0.8354
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,7,32,1733,72.76,56.72,0.6375
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,8,9,926,88.81,97.73,0.9306
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,9,23,489,81.51,83.84,0.8266
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,10,9,155,67.98,89.03,0.7709
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,11,8,293,76.32,98.98,0.8618
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,12,8,124,96.12,79.84,0.8722
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,13,8,142,80.65,88.03,0.8418
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,14,18,1082,55.87,69.5,0.6194
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,180,15,11,276,54.07,67.39,0.6
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,0,8,319,55.25,56.11,0.5568
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,1,10,524,73.04,65.65,0.6915
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,2,6,326,92.89,64.11,0.7586
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,3,8,208,84.16,81.73,0.8293
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,4,14,411,86.51,87.35,0.8692
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,5,6,567,96.08,95.06,0.9557
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,6,19,545,87.27,94.31,0.9065
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,7,43,1733,70.25,65.55,0.6782
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,8,10,926,90.49,96.54,0.9342
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,9,27,489,82.48,85.69,0.8405
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,10,10,155,81.18,89.03,0.8492
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,11,8,293,81.84,100.0,0.9002
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,12,8,124,96.0,77.42,0.8571
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,13,11,142,86.27,92.96,0.8949
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,14,19,1082,56.99,60.63,0.5876
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,45,220,15,13,276,62.15,64.86,0.6348
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,0,8,319,27.33,56.11,0.3676
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,1,7,524,59.63,56.11,0.5782
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,2,6,326,70.93,62.88,0.6667
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,3,5,208,44.35,77.4,0.5639
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,4,5,411,85.53,82.0,0.8373
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,5,5,567,94.92,98.94,0.9689
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,6,5,545,72.89,44.4,0.5519
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,7,7,1733,69.04,36.93,0.4812
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,8,6,926,81.92,95.9,0.8836
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,9,13,489,85.61,73.01,0.7881
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,10,5,155,66.12,78.06,0.716
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,11,5,293,60.28,58.02,0.5913
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,12,5,124,64.66,60.48,0.625
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,13,7,142,82.07,83.8,0.8293
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,14,5,1082,48.5,67.28,0.5637
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,100,15,6,276,48.28,60.87,0.5385
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,0,9,319,31.35,59.56,0.4108
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,1,8,524,68.27,54.2,0.6043
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,2,10,326,82.65,74.54,0.7839
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,3,7,208,88.72,56.73,0.6921
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,4,9,411,85.41,86.86,0.8613
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,5,6,567,93.01,98.59,0.9572
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,6,9,545,88.4,58.72,0.7056
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,7,30,1733,72.81,54.7,0.6247
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,8,9,926,92.12,97.19,0.9459
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,9,24,489,85.45,84.05,0.8474
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,10,10,155,79.77,89.03,0.8415
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,11,6,293,86.86,92.49,0.8959
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,12,9,124,85.71,87.1,0.864
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,13,10,142,96.88,87.32,0.9185
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,14,15,1082,50.8,73.2,0.5998
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,180,15,9,276,84.05,70.65,0.7677
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,0,10,319,34.81,63.95,0.4508
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,1,10,524,65.91,55.34,0.6017
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,2,11,326,88.51,80.37,0.8424
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,3,9,208,94.33,63.94,0.7622
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,4,11,411,88.66,93.19,0.9087
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,5,6,567,97.85,96.47,0.9716
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,6,10,545,88.1,61.1,0.7216
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,7,38,1733,76.38,52.8,0.6244
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,8,11,926,93.46,98.81,0.9606
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,9,30,489,88.77,87.32,0.8804
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,10,10,155,84.81,86.45,0.8562
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,11,7,293,87.25,91.13,0.8915
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,12,9,124,87.2,87.9,0.8755
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,13,13,142,97.01,91.55,0.942
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,14,22,1082,50.79,76.8,0.6115
+Salinas,Head C (Wider 1024),Margin + Cosine Diversity,46,220,15,13,276,80.44,78.99,0.7971
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,0,6,319,41.29,40.13,0.407
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,1,6,524,65.57,75.95,0.7038
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,2,6,326,82.19,62.27,0.7086
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,3,6,208,34.22,92.31,0.4993
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,4,6,411,89.85,71.05,0.7935
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,5,5,567,92.75,99.29,0.9591
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,6,6,545,89.95,65.69,0.7593
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,7,14,1733,61.42,33.99,0.4376
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,8,5,926,77.63,92.55,0.8443
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,9,6,489,68.75,44.99,0.5439
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,10,5,155,67.74,81.29,0.739
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,11,5,293,76.12,87.03,0.8121
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,12,7,124,95.28,81.45,0.8783
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,13,5,142,44.78,84.51,0.5854
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,14,5,1082,48.55,65.16,0.5564
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,15,7,276,51.04,61.96,0.5597
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,0,6,319,56.4,44.2,0.4956
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,1,10,524,60.78,76.91,0.679
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,2,7,326,86.42,70.25,0.775
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,3,7,208,79.53,82.21,0.8085
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,4,12,411,78.36,95.13,0.8593
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,5,9,567,96.09,95.41,0.9575
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,6,13,545,87.32,77.06,0.8187
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,7,29,1733,72.48,43.16,0.541
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,8,11,926,88.28,99.24,0.9344
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,9,17,489,86.21,71.57,0.7821
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,10,8,155,85.35,86.45,0.859
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,11,8,293,89.51,98.98,0.94
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,12,9,124,93.52,81.45,0.8707
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,13,10,142,93.28,88.03,0.9058
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,14,14,1082,52.23,75.6,0.6178
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,15,10,276,50.24,75.72,0.604
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,0,11,319,76.92,18.81,0.3023
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,1,32,524,57.5,92.94,0.7104
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,2,7,326,83.27,68.71,0.7529
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,3,7,208,74.79,84.13,0.7919
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,4,12,411,76.13,94.65,0.8438
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,5,9,567,97.31,95.59,0.9644
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,6,13,545,89.91,75.23,0.8192
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,7,29,1733,72.11,39.24,0.5082
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,8,11,926,89.44,98.81,0.9389
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,9,18,489,87.19,70.96,0.7824
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,10,12,155,89.17,90.32,0.8974
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,11,8,293,85.8,98.98,0.9192
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,12,9,124,92.11,84.68,0.8824
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,13,18,142,85.16,92.96,0.8889
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,14,14,1082,50.36,78.0,0.612
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,15,10,276,54.67,72.1,0.6219
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,0,8,319,28.14,64.58,0.392
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,1,5,524,63.94,55.15,0.5922
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,2,6,326,77.01,64.72,0.7033
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,3,5,208,50.69,70.19,0.5887
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,4,6,411,88.34,82.97,0.8557
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,5,5,567,95.27,99.47,0.9733
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,6,5,545,77.0,40.55,0.5312
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,7,5,1733,66.54,39.82,0.4982
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,8,6,926,80.75,95.57,0.8754
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,9,14,489,77.22,74.85,0.7601
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,10,5,155,68.79,76.77,0.7256
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,11,5,293,56.35,59.04,0.5767
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,12,6,124,65.49,59.68,0.6245
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,13,7,142,82.52,83.1,0.8281
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,14,6,1082,49.2,68.11,0.5713
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,15,6,276,61.57,59.78,0.6066
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,0,10,319,63.37,34.17,0.444
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,1,19,524,67.62,81.3,0.7383
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,2,8,326,88.11,77.3,0.8235
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,3,6,208,65.62,60.58,0.63
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,4,11,411,91.82,84.67,0.881
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,5,5,567,96.67,97.35,0.9701
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,6,22,545,90.72,95.05,0.9283
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,7,20,1733,70.66,54.47,0.6152
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,8,8,926,84.89,96.44,0.9029
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,9,17,489,81.72,79.55,0.8062
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,10,10,155,79.27,83.87,0.815
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,11,6,293,78.77,78.5,0.7863
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,12,7,124,68.71,81.45,0.7454
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,13,9,142,86.39,89.44,0.8789
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,14,10,1082,50.78,69.32,0.5862
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,15,12,276,79.39,65.58,0.7183
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,0,10,319,66.13,25.71,0.3702
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,1,19,524,64.37,83.78,0.728
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,2,13,326,90.97,80.37,0.8534
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,3,7,208,81.25,62.5,0.7065
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,4,14,411,90.75,85.89,0.8825
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,5,12,567,99.65,99.12,0.9938
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,6,23,545,88.97,91.74,0.9033
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,7,31,1733,69.9,49.05,0.5765
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,8,10,926,90.94,97.52,0.9411
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,9,21,489,84.66,86.91,0.8577
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,10,10,155,80.62,83.23,0.819
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,11,7,293,87.16,97.27,0.9194
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,12,8,124,63.82,78.23,0.7029
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,13,9,142,85.71,88.73,0.872
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,14,12,1082,50.7,73.2,0.5991
+Salinas,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,15,14,276,66.78,70.65,0.6866
+Pavia University,Head B (Improved 512),Random Sampling,45,100,0,23,960,55.26,53.65,0.5444
+Pavia University,Head B (Improved 512),Random Sampling,45,100,1,25,2763,74.44,82.52,0.7827
+Pavia University,Head B (Improved 512),Random Sampling,45,100,2,5,296,35.17,40.88,0.3781
+Pavia University,Head B (Improved 512),Random Sampling,45,100,3,8,517,62.26,43.71,0.5136
+Pavia University,Head B (Improved 512),Random Sampling,45,100,4,6,201,82.41,81.59,0.82
+Pavia University,Head B (Improved 512),Random Sampling,45,100,5,11,774,46.89,33.07,0.3879
+Pavia University,Head B (Improved 512),Random Sampling,45,100,6,7,193,44.12,46.63,0.4534
+Pavia University,Head B (Improved 512),Random Sampling,45,100,7,9,565,58.12,61.42,0.5972
+Pavia University,Head B (Improved 512),Random Sampling,45,100,8,6,148,60.95,69.59,0.6498
+Pavia University,Head B (Improved 512),Random Sampling,45,180,0,34,960,61.96,50.73,0.5578
+Pavia University,Head B (Improved 512),Random Sampling,45,180,1,66,2763,76.03,87.69,0.8145
+Pavia University,Head B (Improved 512),Random Sampling,45,180,2,7,296,50.41,41.55,0.4556
+Pavia University,Head B (Improved 512),Random Sampling,45,180,3,10,517,66.76,48.55,0.5622
+Pavia University,Head B (Improved 512),Random Sampling,45,180,4,7,201,90.34,79.1,0.8435
+Pavia University,Head B (Improved 512),Random Sampling,45,180,5,19,774,58.03,37.34,0.4544
+Pavia University,Head B (Improved 512),Random Sampling,45,180,6,12,193,38.97,54.92,0.4559
+Pavia University,Head B (Improved 512),Random Sampling,45,180,7,15,565,56.33,68.5,0.6182
+Pavia University,Head B (Improved 512),Random Sampling,45,180,8,10,148,56.54,72.97,0.6372
+Pavia University,Head B (Improved 512),Random Sampling,45,220,0,41,960,64.95,52.5,0.5806
+Pavia University,Head B (Improved 512),Random Sampling,45,220,1,84,2763,76.01,89.21,0.8208
+Pavia University,Head B (Improved 512),Random Sampling,45,220,2,10,296,46.86,42.91,0.448
+Pavia University,Head B (Improved 512),Random Sampling,45,220,3,11,517,67.13,46.23,0.5475
+Pavia University,Head B (Improved 512),Random Sampling,45,220,4,8,201,90.45,80.1,0.8496
+Pavia University,Head B (Improved 512),Random Sampling,45,220,5,22,774,65.96,40.31,0.5004
+Pavia University,Head B (Improved 512),Random Sampling,45,220,6,12,193,42.74,54.92,0.4807
+Pavia University,Head B (Improved 512),Random Sampling,45,220,7,22,565,59.37,70.09,0.6429
+Pavia University,Head B (Improved 512),Random Sampling,45,220,8,10,148,53.66,74.32,0.6232
+Pavia University,Head B (Improved 512),Random Sampling,46,100,0,14,960,42.45,38.33,0.4028
+Pavia University,Head B (Improved 512),Random Sampling,46,100,1,29,2763,81.08,74.3,0.7754
+Pavia University,Head B (Improved 512),Random Sampling,46,100,2,9,296,31.39,69.26,0.432
+Pavia University,Head B (Improved 512),Random Sampling,46,100,3,7,517,73.96,54.93,0.6304
+Pavia University,Head B (Improved 512),Random Sampling,46,100,4,10,201,68.31,96.52,0.8
+Pavia University,Head B (Improved 512),Random Sampling,46,100,5,11,774,49.94,52.97,0.5141
+Pavia University,Head B (Improved 512),Random Sampling,46,100,6,7,193,31.44,37.31,0.3412
+Pavia University,Head B (Improved 512),Random Sampling,46,100,7,6,565,57.74,27.08,0.3687
+Pavia University,Head B (Improved 512),Random Sampling,46,100,8,7,148,32.2,83.11,0.4642
+Pavia University,Head B (Improved 512),Random Sampling,46,180,0,30,960,45.77,55.73,0.5026
+Pavia University,Head B (Improved 512),Random Sampling,46,180,1,60,2763,81.77,78.75,0.8024
+Pavia University,Head B (Improved 512),Random Sampling,46,180,2,14,296,37.1,54.39,0.4411
+Pavia University,Head B (Improved 512),Random Sampling,46,180,3,17,517,68.01,62.09,0.6491
+Pavia University,Head B (Improved 512),Random Sampling,46,180,4,12,201,67.82,97.51,0.8
+Pavia University,Head B (Improved 512),Random Sampling,46,180,5,20,774,60.44,56.46,0.5838
+Pavia University,Head B (Improved 512),Random Sampling,46,180,6,8,193,32.02,33.68,0.3283
+Pavia University,Head B (Improved 512),Random Sampling,46,180,7,10,565,62.31,28.67,0.3927
+Pavia University,Head B (Improved 512),Random Sampling,46,180,8,9,148,56.31,78.38,0.6554
+Pavia University,Head B (Improved 512),Random Sampling,46,220,0,37,960,45.6,59.9,0.5178
+Pavia University,Head B (Improved 512),Random Sampling,46,220,1,74,2763,83.07,80.78,0.8191
+Pavia University,Head B (Improved 512),Random Sampling,46,220,2,14,296,43.23,45.27,0.4422
+Pavia University,Head B (Improved 512),Random Sampling,46,220,3,20,517,71.24,62.28,0.6646
+Pavia University,Head B (Improved 512),Random Sampling,46,220,4,14,201,80.0,99.5,0.8869
+Pavia University,Head B (Improved 512),Random Sampling,46,220,5,26,774,59.48,59.56,0.5952
+Pavia University,Head B (Improved 512),Random Sampling,46,220,6,11,193,34.72,38.86,0.3667
+Pavia University,Head B (Improved 512),Random Sampling,46,220,7,14,565,60.58,29.38,0.3957
+Pavia University,Head B (Improved 512),Random Sampling,46,220,8,10,148,57.29,74.32,0.6471
+Pavia University,Head B (Improved 512),Margin Sampling,45,100,0,18,960,50.35,37.71,0.4312
+Pavia University,Head B (Improved 512),Margin Sampling,45,100,1,23,2763,77.79,45.39,0.5733
+Pavia University,Head B (Improved 512),Margin Sampling,45,100,2,7,296,44.86,53.04,0.4861
+Pavia University,Head B (Improved 512),Margin Sampling,45,100,3,7,517,26.86,59.96,0.371
+Pavia University,Head B (Improved 512),Margin Sampling,45,100,4,6,201,81.99,86.07,0.8398
+Pavia University,Head B (Improved 512),Margin Sampling,45,100,5,17,774,33.25,52.2,0.4062
+Pavia University,Head B (Improved 512),Margin Sampling,45,100,6,6,193,28.8,46.11,0.3546
+Pavia University,Head B (Improved 512),Margin Sampling,45,100,7,10,565,56.17,64.42,0.6002
+Pavia University,Head B (Improved 512),Margin Sampling,45,100,8,6,148,56.78,76.35,0.6513
+Pavia University,Head B (Improved 512),Margin Sampling,45,180,0,38,960,60.67,50.62,0.552
+Pavia University,Head B (Improved 512),Margin Sampling,45,180,1,45,2763,76.37,84.11,0.8006
+Pavia University,Head B (Improved 512),Margin Sampling,45,180,2,13,296,50.15,56.42,0.531
+Pavia University,Head B (Improved 512),Margin Sampling,45,180,3,13,517,59.42,39.65,0.4756
+Pavia University,Head B (Improved 512),Margin Sampling,45,180,4,8,201,82.68,73.63,0.7789
+Pavia University,Head B (Improved 512),Margin Sampling,45,180,5,22,774,51.83,47.55,0.496
+Pavia University,Head B (Improved 512),Margin Sampling,45,180,6,8,193,48.63,36.79,0.4189
+Pavia University,Head B (Improved 512),Margin Sampling,45,180,7,24,565,59.32,68.14,0.6343
+Pavia University,Head B (Improved 512),Margin Sampling,45,180,8,9,148,57.35,81.76,0.6741
+Pavia University,Head B (Improved 512),Margin Sampling,45,220,0,48,960,64.81,55.62,0.5987
+Pavia University,Head B (Improved 512),Margin Sampling,45,220,1,54,2763,76.27,86.17,0.8092
+Pavia University,Head B (Improved 512),Margin Sampling,45,220,2,17,296,49.0,58.11,0.5317
+Pavia University,Head B (Improved 512),Margin Sampling,45,220,3,16,517,71.85,47.39,0.5711
+Pavia University,Head B (Improved 512),Margin Sampling,45,220,4,8,201,91.67,76.62,0.8347
+Pavia University,Head B (Improved 512),Margin Sampling,45,220,5,25,774,51.82,40.44,0.4543
+Pavia University,Head B (Improved 512),Margin Sampling,45,220,6,11,193,47.8,45.08,0.464
+Pavia University,Head B (Improved 512),Margin Sampling,45,220,7,32,565,65.51,73.27,0.6917
+Pavia University,Head B (Improved 512),Margin Sampling,45,220,8,9,148,58.55,76.35,0.6628
+Pavia University,Head B (Improved 512),Margin Sampling,46,100,0,16,960,58.29,37.71,0.4579
+Pavia University,Head B (Improved 512),Margin Sampling,46,100,1,24,2763,74.8,66.92,0.7064
+Pavia University,Head B (Improved 512),Margin Sampling,46,100,2,6,296,34.1,75.34,0.4695
+Pavia University,Head B (Improved 512),Margin Sampling,46,100,3,10,517,36.48,59.77,0.4531
+Pavia University,Head B (Improved 512),Margin Sampling,46,100,4,9,201,77.78,94.03,0.8514
+Pavia University,Head B (Improved 512),Margin Sampling,46,100,5,10,774,61.35,45.74,0.5241
+Pavia University,Head B (Improved 512),Margin Sampling,46,100,6,8,193,40.37,45.6,0.4282
+Pavia University,Head B (Improved 512),Margin Sampling,46,100,7,11,565,49.33,39.12,0.4363
+Pavia University,Head B (Improved 512),Margin Sampling,46,100,8,6,148,37.39,85.14,0.5196
+Pavia University,Head B (Improved 512),Margin Sampling,46,180,0,35,960,68.78,45.21,0.5456
+Pavia University,Head B (Improved 512),Margin Sampling,46,180,1,43,2763,77.58,83.68,0.8052
+Pavia University,Head B (Improved 512),Margin Sampling,46,180,2,9,296,44.65,66.22,0.5333
+Pavia University,Head B (Improved 512),Margin Sampling,46,180,3,20,517,64.33,63.83,0.6408
+Pavia University,Head B (Improved 512),Margin Sampling,46,180,4,12,201,87.44,93.53,0.9038
+Pavia University,Head B (Improved 512),Margin Sampling,46,180,5,16,774,61.37,47.42,0.535
+Pavia University,Head B (Improved 512),Margin Sampling,46,180,6,12,193,46.99,44.56,0.4574
+Pavia University,Head B (Improved 512),Margin Sampling,46,180,7,25,565,60.58,63.36,0.6194
+Pavia University,Head B (Improved 512),Margin Sampling,46,180,8,8,148,43.07,77.7,0.5542
+Pavia University,Head B (Improved 512),Margin Sampling,46,220,0,47,960,66.76,49.38,0.5677
+Pavia University,Head B (Improved 512),Margin Sampling,46,220,1,48,2763,78.8,84.33,0.8147
+Pavia University,Head B (Improved 512),Margin Sampling,46,220,2,14,296,45.47,69.59,0.5501
+Pavia University,Head B (Improved 512),Margin Sampling,46,220,3,23,517,66.86,65.57,0.6621
+Pavia University,Head B (Improved 512),Margin Sampling,46,220,4,12,201,93.07,93.53,0.933
+Pavia University,Head B (Improved 512),Margin Sampling,46,220,5,19,774,61.54,48.58,0.543
+Pavia University,Head B (Improved 512),Margin Sampling,46,220,6,18,193,54.84,52.85,0.5383
+Pavia University,Head B (Improved 512),Margin Sampling,46,220,7,30,565,65.09,61.06,0.6301
+Pavia University,Head B (Improved 512),Margin Sampling,46,220,8,9,148,46.36,81.76,0.5917
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,100,0,25,960,51.07,44.79,0.4772
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,100,1,17,2763,75.42,49.29,0.5962
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,100,2,6,296,45.21,51.01,0.4794
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,100,3,6,517,22.0,52.03,0.3092
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,100,4,5,201,83.0,82.59,0.8279
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,100,5,18,774,36.25,41.21,0.3857
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,100,6,6,193,31.92,50.78,0.392
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,100,7,11,565,58.39,60.35,0.5936
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,100,8,6,148,46.06,75.0,0.5707
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,180,0,52,960,58.68,56.35,0.5749
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,180,1,32,2763,76.59,58.74,0.6649
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,180,2,8,296,51.49,46.62,0.4894
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,180,3,12,517,31.43,70.41,0.4346
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,180,4,6,201,82.45,77.11,0.7969
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,180,5,29,774,58.17,49.22,0.5332
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,180,6,9,193,49.5,51.3,0.5038
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,180,7,23,565,58.1,72.39,0.6446
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,180,8,9,148,50.74,69.59,0.5869
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,220,0,63,960,66.71,56.15,0.6097
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,220,1,41,2763,78.37,71.88,0.7499
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,220,2,13,296,46.26,56.42,0.5084
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,220,3,17,517,40.52,77.76,0.5328
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,220,4,7,201,85.87,78.61,0.8208
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,220,5,31,774,65.55,50.39,0.5698
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,220,6,9,193,56.79,47.67,0.5183
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,220,7,29,565,63.47,66.73,0.6506
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,45,220,8,10,148,56.68,71.62,0.6328
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,100,0,21,960,46.73,38.75,0.4237
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,100,1,22,2763,79.96,57.91,0.6717
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,100,2,7,296,35.48,81.76,0.4949
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,100,3,6,517,36.41,65.57,0.4682
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,100,4,6,201,59.81,94.03,0.7311
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,100,5,13,774,56.3,50.78,0.534
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,100,6,7,193,40.1,43.01,0.415
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,100,7,12,565,49.78,40.0,0.4436
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,100,8,6,148,35.24,79.05,0.4875
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,180,0,48,960,68.07,50.62,0.5806
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,180,1,40,2763,78.84,68.77,0.7346
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,180,2,11,296,37.59,72.64,0.4954
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,180,3,11,517,37.55,68.28,0.4846
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,180,4,7,201,61.54,87.56,0.7228
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,180,5,25,774,58.92,55.04,0.5691
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,180,6,11,193,37.07,44.56,0.4047
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,180,7,16,565,62.76,36.99,0.4655
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,180,8,11,148,57.97,81.08,0.6761
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,220,0,65,960,65.95,57.29,0.6132
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,220,1,45,2763,79.63,64.1,0.7102
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,220,2,13,296,39.36,70.61,0.5054
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,220,3,14,517,36.35,72.34,0.4838
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,220,4,7,201,69.29,83.08,0.7557
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,220,5,29,774,58.04,58.27,0.5816
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,220,6,17,193,37.73,53.37,0.4421
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,220,7,18,565,65.58,35.75,0.4628
+Pavia University,Head B (Improved 512),Margin + Cosine Diversity,46,220,8,12,148,59.5,80.41,0.6839
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,0,20,960,51.17,36.56,0.4265
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,1,16,2763,76.93,50.09,0.6068
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,2,7,296,48.84,49.66,0.4925
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,3,8,517,28.86,69.83,0.4084
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,4,5,201,83.41,85.07,0.8424
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,5,18,774,38.16,43.93,0.4084
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,6,7,193,31.16,54.4,0.3962
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,7,13,565,53.01,68.67,0.5983
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,100,8,6,148,52.56,76.35,0.6226
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,0,51,960,54.72,50.1,0.5231
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,1,26,2763,74.78,53.02,0.6205
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,2,13,296,53.23,58.45,0.5572
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,3,19,517,31.46,75.63,0.4443
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,4,9,201,86.43,85.57,0.86
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,5,22,774,41.39,44.7,0.4298
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,6,10,193,47.7,43.01,0.4523
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,7,17,565,60.0,64.78,0.623
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,180,8,13,148,59.38,77.03,0.6706
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,0,66,960,60.0,52.5,0.56
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,1,26,2763,74.68,52.95,0.6197
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,2,15,296,56.75,62.5,0.5949
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,3,19,517,30.66,75.44,0.436
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,4,15,201,90.31,88.06,0.8917
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,5,23,774,39.69,42.76,0.4117
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,6,19,193,53.55,43.01,0.477
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,7,24,565,61.77,71.5,0.6628
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,45,220,8,13,148,60.22,73.65,0.6626
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,0,23,960,55.3,42.4,0.48
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,1,20,2763,79.4,56.93,0.6632
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,2,5,296,36.59,69.59,0.4796
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,3,8,517,31.05,70.99,0.432
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,4,6,201,56.47,89.05,0.6911
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,5,14,774,58.98,47.93,0.5289
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,6,5,193,35.65,39.9,0.3765
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,7,13,565,45.67,38.23,0.4162
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,100,8,6,148,35.62,77.03,0.4872
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,0,52,960,58.86,55.73,0.5725
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,1,32,2763,78.38,70.58,0.7427
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,2,11,296,48.77,73.65,0.5868
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,3,12,517,42.72,66.92,0.5215
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,4,8,201,75.44,85.57,0.8019
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,5,18,774,59.41,49.74,0.5415
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,6,14,193,41.35,44.56,0.4289
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,7,22,565,64.27,53.81,0.5857
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,180,8,11,148,56.8,79.05,0.661
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,0,66,960,63.68,59.17,0.6134
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,1,39,2763,79.27,71.99,0.7546
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,2,13,296,52.01,69.93,0.5965
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,3,14,517,44.86,73.5,0.5572
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,4,10,201,88.73,94.03,0.913
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,5,18,774,58.69,49.74,0.5385
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,6,20,193,45.58,53.37,0.4916
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,7,26,565,65.34,58.05,0.6148
+Pavia University,Head B (Improved 512),Adaptive Class-Coverage AL,46,220,8,14,148,70.69,83.11,0.764
+Pavia University,Head C (Wider 1024),Random Sampling,45,100,0,23,960,56.93,52.6,0.5468
+Pavia University,Head C (Wider 1024),Random Sampling,45,100,1,25,2763,74.58,82.59,0.7838
+Pavia University,Head C (Wider 1024),Random Sampling,45,100,2,5,296,37.7,38.85,0.3827
+Pavia University,Head C (Wider 1024),Random Sampling,45,100,3,8,517,60.58,44.29,0.5117
+Pavia University,Head C (Wider 1024),Random Sampling,45,100,4,6,201,82.76,83.58,0.8317
+Pavia University,Head C (Wider 1024),Random Sampling,45,100,5,11,774,47.31,35.27,0.4041
+Pavia University,Head C (Wider 1024),Random Sampling,45,100,6,7,193,42.13,47.15,0.445
+Pavia University,Head C (Wider 1024),Random Sampling,45,100,7,9,565,57.28,63.36,0.6017
+Pavia University,Head C (Wider 1024),Random Sampling,45,100,8,6,148,61.45,68.92,0.6497
+Pavia University,Head C (Wider 1024),Random Sampling,45,180,0,34,960,61.26,50.73,0.555
+Pavia University,Head C (Wider 1024),Random Sampling,45,180,1,66,2763,75.55,88.35,0.8145
+Pavia University,Head C (Wider 1024),Random Sampling,45,180,2,7,296,47.62,40.54,0.438
+Pavia University,Head C (Wider 1024),Random Sampling,45,180,3,10,517,68.9,45.84,0.5505
+Pavia University,Head C (Wider 1024),Random Sampling,45,180,4,7,201,90.75,78.11,0.8396
+Pavia University,Head C (Wider 1024),Random Sampling,45,180,5,19,774,57.47,35.79,0.4411
+Pavia University,Head C (Wider 1024),Random Sampling,45,180,6,12,193,35.17,52.85,0.4224
+Pavia University,Head C (Wider 1024),Random Sampling,45,180,7,15,565,57.84,67.26,0.6219
+Pavia University,Head C (Wider 1024),Random Sampling,45,180,8,10,148,57.51,75.0,0.651
+Pavia University,Head C (Wider 1024),Random Sampling,45,220,0,41,960,63.54,51.56,0.5693
+Pavia University,Head C (Wider 1024),Random Sampling,45,220,1,84,2763,76.19,87.19,0.8132
+Pavia University,Head C (Wider 1024),Random Sampling,45,220,2,10,296,52.07,42.57,0.4684
+Pavia University,Head C (Wider 1024),Random Sampling,45,220,3,11,517,63.97,50.48,0.5643
+Pavia University,Head C (Wider 1024),Random Sampling,45,220,4,8,201,89.01,80.6,0.846
+Pavia University,Head C (Wider 1024),Random Sampling,45,220,5,22,774,62.47,39.79,0.4862
+Pavia University,Head C (Wider 1024),Random Sampling,45,220,6,12,193,43.7,53.89,0.4826
+Pavia University,Head C (Wider 1024),Random Sampling,45,220,7,22,565,57.87,74.16,0.6501
+Pavia University,Head C (Wider 1024),Random Sampling,45,220,8,10,148,56.08,71.62,0.6291
+Pavia University,Head C (Wider 1024),Random Sampling,46,100,0,14,960,41.2,37.08,0.3904
+Pavia University,Head C (Wider 1024),Random Sampling,46,100,1,29,2763,80.3,73.62,0.7681
+Pavia University,Head C (Wider 1024),Random Sampling,46,100,2,9,296,31.1,73.65,0.4373
+Pavia University,Head C (Wider 1024),Random Sampling,46,100,3,7,517,71.39,51.64,0.5993
+Pavia University,Head C (Wider 1024),Random Sampling,46,100,4,10,201,62.07,98.51,0.7615
+Pavia University,Head C (Wider 1024),Random Sampling,46,100,5,11,774,50.32,50.52,0.5042
+Pavia University,Head C (Wider 1024),Random Sampling,46,100,6,7,193,33.89,31.61,0.3271
+Pavia University,Head C (Wider 1024),Random Sampling,46,100,7,6,565,54.74,26.55,0.3576
+Pavia University,Head C (Wider 1024),Random Sampling,46,100,8,7,148,31.14,83.11,0.453
+Pavia University,Head C (Wider 1024),Random Sampling,46,180,0,30,960,45.77,55.21,0.5005
+Pavia University,Head C (Wider 1024),Random Sampling,46,180,1,60,2763,82.31,78.65,0.8044
+Pavia University,Head C (Wider 1024),Random Sampling,46,180,2,14,296,36.53,54.05,0.436
+Pavia University,Head C (Wider 1024),Random Sampling,46,180,3,17,517,66.6,62.48,0.6447
+Pavia University,Head C (Wider 1024),Random Sampling,46,180,4,12,201,68.88,98.01,0.809
+Pavia University,Head C (Wider 1024),Random Sampling,46,180,5,20,774,59.79,57.62,0.5868
+Pavia University,Head C (Wider 1024),Random Sampling,46,180,6,8,193,32.0,33.16,0.3257
+Pavia University,Head C (Wider 1024),Random Sampling,46,180,7,10,565,62.26,29.2,0.3976
+Pavia University,Head C (Wider 1024),Random Sampling,46,180,8,9,148,58.29,78.38,0.6686
+Pavia University,Head C (Wider 1024),Random Sampling,46,220,0,37,960,48.26,56.46,0.5204
+Pavia University,Head C (Wider 1024),Random Sampling,46,220,1,74,2763,82.75,80.75,0.8174
+Pavia University,Head C (Wider 1024),Random Sampling,46,220,2,14,296,41.51,52.03,0.4618
+Pavia University,Head C (Wider 1024),Random Sampling,46,220,3,20,517,71.15,62.48,0.6653
+Pavia University,Head C (Wider 1024),Random Sampling,46,220,4,14,201,77.82,99.5,0.8734
+Pavia University,Head C (Wider 1024),Random Sampling,46,220,5,26,774,57.33,60.59,0.5892
+Pavia University,Head C (Wider 1024),Random Sampling,46,220,6,11,193,35.02,39.38,0.3707
+Pavia University,Head C (Wider 1024),Random Sampling,46,220,7,14,565,62.54,32.21,0.4252
+Pavia University,Head C (Wider 1024),Random Sampling,46,220,8,10,148,60.0,77.03,0.6746
+Pavia University,Head C (Wider 1024),Margin Sampling,45,100,0,11,960,56.3,30.73,0.3976
+Pavia University,Head C (Wider 1024),Margin Sampling,45,100,1,27,2763,73.48,58.78,0.6531
+Pavia University,Head C (Wider 1024),Margin Sampling,45,100,2,6,296,45.61,52.7,0.489
+Pavia University,Head C (Wider 1024),Margin Sampling,45,100,3,5,517,33.54,61.32,0.4337
+Pavia University,Head C (Wider 1024),Margin Sampling,45,100,4,7,201,82.16,87.06,0.8454
+Pavia University,Head C (Wider 1024),Margin Sampling,45,100,5,22,774,38.16,47.67,0.4239
+Pavia University,Head C (Wider 1024),Margin Sampling,45,100,6,7,193,36.5,51.81,0.4283
+Pavia University,Head C (Wider 1024),Margin Sampling,45,100,7,10,565,47.64,62.48,0.5406
+Pavia University,Head C (Wider 1024),Margin Sampling,45,100,8,5,148,57.21,77.7,0.659
+Pavia University,Head C (Wider 1024),Margin Sampling,45,180,0,27,960,67.53,38.12,0.4874
+Pavia University,Head C (Wider 1024),Margin Sampling,45,180,1,44,2763,76.24,84.29,0.8006
+Pavia University,Head C (Wider 1024),Margin Sampling,45,180,2,13,296,35.34,41.55,0.382
+Pavia University,Head C (Wider 1024),Margin Sampling,45,180,3,8,517,70.03,42.94,0.5324
+Pavia University,Head C (Wider 1024),Margin Sampling,45,180,4,9,201,87.31,85.57,0.8643
+Pavia University,Head C (Wider 1024),Margin Sampling,45,180,5,33,774,56.85,57.36,0.5711
+Pavia University,Head C (Wider 1024),Margin Sampling,45,180,6,14,193,43.04,52.85,0.4744
+Pavia University,Head C (Wider 1024),Margin Sampling,45,180,7,26,565,54.91,74.16,0.631
+Pavia University,Head C (Wider 1024),Margin Sampling,45,180,8,6,148,62.15,74.32,0.6769
+Pavia University,Head C (Wider 1024),Margin Sampling,45,220,0,40,960,64.24,42.29,0.5101
+Pavia University,Head C (Wider 1024),Margin Sampling,45,220,1,54,2763,79.01,85.12,0.8195
+Pavia University,Head C (Wider 1024),Margin Sampling,45,220,2,15,296,40.55,50.0,0.4478
+Pavia University,Head C (Wider 1024),Margin Sampling,45,220,3,12,517,68.56,58.22,0.6297
+Pavia University,Head C (Wider 1024),Margin Sampling,45,220,4,9,201,90.06,81.09,0.8534
+Pavia University,Head C (Wider 1024),Margin Sampling,45,220,5,36,774,64.94,58.4,0.615
+Pavia University,Head C (Wider 1024),Margin Sampling,45,220,6,16,193,47.32,50.26,0.4874
+Pavia University,Head C (Wider 1024),Margin Sampling,45,220,7,30,565,57.92,76.99,0.6611
+Pavia University,Head C (Wider 1024),Margin Sampling,45,220,8,8,148,61.4,70.95,0.6583
+Pavia University,Head C (Wider 1024),Margin Sampling,46,100,0,20,960,49.32,45.31,0.4723
+Pavia University,Head C (Wider 1024),Margin Sampling,46,100,1,12,2763,79.41,59.75,0.6819
+Pavia University,Head C (Wider 1024),Margin Sampling,46,100,2,5,296,32.71,64.86,0.4349
+Pavia University,Head C (Wider 1024),Margin Sampling,46,100,3,14,517,44.34,63.64,0.5226
+Pavia University,Head C (Wider 1024),Margin Sampling,46,100,4,10,201,64.04,93.03,0.7586
+Pavia University,Head C (Wider 1024),Margin Sampling,46,100,5,14,774,44.97,55.43,0.4965
+Pavia University,Head C (Wider 1024),Margin Sampling,46,100,6,6,193,36.59,31.09,0.3361
+Pavia University,Head C (Wider 1024),Margin Sampling,46,100,7,14,565,54.99,36.11,0.4359
+Pavia University,Head C (Wider 1024),Margin Sampling,46,100,8,5,148,33.53,78.38,0.4696
+Pavia University,Head C (Wider 1024),Margin Sampling,46,180,0,36,960,58.84,47.5,0.5256
+Pavia University,Head C (Wider 1024),Margin Sampling,46,180,1,47,2763,79.49,83.03,0.8122
+Pavia University,Head C (Wider 1024),Margin Sampling,46,180,2,7,296,37.32,52.7,0.437
+Pavia University,Head C (Wider 1024),Margin Sampling,46,180,3,19,517,69.58,64.6,0.67
+Pavia University,Head C (Wider 1024),Margin Sampling,46,180,4,11,201,81.61,90.55,0.8585
+Pavia University,Head C (Wider 1024),Margin Sampling,46,180,5,17,774,60.1,47.29,0.5293
+Pavia University,Head C (Wider 1024),Margin Sampling,46,180,6,10,193,42.19,41.97,0.4208
+Pavia University,Head C (Wider 1024),Margin Sampling,46,180,7,27,565,53.16,59.47,0.5614
+Pavia University,Head C (Wider 1024),Margin Sampling,46,180,8,6,148,46.53,63.51,0.5371
+Pavia University,Head C (Wider 1024),Margin Sampling,46,220,0,47,960,60.33,50.21,0.548
+Pavia University,Head C (Wider 1024),Margin Sampling,46,220,1,53,2763,80.15,82.56,0.8133
+Pavia University,Head C (Wider 1024),Margin Sampling,46,220,2,10,296,41.2,60.14,0.489
+Pavia University,Head C (Wider 1024),Margin Sampling,46,220,3,22,517,66.98,68.28,0.6762
+Pavia University,Head C (Wider 1024),Margin Sampling,46,220,4,14,201,86.16,96.02,0.9082
+Pavia University,Head C (Wider 1024),Margin Sampling,46,220,5,20,774,62.27,48.19,0.5433
+Pavia University,Head C (Wider 1024),Margin Sampling,46,220,6,12,193,43.24,41.45,0.4233
+Pavia University,Head C (Wider 1024),Margin Sampling,46,220,7,35,565,56.2,61.77,0.5885
+Pavia University,Head C (Wider 1024),Margin Sampling,46,220,8,7,148,50.54,62.84,0.5602
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,100,0,23,960,51.77,42.71,0.468
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,100,1,12,2763,77.29,48.53,0.5963
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,100,2,5,296,47.78,47.3,0.4754
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,100,3,7,517,30.84,63.83,0.4159
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,100,4,5,201,77.49,89.05,0.8287
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,100,5,20,774,43.34,65.63,0.5221
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,100,6,8,193,37.64,51.3,0.4342
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,100,7,15,565,53.51,66.19,0.5918
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,100,8,5,148,61.73,67.57,0.6452
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,180,0,49,960,63.09,52.71,0.5743
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,180,1,31,2763,80.99,68.3,0.741
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,180,2,11,296,55.37,55.74,0.5556
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,180,3,10,517,42.87,68.09,0.5262
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,180,4,6,201,77.73,85.07,0.8124
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,180,5,31,774,56.7,63.95,0.6011
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,180,6,14,193,38.28,50.78,0.4365
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,180,7,20,565,60.19,68.5,0.6407
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,180,8,8,148,63.22,74.32,0.6832
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,220,0,64,960,65.71,59.69,0.6255
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,220,1,40,2763,79.51,69.09,0.7393
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,220,2,13,296,48.48,64.53,0.5536
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,220,3,12,517,40.32,69.25,0.5096
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,220,4,6,201,85.79,81.09,0.8338
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,220,5,34,774,59.23,59.3,0.5926
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,220,6,15,193,50.54,48.19,0.4934
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,220,7,22,565,67.32,60.88,0.6394
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,45,220,8,14,148,60.89,83.11,0.7029
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,100,0,23,960,59.63,43.85,0.5054
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,100,1,19,2763,79.91,62.32,0.7003
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,100,2,5,296,33.33,67.91,0.4472
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,100,3,9,517,37.09,71.37,0.4881
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,100,4,5,201,56.9,84.08,0.6787
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,100,5,15,774,59.97,48.97,0.5391
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,100,6,5,193,35.05,38.86,0.3686
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,100,7,13,565,48.02,40.71,0.4406
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,100,8,6,148,36.01,81.76,0.5
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,180,0,51,960,58.09,59.06,0.5857
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,180,1,39,2763,80.39,61.89,0.6994
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,180,2,9,296,41.35,66.22,0.5091
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,180,3,11,517,40.25,69.83,0.5106
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,180,4,7,201,53.1,89.55,0.6667
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,180,5,29,774,54.38,60.98,0.5749
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,180,6,10,193,41.83,45.08,0.4339
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,180,7,17,565,65.12,39.65,0.4928
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,180,8,7,148,60.87,75.68,0.6747
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,220,0,58,960,63.17,57.71,0.6032
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,220,1,51,2763,79.81,68.4,0.7367
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,220,2,11,296,44.27,66.55,0.5317
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,220,3,15,517,44.77,67.12,0.5372
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,220,4,7,201,57.28,92.04,0.7061
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,220,5,36,774,54.04,61.37,0.5747
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,220,6,14,193,41.07,47.67,0.4412
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,220,7,21,565,66.57,42.3,0.5173
+Pavia University,Head C (Wider 1024),Margin + Cosine Diversity,46,220,8,7,148,67.07,75.68,0.7111
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,0,20,960,60.9,41.04,0.4904
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,1,14,2763,73.1,49.37,0.5893
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,2,6,296,47.06,54.05,0.5031
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,3,8,517,30.84,68.67,0.4257
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,4,5,201,79.09,86.57,0.8266
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,5,17,774,38.72,50.78,0.4394
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,6,8,193,33.54,54.92,0.4165
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,7,16,565,53.55,66.73,0.5942
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,100,8,6,148,67.72,72.3,0.6993
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,0,46,960,60.38,49.06,0.5414
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,1,18,2763,73.18,44.34,0.5522
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,2,19,296,58.01,64.86,0.6124
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,3,12,517,28.22,76.21,0.4119
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,4,11,201,86.73,91.04,0.8883
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,5,19,774,39.54,50.78,0.4446
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,6,14,193,45.89,54.92,0.5
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,7,28,565,58.12,61.42,0.5972
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,180,8,13,148,58.13,79.73,0.6724
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,0,55,960,63.68,50.42,0.5628
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,1,32,2763,76.41,58.16,0.6605
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,2,20,296,55.62,66.89,0.6074
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,3,21,517,39.12,80.66,0.5268
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,4,11,201,91.5,91.04,0.9127
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,5,22,774,42.97,48.97,0.4577
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,6,15,193,48.58,53.37,0.5086
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,7,31,565,56.11,65.84,0.6059
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,45,220,8,13,148,66.29,78.38,0.7183
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,0,23,960,54.28,46.88,0.5031
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,1,20,2763,80.13,57.51,0.6696
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,2,5,296,32.94,66.55,0.4407
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,3,8,517,34.58,73.5,0.4703
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,4,5,201,60.41,88.06,0.7166
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,5,14,774,59.61,51.29,0.5514
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,6,5,193,36.45,40.41,0.3833
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,7,13,565,46.35,38.23,0.419
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,100,8,7,148,44.98,81.76,0.5803
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,0,57,960,63.25,61.15,0.6218
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,1,32,2763,78.1,65.18,0.7106
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,2,12,296,40.33,57.77,0.475
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,3,13,517,37.58,77.56,0.5063
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,4,10,201,83.81,87.56,0.8564
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,5,15,774,59.15,48.84,0.535
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,6,11,193,35.78,43.01,0.3906
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,7,22,565,57.96,46.37,0.5152
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,180,8,8,148,67.3,72.3,0.6971
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,0,67,960,63.11,61.67,0.6238
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,1,39,2763,77.73,65.69,0.712
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,2,12,296,42.07,61.82,0.5007
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,3,21,517,37.36,81.43,0.5122
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,4,10,201,89.52,93.53,0.9148
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,5,16,774,64.62,46.25,0.5392
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,6,14,193,39.81,44.56,0.4205
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,7,25,565,55.19,44.25,0.4912
+Pavia University,Head C (Wider 1024),Adaptive Class-Coverage AL,46,220,8,16,148,71.81,72.3,0.7205
