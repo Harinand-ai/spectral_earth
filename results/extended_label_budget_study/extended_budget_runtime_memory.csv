@@ -1,0 +1,241 @@
+dataset,strategy,strategy_code,seed,budget,train_time_s,acq_time_s,inf_time_s,peak_vram_mb
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,42,220,0.876,0.056,0.008,47.75
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,42,300,1.068,0.088,0.007,56.45
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,42,400,1.473,0.076,0.006,58.11
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,42,500,1.893,0.074,0.006,58.02
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,42,700,2.621,0.136,0.009,59.58
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,42,1000,3.968,0.19,0.007,61.99
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,42,1500,6.354,0.334,0.012,66.12
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,42,2000,8.864,0.353,0.014,70.12
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,43,220,1.376,0.259,0.012,56.58
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,43,300,1.427,0.238,0.012,56.45
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,43,400,1.793,0.103,0.014,58.11
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,43,500,2.076,0.098,0.01,58.11
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,43,700,2.867,0.143,0.01,59.67
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,43,1000,4.083,0.209,0.006,62.08
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,43,1500,6.035,0.339,0.013,66.12
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,43,2000,9.342,0.34,0.014,70.12
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,44,220,1.006,0.069,0.014,55.83
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,44,300,1.277,0.084,0.007,56.45
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,44,400,1.814,0.099,0.01,57.99
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,44,500,2.185,0.098,0.013,58.86
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,44,700,2.784,0.139,0.009,59.67
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,44,1000,4.114,0.205,0.007,62.11
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,44,1500,6.266,0.355,0.007,65.99
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,44,2000,8.363,0.358,0.013,70.12
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,45,220,1.019,0.071,0.009,55.83
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,45,300,1.303,0.085,0.013,56.45
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,45,400,1.819,0.102,0.007,57.99
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,45,500,2.113,0.097,0.009,58.11
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,45,700,2.885,0.143,0.013,59.67
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,45,1000,4.297,0.205,0.013,61.99
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,45,1500,6.831,0.398,0.01,65.99
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,45,2000,9.082,0.375,0.008,70.12
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,46,220,1.098,0.081,0.013,56.58
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,46,300,1.376,0.095,0.012,56.45
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,46,400,1.931,0.108,0.012,57.24
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,46,500,2.34,0.105,0.013,58.86
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,46,700,3.101,0.149,0.011,59.58
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,46,1000,4.468,0.216,0.011,61.99
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,46,1500,6.493,0.353,0.01,65.99
+Indian Pines,Margin + Cosine Diversity,hybrid_margin_cosine,46,2000,8.756,0.368,0.014,70.12
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,42,220,1.018,0.255,0.037,55.83
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,42,300,1.296,0.28,0.041,56.45
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,42,400,1.764,0.301,0.042,57.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,42,500,2.051,0.308,0.048,58.86
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,42,700,2.81,0.347,0.042,59.58
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,42,1000,4.177,0.422,0.049,61.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,42,1500,6.153,0.56,0.048,65.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,42,2000,8.291,0.558,0.05,70.12
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,43,220,0.999,0.265,0.035,56.58
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,43,300,1.269,0.276,0.035,56.45
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,43,400,1.756,0.291,0.042,57.24
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,43,500,2.02,0.286,0.045,58.86
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,43,700,2.846,0.349,0.042,59.58
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,43,1000,4.189,0.414,0.048,61.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,43,1500,6.128,0.551,0.048,65.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,43,2000,8.324,0.557,0.056,70.12
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,44,220,1.029,0.258,0.04,56.58
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,44,300,1.3,0.28,0.039,56.45
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,44,400,1.801,0.302,0.043,58.11
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,44,500,2.055,0.321,0.043,58.77
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,44,700,2.831,0.359,0.048,59.58
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,44,1000,4.123,0.406,0.046,61.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,44,1500,5.93,0.562,0.043,65.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,44,2000,7.839,0.552,0.047,70.12
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,45,220,0.97,0.24,0.035,56.58
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,45,300,1.24,0.252,0.033,56.45
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,45,400,1.67,0.265,0.035,57.24
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,45,500,1.973,0.273,0.042,58.86
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,45,700,2.64,0.314,0.042,59.58
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,45,1000,3.905,0.387,0.048,61.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,45,1500,5.839,0.527,0.042,65.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,45,2000,7.856,0.536,0.049,70.12
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,46,220,0.972,0.248,0.035,56.58
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,46,300,1.244,0.266,0.041,56.45
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,46,400,1.7,0.279,0.035,58.11
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,46,500,1.958,0.284,0.045,58.77
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,46,700,2.691,0.325,0.043,59.58
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,46,1000,3.872,0.381,0.046,61.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,46,1500,5.856,0.528,0.043,65.99
+Salinas,Margin + Cosine Diversity,hybrid_margin_cosine,46,2000,7.845,0.528,0.049,70.12
+Pavia University,Margin Sampling,margin,42,220,0.952,0.18,0.033,56.48
+Pavia University,Margin Sampling,margin,42,300,1.204,0.2,0.035,56.33
+Pavia University,Margin Sampling,margin,42,400,1.717,0.201,0.035,57.11
+Pavia University,Margin Sampling,margin,42,500,1.99,0.196,0.034,58.74
+Pavia University,Margin Sampling,margin,42,700,2.725,0.188,0.035,59.46
+Pavia University,Margin Sampling,margin,42,1000,4.045,0.202,0.042,61.87
+Pavia University,Margin Sampling,margin,42,1500,5.96,0.204,0.038,65.87
+Pavia University,Margin Sampling,margin,42,2000,8.046,0.202,0.041,70.0
+Pavia University,Margin Sampling,margin,43,220,0.949,0.19,0.03,56.45
+Pavia University,Margin Sampling,margin,43,300,1.221,0.199,0.03,56.33
+Pavia University,Margin Sampling,margin,43,400,1.683,0.201,0.034,57.99
+Pavia University,Margin Sampling,margin,43,500,1.976,0.206,0.036,58.64
+Pavia University,Margin Sampling,margin,43,700,2.707,0.195,0.035,59.46
+Pavia University,Margin Sampling,margin,43,1000,3.925,0.202,0.036,61.87
+Pavia University,Margin Sampling,margin,43,1500,5.978,0.196,0.041,65.87
+Pavia University,Margin Sampling,margin,43,2000,8.048,0.201,0.041,70.0
+Pavia University,Margin Sampling,margin,44,220,0.979,0.192,0.028,56.45
+Pavia University,Margin Sampling,margin,44,300,1.221,0.197,0.035,56.33
+Pavia University,Margin Sampling,margin,44,400,1.671,0.203,0.035,57.11
+Pavia University,Margin Sampling,margin,44,500,1.944,0.195,0.035,58.74
+Pavia University,Margin Sampling,margin,44,700,2.684,0.188,0.035,59.46
+Pavia University,Margin Sampling,margin,44,1000,3.935,0.196,0.041,61.87
+Pavia University,Margin Sampling,margin,44,1500,5.915,0.202,0.04,65.87
+Pavia University,Margin Sampling,margin,44,2000,7.963,0.198,0.044,70.0
+Pavia University,Margin Sampling,margin,45,220,1.002,0.189,0.034,56.45
+Pavia University,Margin Sampling,margin,45,300,1.222,0.188,0.035,56.33
+Pavia University,Margin Sampling,margin,45,400,1.7,0.195,0.034,57.99
+Pavia University,Margin Sampling,margin,45,500,1.948,0.196,0.034,58.64
+Pavia University,Margin Sampling,margin,45,700,2.677,0.199,0.037,59.46
+Pavia University,Margin Sampling,margin,45,1000,3.891,0.185,0.036,61.87
+Pavia University,Margin Sampling,margin,45,1500,5.893,0.194,0.04,65.87
+Pavia University,Margin Sampling,margin,45,2000,8.001,0.187,0.036,70.0
+Pavia University,Margin Sampling,margin,46,220,1.002,0.179,0.035,56.45
+Pavia University,Margin Sampling,margin,46,300,1.245,0.197,0.035,56.33
+Pavia University,Margin Sampling,margin,46,400,1.645,0.198,0.034,57.11
+Pavia University,Margin Sampling,margin,46,500,1.97,0.188,0.035,58.74
+Pavia University,Margin Sampling,margin,46,700,2.7,0.203,0.036,59.46
+Pavia University,Margin Sampling,margin,46,1000,3.954,0.193,0.039,61.87
+Pavia University,Margin Sampling,margin,46,1500,5.901,0.206,0.042,65.87
+Pavia University,Margin Sampling,margin,46,2000,8.018,0.195,0.042,70.0
+Indian Pines,Random Sampling,random,42,220,0.822,0.0,0.007,47.75
+Indian Pines,Random Sampling,random,42,300,1.084,0.0,0.007,56.45
+Indian Pines,Random Sampling,random,42,400,1.507,0.0,0.007,57.99
+Indian Pines,Random Sampling,random,42,500,1.764,0.001,0.006,58.02
+Indian Pines,Random Sampling,random,42,700,2.634,0.0,0.007,59.58
+Indian Pines,Random Sampling,random,42,1000,3.944,0.0,0.012,61.99
+Indian Pines,Random Sampling,random,42,1500,6.145,0.0,0.009,65.99
+Indian Pines,Random Sampling,random,42,2000,8.124,0.0,0.007,70.12
+Indian Pines,Random Sampling,random,43,220,1.027,0.001,0.01,56.2
+Indian Pines,Random Sampling,random,43,300,1.283,0.0,0.013,56.45
+Indian Pines,Random Sampling,random,43,400,1.776,0.0,0.012,57.24
+Indian Pines,Random Sampling,random,43,500,2.07,0.0,0.008,58.77
+Indian Pines,Random Sampling,random,43,700,2.872,0.0,0.012,60.11
+Indian Pines,Random Sampling,random,43,1000,4.154,0.0,0.009,61.99
+Indian Pines,Random Sampling,random,43,1500,6.217,0.0,0.008,65.99
+Indian Pines,Random Sampling,random,43,2000,8.28,0.001,0.014,70.12
+Indian Pines,Random Sampling,random,44,220,1.008,0.001,0.012,56.2
+Indian Pines,Random Sampling,random,44,300,1.285,0.001,0.007,56.45
+Indian Pines,Random Sampling,random,44,400,1.797,0.0,0.012,57.24
+Indian Pines,Random Sampling,random,44,500,2.064,0.0,0.011,58.77
+Indian Pines,Random Sampling,random,44,700,2.832,0.0,0.009,59.58
+Indian Pines,Random Sampling,random,44,1000,4.14,0.0,0.014,61.99
+Indian Pines,Random Sampling,random,44,1500,6.159,0.0,0.015,65.99
+Indian Pines,Random Sampling,random,44,2000,8.133,0.0,0.006,70.12
+Indian Pines,Random Sampling,random,45,220,1.062,0.0,0.009,56.48
+Indian Pines,Random Sampling,random,45,300,1.276,0.0,0.012,56.45
+Indian Pines,Random Sampling,random,45,400,1.787,0.0,0.007,57.24
+Indian Pines,Random Sampling,random,45,500,2.118,0.0,0.008,58.86
+Indian Pines,Random Sampling,random,45,700,2.84,0.005,0.014,59.58
+Indian Pines,Random Sampling,random,45,1000,4.117,0.001,0.01,61.99
+Indian Pines,Random Sampling,random,45,1500,6.197,0.0,0.009,65.99
+Indian Pines,Random Sampling,random,45,2000,8.275,0.0,0.009,70.12
+Indian Pines,Random Sampling,random,46,220,1.041,0.0,0.008,56.48
+Indian Pines,Random Sampling,random,46,300,1.297,0.0,0.014,56.45
+Indian Pines,Random Sampling,random,46,400,1.827,0.0,0.008,57.24
+Indian Pines,Random Sampling,random,46,500,2.075,0.0,0.011,58.86
+Indian Pines,Random Sampling,random,46,700,2.848,0.0,0.013,59.58
+Indian Pines,Random Sampling,random,46,1000,4.15,0.0,0.008,61.99
+Indian Pines,Random Sampling,random,46,1500,6.088,0.001,0.007,65.99
+Indian Pines,Random Sampling,random,46,2000,8.343,0.006,0.008,70.12
+Salinas,Random Sampling,random,42,220,1.003,0.0,0.05,56.48
+Salinas,Random Sampling,random,42,300,1.216,0.0,0.049,56.45
+Salinas,Random Sampling,random,42,400,1.886,0.001,0.049,57.24
+Salinas,Random Sampling,random,42,500,2.149,0.001,0.048,58.86
+Salinas,Random Sampling,random,42,700,2.846,0.005,0.051,59.58
+Salinas,Random Sampling,random,42,1000,4.195,0.0,0.05,61.99
+Salinas,Random Sampling,random,42,1500,6.155,0.001,0.048,65.99
+Salinas,Random Sampling,random,42,2000,8.165,0.0,0.048,70.12
+Salinas,Random Sampling,random,43,220,1.002,0.001,0.048,56.11
+Salinas,Random Sampling,random,43,300,1.251,0.0,0.043,56.45
+Salinas,Random Sampling,random,43,400,1.73,0.0,0.049,57.99
+Salinas,Random Sampling,random,43,500,1.972,0.0,0.05,58.86
+Salinas,Random Sampling,random,43,700,2.776,0.001,0.041,59.58
+Salinas,Random Sampling,random,43,1000,4.084,0.0,0.049,61.99
+Salinas,Random Sampling,random,43,1500,6.205,0.006,0.052,65.99
+Salinas,Random Sampling,random,43,2000,8.214,0.0,0.048,70.12
+Salinas,Random Sampling,random,44,220,1.029,0.0,0.047,55.83
+Salinas,Random Sampling,random,44,300,1.27,0.0,0.049,56.45
+Salinas,Random Sampling,random,44,400,1.745,0.0,0.044,57.24
+Salinas,Random Sampling,random,44,500,2.043,0.001,0.047,58.77
+Salinas,Random Sampling,random,44,700,2.792,0.003,0.048,60.11
+Salinas,Random Sampling,random,44,1000,4.109,0.005,0.048,61.99
+Salinas,Random Sampling,random,44,1500,6.179,0.0,0.048,65.99
+Salinas,Random Sampling,random,44,2000,8.208,0.0,0.049,70.12
+Salinas,Random Sampling,random,45,220,1.005,0.0,0.048,56.11
+Salinas,Random Sampling,random,45,300,1.261,0.0,0.049,56.45
+Salinas,Random Sampling,random,45,400,1.728,0.0,0.046,57.24
+Salinas,Random Sampling,random,45,500,1.976,0.0,0.048,58.77
+Salinas,Random Sampling,random,45,700,2.76,0.0,0.048,59.58
+Salinas,Random Sampling,random,45,1000,4.053,0.0,0.049,61.99
+Salinas,Random Sampling,random,45,1500,6.156,0.001,0.049,65.84
+Salinas,Random Sampling,random,45,2000,8.177,0.0,0.055,70.12
+Salinas,Random Sampling,random,46,220,1.026,0.0,0.064,56.11
+Salinas,Random Sampling,random,46,300,1.3,0.006,0.048,56.45
+Salinas,Random Sampling,random,46,400,1.788,0.0,0.048,57.24
+Salinas,Random Sampling,random,46,500,2.051,0.0,0.049,58.86
+Salinas,Random Sampling,random,46,700,2.81,0.001,0.054,59.58
+Salinas,Random Sampling,random,46,1000,4.085,0.0,0.049,61.99
+Salinas,Random Sampling,random,46,1500,6.116,0.0,0.05,65.99
+Salinas,Random Sampling,random,46,2000,8.163,0.0,0.048,70.12
+Pavia University,Random Sampling,random,42,220,0.985,0.0,0.035,56.01
+Pavia University,Random Sampling,random,42,300,1.228,0.0,0.041,56.33
+Pavia University,Random Sampling,random,42,400,1.75,0.001,0.04,57.86
+Pavia University,Random Sampling,random,42,500,2.013,0.0,0.042,58.74
+Pavia University,Random Sampling,random,42,700,2.805,0.0,0.042,59.46
+Pavia University,Random Sampling,random,42,1000,4.023,0.0,0.035,61.87
+Pavia University,Random Sampling,random,42,1500,6.114,0.0,0.042,65.87
+Pavia University,Random Sampling,random,42,2000,8.23,0.004,0.046,70.0
+Pavia University,Random Sampling,random,43,220,1.031,0.0,0.035,55.7
+Pavia University,Random Sampling,random,43,300,1.269,0.0,0.042,56.33
+Pavia University,Random Sampling,random,43,400,1.802,0.0,0.036,57.86
+Pavia University,Random Sampling,random,43,500,2.084,0.0,0.044,58.64
+Pavia University,Random Sampling,random,43,700,2.802,0.004,0.041,59.46
+Pavia University,Random Sampling,random,43,1000,4.159,0.0,0.042,61.87
+Pavia University,Random Sampling,random,43,1500,6.202,0.0,0.042,65.87
+Pavia University,Random Sampling,random,43,2000,8.262,0.0,0.042,70.0
+Pavia University,Random Sampling,random,44,220,0.992,0.001,0.036,55.7
+Pavia University,Random Sampling,random,44,300,1.238,0.0,0.04,56.33
+Pavia University,Random Sampling,random,44,400,1.755,0.0,0.035,57.11
+Pavia University,Random Sampling,random,44,500,2.005,0.0,0.041,58.64
+Pavia University,Random Sampling,random,44,700,2.79,0.0,0.042,59.99
+Pavia University,Random Sampling,random,44,1000,4.069,0.004,0.042,61.87
+Pavia University,Random Sampling,random,44,1500,6.135,0.0,0.04,65.87
+Pavia University,Random Sampling,random,44,2000,8.269,0.003,0.044,70.0
+Pavia University,Random Sampling,random,45,220,1.021,0.0,0.035,55.98
+Pavia University,Random Sampling,random,45,300,1.254,0.006,0.034,56.33
+Pavia University,Random Sampling,random,45,400,1.787,0.001,0.04,57.11
+Pavia University,Random Sampling,random,45,500,2.086,0.005,0.043,58.64
+Pavia University,Random Sampling,random,45,700,2.77,0.001,0.035,59.46
+Pavia University,Random Sampling,random,45,1000,4.049,0.0,0.038,61.87
+Pavia University,Random Sampling,random,45,1500,6.145,0.0,0.042,65.71
+Pavia University,Random Sampling,random,45,2000,8.263,0.0,0.042,70.0
+Pavia University,Random Sampling,random,46,220,1.007,0.001,0.042,55.98
+Pavia University,Random Sampling,random,46,300,1.245,0.0,0.035,56.33
+Pavia University,Random Sampling,random,46,400,1.756,0.0,0.035,57.11
+Pavia University,Random Sampling,random,46,500,2.03,0.0,0.038,58.74
+Pavia University,Random Sampling,random,46,700,2.769,0.0,0.041,59.46
+Pavia University,Random Sampling,random,46,1000,4.126,0.0,0.042,61.87
+Pavia University,Random Sampling,random,46,1500,6.118,0.0,0.035,65.87
+Pavia University,Random Sampling,random,46,2000,8.114,0.0,0.041,70.0

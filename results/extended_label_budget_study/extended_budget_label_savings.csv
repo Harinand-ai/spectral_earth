@@ -1,0 +1,28 @@
+dataset,al_strategy,target_threshold_oa,al_budget_required,al_actual_oa,random_budget_required,random_actual_oa,label_savings_pct,labels_saved,status
+Indian Pines,Margin + Cosine Diversity,60.0,220,61.78,220,62.55,0.0,0,Both Reached
+Indian Pines,Margin + Cosine Diversity,65.0,300,69.79,300,66.76,0.0,0,Both Reached
+Indian Pines,Margin + Cosine Diversity,70.0,400,74.81,400,70.51,0.0,0,Both Reached
+Indian Pines,Margin + Cosine Diversity,75.0,500,79.56,700,78.53,28.57,200,Both Reached
+Indian Pines,Margin + Cosine Diversity,80.0,700,84.2,1000,82.44,30.0,300,Both Reached
+Indian Pines,Margin + Cosine Diversity,85.0,1000,88.11,1500,86.39,33.33,500,Both Reached
+Indian Pines,Margin + Cosine Diversity,90.0,1500,90.64,>2000,88.04,> 0.0,> 500,AL Solely Achieved
+Indian Pines,Margin + Cosine Diversity,95.0,>2000,92.69,>2000,88.04,N/A,N/A,Neither Reached
+Indian Pines,Margin + Cosine Diversity,99.0,>2000,92.69,>2000,88.04,N/A,N/A,Neither Reached
+Salinas,Margin + Cosine Diversity,60.0,220,75.78,220,73.87,0.0,0,Both Reached
+Salinas,Margin + Cosine Diversity,65.0,220,75.78,220,73.87,0.0,0,Both Reached
+Salinas,Margin + Cosine Diversity,70.0,220,75.78,220,73.87,0.0,0,Both Reached
+Salinas,Margin + Cosine Diversity,75.0,220,75.78,300,76.67,26.67,80,Both Reached
+Salinas,Margin + Cosine Diversity,80.0,400,81.98,500,80.25,20.0,100,Both Reached
+Salinas,Margin + Cosine Diversity,85.0,700,85.37,1500,86.29,53.33,800,Both Reached
+Salinas,Margin + Cosine Diversity,90.0,>2000,89.2,>2000,87.56,N/A,N/A,Neither Reached
+Salinas,Margin + Cosine Diversity,95.0,>2000,89.2,>2000,87.56,N/A,N/A,Neither Reached
+Salinas,Margin + Cosine Diversity,99.0,>2000,89.2,>2000,87.56,N/A,N/A,Neither Reached
+Pavia University,Margin Sampling,60.0,220,69.33,220,67.75,0.0,0,Both Reached
+Pavia University,Margin Sampling,65.0,220,69.33,220,67.75,0.0,0,Both Reached
+Pavia University,Margin Sampling,70.0,300,72.91,300,71.4,0.0,0,Both Reached
+Pavia University,Margin Sampling,75.0,500,76.58,500,75.78,0.0,0,Both Reached
+Pavia University,Margin Sampling,80.0,1000,82.01,1000,80.46,0.0,0,Both Reached
+Pavia University,Margin Sampling,85.0,2000,86.76,>2000,84.52,> 0.0,> 0,AL Solely Achieved
+Pavia University,Margin Sampling,90.0,>2000,86.76,>2000,84.52,N/A,N/A,Neither Reached
+Pavia University,Margin Sampling,95.0,>2000,86.76,>2000,84.52,N/A,N/A,Neither Reached
+Pavia University,Margin Sampling,99.0,>2000,86.76,>2000,84.52,N/A,N/A,Neither Reached
