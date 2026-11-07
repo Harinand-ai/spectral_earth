@@ -1,0 +1,4 @@
+dataset,target_threshold_oa,random_labels_required,random_actual_oa,lcfd_labels_required,lcfd_actual_oa,lcfd_savings_vs_random_pct,lcfd_labels_saved,margin_cosine_labels_required,margin_cosine_actual_oa,margin_cosine_savings_vs_random_pct,margin_cosine_labels_saved,margin_cosine_savings_vs_lcfd_pct,margin_cosine_labels_saved_vs_lcfd
+Indian Pines,60.0,360,60.078,> max,56.41,N/A,N/A,> max,57.296,N/A,N/A,N/A,N/A
+Salinas,60.0,220,62.0,240,61.334,-9.09,-20,220,61.34,0.0,0,8.33,20
+Pavia University,60.0,170,60.832,> max,59.85,N/A,N/A,290,60.442,-70.59,-120,N/A,N/A

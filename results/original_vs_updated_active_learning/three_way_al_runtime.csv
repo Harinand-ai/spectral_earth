@@ -1,0 +1,496 @@
+dataset,strategy,strategy_code,seed,round,total_labels,train_time_s,acq_time_s,inf_time_s
+Indian Pines,Random Sampling,random,42,0,160,0.754,0.0,0.009
+Indian Pines,Random Sampling,random,42,1,180,0.337,0.0,0.005
+Indian Pines,Random Sampling,random,42,2,200,0.443,0.0,0.007
+Indian Pines,Random Sampling,random,42,3,220,0.448,0.001,0.007
+Indian Pines,Random Sampling,random,42,4,240,0.438,0.0,0.005
+Indian Pines,Random Sampling,random,42,5,260,0.598,0.0,0.007
+Indian Pines,Random Sampling,random,42,6,280,0.572,0.0,0.007
+Indian Pines,Random Sampling,random,42,7,300,0.524,0.0,0.006
+Indian Pines,Random Sampling,random,42,8,320,0.536,0.0,0.007
+Indian Pines,Random Sampling,random,42,9,340,0.65,0.0,0.007
+Indian Pines,Random Sampling,random,42,10,360,0.683,0.001,0.008
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,0,160,0.318,0.0,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,1,180,0.313,0.08,0.013
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,2,200,0.417,0.051,0.006
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,3,220,0.424,0.052,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,4,240,0.431,0.051,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,5,260,0.558,0.051,0.013
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,6,280,0.543,0.05,0.008
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,7,300,0.563,0.053,0.012
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,8,320,0.555,0.054,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,9,340,0.68,0.054,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,10,360,0.66,0.052,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,0,160,0.316,0.0,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,1,180,0.323,0.07,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,2,200,0.43,0.06,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,3,220,0.426,0.058,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,4,240,0.453,0.06,0.009
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,5,260,0.54,0.056,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,6,280,0.545,0.056,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,7,300,0.564,0.057,0.009
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,8,320,0.574,0.059,0.013
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,9,340,0.678,0.055,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,10,360,0.659,0.057,0.007
+Salinas,Random Sampling,random,42,0,160,0.329,0.0,0.04
+Salinas,Random Sampling,random,42,1,180,0.326,0.0,0.043
+Salinas,Random Sampling,random,42,2,200,0.454,0.001,0.042
+Salinas,Random Sampling,random,42,3,220,0.426,0.001,0.041
+Salinas,Random Sampling,random,42,4,240,0.443,0.0,0.042
+Salinas,Random Sampling,random,42,5,260,0.527,0.0,0.043
+Salinas,Random Sampling,random,42,6,280,0.554,0.0,0.038
+Salinas,Random Sampling,random,42,7,300,0.571,0.0,0.042
+Salinas,Random Sampling,random,42,8,320,0.544,0.0,0.042
+Salinas,Random Sampling,random,42,9,340,0.667,0.0,0.042
+Salinas,Random Sampling,random,42,10,360,0.662,0.0,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,0,160,0.323,0.0,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,1,180,0.335,0.266,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,2,200,0.408,0.24,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,3,220,0.425,0.238,0.041
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,4,240,0.435,0.23,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,5,260,0.547,0.226,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,6,280,0.526,0.228,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,7,300,0.561,0.231,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,8,320,0.553,0.27,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,9,340,0.681,0.237,0.034
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,10,360,0.648,0.224,0.04
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,0,160,0.309,0.0,0.037
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,1,180,0.332,0.239,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,2,200,0.415,0.234,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,3,220,0.424,0.225,0.041
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,4,240,0.441,0.228,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,5,260,0.534,0.226,0.036
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,6,280,0.55,0.238,0.04
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,7,300,0.539,0.235,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,8,320,0.549,0.232,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,9,340,0.668,0.222,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,10,360,0.685,0.248,0.035
+Pavia University,Random Sampling,random,42,0,90,0.244,0.0,0.037
+Pavia University,Random Sampling,random,42,1,110,0.223,0.0,0.033
+Pavia University,Random Sampling,random,42,2,130,0.338,0.0,0.03
+Pavia University,Random Sampling,random,42,3,150,0.374,0.0,0.032
+Pavia University,Random Sampling,random,42,4,170,0.395,0.001,0.039
+Pavia University,Random Sampling,random,42,5,190,0.374,0.0,0.038
+Pavia University,Random Sampling,random,42,6,210,0.458,0.001,0.033
+Pavia University,Random Sampling,random,42,7,230,0.473,0.001,0.029
+Pavia University,Random Sampling,random,42,8,250,0.513,0.002,0.035
+Pavia University,Random Sampling,random,42,9,270,0.671,0.001,0.041
+Pavia University,Random Sampling,random,42,10,290,0.614,0.0,0.032
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,0,90,0.211,0.0,0.042
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,1,110,0.233,0.209,0.033
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,2,130,0.324,0.195,0.035
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,3,150,0.336,0.189,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,4,170,0.34,0.193,0.033
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,5,190,0.358,0.183,0.034
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,6,210,0.458,0.184,0.027
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,7,230,0.462,0.176,0.026
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,8,250,0.471,0.178,0.035
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,9,270,0.582,0.188,0.032
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,42,10,290,0.591,0.189,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,0,90,0.205,0.0,0.033
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,1,110,0.221,0.195,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,2,130,0.336,0.195,0.035
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,3,150,0.372,0.206,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,4,170,0.363,0.198,0.035
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,5,190,0.377,0.198,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,6,210,0.492,0.204,0.035
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,7,230,0.483,0.196,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,8,250,0.506,0.203,0.035
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,9,270,0.621,0.221,0.032
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,42,10,290,0.631,0.2,0.028
+Indian Pines,Random Sampling,random,43,0,160,0.746,0.0,0.008
+Indian Pines,Random Sampling,random,43,1,180,0.328,0.001,0.006
+Indian Pines,Random Sampling,random,43,2,200,0.424,0.0,0.006
+Indian Pines,Random Sampling,random,43,3,220,0.44,0.0,0.007
+Indian Pines,Random Sampling,random,43,4,240,0.43,0.001,0.004
+Indian Pines,Random Sampling,random,43,5,260,0.521,0.0,0.006
+Indian Pines,Random Sampling,random,43,6,280,0.536,0.0,0.007
+Indian Pines,Random Sampling,random,43,7,300,0.53,0.0,0.007
+Indian Pines,Random Sampling,random,43,8,320,0.548,0.0,0.008
+Indian Pines,Random Sampling,random,43,9,340,0.634,0.001,0.005
+Indian Pines,Random Sampling,random,43,10,360,0.681,0.0,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,0,160,0.348,0.0,0.008
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,1,180,0.343,0.08,0.008
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,2,200,0.449,0.052,0.008
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,3,220,0.487,0.051,0.008
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,4,240,0.43,0.054,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,5,260,0.54,0.049,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,6,280,0.6,0.054,0.006
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,7,300,0.593,0.057,0.012
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,8,320,0.615,0.056,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,9,340,0.718,0.055,0.01
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,10,360,0.723,0.06,0.012
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,0,160,0.36,0.0,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,1,180,0.401,0.076,0.012
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,2,200,0.525,0.068,0.006
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,3,220,0.45,0.061,0.014
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,4,240,0.475,0.057,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,5,260,0.582,0.06,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,6,280,0.557,0.059,0.013
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,7,300,0.594,0.063,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,8,320,0.591,0.058,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,9,340,0.72,0.061,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,10,360,0.71,0.058,0.014
+Indian Pines,Random Sampling,random,44,0,160,0.344,0.0,0.008
+Indian Pines,Random Sampling,random,44,1,180,0.351,0.0,0.013
+Indian Pines,Random Sampling,random,44,2,200,0.475,0.0,0.014
+Indian Pines,Random Sampling,random,44,3,220,0.46,0.0,0.009
+Indian Pines,Random Sampling,random,44,4,240,0.478,0.0,0.008
+Indian Pines,Random Sampling,random,44,5,260,0.612,0.0,0.009
+Indian Pines,Random Sampling,random,44,6,280,0.575,0.0,0.007
+Indian Pines,Random Sampling,random,44,7,300,0.57,0.0,0.007
+Indian Pines,Random Sampling,random,44,8,320,0.582,0.001,0.007
+Indian Pines,Random Sampling,random,44,9,340,0.697,0.0,0.007
+Indian Pines,Random Sampling,random,44,10,360,0.696,0.0,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,0,160,0.349,0.0,0.009
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,1,180,0.357,0.057,0.008
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,2,200,0.451,0.053,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,3,220,0.456,0.055,0.013
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,4,240,0.47,0.053,0.009
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,5,260,0.574,0.052,0.01
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,6,280,0.582,0.055,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,7,300,0.563,0.053,0.006
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,8,320,0.602,0.053,0.005
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,9,340,0.688,0.052,0.006
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,10,360,0.709,0.052,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,0,160,0.341,0.0,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,1,180,0.329,0.058,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,2,200,0.454,0.056,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,3,220,0.465,0.062,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,4,240,0.465,0.065,0.009
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,5,260,0.574,0.06,0.006
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,6,280,0.546,0.057,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,7,300,0.591,0.054,0.013
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,8,320,0.609,0.056,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,9,340,0.698,0.056,0.006
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,10,360,0.711,0.062,0.008
+Indian Pines,Random Sampling,random,45,0,160,0.321,0.0,0.008
+Indian Pines,Random Sampling,random,45,1,180,0.331,0.0,0.013
+Indian Pines,Random Sampling,random,45,2,200,0.45,0.0,0.009
+Indian Pines,Random Sampling,random,45,3,220,0.441,0.001,0.007
+Indian Pines,Random Sampling,random,45,4,240,0.46,0.0,0.012
+Indian Pines,Random Sampling,random,45,5,260,0.589,0.0,0.007
+Indian Pines,Random Sampling,random,45,6,280,0.559,0.0,0.007
+Indian Pines,Random Sampling,random,45,7,300,0.597,0.0,0.006
+Indian Pines,Random Sampling,random,45,8,320,0.575,0.0,0.007
+Indian Pines,Random Sampling,random,45,9,340,0.739,0.0,0.01
+Indian Pines,Random Sampling,random,45,10,360,0.679,0.0,0.006
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,0,160,0.326,0.0,0.013
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,1,180,0.348,0.055,0.012
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,2,200,0.463,0.055,0.009
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,3,220,0.449,0.054,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,4,240,0.463,0.054,0.006
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,5,260,0.549,0.059,0.015
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,6,280,0.588,0.056,0.009
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,7,300,0.588,0.054,0.009
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,8,320,0.575,0.054,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,9,340,0.753,0.05,0.009
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,10,360,0.733,0.056,0.012
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,0,160,0.35,0.0,0.013
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,1,180,0.355,0.06,0.009
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,2,200,0.454,0.058,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,3,220,0.476,0.059,0.014
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,4,240,0.492,0.064,0.009
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,5,260,0.55,0.058,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,6,280,0.598,0.06,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,7,300,0.583,0.06,0.012
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,8,320,0.606,0.058,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,9,340,0.679,0.062,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,10,360,0.695,0.059,0.009
+Indian Pines,Random Sampling,random,46,0,160,0.326,0.0,0.012
+Indian Pines,Random Sampling,random,46,1,180,0.33,0.0,0.014
+Indian Pines,Random Sampling,random,46,2,200,0.448,0.001,0.014
+Indian Pines,Random Sampling,random,46,3,220,0.49,0.0,0.013
+Indian Pines,Random Sampling,random,46,4,240,0.446,0.0,0.013
+Indian Pines,Random Sampling,random,46,5,260,0.572,0.0,0.007
+Indian Pines,Random Sampling,random,46,6,280,0.565,0.0,0.007
+Indian Pines,Random Sampling,random,46,7,300,0.574,0.0,0.007
+Indian Pines,Random Sampling,random,46,8,320,0.592,0.0,0.006
+Indian Pines,Random Sampling,random,46,9,340,0.683,0.0,0.012
+Indian Pines,Random Sampling,random,46,10,360,0.713,0.0,0.008
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,0,160,0.323,0.0,0.013
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,1,180,0.333,0.055,0.006
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,2,200,0.452,0.053,0.013
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,3,220,0.464,0.056,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,4,240,0.468,0.051,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,5,260,0.568,0.055,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,6,280,0.584,0.052,0.012
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,7,300,0.587,0.054,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,8,320,0.572,0.055,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,9,340,0.697,0.051,0.007
+Indian Pines,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,10,360,0.699,0.053,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,0,160,0.336,0.0,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,1,180,0.35,0.057,0.014
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,2,200,0.461,0.058,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,3,220,0.448,0.057,0.009
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,4,240,0.473,0.057,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,5,260,0.578,0.066,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,6,280,0.559,0.056,0.008
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,7,300,0.6,0.059,0.014
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,8,320,0.567,0.058,0.012
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,9,340,0.742,0.061,0.007
+Indian Pines,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,10,360,0.688,0.059,0.006
+Salinas,Random Sampling,random,43,0,160,0.349,0.0,0.041
+Salinas,Random Sampling,random,43,1,180,0.335,0.001,0.041
+Salinas,Random Sampling,random,43,2,200,0.444,0.002,0.036
+Salinas,Random Sampling,random,43,3,220,0.477,0.0,0.043
+Salinas,Random Sampling,random,43,4,240,0.454,0.0,0.041
+Salinas,Random Sampling,random,43,5,260,0.555,0.0,0.039
+Salinas,Random Sampling,random,43,6,280,0.552,0.001,0.041
+Salinas,Random Sampling,random,43,7,300,0.564,0.0,0.042
+Salinas,Random Sampling,random,43,8,320,0.591,0.0,0.041
+Salinas,Random Sampling,random,43,9,340,0.669,0.0,0.042
+Salinas,Random Sampling,random,43,10,360,0.701,0.0,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,0,160,0.331,0.0,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,1,180,0.365,0.242,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,2,200,0.46,0.235,0.041
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,3,220,0.448,0.227,0.04
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,4,240,0.474,0.228,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,5,260,0.583,0.233,0.04
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,6,280,0.582,0.238,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,7,300,0.566,0.223,0.037
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,8,320,0.627,0.235,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,9,340,0.704,0.232,0.034
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,10,360,0.725,0.238,0.034
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,0,160,0.322,0.0,0.037
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,1,180,0.348,0.253,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,2,200,0.476,0.246,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,3,220,0.458,0.238,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,4,240,0.46,0.241,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,5,260,0.544,0.237,0.041
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,6,280,0.589,0.237,0.042
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,7,300,0.58,0.23,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,8,320,0.589,0.233,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,9,340,0.685,0.24,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,10,360,0.699,0.236,0.041
+Salinas,Random Sampling,random,44,0,160,0.316,0.0,0.035
+Salinas,Random Sampling,random,44,1,180,0.339,0.001,0.035
+Salinas,Random Sampling,random,44,2,200,0.461,0.001,0.035
+Salinas,Random Sampling,random,44,3,220,0.433,0.0,0.041
+Salinas,Random Sampling,random,44,4,240,0.47,0.001,0.041
+Salinas,Random Sampling,random,44,5,260,0.556,0.0,0.041
+Salinas,Random Sampling,random,44,6,280,0.549,0.0,0.042
+Salinas,Random Sampling,random,44,7,300,0.579,0.0,0.042
+Salinas,Random Sampling,random,44,8,320,0.57,0.0,0.042
+Salinas,Random Sampling,random,44,9,340,0.7,0.0,0.034
+Salinas,Random Sampling,random,44,10,360,0.681,0.0,0.036
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,0,160,0.319,0.0,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,1,180,0.339,0.248,0.041
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,2,200,0.448,0.235,0.038
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,3,220,0.486,0.224,0.036
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,4,240,0.47,0.221,0.036
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,5,260,0.559,0.221,0.041
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,6,280,0.595,0.241,0.034
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,7,300,0.567,0.223,0.038
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,8,320,0.575,0.239,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,9,340,0.68,0.232,0.036
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,10,360,0.706,0.231,0.039
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,0,160,0.326,0.0,0.034
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,1,180,0.347,0.243,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,2,200,0.437,0.248,0.041
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,3,220,0.479,0.241,0.039
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,4,240,0.465,0.248,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,5,260,0.569,0.233,0.042
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,6,280,0.58,0.248,0.042
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,7,300,0.633,0.255,0.043
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,8,320,0.569,0.245,0.04
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,9,340,0.689,0.245,0.034
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,10,360,0.698,0.229,0.034
+Salinas,Random Sampling,random,45,0,160,0.335,0.0,0.035
+Salinas,Random Sampling,random,45,1,180,0.343,0.001,0.035
+Salinas,Random Sampling,random,45,2,200,0.439,0.0,0.035
+Salinas,Random Sampling,random,45,3,220,0.441,0.0,0.042
+Salinas,Random Sampling,random,45,4,240,0.458,0.0,0.048
+Salinas,Random Sampling,random,45,5,260,0.558,0.0,0.041
+Salinas,Random Sampling,random,45,6,280,0.567,0.001,0.04
+Salinas,Random Sampling,random,45,7,300,0.57,0.0,0.041
+Salinas,Random Sampling,random,45,8,320,0.572,0.0,0.041
+Salinas,Random Sampling,random,45,9,340,0.705,0.004,0.042
+Salinas,Random Sampling,random,45,10,360,0.702,0.0,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,0,160,0.355,0.0,0.043
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,1,180,0.375,0.267,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,2,200,0.493,0.241,0.04
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,3,220,0.491,0.249,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,4,240,0.493,0.231,0.041
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,5,260,0.596,0.246,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,6,280,0.621,0.242,0.037
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,7,300,0.61,0.24,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,8,320,0.607,0.234,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,9,340,0.681,0.226,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,10,360,0.702,0.228,0.036
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,0,160,0.317,0.0,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,1,180,0.34,0.24,0.04
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,2,200,0.462,0.24,0.041
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,3,220,0.436,0.237,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,4,240,0.471,0.235,0.036
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,5,260,0.558,0.233,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,6,280,0.576,0.224,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,7,300,0.576,0.227,0.042
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,8,320,0.567,0.232,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,9,340,0.68,0.22,0.033
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,10,360,0.699,0.239,0.036
+Salinas,Random Sampling,random,46,0,160,0.352,0.0,0.04
+Salinas,Random Sampling,random,46,1,180,0.352,0.001,0.037
+Salinas,Random Sampling,random,46,2,200,0.475,0.001,0.04
+Salinas,Random Sampling,random,46,3,220,0.468,0.0,0.044
+Salinas,Random Sampling,random,46,4,240,0.468,0.0,0.04
+Salinas,Random Sampling,random,46,5,260,0.608,0.006,0.048
+Salinas,Random Sampling,random,46,6,280,0.568,0.0,0.042
+Salinas,Random Sampling,random,46,7,300,0.587,0.001,0.042
+Salinas,Random Sampling,random,46,8,320,0.604,0.0,0.042
+Salinas,Random Sampling,random,46,9,340,0.721,0.0,0.041
+Salinas,Random Sampling,random,46,10,360,0.683,0.0,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,0,160,0.312,0.0,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,1,180,0.344,0.248,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,2,200,0.444,0.23,0.041
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,3,220,0.475,0.221,0.042
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,4,240,0.459,0.237,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,5,260,0.564,0.224,0.041
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,6,280,0.574,0.228,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,7,300,0.586,0.215,0.043
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,8,320,0.573,0.222,0.034
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,9,340,0.683,0.217,0.035
+Salinas,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,10,360,0.686,0.211,0.036
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,0,160,0.319,0.0,0.034
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,1,180,0.347,0.237,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,2,200,0.427,0.227,0.028
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,3,220,0.458,0.213,0.037
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,4,240,0.459,0.222,0.034
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,5,260,0.55,0.218,0.033
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,6,280,0.565,0.214,0.029
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,7,300,0.561,0.206,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,8,320,0.606,0.21,0.034
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,9,340,0.696,0.217,0.035
+Salinas,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,10,360,0.674,0.225,0.034
+Pavia University,Random Sampling,random,43,0,90,0.196,0.0,0.031
+Pavia University,Random Sampling,random,43,1,110,0.204,0.0,0.028
+Pavia University,Random Sampling,random,43,2,130,0.357,0.0,0.034
+Pavia University,Random Sampling,random,43,3,150,0.322,0.0,0.028
+Pavia University,Random Sampling,random,43,4,170,0.317,0.0,0.033
+Pavia University,Random Sampling,random,43,5,190,0.343,0.0,0.035
+Pavia University,Random Sampling,random,43,6,210,0.453,0.0,0.033
+Pavia University,Random Sampling,random,43,7,230,0.442,0.001,0.029
+Pavia University,Random Sampling,random,43,8,250,0.472,0.0,0.034
+Pavia University,Random Sampling,random,43,9,270,0.564,0.0,0.035
+Pavia University,Random Sampling,random,43,10,290,0.567,0.0,0.035
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,0,90,0.243,0.0,0.036
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,1,110,0.225,0.196,0.035
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,2,130,0.312,0.192,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,3,150,0.34,0.18,0.033
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,4,170,0.345,0.188,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,5,190,0.342,0.177,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,6,210,0.458,0.177,0.029
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,7,230,0.465,0.184,0.029
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,8,250,0.461,0.181,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,9,270,0.592,0.188,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,43,10,290,0.567,0.188,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,0,90,0.194,0.0,0.033
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,1,110,0.221,0.201,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,2,130,0.316,0.195,0.035
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,3,150,0.348,0.184,0.029
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,4,170,0.35,0.192,0.035
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,5,190,0.336,0.189,0.029
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,6,210,0.442,0.181,0.029
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,7,230,0.472,0.185,0.029
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,8,250,0.476,0.188,0.027
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,9,270,0.576,0.192,0.035
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,43,10,290,0.552,0.19,0.035
+Pavia University,Random Sampling,random,44,0,90,0.198,0.0,0.035
+Pavia University,Random Sampling,random,44,1,110,0.221,0.0,0.035
+Pavia University,Random Sampling,random,44,2,130,0.335,0.0,0.034
+Pavia University,Random Sampling,random,44,3,150,0.335,0.0,0.028
+Pavia University,Random Sampling,random,44,4,170,0.318,0.0,0.034
+Pavia University,Random Sampling,random,44,5,190,0.328,0.0,0.034
+Pavia University,Random Sampling,random,44,6,210,0.456,0.007,0.035
+Pavia University,Random Sampling,random,44,7,230,0.435,0.0,0.034
+Pavia University,Random Sampling,random,44,8,250,0.452,0.0,0.035
+Pavia University,Random Sampling,random,44,9,270,0.587,0.0,0.035
+Pavia University,Random Sampling,random,44,10,290,0.566,0.0,0.029
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,0,90,0.206,0.0,0.035
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,1,110,0.225,0.204,0.035
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,2,130,0.316,0.19,0.033
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,3,150,0.331,0.182,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,4,170,0.364,0.182,0.034
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,5,190,0.343,0.185,0.032
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,6,210,0.447,0.183,0.033
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,7,230,0.459,0.184,0.035
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,8,250,0.452,0.177,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,9,270,0.581,0.205,0.029
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,44,10,290,0.567,0.175,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,0,90,0.199,0.0,0.027
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,1,110,0.222,0.191,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,2,130,0.325,0.193,0.033
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,3,150,0.328,0.183,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,4,170,0.348,0.186,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,5,190,0.342,0.188,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,6,210,0.433,0.18,0.029
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,7,230,0.466,0.183,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,8,250,0.448,0.183,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,9,270,0.571,0.183,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,44,10,290,0.568,0.189,0.028
+Pavia University,Random Sampling,random,45,0,90,0.193,0.0,0.026
+Pavia University,Random Sampling,random,45,1,110,0.216,0.001,0.034
+Pavia University,Random Sampling,random,45,2,130,0.336,0.001,0.03
+Pavia University,Random Sampling,random,45,3,150,0.324,0.0,0.035
+Pavia University,Random Sampling,random,45,4,170,0.345,0.001,0.033
+Pavia University,Random Sampling,random,45,5,190,0.329,0.001,0.028
+Pavia University,Random Sampling,random,45,6,210,0.441,0.0,0.035
+Pavia University,Random Sampling,random,45,7,230,0.453,0.0,0.04
+Pavia University,Random Sampling,random,45,8,250,0.444,0.006,0.034
+Pavia University,Random Sampling,random,45,9,270,0.559,0.0,0.029
+Pavia University,Random Sampling,random,45,10,290,0.555,0.0,0.029
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,0,90,0.197,0.0,0.033
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,1,110,0.224,0.194,0.029
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,2,130,0.326,0.191,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,3,150,0.32,0.178,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,4,170,0.337,0.175,0.035
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,5,190,0.363,0.199,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,6,210,0.445,0.171,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,7,230,0.473,0.177,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,8,250,0.48,0.193,0.027
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,9,270,0.567,0.179,0.038
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,45,10,290,0.567,0.189,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,0,90,0.19,0.0,0.026
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,1,110,0.208,0.187,0.029
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,2,130,0.334,0.192,0.027
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,3,150,0.325,0.187,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,4,170,0.334,0.184,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,5,190,0.349,0.189,0.029
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,6,210,0.441,0.183,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,7,230,0.461,0.188,0.03
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,8,250,0.477,0.187,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,9,270,0.586,0.184,0.028
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,45,10,290,0.625,0.193,0.032
+Pavia University,Random Sampling,random,46,0,90,0.198,0.0,0.03
+Pavia University,Random Sampling,random,46,1,110,0.217,0.0,0.028
+Pavia University,Random Sampling,random,46,2,130,0.328,0.0,0.036
+Pavia University,Random Sampling,random,46,3,150,0.345,0.001,0.035
+Pavia University,Random Sampling,random,46,4,170,0.359,0.006,0.029
+Pavia University,Random Sampling,random,46,5,190,0.338,0.0,0.029
+Pavia University,Random Sampling,random,46,6,210,0.467,0.006,0.032
+Pavia University,Random Sampling,random,46,7,230,0.452,0.0,0.035
+Pavia University,Random Sampling,random,46,8,250,0.451,0.0,0.03
+Pavia University,Random Sampling,random,46,9,270,0.576,0.0,0.034
+Pavia University,Random Sampling,random,46,10,290,0.575,0.001,0.031
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,0,90,0.197,0.0,0.029
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,1,110,0.231,0.191,0.033
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,2,130,0.328,0.192,0.027
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,3,150,0.329,0.181,0.027
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,4,170,0.334,0.177,0.036
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,5,190,0.362,0.184,0.034
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,6,210,0.44,0.176,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,7,230,0.473,0.17,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,8,250,0.462,0.183,0.028
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,9,270,0.567,0.181,0.034
+Pavia University,Least Confidence + Farthest Diversity (LC + FD),lc_fd,46,10,290,0.579,0.19,0.027
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,0,90,0.199,0.0,0.027
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,1,110,0.211,0.196,0.035
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,2,130,0.315,0.193,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,3,150,0.333,0.191,0.029
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,4,170,0.331,0.188,0.027
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,5,190,0.361,0.195,0.029
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,6,210,0.481,0.191,0.035
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,7,230,0.448,0.187,0.03
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,8,250,0.474,0.191,0.034
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,9,270,0.569,0.192,0.035
+Pavia University,Margin Sampling + Cosine Diversity (Margin + Cosine),margin_cosine,46,10,290,0.581,0.201,0.034
