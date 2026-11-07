@@ -1,0 +1,8 @@
+dataset,round_scope,comparison,n_pairs,mean_diff_oa,std_diff_oa,ci_95_lower,ci_95_upper,wins,ties,losses,win_rate_pct,paired_t_stat,paired_t_pvalue,wilcoxon_stat,wilcoxon_pvalue,statistically_significant_005
+Indian Pines,Rounds 1-10 (Post-initial),Margin+Cosine vs LC+FD,50,1.945,3.473,0.982,2.907,39,0,11,78.0,3.9593,0.00024292058056170582,292.0,0.0008521186996909048,True
+Indian Pines,Rounds 1-10 (Post-initial),Margin+Cosine vs Random,50,-1.602,3.643,-2.612,-0.593,18,0,32,36.0,-3.1102,0.0031134590336825358,351.5,0.005763912831041319,True
+Salinas,Rounds 1-10 (Post-initial),Margin+Cosine vs LC+FD,50,2.778,3.566,1.789,3.766,38,0,12,76.0,5.5081,1.327198109171576e-06,158.0,6.78354924232849e-07,True
+Salinas,Rounds 1-10 (Post-initial),Margin+Cosine vs Random,50,-0.0,2.794,-0.775,0.774,25,0,25,50.0,-0.0005,0.9995982201256829,635.0,0.9807462517870222,False
+Pavia University,Rounds 1-10 (Post-initial),Margin+Cosine vs LC+FD,50,0.952,3.453,-0.005,1.909,33,0,17,66.0,1.9497,0.05694330435818013,446.0,0.06451362275595629,False
+Pavia University,Rounds 1-10 (Post-initial),Margin+Cosine vs Random,50,-6.182,2.889,-6.983,-5.381,1,0,49,2.0,-15.1292,4.263285580803182e-20,1.0,3.552713678800501e-15,True
+All Datasets Combined,Rounds 1-10 (Post-initial),Margin+Cosine vs LC+FD,150,1.891,3.554,1.323,2.46,110,0,40,73.33,6.5186,1.0331273809660223e-09,2565.5,6.21999557431485e-09,True
