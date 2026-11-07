@@ -52,3 +52,4 @@ The table below contrasts the Overall Accuracy (OA, Mean $\pm$ Sample Std) acros
 - **Head B (1.06M) vs. Head C (2.12M):** Doubling the width from 512 to 1024 yields marginal improvements ($+0.5\%$ to $+1.0\%$ OA), but requires doubling the dropout rate ($0.10 \to 0.20$) to prevent overfitting on $N=100$.
 - **Head C (2.12M) vs. Head D (2.76M):** Adding depth (3 linear layers with 2 batch norm stages) actually causes a mild degradation ($-1.0\%$ to $-1.5\%$ OA) in low-budget regimes ($N=100-220$). In extreme few-shot scenarios, excess depth increases sample complexity and variance without providing additional representation capacity over the already-frozen 3D-ResNet50 backbone.
 - **Optimal Architecture Recommendation:** **Head B (Improved 512)** represents the optimal Pareto trade-off between expressive capacity (1.06M parameters), regularization stability, memory efficiency ($56$ MB VRAM), and training speed ($0.48\text{s}$ per checkpoint).
+

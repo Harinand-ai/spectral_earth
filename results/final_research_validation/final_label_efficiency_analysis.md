@@ -60,3 +60,4 @@ Hyperspectral datasets exhibit acute class imbalance (e.g., Indian Pines Class 9
    - Despite having $12$ fewer Meadows samples, Margin Sampling achieves Meadows accuracy equal to Random ($96.2\%$ vs $96.4\%$), while improving Bare Soil accuracy by $+6.4\%$ ($78.2\%$ vs $71.8\%$) and Bitumen accuracy by $+8.1\%$ ($82.4\%$ vs $74.3\%$).
 2. **Tail Class Preservation:**
    - Adaptive Class-Coverage AL achieves the highest recall on minority tail classes (Indian Pines Class 7, 9, 16), reaching $+5.2\%$ higher tail recall than Random Sampling at $N=180$.
+

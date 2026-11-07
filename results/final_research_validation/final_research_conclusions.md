@@ -42,3 +42,4 @@
    - If **Overall Accuracy** is the sole objective: Use **Margin Sampling**.
    - If **Minority Class Discovery** is critical: Use **Adaptive Class-Coverage AL**.
    - If **Spatially Clustered Data** poses a redundancy risk: Use **Margin + Cosine Diversity**.
+

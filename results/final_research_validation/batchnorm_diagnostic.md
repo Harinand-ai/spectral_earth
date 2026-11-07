@@ -62,3 +62,4 @@ The variance estimation error in LayerNorm is **over 13 times smaller** than in 
 - The non-monotonic accuracy dip observed at Budget $N=260$ across Phase 1, Phase 2, and Phase 3 is definitively attributable to residual mini-batch distortion in `BatchNorm1d`.
 - It is exacerbated in deeper networks (Head D) containing multiple cascading BatchNorm stages.
 - Substituting `LayerNorm` or adjusting batch sizing restores monotonic learning curves across increasing label budgets.
+

@@ -77,3 +77,4 @@ To evaluate the residual mini-batch hypothesis at budget $N=260$ ($260 = 4 \time
 - **Validation Split:** 10% strictly held-out from training and acquisition.
 - **Test Split:** 80% strictly held-out until model evaluation.
 - **Temperature Scaling:** Post-hoc calibration on validation logits using L-BFGS to compute optimal scaling parameter $T^* > 0$.
+

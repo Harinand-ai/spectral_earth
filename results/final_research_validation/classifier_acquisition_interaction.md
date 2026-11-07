@@ -64,3 +64,4 @@ We perform a Two-Way ANOVA testing the null hypotheses of zero main effects and 
 
 3. **Active Learning Margin Peaking:**
    The active learning margin ($\Delta \text{OA}$) peaks at **Head B (Improved 512)** and **Head C (Wider 1024)**. When over-scaling to Head D (Deeper 2.76M), the active learning margin slightly compresses ($+4.23\% \to +2.44\%$ on Indian Pines), because the deeper network requires more labeled samples to stabilize its intermediate batch norm layers.
+

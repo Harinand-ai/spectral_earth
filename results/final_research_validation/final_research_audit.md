@@ -121,3 +121,4 @@ The audit verified all reported threshold claims against discrete empirical chec
 ## 5. Audit Conclusion
 
 The experimental foundation of ConformAL-HSI is completely verified. All previous results are reproducible, free from leakage, and adhere to strict empirical standards.
+
