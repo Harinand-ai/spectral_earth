@@ -226,3 +226,4 @@ Published literature architectures (HybridSN, SpectralFormer, SSFTT) report $\ap
 #### D. Future Research Directions:
 1. Benchmark a true **Spatially Disjoint Block Partition** across all three datasets to evaluate genuine geographic generalization.
 2. Implement Conformal Prediction Set Cardinality as an active query filter to systematically prioritize annotating samples where the model's confidence set exceeds acceptable ambiguity thresholds.
+

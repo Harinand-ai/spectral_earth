@@ -1,0 +1,85 @@
+dataset,target_threshold_oa,strategy,strategy_code,status,labels_required,achieved_oa,random_labels_required,labels_saved_vs_random,savings_vs_random_pct
+Indian Pines,50.0,Random Sampling,random,Reached,280,51.94,280,0,0.0
+Indian Pines,50.0,Original LC + FD,lc_fd,Reached,340,50.04,280,-60,-21.43
+Indian Pines,50.0,Margin Sampling,margin,Reached,240,50.46,280,40,14.29
+Indian Pines,50.0,Margin + Cosine Diversity,margin_cosine,Reached,280,50.92,280,0,0.0
+Indian Pines,50.0,Conformal Uncertainty,conformal_unc,Reached,360,50.66,280,-80,-28.57
+Indian Pines,50.0,Conformal + Cosine Diversity,conformal_cosine,Failed (Peak 46.88%),> max,46.88,280,N/A,N/A
+Indian Pines,50.0,Conformal + Cosine + Class Coverage,conformal_cov,Failed (Peak 49.08%),> max,49.08,280,N/A,N/A
+Indian Pines,55.0,Random Sampling,random,Reached,340,55.62,340,0,0.0
+Indian Pines,55.0,Original LC + FD,lc_fd,Failed (Peak 50.04%),> max,50.04,340,N/A,N/A
+Indian Pines,55.0,Margin Sampling,margin,Reached,360,57.27,340,-20,-5.88
+Indian Pines,55.0,Margin + Cosine Diversity,margin_cosine,Failed (Peak 50.92%),> max,50.92,340,N/A,N/A
+Indian Pines,55.0,Conformal Uncertainty,conformal_unc,Failed (Peak 50.66%),> max,50.66,340,N/A,N/A
+Indian Pines,55.0,Conformal + Cosine Diversity,conformal_cosine,Failed (Peak 46.88%),> max,46.88,340,N/A,N/A
+Indian Pines,55.0,Conformal + Cosine + Class Coverage,conformal_cov,Failed (Peak 49.08%),> max,49.08,340,N/A,N/A
+Indian Pines,60.0,Random Sampling,random,Failed (Peak 56.53%),> max,56.53,> max,N/A,N/A
+Indian Pines,60.0,Original LC + FD,lc_fd,Failed (Peak 50.04%),> max,50.04,> max,N/A,N/A
+Indian Pines,60.0,Margin Sampling,margin,Failed (Peak 57.27%),> max,57.27,> max,N/A,N/A
+Indian Pines,60.0,Margin + Cosine Diversity,margin_cosine,Failed (Peak 50.92%),> max,50.92,> max,N/A,N/A
+Indian Pines,60.0,Conformal Uncertainty,conformal_unc,Failed (Peak 50.66%),> max,50.66,> max,N/A,N/A
+Indian Pines,60.0,Conformal + Cosine Diversity,conformal_cosine,Failed (Peak 46.88%),> max,46.88,> max,N/A,N/A
+Indian Pines,60.0,Conformal + Cosine + Class Coverage,conformal_cov,Failed (Peak 49.08%),> max,49.08,> max,N/A,N/A
+Indian Pines,65.0,Random Sampling,random,Failed (Peak 56.53%),> max,56.53,> max,N/A,N/A
+Indian Pines,65.0,Original LC + FD,lc_fd,Failed (Peak 50.04%),> max,50.04,> max,N/A,N/A
+Indian Pines,65.0,Margin Sampling,margin,Failed (Peak 57.27%),> max,57.27,> max,N/A,N/A
+Indian Pines,65.0,Margin + Cosine Diversity,margin_cosine,Failed (Peak 50.92%),> max,50.92,> max,N/A,N/A
+Indian Pines,65.0,Conformal Uncertainty,conformal_unc,Failed (Peak 50.66%),> max,50.66,> max,N/A,N/A
+Indian Pines,65.0,Conformal + Cosine Diversity,conformal_cosine,Failed (Peak 46.88%),> max,46.88,> max,N/A,N/A
+Indian Pines,65.0,Conformal + Cosine + Class Coverage,conformal_cov,Failed (Peak 49.08%),> max,49.08,> max,N/A,N/A
+Salinas,50.0,Random Sampling,random,Reached,160,50.39,160,0,0.0
+Salinas,50.0,Original LC + FD,lc_fd,Reached,160,50.59,160,0,0.0
+Salinas,50.0,Margin Sampling,margin,Reached,180,55.18,160,-20,-12.5
+Salinas,50.0,Margin + Cosine Diversity,margin_cosine,Reached,180,53.49,160,-20,-12.5
+Salinas,50.0,Conformal Uncertainty,conformal_unc,Reached,180,50.31,160,-20,-12.5
+Salinas,50.0,Conformal + Cosine Diversity,conformal_cosine,Reached,160,52.5,160,0,0.0
+Salinas,50.0,Conformal + Cosine + Class Coverage,conformal_cov,Reached,160,51.69,160,0,0.0
+Salinas,55.0,Random Sampling,random,Reached,220,56.3,220,0,0.0
+Salinas,55.0,Original LC + FD,lc_fd,Reached,340,59.31,220,-120,-54.55
+Salinas,55.0,Margin Sampling,margin,Reached,180,55.18,220,40,18.18
+Salinas,55.0,Margin + Cosine Diversity,margin_cosine,Reached,200,55.13,220,20,9.09
+Salinas,55.0,Conformal Uncertainty,conformal_unc,Reached,300,57.0,220,-80,-36.36
+Salinas,55.0,Conformal + Cosine Diversity,conformal_cosine,Reached,260,56.4,220,-40,-18.18
+Salinas,55.0,Conformal + Cosine + Class Coverage,conformal_cov,Reached,240,55.05,220,-20,-9.09
+Salinas,60.0,Random Sampling,random,Reached,300,60.91,300,0,0.0
+Salinas,60.0,Original LC + FD,lc_fd,Failed (Peak 59.31%),> max,59.31,300,N/A,N/A
+Salinas,60.0,Margin Sampling,margin,Reached,240,61.08,300,60,20.0
+Salinas,60.0,Margin + Cosine Diversity,margin_cosine,Failed (Peak 59.68%),> max,59.68,300,N/A,N/A
+Salinas,60.0,Conformal Uncertainty,conformal_unc,Failed (Peak 57.29%),> max,57.29,300,N/A,N/A
+Salinas,60.0,Conformal + Cosine Diversity,conformal_cosine,Failed (Peak 56.66%),> max,56.66,300,N/A,N/A
+Salinas,60.0,Conformal + Cosine + Class Coverage,conformal_cov,Failed (Peak 55.05%),> max,55.05,300,N/A,N/A
+Salinas,65.0,Random Sampling,random,Failed (Peak 62.50%),> max,62.5,> max,N/A,N/A
+Salinas,65.0,Original LC + FD,lc_fd,Failed (Peak 59.31%),> max,59.31,> max,N/A,N/A
+Salinas,65.0,Margin Sampling,margin,Failed (Peak 62.38%),> max,62.38,> max,N/A,N/A
+Salinas,65.0,Margin + Cosine Diversity,margin_cosine,Failed (Peak 59.68%),> max,59.68,> max,N/A,N/A
+Salinas,65.0,Conformal Uncertainty,conformal_unc,Failed (Peak 57.29%),> max,57.29,> max,N/A,N/A
+Salinas,65.0,Conformal + Cosine Diversity,conformal_cosine,Failed (Peak 56.66%),> max,56.66,> max,N/A,N/A
+Salinas,65.0,Conformal + Cosine + Class Coverage,conformal_cov,Failed (Peak 55.05%),> max,55.05,> max,N/A,N/A
+Pavia University,50.0,Random Sampling,random,Reached,110,53.52,110,0,0.0
+Pavia University,50.0,Original LC + FD,lc_fd,Reached,170,51.01,110,-60,-54.55
+Pavia University,50.0,Margin Sampling,margin,Reached,110,52.23,110,0,0.0
+Pavia University,50.0,Margin + Cosine Diversity,margin_cosine,Reached,150,53.69,110,-40,-36.36
+Pavia University,50.0,Conformal Uncertainty,conformal_unc,Reached,230,51.69,110,-120,-109.09
+Pavia University,50.0,Conformal + Cosine Diversity,conformal_cosine,Reached,170,50.28,110,-60,-54.55
+Pavia University,50.0,Conformal + Cosine + Class Coverage,conformal_cov,Reached,170,51.02,110,-60,-54.55
+Pavia University,55.0,Random Sampling,random,Reached,130,56.04,130,0,0.0
+Pavia University,55.0,Original LC + FD,lc_fd,Failed (Peak 52.98%),> max,52.98,130,N/A,N/A
+Pavia University,55.0,Margin Sampling,margin,Reached,130,55.15,130,0,0.0
+Pavia University,55.0,Margin + Cosine Diversity,margin_cosine,Reached,190,55.32,130,-60,-46.15
+Pavia University,55.0,Conformal Uncertainty,conformal_unc,Failed (Peak 54.76%),> max,54.76,130,N/A,N/A
+Pavia University,55.0,Conformal + Cosine Diversity,conformal_cosine,Reached,290,55.34,130,-160,-123.08
+Pavia University,55.0,Conformal + Cosine + Class Coverage,conformal_cov,Reached,250,55.38,130,-120,-92.31
+Pavia University,60.0,Random Sampling,random,Reached,190,61.04,190,0,0.0
+Pavia University,60.0,Original LC + FD,lc_fd,Failed (Peak 52.98%),> max,52.98,190,N/A,N/A
+Pavia University,60.0,Margin Sampling,margin,Reached,190,60.76,190,0,0.0
+Pavia University,60.0,Margin + Cosine Diversity,margin_cosine,Failed (Peak 58.45%),> max,58.45,190,N/A,N/A
+Pavia University,60.0,Conformal Uncertainty,conformal_unc,Failed (Peak 54.76%),> max,54.76,190,N/A,N/A
+Pavia University,60.0,Conformal + Cosine Diversity,conformal_cosine,Failed (Peak 55.34%),> max,55.34,190,N/A,N/A
+Pavia University,60.0,Conformal + Cosine + Class Coverage,conformal_cov,Failed (Peak 56.80%),> max,56.8,190,N/A,N/A
+Pavia University,65.0,Random Sampling,random,Reached,290,65.54,290,0,0.0
+Pavia University,65.0,Original LC + FD,lc_fd,Failed (Peak 52.98%),> max,52.98,290,N/A,N/A
+Pavia University,65.0,Margin Sampling,margin,Reached,250,65.93,290,40,13.79
+Pavia University,65.0,Margin + Cosine Diversity,margin_cosine,Failed (Peak 58.45%),> max,58.45,290,N/A,N/A
+Pavia University,65.0,Conformal Uncertainty,conformal_unc,Failed (Peak 54.76%),> max,54.76,290,N/A,N/A
+Pavia University,65.0,Conformal + Cosine Diversity,conformal_cosine,Failed (Peak 55.34%),> max,55.34,290,N/A,N/A
+Pavia University,65.0,Conformal + Cosine + Class Coverage,conformal_cov,Failed (Peak 56.80%),> max,56.8,290,N/A,N/A

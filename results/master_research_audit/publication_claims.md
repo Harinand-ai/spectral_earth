@@ -85,3 +85,4 @@ The following claims are contradicted by the empirical data or lack methodologic
 
 6. **DO NOT CLAIM that the split was 10% candidate / 10% val / 80% test:**
    - *Fact:* The actual cached data tensors used in all experiments are **70% candidate pool / 15% validation pool / 15% test pool**.
+
