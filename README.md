@@ -1,5 +1,7 @@
 # SpectralEarth Active Learning Framework — Visual Research Demonstration System
 
+> 🚀 **Live Production Deployment:** [https://spectralearth.vercel.app/](https://spectralearth.vercel.app/)
+
 An end-to-end interactive web application and research demonstration system built on top of the verified **SpectralEarth Active Learning Framework**. 
 
 This system provides complete visual demonstration for active learning query selection, spatial uncertainty mapping, sample-selection explanations, simulated oracle labeling, round-by-round classifier head retraining, cross-sensor domain adaptation, label-efficiency benchmarking, and automated visual research report generation—**while strictly preserving the frozen SpecResNet50 backbone and verified research pipeline without unauthorized metric optimization**.
@@ -235,7 +237,9 @@ Open your browser at `http://127.0.0.1:8000` to interact with the full SPA dashb
 ---
 
 ### 2. Deploying to Vercel (Live Web App)
-The repository is pre-configured for serverless deployment on Vercel via `vercel.json` and `api/index.py`.
+The production application is live at: **[https://spectralearth.vercel.app/](https://spectralearth.vercel.app/)**
+
+The repository is pre-configured for automated serverless deployment on Vercel via `vercel.json` and `api/index.py`.
 
 #### Option A: Deploy via GitHub (Recommended)
 1. Push your repository to GitHub:

@@ -871,7 +871,7 @@ def export_experiment():
             "Query_Time_s": f"{r['query_time']:.3f}",
             "OA_pct": f"{m.get('OverallAccuracy', 0.0)*100:.2f}",
             "AA_pct": f"{m.get('AverageAccuracy', 0.0)*100:.2f}",
-            "Macro_F1": f"{m.get('F1Score', 0.0):.4f}",
+            "Macro_F1": f"{(m.get('F1Score') if m.get('F1Score') is not None else (m.get('MacroF1') or m.get('Macro_F1') or 0.0)):.4f}",
             "Kappa": f"{m.get('Kappa', 0.0):.4f}",
             "ECE": f"{m.get('ECE', 0.0):.4f}",
         })

@@ -1434,9 +1434,10 @@ async function annotateAndRetrain() {
             updateTargetBadge(data.target_status);
         }
 
-        const newOaVal = m.OverallAccuracy * 100;
+        const newOaVal = ((m.OverallAccuracy !== undefined ? m.OverallAccuracy : (m.oa || 0))) * 100;
         const newOA = `${newOaVal.toFixed(2)}%`;
-        const newF1 = m.F1Score.toFixed(4);
+        const rawF1 = m.F1Score ?? m.MacroF1 ?? m.Macro_F1 ?? m.macro_f1;
+        const newF1 = (rawF1 !== undefined && rawF1 !== null) ? Number(rawF1).toFixed(4) : "--";
 
         const oaEl = document.getElementById("metricOA");
         if (oaEl) oaEl.innerText = newOA;
@@ -1589,22 +1590,36 @@ function renderProgressionChart(history) {
     if (progEmpty) progEmpty.style.display = "none";
     if (progActive) progActive.style.display = "block";
 
-    // Update metric summary box with latest round values
+    // Update metric summary box with latest round values safely
     const latest = dataToRender[dataToRender.length - 1];
     if (latest && latest.metrics) {
         const metricOA = document.getElementById("metricOA");
         const metricF1 = document.getElementById("metricF1");
-        if (metricOA) metricOA.innerText = `${(latest.metrics.OverallAccuracy * 100).toFixed(2)}%`;
-        if (metricF1) metricF1.innerText = latest.metrics.F1Score.toFixed(4);
+        const rawOA = latest.metrics.OverallAccuracy ?? latest.metrics.oa ?? latest.metrics.Overall_Accuracy;
+        if (metricOA && rawOA !== undefined && rawOA !== null) {
+            metricOA.innerText = `${(Number(rawOA) * 100).toFixed(2)}%`;
+        }
+        const rawF1 = latest.metrics.MacroF1 ?? latest.metrics.F1Score ?? latest.metrics.Macro_F1 ?? latest.metrics.macro_f1;
+        if (metricF1) {
+            metricF1.innerText = (rawF1 !== undefined && rawF1 !== null) ? Number(rawF1).toFixed(4) : "--";
+        }
     }
 
-    const mode = chartModes.progression || '3d';
+    const mode = chartModes.progression || '2d';
     const is3D = (mode === '3d');
 
     const labels = dataToRender.map(r => `R${r.round} (${r.num_labeled})`);
     const xVals = dataToRender.map(r => r.num_labeled);
-    const oas = dataToRender.map(r => +(r.metrics.OverallAccuracy * 100).toFixed(2));
-    const f1s = dataToRender.map(r => +(r.metrics.F1Score * 100).toFixed(2));
+    const oas = dataToRender.map(r => {
+        const m = r.metrics || {};
+        const val = m.OverallAccuracy ?? m.oa ?? m.Overall_Accuracy ?? 0;
+        return +(Number(val) * 100).toFixed(2);
+    });
+    const f1s = dataToRender.map(r => {
+        const m = r.metrics || {};
+        const val = m.MacroF1 ?? m.F1Score ?? m.Macro_F1 ?? m.macro_f1 ?? 0;
+        return +(Number(val) * 100).toFixed(2);
+    });
     const rounds = dataToRender.map(r => r.round);
 
     if (is3D && window.Plotly) {
@@ -1712,8 +1727,12 @@ function renderProgressionChart(history) {
         };
 
         const config = { responsive: true, displaylogo: false };
-        Plotly.react(chartEl, traces, layout, config);
-    setTimeout(() => hideGraphGeneratingAnimation(chartEl.parentElement || chartEl), 200);
+        Plotly.react(chartEl, traces, layout, config).then(() => {
+            setTimeout(() => hideGraphGeneratingAnimation(chartEl.parentElement || chartEl), 150);
+        }).catch(err => {
+            console.error("Plotly 3D progression error:", err);
+            hideGraphGeneratingAnimation(chartEl.parentElement || chartEl);
+        });
     } else if (window.Plotly) {
         // 2D Progression View via Plotly
         const traceOA = {
@@ -1757,7 +1776,14 @@ function renderProgressionChart(history) {
             legend: { x: 0.02, y: 0.98, font: { size: 10 } }
         };
 
-        Plotly.react(chartEl, [traceOA, traceF1, traceTarget], layout, { responsive: true, displaylogo: false });
+        Plotly.react(chartEl, [traceOA, traceF1, traceTarget], layout, { responsive: true, displaylogo: false }).then(() => {
+            setTimeout(() => hideGraphGeneratingAnimation(chartEl.parentElement || chartEl), 150);
+        }).catch(err => {
+            console.error("Plotly 2D progression error:", err);
+            hideGraphGeneratingAnimation(chartEl.parentElement || chartEl);
+        });
+    } else {
+        hideGraphGeneratingAnimation(chartEl.parentElement || chartEl);
     }
 }
 
@@ -3141,6 +3167,12 @@ function setSceneViewMode(mode) {
         if (container2D) container2D.style.display = "none";
         if (mapControls) mapControls.style.display = "none";
         renderScene3D();
+        const sceneEl = document.getElementById("hsiSpatialScene3D");
+        if (sceneEl && window.Plotly) {
+            setTimeout(() => {
+                try { Plotly.Plots.resize(sceneEl); } catch (e) {}
+            }, 100);
+        }
     } else {
         if (btn2D) btn2D.classList.add("active");
         if (btn3D) btn3D.classList.remove("active");
@@ -3238,8 +3270,9 @@ function renderScene3D() {
     if (!sceneEl) return;
     showGraphGeneratingAnimation(sceneEl.parentElement || sceneEl, "Rendering 3D Hyperspectral Data Cube...", "Volumetric Reflectance & Active Query Markers");
 
-    // Immediately update stats panel on every render
-    update3DStatsPanel();
+    try {
+        // Immediately update stats panel on every render
+        update3DStatsPanel();
 
     const [height, width] = sceneData.dimensions;
 
@@ -3595,6 +3628,7 @@ function renderScene3D() {
     };
 
     Plotly.react(sceneEl, traces, layout, { responsive: true, displaylogo: false }).then(() => {
+        setTimeout(() => hideGraphGeneratingAnimation(sceneEl.parentElement || sceneEl), 150);
         if (sceneEl.removeAllListeners) {
             sceneEl.removeAllListeners('plotly_click');
             sceneEl.removeAllListeners('plotly_hover');
@@ -3638,7 +3672,12 @@ function renderScene3D() {
         });
     }).catch(err => {
         console.error("Plotly.react render error in 3D scene:", err);
+        hideGraphGeneratingAnimation(sceneEl.parentElement || sceneEl);
     });
+    } catch (err) {
+        console.error("renderScene3D execution error:", err);
+        hideGraphGeneratingAnimation(sceneEl.parentElement || sceneEl);
+    }
 }
 function updateScene3DInfoCard(rank, x, y, unc, predCls, strat, gIdx, oraCls) {
     const infoEl = document.getElementById("scene3dSelectedInfo");

@@ -39,7 +39,7 @@ class ReportGenerator:
                     <td>{r['num_labeled']}</td>
                     <td>{m.get('OverallAccuracy', 0)*100:.2f}%</td>
                     <td>{m.get('AverageAccuracy', 0)*100:.2f}%</td>
-                    <td>{m.get('F1Score', 0):.4f}</td>
+                    <td>{(m.get('F1Score') if m.get('F1Score') is not None else (m.get('MacroF1') or m.get('Macro_F1') or 0.0)):.4f}</td>
                     <td>{m.get('Kappa', 0):.4f}</td>
                 </tr>"""
         else:
@@ -376,6 +376,7 @@ class ReportGenerator:
             <div class="doc-meta-item">Backbone: <strong>SpecResNet50 (100% Frozen, 24.24M Params)</strong></div>
             <div class="doc-meta-item">Active Dataset: <strong>{dataset_name} ({dim[0]}&times;{dim[1]}, {bands} Bands, {num_classes} Classes)</strong></div>
             <div class="doc-meta-item">Protocol: <strong>5-Seed Controlled Validation</strong></div>
+            <div class="doc-meta-item">Live Deployment: <a href="https://spectralearth.vercel.app/" target="_blank" style="color:#2563eb; font-weight:600; text-decoration:none;">https://spectralearth.vercel.app/</a></div>
         </div>
 
         <!-- QUICK SECTION NAVIGATION -->
