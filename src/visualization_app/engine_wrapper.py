@@ -633,11 +633,15 @@ class ActiveLearningSession:
             from PIL import Image
             img_pil = Image.fromarray(rgb_uint8)
             pal = img_pil.quantize(colors=256)
-            palette = pal.getpalette()
-            scene_colorscale = [
-                [round(i / 255.0, 4), f"rgb({palette[i*3]},{palette[i*3+1]},{palette[i*3+2]})"]
-                for i in range(256)
-            ]
+            palette = pal.getpalette() or []
+            n_pal = len(palette) // 3
+            scene_colorscale = []
+            for i in range(256):
+                if i < n_pal:
+                    r_val, g_val, b_val = palette[i*3], palette[i*3+1], palette[i*3+2]
+                else:
+                    r_val, g_val, b_val = 0, 0, 0
+                scene_colorscale.append([round(i / 255.0, 4), f"rgb({r_val},{g_val},{b_val})"])
             scene_color_indices = np.array(pal, dtype=np.uint8).tolist()
 
             return {
@@ -686,11 +690,15 @@ class ActiveLearningSession:
         from PIL import Image
         img_pil = Image.fromarray(rgb_uint8)
         pal = img_pil.quantize(colors=256)
-        palette = pal.getpalette()
-        scene_colorscale = [
-            [round(i / 255.0, 4), f"rgb({palette[i*3]},{palette[i*3+1]},{palette[i*3+2]})"]
-            for i in range(256)
-        ]
+        palette = pal.getpalette() or []
+        n_pal = len(palette) // 3
+        scene_colorscale = []
+        for i in range(256):
+            if i < n_pal:
+                r_val, g_val, b_val = palette[i*3], palette[i*3+1], palette[i*3+2]
+            else:
+                r_val, g_val, b_val = 0, 0, 0
+            scene_colorscale.append([round(i / 255.0, 4), f"rgb({r_val},{g_val},{b_val})"])
         scene_color_indices = np.array(pal, dtype=np.uint8).tolist()
 
         return {
