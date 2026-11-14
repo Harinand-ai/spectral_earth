@@ -1,0 +1,31 @@
+transfer_pair,source_dataset,target_dataset,pair_type,pair_category,seed,src_classes,tgt_classes,zero_shot_oa,zero_shot_aa,zero_shot_macro_f1,zero_shot_kappa
+indian_pines->salinas,Indian Pines,Salinas,Same-Sensor Cross-Dataset (AVIRIS -> AVIRIS),cross_dataset,42,16,16,12.697044334975368,7.985607866171712,3.7974948089065417,4.980169165390835
+indian_pines->salinas,Indian Pines,Salinas,Same-Sensor Cross-Dataset (AVIRIS -> AVIRIS),cross_dataset,43,16,16,11.342364532019705,7.8948392664336495,4.479804470294151,3.772605257530204
+indian_pines->salinas,Indian Pines,Salinas,Same-Sensor Cross-Dataset (AVIRIS -> AVIRIS),cross_dataset,44,16,16,14.889162561576356,9.699519467774657,4.735071723631069,7.226832630337487
+indian_pines->salinas,Indian Pines,Salinas,Same-Sensor Cross-Dataset (AVIRIS -> AVIRIS),cross_dataset,45,16,16,14.605911330049262,9.487094793107264,4.610489354914303,6.323087757276513
+indian_pines->salinas,Indian Pines,Salinas,Same-Sensor Cross-Dataset (AVIRIS -> AVIRIS),cross_dataset,46,16,16,11.416256157635468,8.396613691027554,4.668831400008113,4.2847387090485745
+salinas->indian_pines,Salinas,Indian Pines,Same-Sensor Cross-Dataset (AVIRIS -> AVIRIS),cross_dataset,42,16,16,9.232769830949286,6.3112738745658605,6.108152085086395,0.7112834687289071
+salinas->indian_pines,Salinas,Indian Pines,Same-Sensor Cross-Dataset (AVIRIS -> AVIRIS),cross_dataset,43,16,16,9.037711313394018,6.003641605949824,5.048206360969234,0.7972963938855382
+salinas->indian_pines,Salinas,Indian Pines,Same-Sensor Cross-Dataset (AVIRIS -> AVIRIS),cross_dataset,44,16,16,8.257477243172952,4.156466214786883,4.1068268968176085,0.2064281040206395
+salinas->indian_pines,Salinas,Indian Pines,Same-Sensor Cross-Dataset (AVIRIS -> AVIRIS),cross_dataset,45,16,16,7.087126137841353,3.772786366821321,4.192472971198298,-0.221620088447394
+salinas->indian_pines,Salinas,Indian Pines,Same-Sensor Cross-Dataset (AVIRIS -> AVIRIS),cross_dataset,46,16,16,9.16775032509753,5.632075833002135,5.798429153295421,0.18614759037123285
+indian_pines->pavia_university,Indian Pines,Pavia University,Genuine Cross-Sensor (AVIRIS -> ROSIS),cross_sensor,42,16,9,,,,
+indian_pines->pavia_university,Indian Pines,Pavia University,Genuine Cross-Sensor (AVIRIS -> ROSIS),cross_sensor,43,16,9,,,,
+indian_pines->pavia_university,Indian Pines,Pavia University,Genuine Cross-Sensor (AVIRIS -> ROSIS),cross_sensor,44,16,9,,,,
+indian_pines->pavia_university,Indian Pines,Pavia University,Genuine Cross-Sensor (AVIRIS -> ROSIS),cross_sensor,45,16,9,,,,
+indian_pines->pavia_university,Indian Pines,Pavia University,Genuine Cross-Sensor (AVIRIS -> ROSIS),cross_sensor,46,16,9,,,,
+salinas->pavia_university,Salinas,Pavia University,Genuine Cross-Sensor (AVIRIS -> ROSIS),cross_sensor,42,16,9,,,,
+salinas->pavia_university,Salinas,Pavia University,Genuine Cross-Sensor (AVIRIS -> ROSIS),cross_sensor,43,16,9,,,,
+salinas->pavia_university,Salinas,Pavia University,Genuine Cross-Sensor (AVIRIS -> ROSIS),cross_sensor,44,16,9,,,,
+salinas->pavia_university,Salinas,Pavia University,Genuine Cross-Sensor (AVIRIS -> ROSIS),cross_sensor,45,16,9,,,,
+salinas->pavia_university,Salinas,Pavia University,Genuine Cross-Sensor (AVIRIS -> ROSIS),cross_sensor,46,16,9,,,,
+pavia_university->indian_pines,Pavia University,Indian Pines,Genuine Cross-Sensor (ROSIS -> AVIRIS),cross_sensor,42,9,16,,,,
+pavia_university->indian_pines,Pavia University,Indian Pines,Genuine Cross-Sensor (ROSIS -> AVIRIS),cross_sensor,43,9,16,,,,
+pavia_university->indian_pines,Pavia University,Indian Pines,Genuine Cross-Sensor (ROSIS -> AVIRIS),cross_sensor,44,9,16,,,,
+pavia_university->indian_pines,Pavia University,Indian Pines,Genuine Cross-Sensor (ROSIS -> AVIRIS),cross_sensor,45,9,16,,,,
+pavia_university->indian_pines,Pavia University,Indian Pines,Genuine Cross-Sensor (ROSIS -> AVIRIS),cross_sensor,46,9,16,,,,
+pavia_university->salinas,Pavia University,Salinas,Genuine Cross-Sensor (ROSIS -> AVIRIS),cross_sensor,42,9,16,,,,
+pavia_university->salinas,Pavia University,Salinas,Genuine Cross-Sensor (ROSIS -> AVIRIS),cross_sensor,43,9,16,,,,
+pavia_university->salinas,Pavia University,Salinas,Genuine Cross-Sensor (ROSIS -> AVIRIS),cross_sensor,44,9,16,,,,
+pavia_university->salinas,Pavia University,Salinas,Genuine Cross-Sensor (ROSIS -> AVIRIS),cross_sensor,45,9,16,,,,
+pavia_university->salinas,Pavia University,Salinas,Genuine Cross-Sensor (ROSIS -> AVIRIS),cross_sensor,46,9,16,,,,

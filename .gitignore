@@ -16,7 +16,6 @@ venv/
 ENV/
 .env
 .env.*
-.python-version
 
 # ================================
 # Build / distribution
@@ -55,7 +54,10 @@ checkpoints/
 scratch/
 wsl/
 wsl
-results/
+results/*
+!results/cross_sensor_experiments/
+results/cross_sensor_experiments/*
+!results/cross_sensor_experiments/*.csv
 
 # ================================
 # Reports, PDFs, LaTeX files (strictly local)
