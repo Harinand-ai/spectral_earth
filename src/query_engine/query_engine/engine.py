@@ -21,7 +21,9 @@ class QueryEngine:
     SUPPORTED_METHODS = (
         "entropy",
         "margin",
+        "pure_margin",
         "least_confidence",
+        "lc",
         "diversity",
         "random",
         "adaptive",
@@ -245,6 +247,37 @@ class QueryEngine:
                 "final": final_scores,
                 "uncertainty_weight": 0.5,
                 "diversity_weight": 0.5,
+            }
+
+        # Pure uncertainty methods without diversity mixing
+        if self.uncertainty_method in {"margin", "pure_margin"}:
+            unc_scores = compute_uncertainty(probabilities, method="margin")
+            return {
+                "uncertainty": unc_scores,
+                "diversity": diversity_scores,
+                "final": unc_scores,
+                "uncertainty_weight": 1.0,
+                "diversity_weight": 0.0,
+            }
+
+        if self.uncertainty_method in {"least_confidence", "lc"}:
+            unc_scores = compute_uncertainty(probabilities, method="least_confidence")
+            return {
+                "uncertainty": unc_scores,
+                "diversity": diversity_scores,
+                "final": unc_scores,
+                "uncertainty_weight": 1.0,
+                "diversity_weight": 0.0,
+            }
+
+        if self.uncertainty_method == "entropy":
+            unc_scores = compute_uncertainty(probabilities, method="entropy")
+            return {
+                "uncertainty": unc_scores,
+                "diversity": diversity_scores,
+                "final": unc_scores,
+                "uncertainty_weight": 1.0,
+                "diversity_weight": 0.0,
             }
 
         # For adaptive, lc_adaptive, and default: use least_confidence unless explicitly requested otherwise

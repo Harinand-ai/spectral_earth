@@ -9,12 +9,13 @@ __pycache__/
 *.whl
 
 # ================================
-# Virtual environments
+# Virtual environments & secrets
 # ================================
 env/
 venv/
 ENV/
 .env
+.env.*
 .python-version
 
 # ================================
@@ -26,7 +27,7 @@ dist/
 pip-wheel-metadata/
 
 # ================================
-# IDE / notebooks
+# IDE / Editor
 # ================================
 .vscode/
 .idea/
@@ -34,52 +35,35 @@ pip-wheel-metadata/
 .ipynb_checkpoints/
 
 # ================================
-# Experiment outputs / logs
+# Experiment outputs / logs / caches
 # ================================
 logs/
 lightning_logs/
 *.log
 srun_outputs/
 tmp/
-
-# ================================
-# Caches / generated features
-# ================================
 cache/
 *.pt
 *.pth
 *.ckpt
 *.pkl
 *.pickle
-
-# ================================
-# Large datasets
-# ================================
 datasets/
-
-# ================================
-# Pretrained / downloaded models
-# ================================
 pretrained_models/
 weights/
 checkpoints/
-
-# ================================
-# Generated scratch files
-# ================================
 scratch/
+wsl/
 wsl
+results/
 
 # ================================
-# Generated figures
+# Reports, PDFs, LaTeX files (strictly local)
 # ================================
-figures/
-
-# ================================
-# College Report and LaTeX artifacts (kept local)
-# ================================
+finalreport/
+final report/
 report/
-egreport.md
+preview_pages/
 *.pdf
 *.synctex.gz
 *.tex
@@ -93,25 +77,32 @@ egreport.md
 *.lof
 *.lot
 *.bak*
-preview_pages/
-spectral_earth_latex_report.zip
-spectral_earth_latex_package/
-SPECTRALEARTH_FINAL_RESEARCH_REPORT*
+*.bib
+*.cls
+*.sty
+*.zip
+*.tar.gz
 
-# Local markdown files (kept local, only README.md and results documentation tracked in GitHub)
+# Local markdown report & audit files (keep only README.md for GitHub)
 *.md
 !README.md
-!results/**/*.md
 
+# ================================
+# Screenshots, PNG/JPG images (strictly local)
+# ================================
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.gif
+*.bmp
+*.ico
+figures/
 
-
-# Report / presentation figures & screenshots (kept local)
-/*.png
-ui_*.png
-fig_*.png
-downstream_tasks_*.png
-*logo*.png
-
+# Local run/scratch scripts
+capture_verification_screenshots.py
+run_final_research_validation_experiments.py
+test_complete_demonstration.py
 
 # ================================
 # OS files

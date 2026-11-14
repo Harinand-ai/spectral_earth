@@ -11,7 +11,9 @@ import matplotlib.pyplot as plt
 from typing import Optional, Dict, Any, List, Tuple
 
 import pyrootutils
-pyrootutils.setup_root(r"d:\Projects\spectral_earth", indicator=".project-root", pythonpath=True)
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 from src.backbones.registry import BACKBONE_REGISTRY
 from src.learning_engine import LearningEngine, ActiveLearningDatasetManager
@@ -90,7 +92,7 @@ DATASET_META = {
     }
 }
 
-CHECKPOINT_PATH = r"d:\Projects\spectral_earth\logs\None\runs\2026-07-30_14-24-24\checkpoints\epoch_094.ckpt"
+CHECKPOINT_PATH = os.path.join(PROJECT_ROOT, "logs", "None", "runs", "2026-07-30_14-24-24", "checkpoints", "epoch_094.ckpt")
 
 def load_frozen_backbone(num_classes):
     backbone = BACKBONE_REGISTRY["spec_resnet50"](num_classes=num_classes)
@@ -229,7 +231,7 @@ class ActiveLearningSession:
         if ds is None or len(ds) == 0:
             return torch.empty((0, 2048)), torch.empty((0,), dtype=torch.long)
         
-        cache_dir = os.path.join(r"d:\Projects\spectral_earth", "cache", "preextracted_features")
+        cache_dir = os.path.join(PROJECT_ROOT, "cache", "preextracted_features")
         os.makedirs(cache_dir, exist_ok=True)
         ds_slug = self.dataset_name.lower().replace(" ", "_")
         cache_file = os.path.join(cache_dir, f"{ds_slug}_{split_name}_feats.pt")
@@ -433,7 +435,7 @@ class ActiveLearningSession:
             "scene_color_indices": scene_color_indices,
         }
 
-    def get_predictions_and_uncertainty(self, uncertainty_method="least_confidence"):
+    def get_predictions_and_uncertainty(self, uncertainty_method="margin"):
         """STEPS 3 & 4: Full prediction map, confidence map, and spatial uncertainty heatmap."""
         gt_labels = self.train_ds.labels
         height, width = gt_labels.shape
@@ -509,8 +511,8 @@ class ActiveLearningSession:
             }
         }
 
-    def run_query_selection(self, k=20, uncertainty_method="filter_diversity"):
-        """STEP 5: LC + Farthest Diversity selection & 'Why Was This Sample Selected?' explanations."""
+    def run_query_selection(self, k=20, uncertainty_method="margin"):
+        """STEP 5: Pure Margin / Active Learning selection & 'Why Was This Sample Selected?' explanations."""
         t0 = time.time()
         unlabeled_idx = self.dataset_manager.unlabeled_indices
         labeled_idx = self.dataset_manager.labeled_indices
@@ -540,6 +542,9 @@ class ActiveLearningSession:
 
         # Compute detailed scores for explanations
         lc_scores = 1.0 - np.max(probs_unlabeled, axis=1)
+        sorted_probs = np.sort(probs_unlabeled, axis=1)
+        margin_diffs = sorted_probs[:, -1] - sorted_probs[:, -2]
+        margin_scores = 1.0 - margin_diffs
         div_scores = QueryEngine.compute_diversity_scores(unlabeled_feats.numpy())
 
         # Normalize scores for ranking
@@ -578,6 +583,8 @@ class ActiveLearningSession:
             top_prob = float(np.max(p_vec))
             lc_val = float(lc_scores[r_idx])
             div_val = float(div_scores[r_idx])
+            margin_val = float(margin_scores[r_idx])
+            margin_diff = float(margin_diffs[r_idx])
 
             # Top-3 class probabilities
             top_3_idx = np.argsort(-p_vec)[:3]
@@ -586,8 +593,14 @@ class ActiveLearningSession:
             # Explanation logic using exact computed values
             lc_percentile = float(np.mean(lc_scores <= lc_val) * 100)
             div_percentile = float(np.mean(div_scores <= div_val) * 100)
+            margin_percentile = float(np.mean(margin_scores <= margin_val) * 100)
 
-            if elv_details:
+            if uncertainty_method in {"margin", "pure_margin"}:
+                reason = (
+                    f"Pure Margin Rank #{rank+1}: Uncertainty u(x)={margin_val:.3f} "
+                    f"(margin p(1)-p(2)={margin_diff:.3f}, top {100-margin_percentile:.1f}% boundary ambiguity)."
+                )
+            elif elv_details:
                 # Find matching candidate index in elv_details
                 cand_pos = np.where(elv_details["candidate_indices"] == r_idx)[0]
                 if len(cand_pos) > 0:
@@ -626,6 +639,8 @@ class ActiveLearningSession:
                 "oracle_class_id": int(self.train_lbls[g_idx].item()),
                 "max_probability": top_prob,
                 "least_confidence": lc_val,
+                "margin_uncertainty": margin_val,
+                "margin_diff": margin_diff,
                 "diversity_score": div_val,
                 "selection_reason": reason,
                 "top_k_probabilities": top_3,

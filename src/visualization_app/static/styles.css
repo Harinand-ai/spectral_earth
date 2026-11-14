@@ -1433,14 +1433,784 @@ details.expandable-section summary {
     flex-direction: column;
 }
 
-.report-frame {
-    width: 100%;
-    height: 88vh;
-    min-height: 850px;
-    border: none;
-    background: #525659;
+/* =========================================================================
+   NEW SCIENTIFIC UI COMPONENTS (ARCHITECTURE, DATASETS, BENCHMARKS, FAILURES)
+   ========================================================================= */
+
+/* Architecture Pipeline Flow */
+.arch-pipeline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    margin: 16px 0;
+}
+
+.arch-step {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px 14px;
+    min-width: 130px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.arch-step.highlight {
+    border-color: var(--primary);
+    background: var(--primary-light);
+}
+
+.arch-step-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+}
+
+.arch-step-dim {
+    font-size: 10.5px;
+    font-family: var(--font-mono);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.arch-step-desc {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.arch-arrow {
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* Method Badges */
+.badge-primary-method {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.badge-historical {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    font-weight: 600;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.badge-same-sensor {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+    font-weight: 600;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.badge-cross-sensor {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+/* Dataset Explorer Specifications Grid */
+.dataset-spec-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.dataset-spec-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.spec-key-value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin: 12px 0;
+}
+
+.spec-item {
+    background: var(--bg-subtle);
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.spec-item-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.spec-item-val {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 2px;
+}
+
+.class-chips-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.class-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.class-chip-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* Optical Spectrum Range Visualizer */
+.spectrum-range-bar-container {
+    background: #0f172a;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 12px 0;
+    color: #ffffff;
+}
+
+.spectrum-bar-wrapper {
+    display: flex;
+    height: 24px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.spectrum-vnir {
+    background: linear-gradient(90deg, #3b82f6, #10b981, #eab308, #ef4444);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.spectrum-swir {
+    background: linear-gradient(90deg, #7c3aed, #4c1d95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.spectrum-absent {
+    background: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #94a3b8;
+    background-image: repeating-linear-gradient(45deg, #1e293b, #1e293b 8px, #334155 8px, #334155 16px);
+}
+
+/* Failure Analysis Card */
+.failure-analysis-card {
+    background: #ffffff;
+    border: 1px solid #fecaca;
+    border-left: 4px solid #ef4444;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+}
+
+.failure-analysis-card.warning {
+    border-color: #fef08a;
+    border-left-color: #eab308;
+}
+
+.failure-analysis-card.neutral {
+    border-color: var(--border-color);
+    border-left-color: #64748b;
+}
+
+.failure-card-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #991b1b;
+    margin-bottom: 4px;
+}
+
+.failure-analysis-card.warning .failure-card-title {
+    color: #854d0e;
+}
+
+.failure-analysis-card.neutral .failure-card-title {
+    color: #334155;
+}
+
+.failure-finding {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.failure-cause {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 6px;
+}
+
+.failure-resolution {
+    font-size: 11.5px;
+    color: #065f46;
+    background: #f0fdf4;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* =========================================================================
+   INTRODUCTORY ANIMATION OVERLAY
+   ========================================================================= */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 40%, #0f172a 0%, #020617 100%);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+}
+
+.intro-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-content {
+    text-align: center;
+    max-width: 680px;
+    padding: 24px;
+    position: relative;
+}
+
+.intro-skip-btn {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.intro-skip-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.intro-stage-icon {
+    font-size: 54px;
+    margin-bottom: 16px;
+    display: inline-block;
+    animation: introFloat 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes introFloat {
+    0% { transform: translateY(0px) scale(1); }
+    100% { transform: translateY(-10px) scale(1.05); }
+}
+
+.intro-title {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 50%, #34d399 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.intro-subtitle {
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.intro-steps-track {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.intro-step-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: left;
+    width: 135px;
+    font-size: 11px;
+}
+
+.intro-step-pill.active {
+    border-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.15);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+}
+
+.intro-step-pill-num {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: #38bdf8;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.intro-step-pill-text {
+    color: #f1f5f9;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.intro-progress-bar-wrap {
+    width: 240px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.intro-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #38bdf8, #34d399);
+    transition: width 0.1s linear;
+}
+
+/* =========================================================================
+   SIMPLIFIED VISUAL CARDS & SECTION ENHANCEMENTS
+   ========================================================================= */
+.problem-explainer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+}
+
+.explainer-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+}
+
+.explainer-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.explainer-icon-badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+}
+
+.explainer-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.explainer-body {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    flex: 1;
+}
+
+/* Workflow Strip */
+.workflow-step-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 14px 0;
+    overflow-x: auto;
+}
+
+.wf-step-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.wf-step-item.highlight {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.wf-step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    font-size: 11px;
+    font-family: var(--font-mono);
+}
+
+.wf-step-item.highlight .wf-step-badge {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.wf-arrow {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+/* Method Evaluation Cards (Section 5) */
+.method-eval-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+}
+
+.method-eval-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.method-eval-card.primary {
+    border-color: #3b82f6;
+    border-top: 4px solid #2563eb;
+    background: #ffffff;
+}
+
+.method-eval-card.discarded {
+    border-color: #e2e8f0;
+    border-top: 4px solid #94a3b8;
+    background: #fafbfc;
+}
+
+.method-eval-card.baseline {
+    border-color: #e2e8f0;
+    border-top: 4px solid #64748b;
+}
+
+.method-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    gap: 8px;
+}
+
+.method-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.method-formula-pill {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: var(--primary);
+    margin: 6px 0 10px 0;
+    display: inline-block;
+}
+
+.method-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 8px;
+    margin-bottom: 2px;
+}
+
+.method-section-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.method-decision-pill {
+    margin-top: 12px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.decision-retained {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.decision-discarded {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* Literature Benchmark Comparison Table */
+.literature-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin: 14px 0;
+}
+
+.lit-cite {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    font-style: italic;
     display: block;
+    margin-top: 2px;
+}
+
+.chart-explanation-box {
+    background: var(--bg-subtle);
+    border-left: 3px solid var(--primary);
+    border-radius: 0 4px 4px 0;
+    padding: 8px 12px;
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    line-height: 1.5;
 }
 
 
 
+
+
+
+
+/* =========================================================================
+   EXECUTIVE STATUS PILL & SCIENTIFIC GRAPH GENERATING ANIMATION
+   ========================================================================= */
+.executive-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #334155;
+  letter-spacing: 0.2px;
+}
+
+.executive-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.45);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.75; }
+}
+
+.graph-generating-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  pointer-events: none;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+}
+
+.graph-generating-overlay.fade-out {
+  opacity: 0;
+}
+
+.graph-spinner-wrapper {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graph-spinner-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2.5px solid #e2e8f0;
+  border-top-color: #2563eb;
+  border-right-color: #3b82f6;
+  animation: graphSpin 0.85s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.graph-spinner-inner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px dashed #93c5fd;
+  animation: graphSpinRev 1.6s linear infinite;
+}
+
+.graph-spinner-core {
+  width: 7px;
+  height: 7px;
+  background: #2563eb;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.45);
+  animation: graphPulseCore 1.3s ease-in-out infinite;
+}
+
+@keyframes graphSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes graphSpinRev {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes graphPulseCore {
+  0%, 100% { transform: scale(0.85); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+.graph-generating-text {
+  margin-top: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #1e293b;
+  letter-spacing: 0.3px;
+  font-family: var(--font-mono, monospace);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.graph-generating-subtext {
+  margin-top: 3px;
+  font-size: 11px;
+  color: #64748b;
+  font-family: var(--font-sans);
+}

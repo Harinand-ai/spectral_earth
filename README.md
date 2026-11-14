@@ -213,3 +213,43 @@ python test_complete_demonstration.py
 - **Backbone**: SpecResNet50 (SpectralEarth SSL Foundation Backbone)
 - **Active Learning Strategy**: Least Confidence + Farthest Diversity (`filter_diversity`)
 - **Spectral Resampling**: `SpectralResampler1D`
+
+---
+
+## Deployment & Running Guide
+
+### 1. Running Locally
+Clone the repository and install the dependencies:
+```bash
+git clone https://github.com/Harinand-ai/spectral_earth.git
+cd spectral_earth
+pip install -r requirements.txt
+```
+
+Launch the interactive visualization dashboard with Uvicorn:
+```bash
+python -m uvicorn src.visualization_app.app:app --host 127.0.0.1 --port 8000 --reload
+```
+Open your browser at `http://127.0.0.1:8000` to interact with the full SPA dashboard, active learning loop, and cross-sensor demonstrator.
+
+---
+
+### 2. Deploying to Vercel (Live Web App)
+The repository is pre-configured for serverless deployment on Vercel via `vercel.json` and `api/index.py`.
+
+#### Option A: Deploy via GitHub (Recommended)
+1. Push your repository to GitHub:
+   ```bash
+   git push origin main
+   ```
+2. Navigate to [Vercel Dashboard](https://vercel.com/new).
+3. Click **"Import Project"** and select your `spectral_earth` repository.
+4. Leave the Framework Preset as **Other** (Vercel automatically detects `vercel.json` and the `@vercel/python` builder).
+5. Click **"Deploy"**. Your application will be live at your assigned Vercel domain.
+
+#### Option B: Deploy via Vercel CLI
+```bash
+npm install -g vercel
+vercel login
+vercel --prod
+```
