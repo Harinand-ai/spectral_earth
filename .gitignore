@@ -47,7 +47,10 @@ cache/
 *.ckpt
 *.pkl
 *.pickle
-datasets/
+/datasets/
+/data/IndianPines/
+/data/PaviaUniversity/
+/data/Salinas/
 pretrained_models/
 weights/
 checkpoints/
@@ -60,13 +63,18 @@ results/cross_sensor_experiments/*
 !results/cross_sensor_experiments/*.csv
 
 # ================================
-# Reports, PDFs, LaTeX files (strictly local)
+# Reports, PDFs, LaTeX, Submissions (strictly local)
 # ================================
 finalreport/
 final report/
 report/
 preview_pages/
+kscst/
+FINAL_SUBMISSION/
+docsmodify/
 *.pdf
+*.docx
+*.doc
 *.synctex.gz
 *.tex
 *.aux
@@ -105,6 +113,12 @@ figures/
 capture_verification_screenshots.py
 run_final_research_validation_experiments.py
 test_complete_demonstration.py
+audit_report_hits.py
+find_tectonic.py
+inspect_abs_ch5.py
+inspect_ch11.py
+inspect_verified_json.py
+scan_report_tex.py
 
 # ================================
 # OS files
